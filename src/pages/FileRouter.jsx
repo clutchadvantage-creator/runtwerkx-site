@@ -17,6 +17,10 @@ const FILE_ROUTER_PAYMENT_LINKS = {
   yearly: 'https://buy.stripe.com/9B68wPfXEdc0dQP8W04ZG02',
 }
 
+const FILE_ROUTER_BILLING_LINKS = {
+  portal: 'https://billing.stripe.com/p/login/4gMbJ19zg6NC3cb1ty4ZG00',
+}
+
 const WHY_IT_MATTERS_ROWS = [
   {
     title: 'Staging Workspace Acts Like A Shopping Cart',
@@ -961,10 +965,17 @@ export default function FileRouter() {
                 the billing cycle that fits you best.
               </p>
               <p className="mt-4 text-sm leading-7 text-white/70">
-                We want people to feel comfortable using our products, not
-                locked into them. At RuntWerkx Systems we believe in
-                transparency and user trust.
+                Subscriptions can be managed or canceled anytime through your secure billing portal.
               </p>
+              <a
+                href={FILE_ROUTER_BILLING_LINKS.portal}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 inline-flex items-center gap-2 rounded-2xl border border-green-400/30 px-4 py-2 text-sm font-semibold text-green-300 transition hover:border-green-300 hover:text-green-200"
+              >
+                Manage Subscription
+                <ArrowUpRight size={14} />
+              </a>
             </div>
           </div>
         </section>
@@ -1107,12 +1118,20 @@ export default function FileRouter() {
                   a faster, cleaner, more repeatable way.
                 </p>
 
-                <div className="mt-5">
+                <div className="mt-5 flex flex-wrap gap-3">
                   <a
                     href="#pricing"
                     className="inline-flex rounded-2xl bg-green-500 px-5 py-3 text-sm font-semibold text-black transition hover:scale-[1.02]"
                   >
-                    Download Installer
+                    View Pricing
+                  </a>
+                  <a
+                    href={FILE_ROUTER_BILLING_LINKS.portal}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex rounded-2xl border border-white/15 px-5 py-3 text-sm font-semibold text-white/85 transition hover:border-green-400 hover:text-green-400"
+                  >
+                    Billing Portal
                   </a>
                 </div>
               </div>
@@ -1134,8 +1153,70 @@ export default function FileRouter() {
                   >
                     Screenshots
                   </a>
-                  <a href="#pricing" className="transition hover:text-green-400">
-                    Download
+                  <a
+                    href={FILE_ROUTER_PAYMENT_LINKS.monthly}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition hover:text-green-400"
+                  >
+                    Monthly Checkout
+                  </a>
+                  <a
+                    href={FILE_ROUTER_PAYMENT_LINKS.sixMonth}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition hover:text-green-400"
+                  >
+                    6 Month Checkout
+                  </a>
+                  <a
+                    href={FILE_ROUTER_PAYMENT_LINKS.yearly}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition hover:text-green-400"
+                  >
+                    Yearly Checkout
+                  </a>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-sm uppercase tracking-[0.2em] text-green-400">
+                  Customer Tools
+                </h4>
+                <div className="mt-4 flex flex-col gap-3 text-sm text-white/70">
+                  <a
+                    href={FILE_ROUTER_BILLING_LINKS.portal}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition hover:text-green-400"
+                  >
+                    Manage Subscription
+                  </a>
+                  <a
+                    href={FILE_ROUTER_BILLING_LINKS.portal}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition hover:text-green-400"
+                  >
+                    Billing Portal
+                  </a>
+                  <a
+                    href={FILE_ROUTER_BILLING_LINKS.portal}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition hover:text-green-400"
+                  >
+                    Cancel Subscription
+                  </a>
+                  <a
+                    href={mailtoLink(
+                      'File Router Support Request',
+                      'Hello RuntWerkx,%0D%0A%0D%0AI need help with File Router.'
+                    )}
+                    className="transition hover:text-green-400"
+                  >
+                    Support
                   </a>
                 </div>
               </div>
@@ -1181,20 +1262,9 @@ export default function FileRouter() {
                   >
                     General Inquiry
                   </a>
-                </div>
-              </div>
-
-              <div>
-                <h4 className="text-sm uppercase tracking-[0.2em] text-green-400">
-                  RuntWerkx Systems
-                </h4>
-                <div className="mt-4 space-y-3 text-sm text-white/70">
-                  <p>Phone: (417) 988-7395</p>
-                  <p>Email: runtwerkx.dev@gmail.com</p>
-                  <p>Built for real industry workflows.</p>
                   <Link
                     to="/"
-                    className="inline-block transition hover:text-green-400"
+                    className="transition hover:text-green-400"
                   >
                     Back to Home
                   </Link>
@@ -1209,6 +1279,14 @@ export default function FileRouter() {
                 </p>
 
                 <div className="flex flex-wrap gap-4 text-xs uppercase tracking-[0.18em] text-white/35">
+                  <a
+                    href={FILE_ROUTER_BILLING_LINKS.portal}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition hover:text-green-400"
+                  >
+                    Manage Subscription
+                  </a>
                   <a
                     href={mailtoLink('Privacy Question')}
                     className="transition hover:text-green-400"
