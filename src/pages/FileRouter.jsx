@@ -10,7 +10,12 @@ import {
   ArrowUpRight,
 } from 'lucide-react'
 import Navbar from '../components/Navbar'
-import { createCheckout } from '../api'
+
+const FILE_ROUTER_PAYMENT_LINKS = {
+  monthly: 'https://buy.stripe.com/4gMbJ19zg6NC3cb1ty4ZG00',
+  sixMonth: 'https://buy.stripe.com/dRm7sL6n40peeUT3BG4ZG01',
+  yearly: 'https://buy.stripe.com/9B68wPfXEdc0dQP8W04ZG02',
+}
 
 const WHY_IT_MATTERS_ROWS = [
   {
@@ -896,20 +901,14 @@ export default function FileRouter() {
               <p className="mt-4 text-sm leading-6 text-white/65">
                 Full access to File Router with the same complete feature set.
               </p>
-              <button
-                onClick={async () => {
-                  try {
-                    const { url } = await createCheckout('monthly')
-                    window.location.href = url
-                  } catch (error) {
-                    console.error(error)
-                    alert('Could not start Stripe checkout.')
-                  }
-                }}
-                className="mt-6 w-full rounded-2xl bg-green-500 px-4 py-3 font-semibold text-black transition hover:scale-[1.01]"
+              <a
+                href={FILE_ROUTER_PAYMENT_LINKS.monthly}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 flex w-full items-center justify-center rounded-2xl bg-green-500 px-4 py-3 font-semibold text-black transition hover:scale-[1.01]"
               >
                 Buy & Download
-              </button>
+              </a>
             </div>
 
             <div className="rounded-3xl border border-white/10 bg-white/5 p-6 transition hover:border-green-400/40 hover:shadow-[0_0_20px_rgba(34,197,94,0.15)]">
@@ -919,20 +918,14 @@ export default function FileRouter() {
               <p className="mt-4 text-sm leading-6 text-white/65">
                 Same full product, billed less often for a cleaner workflow.
               </p>
-              <button
-                onClick={async () => {
-                  try {
-                    const { url } = await createCheckout('6month')
-                    window.location.href = url
-                  } catch (error) {
-                    console.error(error)
-                    alert('Could not start Stripe checkout.')
-                  }
-                }}
-                className="mt-6 w-full rounded-2xl border border-white/20 px-4 py-3 font-semibold text-white transition hover:border-green-400 hover:text-green-400"
+              <a
+                href={FILE_ROUTER_PAYMENT_LINKS.sixMonth}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 flex w-full items-center justify-center rounded-2xl border border-white/20 px-4 py-3 font-semibold text-white transition hover:border-green-400 hover:text-green-400"
               >
                 Buy & Download
-              </button>
+              </a>
             </div>
 
             <div className="rounded-3xl border border-green-500/30 bg-green-500/5 p-6 transition hover:shadow-[0_0_24px_rgba(34,197,94,0.16)]">
@@ -948,20 +941,14 @@ export default function FileRouter() {
                 Same full feature set with a lower overall cost when billed
                 annually.
               </p>
-              <button
-                onClick={async () => {
-                  try {
-                    const { url } = await createCheckout('yearly')
-                    window.location.href = url
-                  } catch (error) {
-                    console.error(error)
-                    alert('Could not start Stripe checkout.')
-                  }
-                }}
-                className="mt-6 w-full rounded-2xl bg-green-500 px-4 py-3 font-semibold text-black transition hover:scale-[1.01]"
+              <a
+                href={FILE_ROUTER_PAYMENT_LINKS.yearly}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 flex w-full items-center justify-center rounded-2xl bg-green-500 px-4 py-3 font-semibold text-black transition hover:scale-[1.01]"
               >
                 Buy & Download
-              </button>
+              </a>
             </div>
 
             <div className="rounded-3xl border border-white/10 bg-white/5 p-6 transition hover:border-green-400/40 hover:shadow-[0_0_20px_rgba(34,197,94,0.15)]">
