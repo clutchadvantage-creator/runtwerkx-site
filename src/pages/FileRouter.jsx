@@ -221,6 +221,7 @@ function FaqFerrisWheel() {
   const radiusX = 250
   const radiusY = 190
   const stepDeg = 360 / FAQ_POOL.length
+  const VISIBLE_SLOTS = 4
 
   const positionedCards = FAQ_POOL.map((item, index) => {
     const relativeIndex = (index - activeIndex + FAQ_POOL.length) % FAQ_POOL.length
@@ -232,17 +233,22 @@ function FaqFerrisWheel() {
 
     const normalizedDepth = (y + radiusY) / (radiusY * 2)
     const isFront = relativeIndex === 0
+    const isVisible = relativeIndex < VISIBLE_SLOTS
 
     return {
       ...item,
       index,
+      relativeIndex,
       x,
       y,
       isFront,
+      isVisible,
       scale: isFront && isPaused ? 1.08 : 0.76 + normalizedDepth * 0.18,
-      opacity: isFront ? 1 : 0.28 + normalizedDepth * 0.52,
-      zIndex: isFront ? 50 : Math.round(normalizedDepth * 20) + 10,
-      blur: isFront ? 0 : (1 - normalizedDepth) * 1.1,
+      opacity: isVisible ? (isFront ? 1 : 0.34 + normalizedDepth * 0.46) : 0,
+      zIndex: isVisible
+        ? (isFront ? 50 : Math.round(normalizedDepth * 20) + 10)
+        : 0,
+      blur: isVisible ? (isFront ? 0 : (1 - normalizedDepth) * 1.1) : 0,
     }
   }).sort((a, b) => a.zIndex - b.zIndex)
 
@@ -321,7 +327,7 @@ function FaqFerrisWheel() {
       <div className="pointer-events-none absolute left-1/2 top-[52%] h-[90px] w-[300px] -translate-x-1/2 rounded-t-full border-x border-t border-white/8" />
       <div className="pointer-events-none absolute left-1/2 top-[52%] h-[10px] w-[360px] -translate-x-1/2 rounded-full bg-white/6" />
 
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 overflow-hidden">
         {positionedCards.map((card) => {
           const left = `calc(50% + ${card.x}px - ${cardWidth / 2}px)`
           const top = `calc(52% + ${card.y}px - ${cardHeight / 2}px)`
@@ -339,7 +345,10 @@ function FaqFerrisWheel() {
                 zIndex: card.zIndex,
                 transform: `scale(${card.scale})`,
                 filter: `blur(${card.blur}px)`,
+                visibility: card.isVisible ? 'visible' : 'hidden',
+                pointerEvents: card.isVisible ? 'auto' : 'none',
               }}
+              aria-hidden={!card.isVisible}
             >
               <div className="absolute left-1/2 top-[-18px] h-5 w-[2px] -translate-x-1/2 bg-gradient-to-t from-white/35 to-transparent" />
               <div className="absolute left-1/2 top-[-21px] h-3 w-3 -translate-x-1/2 rounded-full border border-green-400/30 bg-black" />
