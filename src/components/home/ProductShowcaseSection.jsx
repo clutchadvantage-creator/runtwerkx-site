@@ -34,9 +34,25 @@ export default function ProductShowcaseSection() {
   }, [])
 
   return (
-    <section id="work" className="relative overflow-hidden border-y border-white/10 bg-white/[0.03]">
+    <section id="work" className="relative overflow-hidden border-y border-white/10">
+      {/* Full background video */}
+      <video
+        className="absolute inset-0 h-full w-full scale-[1.02] object-cover blur-[1px]"
+        src="/videos/showcase-bg-compressed.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+      />
+
+      {/* Base dark overlay for readability */}
+      <div className="absolute inset-0 bg-black/80" />
+
+      {/* Green system glow overlay */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(34,197,94,0.14),transparent_24%),radial-gradient(circle_at_85%_35%,rgba(34,197,94,0.10),transparent_22%),radial-gradient(circle_at_50%_80%,rgba(255,255,255,0.04),transparent_18%)]" />
+
+      {/* Grid overlay */}
       <div className="absolute inset-0 opacity-[0.06] bg-[linear-gradient(rgba(34,197,94,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,0.12)_1px,transparent_1px)] bg-[size:34px_34px]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(34,197,94,0.10),transparent_24%),radial-gradient(circle_at_85%_35%,rgba(34,197,94,0.08),transparent_22%),radial-gradient(circle_at_50%_80%,rgba(255,255,255,0.04),transparent_18%)]" />
 
       <div className="pointer-events-none absolute inset-0">
         {Array.from({ length: 18 }).map((_, i) => (
@@ -55,7 +71,9 @@ export default function ProductShowcaseSection() {
 
       <div className="relative mx-auto max-w-7xl px-6 py-20">
         <div className="mb-10">
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-green-400">⇼ Our Products ⇼</p>
+          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-green-400">
+            ⇼ Our Products ⇼
+          </p>
           <h2 className="mt-3 text-3xl font-bold md:text-5xl">Showcase</h2>
           <div className="mt-4 h-px w-32 bg-gradient-to-r from-green-500 via-green-300/60 to-transparent" />
           <p className="mt-5 max-w-3xl text-white/68">
