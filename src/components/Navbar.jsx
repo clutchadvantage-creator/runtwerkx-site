@@ -74,11 +74,14 @@ export default function Navbar() {
     }`
 
   const navUnderline = (isActive) =>
-    isActive ? 'scale-x-100 opacity-100' : 'scale-x-0 opacity-0 group-hover:scale-x-100 group-hover:opacity-100'
+    isActive
+      ? 'scale-x-100 opacity-100'
+      : 'scale-x-0 opacity-0 group-hover:scale-x-100 group-hover:opacity-100'
 
   const isHomePage = location.pathname === '/'
   const isAegisOnePage = location.pathname === '/aegisone'
   const isFileRouterPage = location.pathname === '/file-router'
+  const isMediaCenterPage = location.pathname === '/media-center'
 
   return (
     <header className="sticky top-0 z-20 border-b border-white/10 bg-black/80 backdrop-blur">
@@ -167,6 +170,23 @@ export default function Navbar() {
             <span
               className={`absolute -bottom-2 left-0 h-px w-full origin-left bg-gradient-to-r from-green-500 via-green-300 to-transparent transition duration-300 ${
                 isFileRouterPage
+                  ? 'scale-x-100 opacity-100'
+                  : 'scale-x-0 opacity-0 group-hover:scale-x-100 group-hover:opacity-100'
+              }`}
+            />
+          </Link>
+
+          {/* 🔥 NEW MEDIA CENTER LINK */}
+          <Link
+            to="/media-center"
+            className={`group relative transition ${
+              isMediaCenterPage ? 'text-green-300' : 'text-white hover:text-green-400'
+            }`}
+          >
+            Media Center
+            <span
+              className={`absolute -bottom-2 left-0 h-px w-full origin-left bg-gradient-to-r from-green-500 via-green-300 to-transparent transition duration-300 ${
+                isMediaCenterPage
                   ? 'scale-x-100 opacity-100'
                   : 'scale-x-0 opacity-0 group-hover:scale-x-100 group-hover:opacity-100'
               }`}

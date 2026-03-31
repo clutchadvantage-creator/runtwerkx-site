@@ -9,15 +9,21 @@ export default function ProductShowcaseSection() {
 
   useEffect(() => {
     let lastY = window.scrollY
+    let accumulatedScroll = 0
 
     const handleScroll = () => {
       const currentY = window.scrollY
-      const movedEnough = Math.abs(currentY - lastY) > 24
+      const delta = Math.abs(currentY - lastY)
 
-      if (movedEnough) {
+      accumulatedScroll += delta
+
+      // Only collapse after meaningful scroll movement.
+      if (accumulatedScroll > 120) {
         setActiveItem(-1)
-        lastY = currentY
+        accumulatedScroll = 0
       }
+
+      lastY = currentY
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })

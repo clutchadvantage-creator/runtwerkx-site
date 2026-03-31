@@ -1,9 +1,11 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { capabilityCards, metrics, preorderLinks } from '../../data/homeContent'
 import { openExternalOrLog } from '../../utils/homeUtils'
 
 export default function ModernSystemsSection() {
   const [activeCapability, setActiveCapability] = useState(-1)
+  const navigate = useNavigate()
 
   return (
     <section className="border-b border-white/10 bg-white/[0.02]">
@@ -208,58 +210,104 @@ export default function ModernSystemsSection() {
         </div>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="group relative overflow-hidden rounded-[1.75rem] border border-green-500/15 bg-black/50 p-5 shadow-[0_0_35px_rgba(34,197,94,0.08)]">
-            <div className="absolute inset-0 opacity-[0.08] bg-[linear-gradient(rgba(34,197,94,0.14)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,0.14)_1px,transparent_1px)] bg-[size:26px_26px]" />
-            <div className="absolute -left-10 top-0 h-28 w-28 rounded-full bg-green-500/20 blur-3xl" />
-            <div className="absolute bottom-0 right-0 h-36 w-36 rounded-full bg-green-400/10 blur-[90px]" />
+          <div className="grid gap-6">
+            <div className="group relative overflow-hidden rounded-[1.75rem] border border-green-500/15 bg-black/50 p-5 shadow-[0_0_35px_rgba(34,197,94,0.08)]">
+              <div className="absolute inset-0 opacity-[0.08] bg-[linear-gradient(rgba(34,197,94,0.14)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,0.14)_1px,transparent_1px)] bg-[size:26px_26px]" />
+              <div className="absolute -left-10 top-0 h-28 w-28 rounded-full bg-green-500/20 blur-3xl" />
+              <div className="absolute bottom-0 right-0 h-36 w-36 rounded-full bg-green-400/10 blur-[90px]" />
 
-            <div className="relative">
-              <div className="mb-4 flex items-center justify-between">
-                <div>
-                  <div className="text-xs font-semibold uppercase tracking-[0.24em] text-green-400">
-                    ⇼ AegisOne ⇼
+              <div className="relative">
+                <div className="mb-4 flex items-center justify-between">
+                  <div>
+                    <div className="text-xs font-semibold uppercase tracking-[0.24em] text-green-400">
+                      ⇼ AegisOne ⇼
+                    </div>
+                    <div className="mt-2 text-xl font-bold text-white">
+                      RuntWerkx Systems Premire Safety Management Platform
+                    </div>
                   </div>
-                  <div className="mt-2 text-xl font-bold text-white">
-                    RuntWerkx Systems Premire Safety Management Platform
+
+                  <div className="rounded-full border border-green-400/20 bg-black/50 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-green-300">
+                    Currently In Development
                   </div>
                 </div>
 
-                <div className="rounded-full border border-green-400/20 bg-black/50 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-green-300">
-                  Currently In Development
+                <div className="relative h-[320px] overflow-hidden rounded-[1.5rem] border border-white/10 bg-black">
+                  <img
+                    src="/images/AegisOne.png"
+                    alt="Industrial digital systems visual"
+                    className="absolute inset-0 h-full w-full scale-[1.03] object-cover object-center opacity-[0.92] transition duration-700 ease-out group-hover:scale-[1.08] group-hover:-translate-y-1"
+                  />
+
+                  <div className="absolute inset-0 bg-gradient-to-tr from-black/70 via-black/15 to-green-500/10" />
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_22%,rgba(34,197,94,0.16),transparent_24%),radial-gradient(circle_at_82%_75%,rgba(255,255,255,0.06),transparent_20%)] opacity-80 transition duration-700 group-hover:opacity-100" />
+                  <div className="absolute inset-0 opacity-[0.10] bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:24px_24px]" />
+
+                  <button
+                    type="button"
+                    onClick={() => openExternalOrLog(preorderLinks.aegisone)}
+                    className="absolute left-4 top-4 rounded-full border border-green-400/30 bg-black/55 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.24em] text-green-300 backdrop-blur transition hover:scale-[1.05] hover:border-green-300 hover:text-green-200"
+                  >
+                    SIGN UP FOR PRE-ORDERS HERE
+                  </button>
+
+                  <div className="absolute inset-x-0 bottom-0 p-5">
+                    <div className="max-w-lg">
+                      <div className="text-[11px] font-semibold uppercase tracking-[0.28em] text-green-300">
+                        Digital Safety Intelligence
+                      </div>
+                      <div className="mt-2 text-2xl font-bold text-white">
+                        Smarter tools built for real operational environments
+                      </div>
+                      <p className="mt-2 text-sm leading-7 text-white/70">
+                        AegisOne is a modular safety management platform designed to give teams better tools
+                        for reducing risk, improving compliance, and making safety information more accessible
+                        and actionable across all levels of an organization.
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
+            </div>
 
-              <div className="relative h-[320px] overflow-hidden rounded-[1.5rem] border border-white/10 bg-black">
-                <img
-                  src="/images/AegisOne.png"
-                  alt="Industrial digital systems visual"
-                  className="absolute inset-0 h-full w-full scale-[1.03] object-cover object-center opacity-[0.92] transition duration-700 ease-out group-hover:scale-[1.08] group-hover:-translate-y-1"
-                />
+            <div className="group relative overflow-hidden rounded-[1.75rem] border border-green-500/15 bg-black/50 p-5 shadow-[0_0_35px_rgba(34,197,94,0.08)]">
+              <div className="absolute inset-0 opacity-[0.08] bg-[linear-gradient(rgba(34,197,94,0.14)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,0.14)_1px,transparent_1px)] bg-[size:26px_26px]" />
+              <div className="absolute -left-6 top-6 h-24 w-24 rounded-full bg-green-500/14 blur-3xl" />
+              <div className="absolute bottom-0 right-0 h-32 w-32 rounded-full bg-white/5 blur-[80px]" />
 
-                <div className="absolute inset-0 bg-gradient-to-tr from-black/70 via-black/15 to-green-500/10" />
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_22%,rgba(34,197,94,0.16),transparent_24%),radial-gradient(circle_at_82%_75%,rgba(255,255,255,0.06),transparent_20%)] opacity-80 transition duration-700 group-hover:opacity-100" />
-                <div className="absolute inset-0 opacity-[0.10] bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:24px_24px]" />
-
-                <button
-                  type="button"
-                  onClick={() => openExternalOrLog(preorderLinks.aegisone)}
-                  className="absolute left-4 top-4 rounded-full border border-green-400/30 bg-black/55 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.24em] text-green-300 backdrop-blur transition hover:scale-[1.05] hover:border-green-300 hover:text-green-200"
-                >
-                  SIGN UP FOR PRE-ORDERS HERE
-                </button>
-
-                <div className="absolute inset-x-0 bottom-0 p-5">
-                  <div className="max-w-lg">
-                    <div className="text-[11px] font-semibold uppercase tracking-[0.28em] text-green-300">
-                      Digital Safety Intelligence
+              <div className="relative">
+                <div className="mb-4 flex items-center justify-between">
+                  <div>
+                    <div className="text-xs font-semibold uppercase tracking-[0.24em] text-green-400">
+                      ⇼ Media Center ⇼
                     </div>
-                    <div className="mt-2 text-2xl font-bold text-white">
-                      Smarter tools built for real operational environments
+                    <div className="mt-2 text-xl font-bold text-white">
+                      RuntWerkx Digital Library
                     </div>
-                    <p className="mt-2 text-sm leading-7 text-white/70">
-                      AegisOne is a modular safety management platform designed to give teams better tools
-                      for reducing risk, improving compliance, and making safety information more accessible
-                      and actionable across all levels of an organization.
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => navigate('/media-center')}
+                    className="rounded-full border border-white/10 bg-black/50 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-white/60 transition hover:border-green-400/30 hover:text-green-300"
+                  >
+                    Placeholder
+                  </button>
+                </div>
+
+                <div className="relative h-[260px] overflow-hidden rounded-[1.5rem] border border-white/10 bg-black">
+                  <div className="absolute inset-0 bg-gradient-to-br from-black/85 via-black/70 to-green-500/10" />
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_24%_18%,rgba(34,197,94,0.14),transparent_22%),radial-gradient(circle_at_82%_72%,rgba(255,255,255,0.05),transparent_22%)] opacity-90" />
+                  <div className="absolute inset-0 opacity-[0.08] bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:22px_22px]" />
+
+                  <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
+                    <div className="h-16 w-16 rounded-full border border-green-400/20 bg-green-500/10 shadow-[0_0_22px_rgba(34,197,94,0.12)]" />
+                    <div className="mt-6 text-3xl font-bold text-white">
+                      Multimedia Coming Soon
+                    </div>
+                    <p className="mt-3 max-w-xl text-sm leading-7 text-white/65">
+                      Future home for product walkthroughs, quick training videos,
+                      promotional media, and other RuntWerkx support content.
                     </p>
                   </div>
                 </div>
