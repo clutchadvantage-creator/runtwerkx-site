@@ -18,9 +18,12 @@ function MetricCard({ label, value, accent = false }) {
   )
 }
 
-function ModuleCard({ title, text }) {
+function ModuleCard({ title, text, delay = 0 }) {
   return (
-    <div className="rounded-3xl border border-white/10 bg-white/5 p-6 transition hover:border-green-400/40 hover:bg-white/[0.07]">
+    <div
+      className="rounded-3xl border border-white/10 bg-white/5 p-6 opacity-0 translate-y-6 transition hover:border-green-400/40 hover:bg-white/[0.07] animate-[fadeRise_0.8s_ease-out_forwards]"
+      style={{ animationDelay: `${delay}s` }}
+    >
       <h3 className="text-xl font-bold">{title}</h3>
       <p className="mt-2 text-sm text-white/65">{text}</p>
     </div>
@@ -49,31 +52,48 @@ export default function AegisOne() {
       <main>
         <section className="relative border-b border-white/10">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(34,197,94,0.16),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.05),transparent_25%)]" />
-          <div className="relative mx-auto max-w-7xl px-6 py-24">
-            <p className="text-sm uppercase tracking-[0.3em] text-green-400">
-              Safety Platform
-            </p>
 
-            <h1 className="mt-6 text-5xl font-black leading-tight md:text-7xl">
-              AegisOne
-            </h1>
+          <div className="relative mx-auto max-w-7xl px-6 py-16">
+            <div className="relative overflow-hidden rounded-[2rem] border border-green-500/20 bg-black/70 shadow-[0_0_40px_rgba(34,197,94,0.08)]">
+              <img
+                src="/images/AegisOne4.png"
+                alt="AegisOne platform visual"
+                className="absolute inset-0 h-full w-full object-cover object-center"
+              />
 
-            <p className="mt-6 max-w-2xl text-lg text-white/75">
-              A modular, enterprise-grade safety management system built for real operations.
-              Incidents, audits, training, risk, and corrective actions connected into one
-              intelligent platform.
-            </p>
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-black/10" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(34,197,94,0.14),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.04),transparent_25%)]" />
+              <div className="absolute inset-0 opacity-[0.08] bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:24px_24px]" />
 
-            <div className="mt-10 flex flex-wrap gap-4">
-              <button className="rounded-2xl bg-green-500 px-6 py-3 font-semibold text-black transition hover:scale-[1.02]">
-                Request Demo
-              </button>
-              <a
-                href="#dashboard-preview"
-                className="rounded-2xl border border-white/20 px-6 py-3 font-semibold transition hover:border-green-400 hover:text-green-400"
-              >
-                See Dashboard
-              </a>
+              <div className="relative z-10 flex min-h-[420px] items-end md:min-h-[520px]">
+                <div className="w-full px-8 pb-10 md:px-12 md:pb-14">
+                  <p className="text-sm uppercase tracking-[0.3em] text-green-400">
+                    Safety Platform
+                  </p>
+
+                  <h1 className="mt-6 text-5xl font-black leading-tight md:text-7xl">
+                    AegisOne
+                  </h1>
+
+                  <p className="mt-6 max-w-2xl text-lg text-white/75">
+                    A modular, enterprise-grade safety management system built for real operations.
+                    Incidents, audits, training, risk, and corrective actions connected into one
+                    intelligent platform.
+                  </p>
+
+                  <div className="mt-10 flex flex-wrap gap-4">
+                    <button className="rounded-2xl bg-green-500 px-6 py-3 font-semibold text-black transition hover:scale-[1.02]">
+                      Request Demo
+                    </button>
+                    <a
+                      href="#dashboard-preview"
+                      className="rounded-2xl border border-white/20 px-6 py-3 font-semibold transition hover:border-green-400 hover:text-green-400"
+                    >
+                      See Dashboard
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -81,24 +101,80 @@ export default function AegisOne() {
         <section className="mx-auto max-w-7xl px-6 py-20">
           <div className="mb-10">
             <p className="text-sm uppercase tracking-[0.3em] text-green-400">
-              Core Modules
+              ⇼ Core Modules ⇼
             </p>
             <h2 className="mt-3 text-3xl font-bold md:text-4xl">
-              Built like a real system
+              Safety Management Done Right
             </h2>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-3">
-            {[
-              ['Incident Management', 'Capture incidents fast, track severity, owners, and follow-up actions.'],
-              ['Audits & Inspections', 'Run structured audits, inspections, and observation workflows in one place.'],
-              ['Training Tracking', 'Track required training, status, expirations, and qualification history.'],
-              ['Corrective Actions', 'Assign actions, due dates, ownership, and closure verification cleanly.'],
-              ['Risk & JSA Tools', 'Evaluate hazards, document controls, and connect field risk to system records.'],
-              ['Analytics Dashboard', 'Use live metrics to spot trends, backlog pressure, and compliance gaps.'],
-            ].map(([title, text]) => (
-              <ModuleCard key={title} title={title} text={text} />
-            ))}
+          <div className="grid gap-6 lg:grid-cols-[1fr_1.2fr_1fr]">
+            <div className="flex flex-col gap-6">
+              <ModuleCard
+                title="Incident Management"
+                text="Capture incidents fast, track severity, owners, and follow-up actions."
+                delay={0.05}
+              />
+
+              <ModuleCard
+                title="Corrective Actions"
+                text="Assign actions, due dates, ownership, and closure verification cleanly."
+                delay={0.15}
+              />
+
+              <ModuleCard
+                title="Training Tracking"
+                text="Track required training, status, expirations, and qualification history."
+                delay={0.25}
+              />
+            </div>
+
+            <div
+              className="relative min-h-[520px] overflow-hidden rounded-[2rem] border border-green-500/20 bg-black/70 shadow-[0_0_40px_rgba(34,197,94,0.08)] opacity-0 translate-y-6 animate-[fadeRise_0.95s_ease-out_forwards]"
+              style={{ animationDelay: '0.12s' }}
+            >
+              <img
+                src="/images/AegisOne4.png"
+                alt="AegisOne platform visual"
+                className="absolute inset-0 h-full w-full object-cover object-center"
+              />
+
+              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-black/10" />
+              <div className="absolute inset-0 opacity-[0.06] bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:24px_24px]" />
+
+              <div className="absolute inset-x-0 bottom-0 p-6">
+                <div className="text-xs uppercase tracking-[0.28em] text-green-300">
+                  AegisOne Platform
+                </div>
+                <div className="mt-2 text-2xl font-bold text-white">
+                  Connected Safety Intelligence System
+                </div>
+                <p className="mt-3 max-w-md text-sm leading-7 text-white/70">
+                  Incidents, audits, training, corrective actions, and risk visibility all connected
+                  into one unified operational system.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-6">
+              <ModuleCard
+                title="Audits & Inspections"
+                text="Run structured audits, inspections, and observation workflows in one place."
+                delay={0.1}
+              />
+
+              <ModuleCard
+                title="Risk & JSA Tools"
+                text="Evaluate hazards, document controls, and connect field risk to system records."
+                delay={0.2}
+              />
+
+              <ModuleCard
+                title="Analytics Dashboard"
+                text="Use live metrics to spot trends, backlog pressure, and compliance gaps."
+                delay={0.3}
+              />
+            </div>
           </div>
         </section>
 
@@ -346,6 +422,19 @@ export default function AegisOne() {
           </div>
         </section>
       </main>
+
+      <style>{`
+        @keyframes fadeRise {
+          0% {
+            opacity: 0;
+            transform: translateY(24px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
     </div>
   )
 }

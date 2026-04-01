@@ -81,7 +81,7 @@ export default function Navbar() {
   const isHomePage = location.pathname === '/'
   const isAegisOnePage = location.pathname === '/aegisone'
   const isFileRouterPage = location.pathname === '/file-router'
-  const isMediaCenterPage = location.pathname === '/media-center'
+  const isKnowledgePage = location.pathname === '/knowledge-library'
 
   return (
     <header className="sticky top-0 z-20 border-b border-white/10 bg-black/80 backdrop-blur">
@@ -177,16 +177,15 @@ export default function Navbar() {
           </Link>
 
           {/* 🔥 NEW MEDIA CENTER LINK */}
-          <Link
-            to="/media-center"
-            className={`group relative transition ${
-              isMediaCenterPage ? 'text-green-300' : 'text-white hover:text-green-400'
-            }`}
+          <Link to="/knowledge-library"
+                className={`group relative transition ${
+                  isKnowledgePage ? 'text-green-300' : 'text-white hover:text-green-400'
+              }`}
           >
-            Media Center
+            Knowledge Library
             <span
               className={`absolute -bottom-2 left-0 h-px w-full origin-left bg-gradient-to-r from-green-500 via-green-300 to-transparent transition duration-300 ${
-                isMediaCenterPage
+                isKnowledgePage
                   ? 'scale-x-100 opacity-100'
                   : 'scale-x-0 opacity-0 group-hover:scale-x-100 group-hover:opacity-100'
               }`}

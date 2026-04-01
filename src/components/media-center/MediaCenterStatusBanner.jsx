@@ -4,15 +4,14 @@ export default function MediaCenterStatusBanner() {
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div>
           <div className="text-sm font-semibold uppercase tracking-[0.26em] text-green-400">
-            ⇼ Status ⇼
+            ⇼ Update Notes ⇼
           </div>
           <h2 className="mt-2 text-2xl font-bold text-white">
             Under Construction
           </h2>
           <p className="mt-3 max-w-3xl text-sm leading-7 text-white/65">
             This page is being built as a modular knowledge platform so content
-            can be added cleanly over time without turning into a giant mess of
-            code or cluttered sections.
+            can be added cleanly over time. In the future any updates to the page will be posted HERE in this banner.
           </p>
         </div>
 

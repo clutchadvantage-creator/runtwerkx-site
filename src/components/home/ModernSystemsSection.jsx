@@ -64,24 +64,90 @@ export default function ModernSystemsSection() {
                 <path d="M380 70 V35 H520" stroke="rgba(34,197,94,0.10)" strokeWidth="2" />
                 <path d="M540 110 V165 H700" stroke="rgba(34,197,94,0.10)" strokeWidth="2" />
 
-                <path d="M40 110 H180 L230 70 H380 L430 110 H860" stroke="url(#deliverCircuitGlow)" strokeWidth="2.4" strokeLinecap="round">
-                  <animate attributeName="stroke-dasharray" values="0 1000;260 740;0 1000" dur="4.6s" repeatCount="indefinite" />
-                  <animate attributeName="stroke-dashoffset" values="0;-320;-860" dur="4.6s" repeatCount="indefinite" />
+                <path
+                  d="M40 110 H180 L230 70 H380 L430 110 H860"
+                  stroke="url(#deliverCircuitGlow)"
+                  strokeWidth="2.4"
+                  strokeLinecap="round"
+                >
+                  <animate
+                    attributeName="stroke-dasharray"
+                    values="0 1000;260 740;0 1000"
+                    dur="4.6s"
+                    repeatCount="indefinite"
+                  />
+                  <animate
+                    attributeName="stroke-dashoffset"
+                    values="0;-320;-860"
+                    dur="4.6s"
+                    repeatCount="indefinite"
+                  />
                 </path>
 
-                <path d="M180 110 V170 H300" stroke="url(#deliverCircuitGlow)" strokeWidth="2.2" strokeLinecap="round">
-                  <animate attributeName="stroke-dasharray" values="0 400;90 310;0 400" dur="4.6s" begin="0.35s" repeatCount="indefinite" />
-                  <animate attributeName="stroke-dashoffset" values="0;-120;-300" dur="4.6s" begin="0.35s" repeatCount="indefinite" />
+                <path
+                  d="M180 110 V170 H300"
+                  stroke="url(#deliverCircuitGlow)"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                >
+                  <animate
+                    attributeName="stroke-dasharray"
+                    values="0 400;90 310;0 400"
+                    dur="4.6s"
+                    begin="0.35s"
+                    repeatCount="indefinite"
+                  />
+                  <animate
+                    attributeName="stroke-dashoffset"
+                    values="0;-120;-300"
+                    dur="4.6s"
+                    begin="0.35s"
+                    repeatCount="indefinite"
+                  />
                 </path>
 
-                <path d="M380 70 V35 H520" stroke="url(#deliverCircuitGlow)" strokeWidth="2.2" strokeLinecap="round">
-                  <animate attributeName="stroke-dasharray" values="0 300;80 220;0 300" dur="4.6s" begin="0.65s" repeatCount="indefinite" />
-                  <animate attributeName="stroke-dashoffset" values="0;-90;-220" dur="4.6s" begin="0.65s" repeatCount="indefinite" />
+                <path
+                  d="M380 70 V35 H520"
+                  stroke="url(#deliverCircuitGlow)"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                >
+                  <animate
+                    attributeName="stroke-dasharray"
+                    values="0 300;80 220;0 300"
+                    dur="4.6s"
+                    begin="0.65s"
+                    repeatCount="indefinite"
+                  />
+                  <animate
+                    attributeName="stroke-dashoffset"
+                    values="0;-90;-220"
+                    dur="4.6s"
+                    begin="0.65s"
+                    repeatCount="indefinite"
+                  />
                 </path>
 
-                <path d="M540 110 V165 H700" stroke="url(#deliverCircuitGlow)" strokeWidth="2.2" strokeLinecap="round">
-                  <animate attributeName="stroke-dasharray" values="0 340;95 245;0 340" dur="4.6s" begin="1s" repeatCount="indefinite" />
-                  <animate attributeName="stroke-dashoffset" values="0;-100;-260" dur="4.6s" begin="1s" repeatCount="indefinite" />
+                <path
+                  d="M540 110 V165 H700"
+                  stroke="url(#deliverCircuitGlow)"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                >
+                  <animate
+                    attributeName="stroke-dasharray"
+                    values="0 340;95 245;0 340"
+                    dur="4.6s"
+                    begin="1s"
+                    repeatCount="indefinite"
+                  />
+                  <animate
+                    attributeName="stroke-dashoffset"
+                    values="0;-100;-260"
+                    dur="4.6s"
+                    begin="1s"
+                    repeatCount="indefinite"
+                  />
                 </path>
 
                 <circle cx="180" cy="110" r="4" fill="#4ade80" opacity="0.55" />
@@ -92,7 +158,11 @@ export default function ModernSystemsSection() {
                 <circle cx="700" cy="165" r="4" fill="#4ade80" opacity="0.55" />
 
                 <circle r="7" fill="url(#deliverPulseGlow)">
-                  <animateMotion dur="4.6s" repeatCount="indefinite" path="M40 110 H180 L230 70 H380 L430 110 H860" />
+                  <animateMotion
+                    dur="4.6s"
+                    repeatCount="indefinite"
+                    path="M40 110 H180 L230 70 H380 L430 110 H860"
+                  />
                 </circle>
               </svg>
 
@@ -169,18 +239,18 @@ export default function ModernSystemsSection() {
                     </div>
 
                     <div
-                      className={`relative mt-6 overflow-hidden transition-all duration-500 ${
-                        isOpen ? 'h-[220px]' : 'h-[110px]'
+                      className={`relative mt-6 -mx-2 overflow-hidden transition-all duration-500 ${
+                        isOpen ? 'h-[300px]' : 'h-[170px]'
                       }`}
                     >
                       <img
                         src={card.image}
                         alt={card.title}
-                        className="h-full w-full rounded-[1.35rem] object-cover transition duration-500"
+                        className="h-full w-full rounded-[1.45rem] object-cover object-center transition duration-500"
                       />
 
-                      <div className="absolute inset-0 rounded-[1.35rem] bg-gradient-to-t from-black/50 via-black/10 to-green-500/10" />
-                      <div className="absolute inset-0 rounded-[1.35rem] opacity-[0.06] bg-[linear-gradient(rgba(34,197,94,0.14)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,0.14)_1px,transparent_1px)] bg-[size:22px_22px]" />
+                      <div className="absolute inset-0 rounded-[1.45rem] bg-gradient-to-t from-black/50 via-black/10 to-green-500/10" />
+                      <div className="absolute inset-0 rounded-[1.45rem] opacity-[0.06] bg-[linear-gradient(rgba(34,197,94,0.14)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,0.14)_1px,transparent_1px)] bg-[size:22px_22px]" />
                     </div>
 
                     <div
@@ -234,7 +304,7 @@ export default function ModernSystemsSection() {
 
                 <div className="relative h-[320px] overflow-hidden rounded-[1.5rem] border border-white/10 bg-black">
                   <img
-                    src="/images/AegisOne.png"
+                    src="/images/AegisOne4.png"
                     alt="Industrial digital systems visual"
                     className="absolute inset-0 h-full w-full scale-[1.03] object-cover object-center opacity-[0.92] transition duration-700 ease-out group-hover:scale-[1.08] group-hover:-translate-y-1"
                   />
@@ -246,24 +316,19 @@ export default function ModernSystemsSection() {
                   <button
                     type="button"
                     onClick={() => openExternalOrLog(preorderLinks.aegisone)}
-                    className="absolute left-4 top-4 rounded-full border border-green-400/30 bg-black/55 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.24em] text-green-300 backdrop-blur transition hover:scale-[1.05] hover:border-green-300 hover:text-green-200"
+                    className="absolute left-2 top-48 rounded-full border border-green-400/30 bg-black/55 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.24em] text-green-300 backdrop-blur transition hover:scale-[1.05] hover:border-green-300 hover:text-green-200"
                   >
                     SIGN UP FOR PRE-ORDERS HERE
                   </button>
 
-                  <div className="absolute inset-x-0 bottom-0 p-5">
+                  <div className="absolute inset-x-82 bottom-0 p-23">
                     <div className="max-w-lg">
                       <div className="text-[11px] font-semibold uppercase tracking-[0.28em] text-green-300">
-                        Digital Safety Intelligence
+                        Safety Intelligence
                       </div>
                       <div className="mt-2 text-2xl font-bold text-white">
-                        Smarter tools built for real operational environments
+                        Smart Safety Management
                       </div>
-                      <p className="mt-2 text-sm leading-7 text-white/70">
-                        AegisOne is a modular safety management platform designed to give teams better tools
-                        for reducing risk, improving compliance, and making safety information more accessible
-                        and actionable across all levels of an organization.
-                      </p>
                     </div>
                   </div>
                 </div>
@@ -279,7 +344,7 @@ export default function ModernSystemsSection() {
                 <div className="mb-4 flex items-center justify-between">
                   <div>
                     <div className="text-xs font-semibold uppercase tracking-[0.24em] text-green-400">
-                      ⇼ Media Center ⇼
+                      ⇼ Knowledge Center ⇼
                     </div>
                     <div className="mt-2 text-xl font-bold text-white">
                       RuntWerkx Digital Library
@@ -291,25 +356,20 @@ export default function ModernSystemsSection() {
                     onClick={() => navigate('/media-center')}
                     className="rounded-full border border-white/10 bg-black/50 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-white/60 transition hover:border-green-400/30 hover:text-green-300"
                   >
-                    Go To Media Library
+                    Go To Library (Click Here)
                   </button>
                 </div>
 
-                <div className="relative h-[260px] overflow-hidden rounded-[1.5rem] border border-white/10 bg-black">
-                  <div className="absolute inset-0 bg-gradient-to-br from-black/85 via-black/70 to-green-500/10" />
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_24%_18%,rgba(34,197,94,0.14),transparent_22%),radial-gradient(circle_at_82%_72%,rgba(255,255,255,0.05),transparent_22%)] opacity-90" />
-                  <div className="absolute inset-0 opacity-[0.08] bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:22px_22px]" />
-
-                  <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
-                    <div className="h-16 w-16 rounded-full border border-green-400/20 bg-green-500/10 shadow-[0_0_22px_rgba(34,197,94,0.12)]" />
-                    <div className="mt-6 text-3xl font-bold text-white">
-                      Multimedia Coming Soon
-                    </div>
-                    <p className="mt-3 max-w-xl text-sm leading-7 text-white/65">
-                      Future home for product walkthroughs, quick training videos,
-                      promotional media, and other RuntWerkx support content.
-                    </p>
-                  </div>
+                <div className="relative h-[260px] overflow-hidden rounded-[1.5rem] bg-black">
+                  <video
+                    src="/images/rwlibrarygreenglow2.mp4"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="auto"
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  />
                 </div>
               </div>
             </div>
@@ -397,7 +457,13 @@ export default function ModernSystemsSection() {
                       strokeDasharray="800"
                       strokeDashoffset="800"
                     >
-                      <animate attributeName="stroke-dashoffset" from="800" to="0" dur="2s" fill="freeze" />
+                      <animate
+                        attributeName="stroke-dashoffset"
+                        from="800"
+                        to="0"
+                        dur="2s"
+                        fill="freeze"
+                      />
                     </path>
 
                     <circle cx="158" cy="112" r="4" fill="#86efac">

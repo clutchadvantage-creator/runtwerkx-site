@@ -10,7 +10,7 @@ import {
   mediaCenterSections,
 } from '../data/mediaCenterContent'
 
-export default function MediaCenter() {
+export default function KnowledgeLibrary() {
   return (
     <div className="min-h-screen bg-black text-white">
       <Navbar />
