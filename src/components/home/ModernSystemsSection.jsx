@@ -1,7 +1,254 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { capabilityCards, metrics, preorderLinks } from '../../data/homeContent'
+import { capabilityCards, preorderLinks } from '../../data/homeContent'
 import { openExternalOrLog } from '../../utils/homeUtils'
+
+function OperationalImpactField() {
+  const impactPoints = [
+    {
+      title: 'Faster Response',
+      text: 'Reduce lag between issue discovery, communication, and action.',
+      top: '10%',
+      left: '10%',
+    },
+    {
+      title: 'Better Visibility',
+      text: 'Give teams cleaner access to the information that matters.',
+      top: '22%',
+      left: '58%',
+    },
+    {
+      title: 'Less Friction',
+      text: 'Cut wasted steps, duplicate entry, and disconnected handoffs.',
+      top: '46%',
+      left: '22%',
+    },
+    {
+      title: 'Stronger Accountability',
+      text: 'Track ownership, follow-up, and closure with more confidence.',
+      top: '62%',
+      left: '64%',
+    },
+    {
+      title: 'Operational Clarity',
+      text: 'Build systems that help people move with less uncertainty.',
+      top: '72%',
+      left: '24%',
+    },
+  ]
+
+  const streamLabels = [
+    'Systems',
+    'Workflow',
+    'Visibility',
+    'Actions',
+    'Safety',
+    'Data',
+  ]
+
+  return (
+    <div className="relative min-h-[900px] overflow-hidden">
+      <div className="absolute inset-0 opacity-[0.045] bg-[linear-gradient(rgba(34,197,94,0.10)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,0.10)_1px,transparent_1px)] bg-[size:28px_28px]" />
+
+      <div className="absolute left-[7%] top-[9%] h-44 w-44 rounded-full bg-green-500/10 blur-[90px]" />
+      <div className="absolute right-[8%] top-[22%] h-52 w-52 rounded-full bg-green-400/10 blur-[110px]" />
+      <div className="absolute bottom-[10%] left-[26%] h-56 w-56 rounded-full bg-green-500/8 blur-[120px]" />
+      <div className="absolute bottom-[12%] right-[10%] h-44 w-44 rounded-full bg-white/5 blur-[90px]" />
+
+      <svg
+        viewBox="0 0 700 900"
+        className="absolute inset-0 h-full w-full"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <defs>
+          <linearGradient id="impactStreamA" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="rgba(34,197,94,0.00)" />
+            <stop offset="45%" stopColor="rgba(74,222,128,0.55)" />
+            <stop offset="100%" stopColor="rgba(34,197,94,0.00)" />
+          </linearGradient>
+
+          <linearGradient id="impactStreamB" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="rgba(34,197,94,0.00)" />
+            <stop offset="50%" stopColor="rgba(187,247,208,0.42)" />
+            <stop offset="100%" stopColor="rgba(34,197,94,0.00)" />
+          </linearGradient>
+
+          <radialGradient id="impactPulseGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="rgba(134,239,172,0.85)" />
+            <stop offset="100%" stopColor="rgba(34,197,94,0)" />
+          </radialGradient>
+        </defs>
+
+        <path
+          d="M60 150 C150 100, 240 110, 315 170 C390 230, 470 255, 640 225"
+          stroke="rgba(34,197,94,0.12)"
+          strokeWidth="1.5"
+        />
+        <path
+          d="M90 315 C180 285, 250 315, 340 395 C430 475, 530 520, 640 505"
+          stroke="rgba(34,197,94,0.12)"
+          strokeWidth="1.5"
+        />
+        <path
+          d="M70 640 C160 610, 255 630, 355 710 C450 785, 530 800, 640 760"
+          stroke="rgba(34,197,94,0.12)"
+          strokeWidth="1.5"
+        />
+
+        <path
+          d="M60 150 C150 100, 240 110, 315 170 C390 230, 470 255, 640 225"
+          stroke="url(#impactStreamA)"
+          strokeWidth="2.6"
+          strokeLinecap="round"
+          strokeDasharray="900"
+          strokeDashoffset="900"
+        >
+          <animate
+            attributeName="stroke-dashoffset"
+            from="900"
+            to="-900"
+            dur="7s"
+            repeatCount="indefinite"
+          />
+        </path>
+
+        <path
+          d="M90 315 C180 285, 250 315, 340 395 C430 475, 530 520, 640 505"
+          stroke="url(#impactStreamB)"
+          strokeWidth="2.4"
+          strokeLinecap="round"
+          strokeDasharray="800"
+          strokeDashoffset="800"
+        >
+          <animate
+            attributeName="stroke-dashoffset"
+            from="800"
+            to="-800"
+            dur="7.8s"
+            begin="0.6s"
+            repeatCount="indefinite"
+          />
+        </path>
+
+        <path
+          d="M70 640 C160 610, 255 630, 355 710 C450 785, 530 800, 640 760"
+          stroke="url(#impactStreamA)"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeDasharray="850"
+          strokeDashoffset="850"
+        >
+          <animate
+            attributeName="stroke-dashoffset"
+            from="850"
+            to="-850"
+            dur="8.4s"
+            begin="1s"
+            repeatCount="indefinite"
+          />
+        </path>
+
+        <circle cx="120" cy="128" r="5" fill="#4ade80" opacity="0.55" />
+        <circle cx="404" cy="224" r="5" fill="#4ade80" opacity="0.55" />
+        <circle cx="612" cy="228" r="5" fill="#86efac" opacity="0.55" />
+        <circle cx="150" cy="302" r="5" fill="#4ade80" opacity="0.5" />
+        <circle cx="370" cy="420" r="5" fill="#4ade80" opacity="0.55" />
+        <circle cx="610" cy="505" r="5" fill="#bbf7d0" opacity="0.5" />
+        <circle cx="130" cy="626" r="5" fill="#4ade80" opacity="0.5" />
+        <circle cx="390" cy="732" r="5" fill="#4ade80" opacity="0.55" />
+        <circle cx="620" cy="760" r="5" fill="#bbf7d0" opacity="0.55" />
+
+        <circle r="9" fill="url(#impactPulseGlow)">
+          <animateMotion
+            dur="7s"
+            repeatCount="indefinite"
+            path="M60 150 C150 100, 240 110, 315 170 C390 230, 470 255, 640 225"
+          />
+        </circle>
+
+        <circle r="8" fill="url(#impactPulseGlow)">
+          <animateMotion
+            dur="7.8s"
+            begin="0.6s"
+            repeatCount="indefinite"
+            path="M90 315 C180 285, 250 315, 340 395 C430 475, 530 520, 640 505"
+          />
+        </circle>
+
+        <circle r="9" fill="url(#impactPulseGlow)">
+          <animateMotion
+            dur="8.4s"
+            begin="1s"
+            repeatCount="indefinite"
+            path="M70 640 C160 610, 255 630, 355 710 C450 785, 530 800, 640 760"
+          />
+        </circle>
+      </svg>
+
+      <div className="relative z-10 px-2 py-2">
+        <div className="max-w-xl">
+          <div className="text-xs font-semibold uppercase tracking-[0.24em] text-green-400">
+            ― Operational Momentum ―
+          </div>
+
+          <h3 className="mt-3 text-3xl font-bold leading-tight text-white">
+            Better systems create momentum you can actually feel
+          </h3>
+
+          <p className="mt-4 max-w-xl text-base leading-8 text-white/70">
+            Good software should not just collect information. It should help people move
+            faster, communicate more clearly, and work with less wasted effort across the
+            operation.
+          </p>
+        </div>
+
+        <div className="relative mt-12 min-h-[700px]">
+          {impactPoints.map((point, index) => (
+            <div
+              key={point.title}
+              className="absolute max-w-[250px]"
+              style={{ top: point.top, left: point.left }}
+            >
+              <div
+                className="absolute -left-6 top-2 h-3 w-3 rounded-full bg-green-400 shadow-[0_0_18px_rgba(74,222,128,0.55)]"
+                style={{
+                  animation: `impactBlink 2.4s ease-in-out ${index * 0.3}s infinite`,
+                }}
+              />
+
+              <div className="pl-4">
+                <div className="text-[11px] font-semibold uppercase tracking-[0.24em] text-green-300">
+                  {point.title}
+                </div>
+                <div className="mt-2 text-sm leading-7 text-white/62">
+                  {point.text}
+                </div>
+              </div>
+            </div>
+          ))}
+
+          <div className="absolute bottom-[6%] left-[6%] right-[6%]">
+            <div className="flex flex-wrap justify-center gap-x-4 gap-y-2">
+              {streamLabels.map((label, index) => (
+                <div
+                  key={label}
+                  className="text-[10px] font-semibold uppercase tracking-[0.26em] text-white/32"
+                  style={{
+                    animation: `tagFloat 4.6s ease-in-out ${index * 0.25}s infinite`,
+                  }}
+                >
+                  {label}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
 
 export default function ModernSystemsSection() {
   const [activeCapability, setActiveCapability] = useState(-1)
@@ -375,127 +622,30 @@ export default function ModernSystemsSection() {
             </div>
           </div>
 
-          <div className="grid gap-6">
-            <div className="relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/[0.04] p-6">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(34,197,94,0.10),transparent_28%)]" />
-              <div className="relative">
-                <div className="text-xs font-semibold uppercase tracking-[0.24em] text-green-400">
-                  ― Performance Snapshot ―
-                </div>
-                <h3 className="mt-3 text-2xl font-bold">How better tools create real gains</h3>
-                <p className="mt-3 max-w-xl text-white/70">
-                  Small process improvements can stack fast when software is built to reduce friction,
-                  increase clarity, and help people move faster with less wasted effort.
-                </p>
-
-                <div className="mt-8 grid gap-5">
-                  {metrics.map((metric, index) => (
-                    <div key={metric.label}>
-                      <div className="mb-2 flex items-center justify-between text-sm">
-                        <span className="text-white/75">{metric.label}</span>
-                        <span className="font-semibold text-green-300">{metric.value}%</span>
-                      </div>
-
-                      <div className="h-3 overflow-hidden rounded-full bg-white/8">
-                        <div
-                          className="h-full rounded-full bg-gradient-to-r from-green-600 via-green-400 to-green-300 shadow-[0_0_18px_rgba(74,222,128,0.35)]"
-                          style={{
-                            width: `${metric.value}%`,
-                            animation: `metricGrow 1.1s ease-out ${index * 0.15}s both`,
-                          }}
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div className="relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-black/60 p-6">
-              <div className="absolute inset-0 opacity-[0.07] bg-[linear-gradient(rgba(34,197,94,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,0.12)_1px,transparent_1px)] bg-[size:24px_24px]" />
-              <div className="relative">
-                <div className="text-xs font-semibold uppercase tracking-[0.24em] text-green-400">
-                  ― Graph Area ― 
-                </div>
-                <h3 className="mt-3 text-2xl font-bold">Mini animated chart placeholder</h3>
-
-                <div className="mt-6 rounded-[1.5rem] border border-white/10 bg-black/70 p-4">
-                  <svg
-                    viewBox="0 0 420 190"
-                    className="h-[180px] w-full"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <defs>
-                      <linearGradient id="chartLine" x1="0" y1="0" x2="1" y2="0">
-                        <stop offset="0%" stopColor="#166534" />
-                        <stop offset="50%" stopColor="#4ade80" />
-                        <stop offset="100%" stopColor="#bbf7d0" />
-                      </linearGradient>
-                      <linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="rgba(74,222,128,0.28)" />
-                        <stop offset="100%" stopColor="rgba(74,222,128,0.00)" />
-                      </linearGradient>
-                    </defs>
-
-                    <path d="M30 20 V160 H390" stroke="rgba(255,255,255,0.12)" strokeWidth="1.2" />
-                    <path d="M30 130 H390" stroke="rgba(255,255,255,0.08)" strokeWidth="1" />
-                    <path d="M30 95 H390" stroke="rgba(255,255,255,0.06)" strokeWidth="1" />
-                    <path d="M30 60 H390" stroke="rgba(255,255,255,0.05)" strokeWidth="1" />
-
-                    <path
-                      d="M42 142 C92 138, 120 124, 158 112 C205 97, 230 84, 270 70 C305 58, 338 40, 378 26 L378 160 L42 160 Z"
-                      fill="url(#chartFill)"
-                    />
-
-                    <path
-                      d="M42 142 C92 138, 120 124, 158 112 C205 97, 230 84, 270 70 C305 58, 338 40, 378 26"
-                      stroke="url(#chartLine)"
-                      strokeWidth="4"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeDasharray="800"
-                      strokeDashoffset="800"
-                    >
-                      <animate
-                        attributeName="stroke-dashoffset"
-                        from="800"
-                        to="0"
-                        dur="2s"
-                        fill="freeze"
-                      />
-                    </path>
-
-                    <circle cx="158" cy="112" r="4" fill="#86efac">
-                      <animate attributeName="r" values="4;6;4" dur="1.8s" repeatCount="indefinite" />
-                    </circle>
-                    <circle cx="270" cy="70" r="4" fill="#86efac">
-                      <animate attributeName="r" values="4;6;4" dur="2.2s" repeatCount="indefinite" />
-                    </circle>
-                    <circle cx="378" cy="26" r="4" fill="#bbf7d0">
-                      <animate attributeName="r" values="4;7;4" dur="1.6s" repeatCount="indefinite" />
-                    </circle>
-                  </svg>
-                </div>
-
-                <p className="mt-4 text-sm leading-7 text-white/60">
-                  Nice spot for a small animated graph showing reduced time, lower cost, increased output,
-                  or better workflow performance.
-                </p>
-              </div>
-            </div>
-          </div>
+          <OperationalImpactField />
         </div>
       </div>
 
       <style>{`
-        @keyframes metricGrow {
-          0% {
-            width: 0%;
-            opacity: 0.35;
+        @keyframes impactBlink {
+          0%, 100% {
+            opacity: 0.45;
+            transform: scale(0.92);
           }
-          100% {
+          50% {
             opacity: 1;
+            transform: scale(1.18);
+          }
+        }
+
+        @keyframes tagFloat {
+          0%, 100% {
+            opacity: 0.3;
+            transform: translateY(0px);
+          }
+          50% {
+            opacity: 0.72;
+            transform: translateY(-4px);
           }
         }
       `}</style>

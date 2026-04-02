@@ -109,7 +109,7 @@ export const showcaseItems = [
   {
     id: 'website-services-panel',
     tag: '― Services ―',
-    title: 'Website Design Services',
+    title: 'Web Design Services',
     subtitle: 'Brand-forward websites and landing pages for industrial software and modern systems.',
     description:
       'From product pages to full branded presence, RuntWerkx can build sharp, modern web experiences that match the same systems-minded approach used in the software itself.',
