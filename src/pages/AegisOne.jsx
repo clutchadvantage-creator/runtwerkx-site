@@ -119,6 +119,144 @@ function PlatformShowcase() {
   )
 }
 
+function SafetyScanBand() {
+  const nodes = [
+    { left: '8%', top: '48%', delay: '0s', duration: '4.5s' },
+    { left: '18%', top: '30%', delay: '0.8s', duration: '5.2s' },
+    { left: '30%', top: '62%', delay: '1.4s', duration: '4.8s' },
+    { left: '42%', top: '24%', delay: '0.4s', duration: '5.5s' },
+    { left: '55%', top: '54%', delay: '1.1s', duration: '4.6s' },
+    { left: '66%', top: '34%', delay: '1.8s', duration: '5.1s' },
+    { left: '78%', top: '64%', delay: '0.6s', duration: '4.9s' },
+    { left: '90%', top: '40%', delay: '1.5s', duration: '5.4s' },
+  ]
+
+  const ringNodes = [
+    { left: '30%', top: '62%', delay: '0.5s' },
+    { left: '55%', top: '54%', delay: '2.8s' },
+    { left: '78%', top: '64%', delay: '1.7s' },
+  ]
+
+  return (
+    <section className="relative z-10 mx-auto max-w-7xl px-6 py-6 md:py-8">
+      <div className="relative overflow-hidden rounded-[1.9rem] border border-green-500/15 bg-[#08100b]/90 shadow-[0_24px_70px_rgba(0,0,0,0.55)]">
+        <div className="absolute inset-0 opacity-[0.07] [background-image:linear-gradient(rgba(34,197,94,0.35)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,0.35)_1px,transparent_1px)] [background-size:36px_36px]" />
+
+        <div className="absolute inset-y-0 left-0 w-[24%] bg-gradient-to-r from-transparent via-green-400/18 to-transparent blur-2xl animate-[scanSweep_7.5s_linear_infinite]" />
+
+        <div className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-gradient-to-r from-transparent via-green-400/25 to-transparent" />
+
+        <svg
+          className="absolute inset-0 h-full w-full"
+          viewBox="0 0 1200 240"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M96 118 L216 74 L360 148 L504 56 L660 128 L792 82 L936 154 L1080 96"
+            fill="none"
+            stroke="rgba(34,197,94,0.20)"
+            strokeWidth="1.5"
+          />
+          <path
+            d="M96 118 L216 74 L360 148 L504 56 L660 128 L792 82 L936 154 L1080 96"
+            fill="none"
+            stroke="rgba(255,255,255,0.08)"
+            strokeWidth="0.75"
+            strokeDasharray="5 10"
+          />
+        </svg>
+
+        {nodes.map((node, index) => (
+          <div
+            key={`node-${index}`}
+            className="absolute"
+            style={{ left: node.left, top: node.top }}
+          >
+            <div
+              className="absolute -translate-x-1/2 -translate-y-1/2 h-8 w-8 rounded-full bg-green-400/10 blur-md"
+              style={{
+                animation: `nodePulse ${node.duration} ease-in-out infinite`,
+                animationDelay: node.delay,
+              }}
+            />
+            <div
+              className="absolute -translate-x-1/2 -translate-y-1/2 h-3 w-3 rounded-full border border-green-300/70 bg-green-400 shadow-[0_0_12px_rgba(34,197,94,0.55)]"
+              style={{
+                animation: `nodeCore ${node.duration} ease-in-out infinite`,
+                animationDelay: node.delay,
+              }}
+            />
+          </div>
+        ))}
+
+        {ringNodes.map((node, index) => (
+          <div
+            key={`ring-${index}`}
+            className="absolute"
+            style={{ left: node.left, top: node.top }}
+          >
+            <div className="absolute -translate-x-1/2 -translate-y-1/2 h-3 w-3 rounded-full bg-green-400/80" />
+            <div
+              className="absolute -translate-x-1/2 -translate-y-1/2 rounded-full border border-green-400/35"
+              style={{
+                width: '18px',
+                height: '18px',
+                animation: 'ringPulse 4.8s ease-out infinite',
+                animationDelay: node.delay,
+              }}
+            />
+          </div>
+        ))}
+
+        <div className="relative z-10 flex min-h-[180px] flex-col items-center justify-center px-6 py-8 text-center md:min-h-[220px]">
+          <div className="text-[10px] uppercase tracking-[0.32em] text-green-400">
+            ⇼ Live Safety Visibility ⇼
+          </div>
+          <h3 className="mt-4 text-2xl font-semibold tracking-[-0.03em] text-white md:text-4xl">
+            Monitor. Detect. Respond.
+          </h3>
+          <p className="mt-4 max-w-2xl text-sm leading-7 text-white/62 md:text-base">
+            A connected operational safety layer built to surface issues, support follow-up,
+            and improve visibility across incidents, inspections, actions, and training.
+          </p>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function SafetyCommitmentSection() {
+  return (
+    <section className="mx-auto max-w-7xl px-6 pb-24 pt-10 md:pt-16">
+      <div className="relative">
+        <img
+          src="/images/sheildswordnew2.png"
+          alt="Industrial safety leadership and field operations"
+          className="h-[320px] w-full object-cover object-center md:h-[560px]"
+        />
+      </div>
+
+      <div className="mt-10 max-w-4xl">
+        <p className="text-sm uppercase tracking-[0.3em] text-green-400">
+          ⇼ RuntWerkx Safety Commitment ⇼
+        </p>
+
+        <p className="mt-5 text-base leading-8 text-white/72 md:text-lg md:leading-9">
+          RuntWerkx believes that safety implementation should be practical, visible, and
+          supported at every level of an operation. Across manufacturing, fabrication,
+          logistics, construction, energy, and other industrial environments, strong safety
+          systems help teams communicate better, respond faster, stay accountable, and build
+          a healthier operational culture. AegisOne is designed to support that mission by
+          giving organizations a connected platform for reporting, follow-up, training,
+          visibility, and continuous improvement — because safer operations are stronger
+          operations.
+        </p>
+      </div>
+    </section>
+  )
+}
+
 export default function AegisOne() {
   const [parallaxY, setParallaxY] = useState(0)
 
@@ -227,6 +365,7 @@ export default function AegisOne() {
         </section>
 
         <PlatformShowcase />
+        <SafetyScanBand />
 
         <section className="mx-auto max-w-7xl space-y-20 px-6 pb-20 pt-10">
           {modules.map((module, index) => (
@@ -245,6 +384,8 @@ export default function AegisOne() {
             </div>
           ))}
         </section>
+
+        <SafetyCommitmentSection />
       </main>
 
       <style>{`
@@ -252,6 +393,51 @@ export default function AegisOne() {
           to {
             opacity: 1;
             transform: translateY(0);
+          }
+        }
+
+        @keyframes scanSweep {
+          0% {
+            transform: translateX(-130%);
+          }
+          100% {
+            transform: translateX(520%);
+          }
+        }
+
+        @keyframes nodePulse {
+          0%, 100% {
+            opacity: 0.25;
+            transform: translate(-50%, -50%) scale(0.8);
+          }
+          50% {
+            opacity: 0.7;
+            transform: translate(-50%, -50%) scale(1.2);
+          }
+        }
+
+        @keyframes nodeCore {
+          0%, 100% {
+            opacity: 0.65;
+            transform: translate(-50%, -50%) scale(0.95);
+          }
+          50% {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.1);
+          }
+        }
+
+        @keyframes ringPulse {
+          0% {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.45);
+          }
+          18% {
+            opacity: 0.55;
+          }
+          100% {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(5.5);
           }
         }
       `}</style>
