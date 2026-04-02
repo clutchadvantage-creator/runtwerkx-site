@@ -4,7 +4,7 @@ export default function MediaCenterFeatured({ items }) {
   return (
     <section className="rounded-[1.75rem] border border-green-500/15 bg-black/50 p-6 shadow-[0_0_35px_rgba(34,197,94,0.06)]">
       <div className="text-xs font-semibold uppercase tracking-[0.24em] text-green-400">
-        ⇼ Featured Content ⇼
+        ― Featured Content ―
       </div>
 
       <h2 className="mt-3 text-2xl font-bold">Highlighted Media</h2>

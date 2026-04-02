@@ -2,7 +2,7 @@ export default function MediaCenterSidebar({ categories }) {
   return (
     <aside className="rounded-[1.75rem] border border-white/10 bg-black/50 p-5 h-fit">
       <div className="text-xs font-semibold uppercase tracking-[0.24em] text-green-400">
-        ⇼ Library Navigation ⇼
+        ― Library Navigation ―
       </div>
 
       <div className="mt-5 space-y-3">

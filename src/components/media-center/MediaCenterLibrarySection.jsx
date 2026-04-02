@@ -8,7 +8,7 @@ export default function MediaCenterLibrarySection({
   return (
     <section className="rounded-[1.75rem] border border-white/10 bg-black/45 p-6">
       <div className="text-xs font-semibold uppercase tracking-[0.24em] text-green-400">
-        ⇼ Section ⇼
+        ― Section ―
       </div>
 
       <h2 className="mt-3 text-2xl font-bold text-white">{title}</h2>

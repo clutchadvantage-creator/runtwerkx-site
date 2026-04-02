@@ -20,7 +20,7 @@ export default function MediaCenterHero() {
       <div className="relative z-10 flex h-full items-end">
         <div className="mx-auto max-w-7xl px-6 pb-12">
           <div className="text-xs font-semibold uppercase tracking-[0.28em] text-green-400">
-            ⇼ Welcome To ⇼
+          ― Welcome To ―
           </div>
 
           <h1 className="mt-4 text-4xl font-bold md:text-5xl">
@@ -28,7 +28,7 @@ export default function MediaCenterHero() {
           </h1>
 
           <p className="mt-4 max-w-2xl text-lg text-white/80">
-            ⇼ Training ⇼ Docs & Links ⇼ Operational Knowledge ⇼
+            ― Training ― Docs & Links ― Operational Knowledge ―
           </p>
         </div>
       </div>

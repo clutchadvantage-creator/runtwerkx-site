@@ -4,7 +4,7 @@ export default function MediaCenterStatusBanner() {
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div>
           <div className="text-sm font-semibold uppercase tracking-[0.26em] text-green-400">
-            ⇼ Update Notes ⇼
+            ― Update Notes ―
           </div>
           <h2 className="mt-2 text-2xl font-bold text-white">
             Under Construction
