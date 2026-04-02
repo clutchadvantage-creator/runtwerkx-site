@@ -8,7 +8,7 @@ export default function ImageScrollRail() {
       <section className="mx-auto max-w-7xl px-6 pb-24">
         <div className="mb-6">
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-green-400">
-            ⇼ Industry Driven ⇼
+            ― Industry Driven ―
           </p>
           <h2 className="mt-3 text-3xl font-bold md:text-4xl">Knowledge & Tools</h2>
           <div className="mt-4 h-px w-32 bg-gradient-to-r from-green-500 via-green-300/60 to-transparent" />

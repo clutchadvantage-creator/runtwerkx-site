@@ -24,7 +24,7 @@ export default function HeroSection() {
       <div className="relative mx-auto grid max-w-7xl gap-10 px-6 py-24 md:grid-cols-2 md:items-center">
         <div>
           <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-green-400">
-             ⇼ RUNTWERKX ⇼ 
+             ― RUNTWERKX ― 
           </p>
 
           <h1 className="mb-6 text-5xl font-black leading-tight md:text-7xl">

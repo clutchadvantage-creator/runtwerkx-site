@@ -18,7 +18,7 @@ export default function HeroImagePanel() {
 
         <div className="absolute inset-x-0 bottom-0 p-6">
           <div className="inline-flex rounded-full border border-green-400/25 bg-black/45 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.28em] text-green-300 backdrop-blur">
-            Save Time ⇼ Save Money ⇼ Boost Efficiency
+            Save Time ― Save Money ― Boost Efficiency
           </div>
         </div>
       </div>

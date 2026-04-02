@@ -6,7 +6,7 @@ export default function AboutSection() {
         {/* LEFT SIDE */}
         <div>
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-green-400">
-            ⇼ About ⇼
+            ― About ―
           </p>
 
           <h2 className="mt-3 text-3xl font-bold md:text-4xl">

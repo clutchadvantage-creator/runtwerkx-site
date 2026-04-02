@@ -72,7 +72,7 @@ export default function ProductShowcaseSection() {
       <div className="relative mx-auto max-w-7xl px-6 py-20">
         <div className="mb-10">
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-green-400">
-            ⇼ Our Products ⇼
+            ― Our Products ―
           </p>
           <h2 className="mt-3 text-3xl font-bold md:text-5xl">Showcase</h2>
           <div className="mt-4 h-px w-32 bg-gradient-to-r from-green-500 via-green-300/60 to-transparent" />

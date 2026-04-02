@@ -456,7 +456,7 @@ function FileRouterUseCasesInteractive() {
     <section id="workflow" className="mx-auto max-w-7xl px-6 py-24">
       <div className="mb-16 text-center">
         <p className="text-sm uppercase tracking-[0.3em] text-green-400">
-          ⇼Use Cases⇼
+          ― Use Cases ―
         </p>
         <h2 className="mt-3 text-3xl font-bold md:text-4xl">
           Real industry workflows
@@ -609,7 +609,7 @@ function FileRouterUseCasesInteractive() {
 
         <div className="rounded-3xl border border-green-400/20 bg-white/5 p-8 shadow-[0_0_40px_rgba(34,197,94,0.08)] backdrop-blur">
           <p className="text-sm uppercase tracking-[0.28em] text-green-400">
-            ⇼Selected Workflow⇼
+            ― Selected Workflow ―
           </p>
 
           <h3 className="mt-4 text-3xl font-bold text-white">
@@ -737,10 +737,10 @@ export default function FileRouter() {
         <section className="mx-auto max-w-7xl px-6 py-20">
           <div className="mb-10">
             <p className="text-sm uppercase tracking-[0.3em] text-green-400">
-              ⇼ By Industry Professionals ⇼ For Industry Professionals ⇼
+              ― By Industry Professionals ― For Industry Professionals ―
             </p>
             <h2 className="mt-3 text-3xl font-bold md:text-4xl">
-              Meticulously ⇼ crafted with users in mind.
+              Meticulously crafted with users in mind.
             </h2>
           </div>
 
@@ -754,7 +754,7 @@ export default function FileRouter() {
           <div className="mx-auto max-w-7xl px-6 py-20">
             <div className="mb-10">
               <p className="text-sm uppercase tracking-[0.3em] text-green-400">
-                ⇼ Get More Done ⇼
+                ― Get More Done ―
               </p>
               <h2 className="mt-3 text-3xl font-bold md:text-4xl">
                 Designed for Real-World Production
@@ -798,10 +798,10 @@ export default function FileRouter() {
         <section className="mx-auto max-w-7xl px-6 py-20">
           <div className="mb-10">
             <p className="text-sm uppercase tracking-[0.3em] text-green-400">
-              ⇼ Product Evolution ⇼
+              ― Product Evolution ―
             </p>
             <h2 className="mt-3 text-3xl font-bold md:text-4xl">
-              Where it started ⇼ Where we are now
+              Where it started ― Where we are now
             </h2>
             <p className="mt-4 max-w-3xl text-white/70">
               Our File Router keeps getting sharper through real world use. The
@@ -891,7 +891,7 @@ export default function FileRouter() {
         <section id="pricing" className="mx-auto max-w-7xl px-6 py-20">
           <div className="mb-10">
             <p className="text-sm uppercase tracking-[0.3em] text-green-400">
-              RuntWerkx File Router ⇼ If Windows File Explorer had a brain
+              RuntWerkx File Router ― If Windows File Explorer had a brain
             </p>
             <h2 className="mt-3 text-3xl font-bold md:text-4xl">
               Born From Bad Workflows and Inefficiency
@@ -990,7 +990,7 @@ export default function FileRouter() {
           <div className="mx-auto grid max-w-7xl gap-10 px-6 py-20 md:grid-cols-2">
             <div>
               <h2 className="text-3xl font-bold md:text-4xl">
-                ⇼Forged by Innovation⇼
+                ― Forged by Innovation ―
               </h2>
               <p className="mt-4 text-white/70">
                 At RuntWerkx Systems, the mission is to design and implement the
@@ -1011,7 +1011,7 @@ export default function FileRouter() {
 
             <div className="rounded-3xl border border-green-500/30 bg-white/5 p-6 transition hover:shadow-[0_0_20px_rgba(34,197,94,0.15)]">
               <div className="text-sm uppercase tracking-[0.2em] text-green-400">
-                ⇼Contact Us⇼
+                ― Contact Us ―
               </div>
               <div className="mt-3 text-xl font-bold">
                 Professional support from people who understand your workflow.
@@ -1049,7 +1049,7 @@ export default function FileRouter() {
           <div className="mx-auto max-w-7xl px-6 py-20">
             <div className="mb-12">
               <p className="text-sm uppercase tracking-[0.3em] text-green-400">
-                ⇼Testimonials⇼
+                ― Testimonials ―
               </p>
               <h2 className="mt-3 text-3xl font-bold md:text-4xl">
                 What our customers think
@@ -1063,7 +1063,7 @@ export default function FileRouter() {
             <div className="grid gap-6 lg:grid-cols-3">
               <div className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur">
                 <p className="text-sm uppercase tracking-[0.22em] text-green-400">
-                  ⇼What People Actually Want⇼
+                  ― What People Actually Want ―
                 </p>
                 <p className="mt-4 text-base leading-8 text-white/75">
                   “We just need something that helps us move files faster,
@@ -1076,7 +1076,7 @@ export default function FileRouter() {
 
               <div className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur">
                 <p className="text-sm uppercase tracking-[0.22em] text-green-400">
-                  ⇼Built For Real Pain Points⇼
+                  ― Built For Real Pain Points ―
                 </p>
                 <p className="mt-4 text-base leading-8 text-white/75">
                   “Most of the wasted time is not the job itself — it’s the
@@ -1090,7 +1090,7 @@ export default function FileRouter() {
 
               <div className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur">
                 <p className="text-sm uppercase tracking-[0.22em] text-green-400">
-                  ⇼Support That Understands⇼
+                  ― Support That Understands ―
                 </p>
                 <p className="mt-4 text-base leading-8 text-white/75">
                   “Questions about setup, workflow, or product use go to real
@@ -1106,7 +1106,7 @@ export default function FileRouter() {
             <div className="mt-14">
               <div className="mb-8">
                 <p className="text-sm uppercase tracking-[0.3em] text-green-400">
-                  ⇼FAQ⇼
+                  ― FAQ ―
                 </p>
                 <h3 className="mt-3 text-2xl font-bold md:text-3xl">
                   A few quick answers
@@ -1281,7 +1281,7 @@ export default function FileRouter() {
             <div className="mt-12 border-t border-white/10 pt-6">
               <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
                 <p className="text-xs uppercase tracking-[0.18em] text-white/35">
-                  RuntWerkx Systems ⇼ File Router ⇼ Built for Industry
+                  RuntWerkx Systems ― File Router ― Built for Industry
                 </p>
 
                 <div className="flex flex-wrap gap-4 text-xs uppercase tracking-[0.18em] text-white/35">

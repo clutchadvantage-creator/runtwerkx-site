@@ -69,7 +69,7 @@ function PlatformShowcase() {
     <section className="relative z-10 mx-auto max-w-7xl px-6 pb-8 pt-10 md:pb-12 md:pt-14">
       <div className="mb-8 max-w-3xl">
         <p className="text-sm uppercase tracking-[0.3em] text-green-400">
-          ⇼ Platform Overview ⇼
+          ― Platform Overview ―
         </p>
 
         <h2 className="mt-3 text-3xl font-bold tracking-[-0.03em] text-white md:text-5xl">
@@ -211,7 +211,7 @@ function SafetyScanBand() {
 
         <div className="relative z-10 flex min-h-[180px] flex-col items-center justify-center px-6 py-8 text-center md:min-h-[220px]">
           <div className="text-[10px] uppercase tracking-[0.32em] text-green-400">
-            ⇼ Live Safety Visibility ⇼
+            ― Live Safety Visibility ―
           </div>
           <h3 className="mt-4 text-2xl font-semibold tracking-[-0.03em] text-white md:text-4xl">
             Monitor. Detect. Respond.
@@ -228,7 +228,7 @@ function SafetyScanBand() {
 
 function SafetyCommitmentSection() {
   return (
-    <section className="mx-auto max-w-7xl px-6 pb-24 pt-10 md:pt-16">
+    <section className="mx-auto max-w-7xl px-6 pb-24 pt-10 md:pt-16 opacity-0 translate-y-6 animate-[fadeUp_0.8s_ease-out_forwards]">
       <div className="relative">
         <img
           src="/images/sheildswordnew2.png"
@@ -237,9 +237,9 @@ function SafetyCommitmentSection() {
         />
       </div>
 
-      <div className="mt-10 max-w-4xl">
+      <div className="mt-10 max-w-3xl mx-auto text-center">
         <p className="text-sm uppercase tracking-[0.3em] text-green-400">
-          ⇼ RuntWerkx Safety Commitment ⇼
+          ― RuntWerkx Safety Commitment ―
         </p>
 
         <p className="mt-5 text-base leading-8 text-white/72 md:text-lg md:leading-9">
@@ -278,7 +278,7 @@ export default function AegisOne() {
     () => [
       {
         id: 'incident',
-        eyebrow: 'Incident Reporting',
+        eyebrow: '― Incident Reporting ―',
         title: 'Incident Management',
         summary:
           'Capture incidents, near misses, and safety events in one connected workflow.',
@@ -288,7 +288,7 @@ export default function AegisOne() {
       },
       {
         id: 'audits-risk',
-        eyebrow: 'Audits, Inspections & Risk',
+        eyebrow: '― Audits, Inspections & Risk ―',
         title: 'Audits & Risk Control',
         summary:
           'Run inspections, observations, audits, and risk reviews in one system.',
@@ -298,7 +298,7 @@ export default function AegisOne() {
       },
       {
         id: 'actions',
-        eyebrow: 'Action Tracking',
+        eyebrow: '― Action Tracking ―',
         title: 'Corrective Actions',
         summary:
           'Assign, track, and verify corrective actions without losing ownership.',
@@ -308,7 +308,7 @@ export default function AegisOne() {
       },
       {
         id: 'training',
-        eyebrow: 'Training & Qualifications',
+        eyebrow: '― Training & Qualifications ―',
         title: 'Training Tracking',
         summary:
           'Track qualifications, expirations, and required workforce training.',
@@ -318,7 +318,7 @@ export default function AegisOne() {
       },
       {
         id: 'analytics',
-        eyebrow: 'Analytics & Visibility',
+        eyebrow: '― Analytics & Visibility ―',
         title: 'Analytics Dashboard',
         summary:
           'Monitor trends, backlog pressure, and safety performance in real time.',
@@ -349,7 +349,7 @@ export default function AegisOne() {
 
               <div className="relative z-10 px-8 py-20 md:px-12">
                 <p className="text-sm uppercase tracking-[0.3em] text-green-400">
-                  Safety Platform
+                  ― Safety Platform ―
                 </p>
 
                 <h1 className="mt-6 text-5xl font-black md:text-7xl">

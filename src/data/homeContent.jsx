@@ -1,7 +1,7 @@
 export const developmentCards = [
   {
     id: 'featured',
-    eyebrow: '⇼ Featured Platform ⇼',
+    eyebrow: '― Featured Platform ―',
     title: 'RuntWerkx File Router',
     description:
       'Clean, fast desktop tooling for moving files, applying rules, and reducing wasted time.',
@@ -10,7 +10,7 @@ export const developmentCards = [
   },
   {
     id: 'development',
-    eyebrow: '⇼ In Development ⇼',
+    eyebrow: '― In Development ―',
     title: 'AegisOne',
     description: 'Modular safety intelligence software for any industry.',
     action: { type: 'route', value: '/aegisone' },
@@ -18,7 +18,7 @@ export const developmentCards = [
   },
   {
     id: 'coming-soon',
-    eyebrow: '⇼ Coming Soon ⇼',
+    eyebrow: '― Coming Soon ―',
     title: 'Card-Werkx',
     description:
       'Card-based dynamic operations software for scheduling, KPIs, and decision support.',
@@ -29,19 +29,19 @@ export const developmentCards = [
 
 export const capabilityCards = [
   {
-    kicker: '⇼Software⇼',
+    kicker: '―Software―',
     title: 'Smarter Apps',
     image: '/images/apps.png',
     text: 'The adoption of digital tools and software has shifted business production from linear to exponential growth. By automating manual tasks and providing real-time data insights, businesses are able to scale production significantly faster than with traditional methods.',
   },
   {
-    kicker: '⇼Systems⇼',
+    kicker: '―Systems―',
     title: 'Smarter Tools',
     image: '/images/tools.png',
     text: 'From file workflows and scheduling concepts to safety platforms, dashboards, and shop-floor utilities, the goal is to create systems that communicate clearly and support the work instead of slowing it down.',
   },
   {
-    kicker: '⇼Data⇼',
+    kicker: '―Data―',
     title: 'Smarter Data',
     image: '/images/data.png',
     text: 'Strong tools need strong foundations. Behind modern applications are databases, logic, and structure that keep information organized, usable, and ready to support better decisions every day.',
@@ -56,15 +56,15 @@ export const metrics = [
 
 export const servicesCards = [
   {
-    title: '⇼ Custom Software ⇼',
+    title: '― Custom Software ―',
     text: 'Internal tools, dashboards, and operational systems designed for actual day-to-day use.',
   },
   {
-    title: '⇼ Web Design ⇼',
+    title: '― Web Design ―',
     text: 'Need a website? Build it with RuntWerkx!',
   },
   {
-    title: '⇼ Solutions ⇼',
+    title: '― Solutions ―',
     text: 'Digital workflows that reduce friction, eliminate repeat work, and make teams stronger.',
   },
 ]
@@ -72,7 +72,7 @@ export const servicesCards = [
 export const showcaseItems = [
   {
     id: 'file-router-panel',
-    tag: '⇼ Featured Platform ⇼',
+    tag: '― Featured Platform ―',
     title: 'RuntWerkx File Router',
     subtitle: 'Desktop file workflow system for routing, staging, and repeatable process control.',
     description:
@@ -84,19 +84,19 @@ export const showcaseItems = [
   },
   {
     id: 'aegisone-panel',
-    tag: '⇼ In Development ⇼',
+    tag: '― In Development ―',
     title: 'AegisOne',
     subtitle: 'Enterprise-minded safety intelligence platform for modern operational environments.',
     description:
       'AegisOne is being built to help companies manage incidents, corrective actions, inspections, records, and safety visibility with a cleaner and more capable system.',
-    image: '/images/AegisOne.png',
+    image: '/images/AegisOne3.png',
     actionLabel: 'Open AegisOne Page',
     href: '/aegisone',
     stats: ['Safety Platform', 'Operational Visibility', 'Modular System'],
   },
   {
     id: 'card-werkx-panel',
-    tag: '⇼ Coming Soon ⇼',
+    tag: '― Coming Soon ―',
     title: 'Card-Werkx',
     subtitle: 'Dynamic card-based operations software for scheduling, KPIs, and decision support.',
     description:
@@ -108,7 +108,7 @@ export const showcaseItems = [
   },
   {
     id: 'website-services-panel',
-    tag: '⇼ Services ⇼',
+    tag: '― Services ―',
     title: 'Website Design Services',
     subtitle: 'Brand-forward websites and landing pages for industrial software and modern systems.',
     description:

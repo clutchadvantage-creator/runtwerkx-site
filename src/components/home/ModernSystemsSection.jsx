@@ -13,7 +13,7 @@ export default function ModernSystemsSection() {
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.3em] text-green-400">
-              ⇼ RuntWerkx Delivers ⇼
+               ― RuntWerkx Delivers ―
             </p>
 
             <h2 className="mt-3 max-w-3xl text-3xl font-bold leading-tight md:text-5xl">
@@ -169,7 +169,7 @@ export default function ModernSystemsSection() {
               <div className="relative z-10 flex h-full flex-col justify-between py-2">
                 <div className="flex items-center justify-between">
                   <div className="text-xs font-semibold uppercase tracking-[0.26em] text-green-400">
-                    ⇼ Systems That Communicate ⇼
+                    ― Systems That Communicate ―
                   </div>
                   <div className="hidden text-[10px] font-semibold uppercase tracking-[0.26em] text-white/35 md:block">
                     No More Broken Links Between Tools
@@ -290,7 +290,7 @@ export default function ModernSystemsSection() {
                 <div className="mb-4 flex items-center justify-between">
                   <div>
                     <div className="text-xs font-semibold uppercase tracking-[0.24em] text-green-400">
-                      ⇼ AegisOne ⇼
+                      ― AegisOne ―
                     </div>
                     <div className="mt-2 text-xl font-bold text-white">
                       RuntWerkx Systems Premire Safety Management Platform
@@ -344,7 +344,7 @@ export default function ModernSystemsSection() {
                 <div className="mb-4 flex items-center justify-between">
                   <div>
                     <div className="text-xs font-semibold uppercase tracking-[0.24em] text-green-400">
-                      ⇼ Knowledge Center ⇼
+                      ― Knowledge Center ―
                     </div>
                     <div className="mt-2 text-xl font-bold text-white">
                       RuntWerkx Digital Library
@@ -380,7 +380,7 @@ export default function ModernSystemsSection() {
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(34,197,94,0.10),transparent_28%)]" />
               <div className="relative">
                 <div className="text-xs font-semibold uppercase tracking-[0.24em] text-green-400">
-                  ⇼ Performance Snapshot ⇼
+                  ― Performance Snapshot ―
                 </div>
                 <h3 className="mt-3 text-2xl font-bold">How better tools create real gains</h3>
                 <p className="mt-3 max-w-xl text-white/70">
@@ -415,7 +415,7 @@ export default function ModernSystemsSection() {
               <div className="absolute inset-0 opacity-[0.07] bg-[linear-gradient(rgba(34,197,94,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,0.12)_1px,transparent_1px)] bg-[size:24px_24px]" />
               <div className="relative">
                 <div className="text-xs font-semibold uppercase tracking-[0.24em] text-green-400">
-                  ⇼ Graph Area ⇼
+                  ― Graph Area ― 
                 </div>
                 <h3 className="mt-3 text-2xl font-bold">Mini animated chart placeholder</h3>
 

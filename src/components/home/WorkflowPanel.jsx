@@ -6,7 +6,7 @@ export default function WorkflowPanel() {
 
       <div className="relative mb-3 text-center">
         <div className="text-[11px] font-semibold uppercase tracking-[0.25em] text-green-400">
-          ⇼ Systems Minded ⇼
+          ― Systems Minded ―
         </div>
         <div className="mt-1 text-[2rem] font-bold leading-none text-white sm:text-[2.15rem]">
           Our Development Process
