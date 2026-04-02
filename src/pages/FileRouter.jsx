@@ -683,12 +683,12 @@ export default function FileRouter() {
           <div className="relative mx-auto grid max-w-7xl gap-12 px-6 py-24 lg:grid-cols-2 lg:items-center">
             <div>
               <p className="text-sm uppercase tracking-[0.3em] text-green-400">
-                ⇼ By Industry People ⇼ For Industry People ⇼
+                ⇼ RuntWerkx ⇼
               </p>
 
               <div className="mt-6 flex flex-wrap items-center gap-4">
                 <h1 className="text-5xl font-black leading-tight md:text-7xl">
-                  RuntWerkx File Router
+                  File Routing Software for Manufacturing & Production Facilities
                 </h1>
                 <span className="rounded-full border border-green-400/30 px-3 py-1 text-xs font-semibold text-green-400">
                   v2.1.3 Stable
@@ -696,10 +696,7 @@ export default function FileRouter() {
               </div>
 
               <p className="mt-6 max-w-3xl text-lg text-white/75">
-                Our File Router is engineered for real-world execution — not
-                surface-level flash. It streamlines repetitive actions, enforces
-                consistent routing behavior, and provides a clear, controlled
-                workspace for moving production files with confidence.
+                RuntWerkx File Router is a file routing and workflow automation tool designed for manufacturing, CNC shops, and production environments. 
               </p>
 
               <p className="mt-4 max-w-3xl text-sm uppercase tracking-[0.22em] text-white/45">
@@ -740,7 +737,7 @@ export default function FileRouter() {
         <section className="mx-auto max-w-7xl px-6 py-20">
           <div className="mb-10">
             <p className="text-sm uppercase tracking-[0.3em] text-green-400">
-              ⇼ Made For Everyday Operations ⇼
+              ⇼ By Industry Professionals ⇼ For Industry Professionals ⇼
             </p>
             <h2 className="mt-3 text-3xl font-bold md:text-4xl">
               Meticulously ⇼ crafted with users in mind.
@@ -760,7 +757,7 @@ export default function FileRouter() {
                 ⇼ Get More Done ⇼
               </p>
               <h2 className="mt-3 text-3xl font-bold md:text-4xl">
-                Control the flow with confidence and clarity!
+                Designed for Real-World Production
               </h2>
               <p className="mt-4 max-w-3xl text-white/70">
                 These screenshots show the actual command-center layout, routing

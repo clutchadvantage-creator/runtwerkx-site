@@ -24,17 +24,15 @@ export default function HeroSection() {
       <div className="relative mx-auto grid max-w-7xl gap-10 px-6 py-24 md:grid-cols-2 md:items-center">
         <div>
           <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-green-400">
-            Software ⇼ Systems ⇼ Industry
+             ⇼ RUNTWERKX ⇼ 
           </p>
 
           <h1 className="mb-6 text-5xl font-black leading-tight md:text-7xl">
-            Welcome To RuntWerkx
+            Software & Applications For Industry Professionals
           </h1>
 
           <p className="max-w-xl text-lg text-white/75">
-            RuntWerkx Systems is a next-generation industrial software company that builds powerful,
-            no-nonsense tools to streamline workflows, eliminate inefficiencies, and modernize operations
-            across all facets of industry.
+            We build custom industrial software, workflow automation tools, and operational systems built for manufacturing, fabrication, and real-world production environments.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">
@@ -43,7 +41,7 @@ export default function HeroSection() {
               onClick={() => scrollToId('contact')}
               className="rounded-2xl bg-green-500 px-6 py-3 font-semibold text-black transition hover:scale-[1.02]"
             >
-              Start a Project
+              Start A Project
             </button>
 
             <button
@@ -51,7 +49,7 @@ export default function HeroSection() {
               onClick={() => scrollToId('work')}
               className="rounded-2xl border border-white/15 px-6 py-3 font-semibold text-white transition hover:border-green-400 hover:text-green-400"
             >
-              View Concepts
+              Our Products
             </button>
           </div>
 

@@ -8,7 +8,7 @@ export default function HeroImagePanel() {
         <div className="absolute bottom-0 right-0 h-36 w-36 rounded-full bg-green-400/10 blur-[90px] transition duration-700 group-hover:-translate-x-2 group-hover:-translate-y-2 group-hover:scale-110" />
 
         <img
-          src="/images/hero-background5.png"
+          src="/images/hero-industry.png"
           alt="RuntWerkx Industrial Systems"
           className="h-full w-full scale-[1.02] object-cover opacity-90 transition duration-700 ease-out group-hover:scale-[1.07] group-hover:-translate-y-1"
         />
