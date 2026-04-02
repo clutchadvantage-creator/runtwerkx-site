@@ -17,7 +17,6 @@ export default function ProductShowcaseSection() {
 
       accumulatedScroll += delta
 
-      // Only collapse after meaningful scroll movement.
       if (accumulatedScroll > 120) {
         setActiveItem(-1)
         accumulatedScroll = 0
@@ -35,7 +34,6 @@ export default function ProductShowcaseSection() {
 
   return (
     <section id="work" className="relative overflow-hidden border-y border-white/10">
-      {/* Full background video */}
       <video
         className="absolute inset-0 h-full w-full scale-[1.02] object-cover blur-[1px]"
         src="/videos/showcase-bg-compressed.mp4"
@@ -45,13 +43,10 @@ export default function ProductShowcaseSection() {
         playsInline
       />
 
-      {/* Base dark overlay for readability */}
       <div className="absolute inset-0 bg-black/80" />
 
-      {/* Green system glow overlay */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(34,197,94,0.14),transparent_24%),radial-gradient(circle_at_85%_35%,rgba(34,197,94,0.10),transparent_22%),radial-gradient(circle_at_50%_80%,rgba(255,255,255,0.04),transparent_18%)]" />
 
-      {/* Grid overlay */}
       <div className="absolute inset-0 opacity-[0.06] bg-[linear-gradient(rgba(34,197,94,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,0.12)_1px,transparent_1px)] bg-[size:34px_34px]" />
 
       <div className="pointer-events-none absolute inset-0">
@@ -70,13 +65,13 @@ export default function ProductShowcaseSection() {
       </div>
 
       <div className="relative mx-auto max-w-7xl px-6 py-20">
-        <div className="mb-10">
+        <div className="mb-10 mx-auto max-w-3xl text-center">
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-green-400">
             ― Our Products ―
           </p>
           <h2 className="mt-3 text-3xl font-bold md:text-5xl">Showcase</h2>
-          <div className="mt-4 h-px w-32 bg-gradient-to-r from-green-500 via-green-300/60 to-transparent" />
-          <p className="mt-5 max-w-3xl text-white/68">
+          <div className="mx-auto mt-4 h-px w-32 bg-gradient-to-r from-green-500 via-green-300/60 to-transparent" />
+          <p className="mx-auto mt-5 max-w-2xl text-white/68">
             Built for movement, visibility, structure, and better operational systems.
           </p>
         </div>
@@ -112,9 +107,9 @@ export default function ProductShowcaseSection() {
                 <button
                   type="button"
                   onClick={() => setActiveItem(isOpen ? -1 : index)}
-                  className="relative flex w-full items-start justify-between gap-6 px-6 py-6 text-left md:px-8 md:py-7"
+                  className="relative flex w-full items-center justify-between gap-6 px-6 py-6 text-center md:px-8 md:py-7"
                 >
-                  <div className="max-w-4xl">
+                  <div className="mx-auto max-w-4xl flex-1 text-center">
                     <div className="text-[11px] font-semibold uppercase tracking-[0.28em] text-green-400">
                       {item.tag}
                     </div>
@@ -123,7 +118,7 @@ export default function ProductShowcaseSection() {
                       {item.title}
                     </h3>
 
-                    <p className="mt-3 max-w-3xl text-base leading-7 text-white/70 md:text-lg">
+                    <p className="mx-auto mt-3 max-w-3xl text-base leading-7 text-white/70 md:text-lg">
                       {item.subtitle}
                     </p>
                   </div>
@@ -140,14 +135,14 @@ export default function ProductShowcaseSection() {
                 >
                   <div className="px-6 pb-6 md:px-8 md:pb-8">
                     <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
-                      <div className="rounded-[1.6rem] border border-white/10 bg-black/45 p-5 backdrop-blur">
-                        <div className="h-px w-24 bg-gradient-to-r from-green-500 via-green-300/60 to-transparent" />
+                      <div className="rounded-[1.6rem] border border-white/10 bg-black/45 p-5 text-center backdrop-blur">
+                        <div className="mx-auto h-px w-24 bg-gradient-to-r from-green-500 via-green-300/60 to-transparent" />
 
-                        <p className="mt-5 max-w-2xl text-[1.02rem] leading-8 text-white/74">
+                        <p className="mx-auto mt-5 max-w-2xl text-[1.02rem] leading-8 text-white/74">
                           {item.description}
                         </p>
 
-                        <div className="mt-6 flex flex-wrap gap-3">
+                        <div className="mt-6 flex flex-wrap justify-center gap-3">
                           {item.stats.map((stat) => (
                             <div
                               key={stat}
@@ -158,7 +153,7 @@ export default function ProductShowcaseSection() {
                           ))}
                         </div>
 
-                        <div className="mt-8 flex flex-wrap gap-4">
+                        <div className="mt-8 flex flex-wrap justify-center gap-4">
                           <button
                             type="button"
                             onClick={() => handleHref(item.href, navigate)}

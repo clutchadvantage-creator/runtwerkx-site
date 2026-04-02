@@ -188,7 +188,7 @@ function OperationalImpactField() {
       </svg>
 
       <div className="relative z-10 px-2 py-2">
-        <div className="max-w-xl">
+        <div className="mx-auto max-w-xl text-center">
           <div className="text-xs font-semibold uppercase tracking-[0.24em] text-green-400">
             ― Operational Momentum ―
           </div>
@@ -197,7 +197,7 @@ function OperationalImpactField() {
             Better systems create momentum you can actually feel
           </h3>
 
-          <p className="mt-4 max-w-xl text-base leading-8 text-white/70">
+          <p className="mx-auto mt-4 max-w-xl text-base leading-8 text-white/70">
             Good software should not just collect information. It should help people move
             faster, communicate more clearly, and work with less wasted effort across the
             operation.
@@ -259,31 +259,33 @@ export default function ModernSystemsSection() {
       <div className="mx-auto max-w-7xl px-6 py-20">
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-green-400">
-               ― RuntWerkx Delivers ―
-            </p>
+            <div className="mx-auto max-w-3xl text-center">
+              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-green-400">
+                ― RuntWerkx Delivers ―
+              </p>
 
-            <h2 className="mt-3 max-w-3xl text-3xl font-bold leading-tight md:text-5xl">
-              Confidence & Clarity For Your Operations
-            </h2>
+              <h2 className="mt-3 text-3xl font-bold leading-tight md:text-5xl">
+                Confidence & Clarity For Your Operations
+              </h2>
 
-            <div className="mt-4 h-px w-32 bg-gradient-to-r from-green-500 via-green-300/60 to-transparent" />
+              <div className="mx-auto mt-4 h-px w-32 bg-gradient-to-r from-green-500 via-green-300/60 to-transparent" />
 
-            <p className="mt-6 max-w-3xl text-lg leading-8 text-white/72">
-              The modern world runs on software, systems, applications, databases, and connected tools
-              that shape how we work every day. RuntWerkx Systems is focused on improving those experiences
-              by creating smarter, easier-to-implement solutions that are built around real needs — not
-              unnecessary complexity.
-            </p>
+              <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-white/72">
+                The modern world runs on software, systems, applications, databases, and connected tools
+                that shape how we work every day. RuntWerkx Systems is focused on improving those experiences
+                by creating smarter, easier-to-implement solutions that are built around real needs — not
+                unnecessary complexity.
+              </p>
 
-            <p className="mt-5 max-w-3xl text-lg leading-8 text-white/72">
-              Whether it is an internal utility, a workflow platform, an operations dashboard, a safety
-              system, or a custom-built industrial application, the idea is the same: create tools that
-              save time, reduce wasted effort, improve visibility, and help people work with more
-              confidence.
-            </p>
+              <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-white/72">
+                Whether it is an internal utility, a workflow platform, an operations dashboard, a safety
+                system, or a custom-built industrial application, the idea is the same: create tools that
+                save time, reduce wasted effort, improve visibility, and help people work with more
+                confidence.
+              </p>
+            </div>
 
-            <div className="mt-10 relative h-[220px] overflow-hidden">
+            <div className="relative mt-10 h-[220px] overflow-hidden">
               <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(rgba(34,197,94,0.10)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,0.10)_1px,transparent_1px)] bg-[size:26px_26px]" />
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(34,197,94,0.07),transparent_24%),radial-gradient(circle_at_85%_30%,rgba(34,197,94,0.05),transparent_18%)]" />
 
@@ -414,31 +416,31 @@ export default function ModernSystemsSection() {
               </svg>
 
               <div className="relative z-10 flex h-full flex-col justify-between py-2">
-                <div className="flex items-center justify-between">
+                <div className="flex flex-col items-center gap-2 text-center">
                   <div className="text-xs font-semibold uppercase tracking-[0.26em] text-green-400">
                     ― Systems That Communicate ―
                   </div>
-                  <div className="hidden text-[10px] font-semibold uppercase tracking-[0.26em] text-white/35 md:block">
+                  <div className="text-[10px] font-semibold uppercase tracking-[0.26em] text-white/35">
                     No More Broken Links Between Tools
                   </div>
                 </div>
 
                 <div className="grid gap-4 sm:grid-cols-3">
-                  <div>
+                  <div className="text-center">
                     <div className="text-sm font-semibold uppercase tracking-[0.24em] text-green-300">
                       Event
                     </div>
                     <div className="mt-2 text-sm text-white/55">Action Trigger</div>
                   </div>
 
-                  <div>
+                  <div className="text-center">
                     <div className="text-sm font-semibold uppercase tracking-[0.24em] text-green-300">
                       System Logic Updates Modules
                     </div>
                     <div className="mt-2 text-sm text-white/55">System Updates Across The Board</div>
                   </div>
 
-                  <div>
+                  <div className="text-center">
                     <div className="text-sm font-semibold uppercase tracking-[0.24em] text-green-300">
                       Real Time Data
                     </div>
@@ -458,7 +460,7 @@ export default function ModernSystemsSection() {
                   key={card.title}
                   type="button"
                   onClick={() => setActiveCapability(isOpen ? -1 : index)}
-                  className={`group relative min-h-[520px] overflow-hidden rounded-[2rem] border text-left transition-all duration-500 ${
+                  className={`group relative min-h-[520px] overflow-hidden rounded-[2rem] border text-center transition-all duration-500 ${
                     isOpen
                       ? 'col-span-2 border-green-400/70 bg-black/75 shadow-[0_0_35px_rgba(34,197,94,0.14)]'
                       : 'col-span-1 border-white/10 bg-black/50 hover:border-green-400/35 hover:bg-black/60'
@@ -470,9 +472,9 @@ export default function ModernSystemsSection() {
                     {isOpen ? '−' : '+'}
                   </div>
 
-                  <div className="relative flex h-full min-h-[520px] flex-col p-6">
-                    <div>
-                      <div className="text-xs font-semibold uppercase tracking-[0.24em] text-green-400">
+                  <div className="relative flex h-full min-h-[520px] flex-col items-center p-6 text-center">
+                    <div className="flex flex-col items-center">
+                      <div className="text-center text-xs font-semibold uppercase tracking-[0.24em] text-green-400">
                         {card.kicker}
                       </div>
 
@@ -505,14 +507,14 @@ export default function ModernSystemsSection() {
                         isOpen ? 'mt-6 max-h-[320px] opacity-100' : 'mt-0 max-h-0 opacity-0'
                       }`}
                     >
-                      <div className="max-w-xl">
-                        <div className="mb-4 h-px w-24 bg-gradient-to-r from-green-500 via-green-300/60 to-transparent" />
-                        <p className="text-base leading-8 text-white/72">{card.text}</p>
+                      <div className="mx-auto max-w-xl">
+                        <div className="mx-auto mb-4 h-px w-24 bg-gradient-to-r from-green-500 via-green-300/60 to-transparent" />
+                        <p className="mx-auto max-w-md text-base leading-8 text-white/72">{card.text}</p>
                       </div>
                     </div>
 
                     {!isOpen && (
-                      <div className="relative mt-auto pt-6">
+                      <div className="relative mt-auto w-full pt-6 text-center">
                         <div className="h-px w-full bg-gradient-to-r from-green-500/0 via-green-400/30 to-green-500/0" />
                         <div className="mt-4 text-[10px] font-semibold uppercase tracking-[0.3em] text-white/35">
                           Click to Expand
@@ -534,8 +536,8 @@ export default function ModernSystemsSection() {
               <div className="absolute bottom-0 right-0 h-36 w-36 rounded-full bg-green-400/10 blur-[90px]" />
 
               <div className="relative">
-                <div className="mb-4 flex items-center justify-between">
-                  <div>
+                <div className="mb-4 flex flex-col items-center justify-center gap-4 text-center md:flex-row md:items-center md:justify-between md:text-left">
+                  <div className="text-center md:text-left">
                     <div className="text-xs font-semibold uppercase tracking-[0.24em] text-green-400">
                       ― AegisOne ―
                     </div>
@@ -563,13 +565,13 @@ export default function ModernSystemsSection() {
                   <button
                     type="button"
                     onClick={() => openExternalOrLog(preorderLinks.aegisone)}
-                    className="absolute left-2 top-48 rounded-full border border-green-400/30 bg-black/55 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.24em] text-green-300 backdrop-blur transition hover:scale-[1.05] hover:border-green-300 hover:text-green-200"
+                    className="absolute left-1/2 top-48 -translate-x-1/2 rounded-full border border-green-400/30 bg-black/55 px-4 py-2 text-center text-[10px] font-semibold uppercase tracking-[0.24em] text-green-300 backdrop-blur transition hover:scale-[1.05] hover:border-green-300 hover:text-green-200"
                   >
                     SIGN UP FOR PRE-ORDERS HERE
                   </button>
 
-                  <div className="absolute inset-x-82 bottom-0 p-23">
-                    <div className="max-w-lg">
+                  <div className="absolute inset-x-0 bottom-0 p-6 text-center">
+                    <div className="mx-auto max-w-lg">
                       <div className="text-[11px] font-semibold uppercase tracking-[0.28em] text-green-300">
                         Safety Intelligence
                       </div>
@@ -588,8 +590,8 @@ export default function ModernSystemsSection() {
               <div className="absolute bottom-0 right-0 h-32 w-32 rounded-full bg-white/5 blur-[80px]" />
 
               <div className="relative">
-                <div className="mb-4 flex items-center justify-between">
-                  <div>
+                <div className="mb-4 flex flex-col items-center justify-center gap-4 text-center md:flex-row md:items-center md:justify-between md:text-left">
+                  <div className="text-center md:text-left">
                     <div className="text-xs font-semibold uppercase tracking-[0.24em] text-green-400">
                       ― Knowledge Center ―
                     </div>
@@ -601,7 +603,7 @@ export default function ModernSystemsSection() {
                   <button
                     type="button"
                     onClick={() => navigate('/media-center')}
-                    className="rounded-full border border-white/10 bg-black/50 px-3 py-1 text-[15px] font-semibold uppercase tracking-[0.22em] text-white/60 transition hover:border-green-400/30 hover:text-green-300"
+                    className="rounded-full border border-white/10 bg-black/50 px-3 py-1 text-center text-[15px] font-semibold uppercase tracking-[0.22em] text-white/60 transition hover:border-green-400/30 hover:text-green-300"
                   >
                     GO TO LIBRARY (Click Here)
                   </button>

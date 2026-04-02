@@ -5,15 +5,18 @@ export default function AboutSection() {
 
         {/* LEFT SIDE */}
         <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-green-400">
-            ― About ―
-          </p>
+          {/* CENTERED HEADER */}
+          <div className="mx-auto max-w-md text-center">
+            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-green-400">
+              ― About ―
+            </p>
 
-          <h2 className="mt-3 text-3xl font-bold md:text-4xl">
-            Humble Beginnings
-          </h2>
+            <h2 className="mt-3 text-3xl font-bold md:text-4xl">
+              Humble Beginnings
+            </h2>
 
-          <div className="mt-4 h-px w-32 bg-gradient-to-r from-green-500 via-green-300/60 to-transparent" />
+            <div className="mx-auto mt-4 h-px w-32 bg-gradient-to-r from-green-500 via-green-300/60 to-transparent" />
+          </div>
 
           {/* IMAGE PANEL */}
           <div className="group relative mt-8 h-[340px] w-full overflow-hidden rounded-[1.75rem] border border-green-500/20 bg-black/50 shadow-[0_0_35px_rgba(34,197,94,0.08)] md:h-[460px]">
@@ -36,9 +39,9 @@ export default function AboutSection() {
             <div className="absolute inset-0 bg-gradient-to-tr from-black/75 via-black/20 to-green-500/10" />
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(34,197,94,0.16),transparent_28%),radial-gradient(circle_at_80%_75%,rgba(255,255,255,0.05),transparent_22%)] opacity-80 transition duration-700 group-hover:opacity-100" />
 
-            {/* OPTIONAL BOTTOM CONTENT AREA (currently empty but fixed) */}
+            {/* OPTIONAL BOTTOM CONTENT AREA */}
             <div className="absolute inset-x-0 bottom-0 p-6">
-              {/* You can drop text here later */}
+              {/* future content */}
             </div>
 
           </div>

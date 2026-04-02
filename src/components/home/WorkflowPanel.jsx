@@ -4,6 +4,7 @@ export default function WorkflowPanel() {
       <div className="absolute inset-0 opacity-[0.05] bg-[linear-gradient(rgba(34,197,94,0.16)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,0.16)_1px,transparent_1px)] bg-[size:28px_28px]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(34,197,94,0.10),transparent_42%)]" />
 
+      {/* HEADER */}
       <div className="relative mb-3 text-center">
         <div className="text-[11px] font-semibold uppercase tracking-[0.25em] text-green-400">
           ― Systems Minded ―
@@ -13,19 +14,25 @@ export default function WorkflowPanel() {
         </div>
       </div>
 
-      <div className="relative mx-auto h-[190px] w-full max-w-[420px]">
+      {/* FLOW */}
+      <div className="relative mx-auto h-[190px] w-full max-w-[420px] text-center">
+        
+        {/* TOP */}
         <div className="absolute left-1/2 top-[12%] -translate-x-1/2 -translate-y-1/2 text-[20px] font-bold uppercase tracking-[0.12em] text-green-300">
           Prototype
         </div>
 
-        <div className="absolute left-[13%] top-[36%] -translate-x-1/2 -translate-y-1/2 text-[20px] font-bold uppercase tracking-[0.12em] text-green-300">
+        {/* LEFT */}
+        <div className="absolute left-[18%] top-[36%] -translate-x-1/2 -translate-y-1/2 text-[18px] font-bold uppercase tracking-[0.12em] text-green-300">
           Observe
         </div>
 
-        <div className="absolute left-[87%] top-[36%] -translate-x-1/2 -translate-y-1/2 text-[20px] font-bold uppercase tracking-[0.12em] text-green-300">
+        {/* RIGHT */}
+        <div className="absolute left-[82%] top-[36%] -translate-x-1/2 -translate-y-1/2 text-[18px] font-bold uppercase tracking-[0.12em] text-green-300">
           Test
         </div>
 
+        {/* BOTTOM */}
         <div className="absolute left-1/2 top-[90%] -translate-x-1/2 -translate-y-1/2 text-[20px] font-bold uppercase tracking-[0.12em] text-green-300">
           Build
         </div>
@@ -48,39 +55,11 @@ export default function WorkflowPanel() {
             </radialGradient>
           </defs>
 
-          <path
-            d="M102 58 C138 58, 156 42, 188 42"
-            stroke="url(#flowLine)"
-            strokeWidth="2"
-            strokeLinecap="round"
-          />
-          <path
-            d="M232 42 C264 42, 282 58, 318 58"
-            stroke="url(#flowLine)"
-            strokeWidth="2"
-            strokeLinecap="round"
-          />
-          <path
-            d="M210 66 C160 90, 145 120, 145 150"
-            stroke="url(#flowLine)"
-            strokeWidth="1.6"
-            strokeLinecap="round"
-            opacity="0.9"
-          />
-          <path
-            d="M210 66 C260 90, 275 120, 275 150"
-            stroke="url(#flowLine)"
-            strokeWidth="1.6"
-            strokeLinecap="round"
-            opacity="0.9"
-          />
-          <path
-            d="M210 66 L210 150"
-            stroke="url(#flowLine)"
-            strokeWidth="1.8"
-            strokeLinecap="round"
-            opacity="0.95"
-          />
+          <path d="M102 58 C138 58, 156 42, 188 42" stroke="url(#flowLine)" strokeWidth="2" strokeLinecap="round" />
+          <path d="M232 42 C264 42, 282 58, 318 58" stroke="url(#flowLine)" strokeWidth="2" strokeLinecap="round" />
+          <path d="M210 66 C160 90, 145 120, 145 150" stroke="url(#flowLine)" strokeWidth="1.6" strokeLinecap="round" opacity="0.9" />
+          <path d="M210 66 C260 90, 275 120, 275 150" stroke="url(#flowLine)" strokeWidth="1.6" strokeLinecap="round" opacity="0.9" />
+          <path d="M210 66 L210 150" stroke="url(#flowLine)" strokeWidth="1.8" strokeLinecap="round" opacity="0.95" />
 
           <circle cx="140" cy="52" r="3.2" fill="#4ade80" />
           <circle cx="210" cy="42" r="3.2" fill="#4ade80" />

@@ -20,21 +20,37 @@ export default function ServicesSection() {
         ))}
       </div>
 
-      <div className="relative mb-10">
-        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-green-400">― RuntWerkx Is ―</p>
-        <h2 className="mt-3 text-3xl font-bold md:text-4xl">Your Partner In Digital Systems Implementation.</h2>
-        <div className="mt-4 h-px w-32 bg-gradient-to-r from-green-500 via-green-300/60 to-transparent" />
+      {/* HEADER */}
+      <div className="relative mb-12 text-center">
+        <div className="mx-auto max-w-3xl">
+          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-green-400">
+            ― RuntWerkx Is ―
+          </p>
+
+          <h2 className="mt-3 text-3xl font-bold md:text-4xl">
+            Your Partner In Digital Systems Implementation.
+          </h2>
+
+          <div className="mx-auto mt-4 h-px w-32 bg-gradient-to-r from-green-500 via-green-300/60 to-transparent" />
+        </div>
       </div>
 
+      {/* CARDS */}
       <div className="relative grid gap-6 md:grid-cols-3">
         {servicesCards.map((item) => (
           <div
             key={item.title}
-            className="rounded-3xl border border-white/10 bg-white/[0.05] p-6 backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:border-green-400/60 hover:bg-white/[0.07] hover:shadow-[0_0_35px_rgba(34,197,94,0.12)]"
+            className="relative rounded-3xl border border-white/10 bg-white/[0.05] p-6 text-center backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:border-green-400/60 hover:bg-white/[0.07] hover:shadow-[0_0_35px_rgba(34,197,94,0.12)]"
           >
             <div className="absolute inset-0 rounded-3xl bg-[radial-gradient(circle_at_top_right,rgba(34,197,94,0.08),transparent_28%)] pointer-events-none" />
-            <h3 className="relative text-xl font-bold">{item.title}</h3>
-            <p className="relative mt-3 text-white/70">{item.text}</p>
+
+            <h3 className="relative text-xl font-bold">
+              {item.title}
+            </h3>
+
+            <p className="relative mx-auto mt-3 max-w-sm text-white/70">
+              {item.text}
+            </p>
           </div>
         ))}
       </div>
