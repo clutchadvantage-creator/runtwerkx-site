@@ -21,7 +21,7 @@ export default function ServicesSection() {
       </div>
 
       <div className="relative mb-10">
-        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-green-400">⇼RuntWerkx Is⇼</p>
+        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-green-400">― RuntWerkx Is ―</p>
         <h2 className="mt-3 text-3xl font-bold md:text-4xl">Your Partner In Digital Systems Implementation.</h2>
         <div className="mt-4 h-px w-32 bg-gradient-to-r from-green-500 via-green-300/60 to-transparent" />
       </div>

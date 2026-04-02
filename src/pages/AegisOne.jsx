@@ -105,7 +105,7 @@ function PlatformShowcase() {
           <div className="absolute bottom-5 left-5 right-5 md:bottom-6 md:left-6 md:right-6">
             <div className="max-w-2xl rounded-[1.25rem] border border-white/10 bg-black/38 px-4 py-4 backdrop-blur-md md:px-5">
               <div className="text-[10px] uppercase tracking-[0.24em] text-green-400">
-                Built For Industry
+                ― Built For Industry ―
               </div>
               <p className="mt-2 text-sm leading-7 text-white/78 md:text-base">
                 One connected system for reporting, accountability, follow-up, and visibility

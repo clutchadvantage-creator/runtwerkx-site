@@ -5,9 +5,9 @@ export default function ContactSection() {
     <section id="contact" className="mx-auto max-w-7xl px-6 pb-24">
       <div className="relative overflow-hidden bg-transparent">
         <div className="relative px-0 pt-8 md:px-0 md:pt-12">
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-green-400">⇼ Contact Us ⇼</p>
+          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-green-400">― Contact Us ―</p>
           <h2 className="mt-3 text-3xl font-bold md:text-5xl">
-            ― Industrial Software & Workflow Consulting for Manufacturing ―
+            Industrial Software & Workflow Consulting for Manufacturing
           </h2>
           <div className="mt-4 h-px w-32 bg-gradient-to-r from-green-500 via-green-300/60 to-transparent" />
 

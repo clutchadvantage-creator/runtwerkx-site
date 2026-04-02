@@ -683,7 +683,7 @@ export default function FileRouter() {
           <div className="relative mx-auto grid max-w-7xl gap-12 px-6 py-24 lg:grid-cols-2 lg:items-center">
             <div>
               <p className="text-sm uppercase tracking-[0.3em] text-green-400">
-                ⇼ RuntWerkx ⇼
+                ― RuntWerkx ―
               </p>
 
               <div className="mt-6 flex flex-wrap items-center gap-4">
@@ -801,7 +801,7 @@ export default function FileRouter() {
               ― Product Evolution ―
             </p>
             <h2 className="mt-3 text-3xl font-bold md:text-4xl">
-              Where it started ― Where we are now
+              Where it started & Where we are now
             </h2>
             <p className="mt-4 max-w-3xl text-white/70">
               Our File Router keeps getting sharper through real world use. The
@@ -990,7 +990,7 @@ export default function FileRouter() {
           <div className="mx-auto grid max-w-7xl gap-10 px-6 py-20 md:grid-cols-2">
             <div>
               <h2 className="text-3xl font-bold md:text-4xl">
-                ― Forged by Innovation ―
+                Industry Forged Innovation ―
               </h2>
               <p className="mt-4 text-white/70">
                 At RuntWerkx Systems, the mission is to design and implement the
