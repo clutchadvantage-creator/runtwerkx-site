@@ -22,20 +22,20 @@ export default function HeroSection() {
       </div>
 
       <div className="relative mx-auto grid max-w-7xl gap-10 px-6 py-24 md:grid-cols-2 md:items-center">
-        <div>
+        <div className="text-center md:text-center">
           <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-green-400">
-             ― RUNTWERKX ― 
+            ⇼ RUNTWERKX ⇼
           </p>
 
           <h1 className="mb-6 text-5xl font-black leading-tight md:text-7xl">
             Software & Applications For Industry Professionals
           </h1>
 
-          <p className="max-w-xl text-lg text-white/75">
+          <p className="mx-auto max-w-xl text-lg text-white/75">
             We build custom industrial software, workflow automation tools, and operational systems built for manufacturing, fabrication, and real-world production environments.
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-4">
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
             <button
               type="button"
               onClick={() => scrollToId('contact')}
