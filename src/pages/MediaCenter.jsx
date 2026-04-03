@@ -8,7 +8,7 @@ import {
   mediaCenterCategories,
   mediaCenterFeatured,
   mediaCenterSections,
-} from '../data/mediaCenterContent'
+} from '../data/homeContent'
 
 export default function KnowledgeLibrary() {
   return (

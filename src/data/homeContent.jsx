@@ -142,3 +142,53 @@ export const railImages = [
   '/images/scrollimages/combitplogo.png',
   '/images/scrollimages/agttplogo.png',
 ]
+
+export const mediaCenterCategories = [
+  {
+    id: 'calculators-charts-conversions',
+    title: 'Calculators, Charts & Conversions',
+    status: 'Active',
+    to: '/knowledge-library/calculators-charts-conversions',
+  },
+  {
+    id: 'fabrication',
+    title: 'Fabrication',
+    status: 'Planned',
+    to: '/knowledge-library/fabrication',
+  },
+  {
+    id: 'manufacturing',
+    title: 'Manufacturing',
+    status: 'Planned',
+    to: '/knowledge-library/manufacturing',
+  },
+]
+
+export const mediaCenterFeatured = [
+  {
+    id: 'library-intro',
+    title: 'Knowledge Library System',
+    description:
+      'A structured industrial knowledge hub for calculators, charts, conversions, and real-world references built to grow over time.',
+    image: '/images/apps.png',
+  },
+]
+
+export const mediaCenterSections = [
+  {
+    id: 'core-tools',
+    title: 'Core Tools & References',
+    description:
+      'Foundational utilities and reference materials for everyday use across multiple industries.',
+    items: [
+      {
+        id: 'calc-hub',
+        title: 'Calculators, Charts & Conversions',
+        description:
+          'Central hub for everyday-use math, charts, and unit conversions.',
+        image: '/images/apps.png',
+        href: '/knowledge-library/calculators-charts-conversions',
+      },
+    ],
+  },
+]
