@@ -68,7 +68,7 @@ export default function AboutSection() {
             My background includes working with industry-standard platforms such as StruMIS, AutoCAD, Tekla
             Structures, PrimeCut, Raptor, Peddinghaus, HGG, and AGT Robotics, along with exposure to HRIS,
             EHS, and operational systems. I've also developed skills in PC building, networking, and systems
-            administration. RuntWerkx is a direct result of that journey, bringing together real-world
+            administration. RuntWerkx ― is a direct result of that journey, bringing together real-world
             industrial knowledge with modern software development to create tools that are practical,
             efficient, and built for the environments they serve.
           </p>

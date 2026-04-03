@@ -13,7 +13,10 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/aegisone" element={<AegisOne />} />
         <Route path="/file-router" element={<FileRouter />} />
-        <Route path="/media-center" element={<MediaCenter />} />
+
+        {/* 🔥 FIXED ROUTE */}
+        <Route path="/knowledge-library" element={<MediaCenter />} />
+
         <Route path="*" element={<Home />} />
       </Routes>
     </>

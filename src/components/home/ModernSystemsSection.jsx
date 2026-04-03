@@ -602,7 +602,7 @@ export default function ModernSystemsSection() {
 
                   <button
                     type="button"
-                    onClick={() => navigate('/media-center')}
+                    onClick={() => navigate('/knowledge-library')}
                     className="rounded-full border border-white/10 bg-black/50 px-3 py-1 text-center text-[15px] font-semibold uppercase tracking-[0.22em] text-white/60 transition hover:border-green-400/30 hover:text-green-300"
                   >
                     GO TO LIBRARY (Click Here)

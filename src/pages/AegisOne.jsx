@@ -337,6 +337,14 @@ export default function AegisOne() {
       <Navbar />
 
       <main className="relative overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(34,197,94,0.18),transparent_22%),radial-gradient(circle_at_top_left,rgba(255,255,255,0.05),transparent_18%)]" />
+          <div className="absolute inset-0 opacity-[0.08] bg-[linear-gradient(rgba(34,197,94,0.18)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,0.18)_1px,transparent_1px)] bg-[size:42px_42px]" />
+          <div className="absolute -left-24 top-[-4rem] h-72 w-72 rounded-full bg-green-500/20 blur-[110px] animate-pulse" />
+          <div className="absolute right-[-5rem] top-[-3rem] h-80 w-80 rounded-full bg-green-400/10 blur-[130px] animate-pulse" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/8 to-transparent" />
+        </div>
+
         <section className="relative z-10 border-b border-white/10">
           <div className="mx-auto max-w-7xl px-6 py-16">
             <div className="relative overflow-hidden rounded-[2rem] border border-green-500/20 bg-black/70">
