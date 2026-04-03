@@ -3,23 +3,25 @@ import Navbar from '../components/Navbar'
 
 function ModuleSection({ module, reverse = false, featured = false }) {
   return (
-    <div className="opacity-0 translate-y-6 animate-[fadeUp_0.6s_ease-out_forwards] group grid items-center gap-12 md:grid-cols-[0.9fr_1.1fr] md:gap-16">
-      <div className={`${reverse ? 'md:order-2' : ''}`}>
-        <div className="text-[10px] uppercase tracking-[0.28em] text-green-400">
-          {module.eyebrow}
+    <div className="group grid animate-[fadeUp_0.6s_ease-out_forwards] items-center gap-12 opacity-0 translate-y-6 md:grid-cols-[0.9fr_1.1fr] md:gap-16">
+      <div className={`${reverse ? 'md:order-2' : ''} text-center`}>
+        <div className="mx-auto max-w-xl">
+          <div className="text-center text-[10px] uppercase tracking-[0.28em] text-green-400">
+            {module.eyebrow}
+          </div>
+
+          <h3 className="mt-3 text-3xl font-semibold tracking-[-0.03em] text-white md:text-5xl">
+            {module.title}
+          </h3>
+
+          <p className="mx-auto mt-5 max-w-xl text-base leading-8 text-white/68 md:text-lg">
+            {module.summary}
+          </p>
+
+          <p className="mx-auto mt-5 max-w-xl text-sm leading-8 text-white/56 md:text-base">
+            {module.detail}
+          </p>
         </div>
-
-        <h3 className="mt-3 text-3xl font-semibold tracking-[-0.03em] text-white md:text-5xl">
-          {module.title}
-        </h3>
-
-        <p className="mt-5 max-w-xl text-base leading-8 text-white/68 md:text-lg">
-          {module.summary}
-        </p>
-
-        <p className="mt-5 max-w-xl text-sm leading-8 text-white/56 md:text-base">
-          {module.detail}
-        </p>
       </div>
 
       <div className={`${reverse ? 'md:order-1' : ''}`}>
@@ -46,7 +48,7 @@ function ModuleSection({ module, reverse = false, featured = false }) {
 
 function MicroCTA() {
   return (
-    <div className="opacity-0 translate-y-6 animate-[fadeUp_0.6s_ease-out_forwards] py-16 text-center">
+    <div className="animate-[fadeUp_0.6s_ease-out_forwards] py-16 text-center opacity-0 translate-y-6">
       <div className="inline-block rounded-[1.5rem] border border-white/10 bg-white/[0.02] px-8 py-10 backdrop-blur-sm">
         <h4 className="text-xl font-semibold text-white md:text-2xl">
           See how AegisOne works in your operation
@@ -67,7 +69,7 @@ function MicroCTA() {
 function PlatformShowcase() {
   return (
     <section className="relative z-10 mx-auto max-w-7xl px-6 pb-8 pt-10 md:pb-12 md:pt-14">
-      <div className="mb-8 max-w-3xl">
+      <div className="mb-8 mx-auto max-w-3xl text-center">
         <p className="text-sm uppercase tracking-[0.3em] text-green-400">
           ― Platform Overview ―
         </p>
@@ -76,7 +78,7 @@ function PlatformShowcase() {
           A unified command surface for industrial safety operations
         </h2>
 
-        <p className="mt-5 max-w-2xl text-base leading-8 text-white/68 md:text-lg">
+        <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-white/68 md:text-lg">
           AegisOne brings incidents, investigations, inspections, corrective actions,
           training visibility, and analytics into one operational platform designed for
           real-world industrial environments.
@@ -228,7 +230,7 @@ function SafetyScanBand() {
 
 function SafetyCommitmentSection() {
   return (
-    <section className="mx-auto max-w-7xl px-6 pb-24 pt-10 md:pt-16 opacity-0 translate-y-6 animate-[fadeUp_0.8s_ease-out_forwards]">
+    <section className="mx-auto max-w-7xl animate-[fadeUp_0.8s_ease-out_forwards] px-6 pb-24 pt-10 opacity-0 translate-y-6 md:pt-16">
       <div className="relative">
         <img
           src="/images/sheildswordnew2.png"
@@ -237,7 +239,7 @@ function SafetyCommitmentSection() {
         />
       </div>
 
-      <div className="mt-10 max-w-3xl mx-auto text-center">
+      <div className="mx-auto mt-10 max-w-3xl text-center">
         <p className="text-sm uppercase tracking-[0.3em] text-green-400">
           ― RuntWerkx Safety Commitment ―
         </p>
@@ -347,18 +349,20 @@ export default function AegisOne() {
 
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/10" />
 
-              <div className="relative z-10 px-8 py-20 md:px-12">
-                <p className="text-sm uppercase tracking-[0.3em] text-green-400">
-                  ― Safety Platform ―
-                </p>
+              <div className="relative z-10 px-8 py-20 text-center md:px-12">
+                <div className="mx-auto max-w-4xl">
+                  <p className="text-sm uppercase tracking-[0.3em] text-green-400">
+                    ― Safety Platform ―
+                  </p>
 
-                <h1 className="mt-6 text-5xl font-black md:text-7xl">
-                  Industrial Safety Management & EHS
-                </h1>
+                  <h1 className="mt-6 text-5xl font-black md:text-7xl">
+                    Industrial Safety Management & EHS
+                  </h1>
 
-                <p className="mt-6 max-w-2xl text-white/75">
-                  A modular, enterprise-grade safety management system built for real operations.
-                </p>
+                  <p className="mx-auto mt-6 max-w-2xl text-white/75">
+                    A modular, enterprise-grade safety management system built for real operations.
+                  </p>
+                </div>
               </div>
             </div>
           </div>

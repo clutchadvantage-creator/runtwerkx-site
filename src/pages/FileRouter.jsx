@@ -92,10 +92,10 @@ function mailtoLink(subject, body = '') {
 
 function ScreenshotCard({ src, title, text }) {
   return (
-    <div className="overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5 transition hover:border-green-400/30 hover:shadow-[0_0_24px_rgba(34,197,94,0.12)]">
+    <div className="overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5 text-center transition hover:border-green-400/30 hover:shadow-[0_0_24px_rgba(34,197,94,0.12)]">
       <div className="border-b border-white/10 px-5 py-4">
         <div className="text-lg font-bold">{title}</div>
-        <div className="mt-1 text-sm text-white/60">{text}</div>
+        <div className="mx-auto mt-1 max-w-2xl text-sm text-white/60">{text}</div>
       </div>
       <div className="bg-black p-2">
         <img
@@ -353,7 +353,7 @@ function FaqFerrisWheel() {
               <div className="absolute left-1/2 top-[-18px] h-5 w-[2px] -translate-x-1/2 bg-gradient-to-t from-white/35 to-transparent" />
               <div className="absolute left-1/2 top-[-21px] h-3 w-3 -translate-x-1/2 rounded-full border border-green-400/30 bg-black" />
 
-              <div className="relative h-full rounded-[1.8rem] border border-white/12 bg-white/6 px-6 py-5 shadow-[0_18px_55px_rgba(0,0,0,0.38)] backdrop-blur">
+              <div className="relative h-full rounded-[1.8rem] border border-white/12 bg-white/6 px-6 py-5 text-center shadow-[0_18px_55px_rgba(0,0,0,0.38)] backdrop-blur">
                 <div className="absolute inset-0 rounded-[1.8rem] bg-[radial-gradient(circle_at_top_right,rgba(34,197,94,0.08),transparent_36%)]" />
 
                 <div className="relative">
@@ -547,13 +547,13 @@ function FileRouterUseCasesInteractive() {
               >
                 <div
                   className={[
-                    'w-56 rounded-2xl border p-4 text-left backdrop-blur transition duration-300',
+                    'w-56 rounded-2xl border p-4 text-center backdrop-blur transition duration-300',
                     isActive
                       ? 'scale-[1.03] border-green-400/50 bg-green-500/10 shadow-[0_0_30px_rgba(34,197,94,0.22)]'
                       : 'border-white/10 bg-white/5 hover:border-green-400/30 hover:bg-white/8 hover:shadow-[0_0_18px_rgba(34,197,94,0.08)]',
                   ].join(' ')}
                 >
-                  <div className="mb-3 flex items-center gap-3">
+                  <div className="mb-3 flex items-center justify-center gap-3">
                     <div
                       className={[
                         'flex h-10 w-10 items-center justify-center rounded-xl border transition',
@@ -607,7 +607,7 @@ function FileRouterUseCasesInteractive() {
           </div>
         </div>
 
-        <div className="rounded-3xl border border-green-400/20 bg-white/5 p-8 shadow-[0_0_40px_rgba(34,197,94,0.08)] backdrop-blur">
+        <div className="rounded-3xl border border-green-400/20 bg-white/5 p-8 text-center shadow-[0_0_40px_rgba(34,197,94,0.08)] backdrop-blur">
           <p className="text-sm uppercase tracking-[0.28em] text-green-400">
             ― Selected Workflow ―
           </p>
@@ -616,19 +616,19 @@ function FileRouterUseCasesInteractive() {
             {activeItem.title}
           </h3>
 
-          <p className="mt-4 text-base leading-8 text-white/70">
+          <p className="mx-auto mt-4 max-w-xl text-base leading-8 text-white/70">
             {activeItem.description}
           </p>
 
           <div className="mt-8 grid gap-4">
-            <div className="rounded-2xl border border-white/10 bg-black/30 p-4">
+            <div className="rounded-2xl border border-white/10 bg-black/30 p-4 text-center">
               <p className="text-xs uppercase tracking-[0.25em] text-green-400">
                 Industry Fit
               </p>
               <p className="mt-2 text-sm text-white/80">{activeItem.industry}</p>
             </div>
 
-            <div className="rounded-2xl border border-white/10 bg-black/30 p-4">
+            <div className="rounded-2xl border border-white/10 bg-black/30 p-4 text-center">
               <p className="text-xs uppercase tracking-[0.25em] text-green-400">
                 Real Example
               </p>
@@ -636,11 +636,11 @@ function FileRouterUseCasesInteractive() {
             </div>
           </div>
 
-          <div className="mt-8 rounded-2xl border border-green-400/20 bg-green-500/5 p-4">
+          <div className="mt-8 rounded-2xl border border-green-400/20 bg-green-500/5 p-4 text-center">
             <p className="text-xs uppercase tracking-[0.25em] text-green-400">
               Why it matters
             </p>
-            <p className="mt-2 text-sm leading-7 text-white/75">
+            <p className="mx-auto mt-2 max-w-xl text-sm leading-7 text-white/75">
               This workflow shows how File Router turns repetitive file handling
               into a controlled, repeatable movement system with better
               visibility, less wasted motion, and cleaner daily execution.
@@ -681,49 +681,51 @@ export default function FileRouter() {
           <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:72px_72px] opacity-10" />
 
           <div className="relative mx-auto grid max-w-7xl gap-12 px-6 py-24 lg:grid-cols-2 lg:items-center">
-            <div>
-              <p className="text-sm uppercase tracking-[0.3em] text-green-400">
-                ― RuntWerkx ―
-              </p>
+            <div className="text-center">
+              <div className="mx-auto max-w-4xl">
+                <p className="text-sm uppercase tracking-[0.3em] text-green-400">
+                  ― RuntWerkx ―
+                </p>
 
-              <div className="mt-6 flex flex-wrap items-center gap-4">
-                <h1 className="text-5xl font-black leading-tight md:text-7xl">
-                  File Routing Software for Manufacturing & Production Facilities
-                </h1>
-                <span className="rounded-full border border-green-400/30 px-3 py-1 text-xs font-semibold text-green-400">
-                  v2.1.3 Stable
-                </span>
-              </div>
+                <div className="mt-6 flex flex-col items-center gap-4">
+                  <h1 className="text-5xl font-black leading-tight md:text-7xl">
+                    File Routing Software for Manufacturing & Production Facilities
+                  </h1>
+                  <span className="rounded-full border border-green-400/30 px-3 py-1 text-xs font-semibold text-green-400">
+                    v2.1.3 Stable
+                  </span>
+                </div>
 
-              <p className="mt-6 max-w-3xl text-lg text-white/75">
-                RuntWerkx File Router is a file routing and workflow automation tool designed for manufacturing, CNC shops, and production environments. 
-              </p>
+                <p className="mx-auto mt-6 max-w-3xl text-lg text-white/75">
+                  RuntWerkx File Router is a file routing and workflow automation tool designed for manufacturing, CNC shops, and production environments.
+                </p>
 
-              <p className="mt-4 max-w-3xl text-sm uppercase tracking-[0.22em] text-white/45">
-                Built and tested around real production workflow pain points
-              </p>
+                <p className="mx-auto mt-4 max-w-3xl text-sm uppercase tracking-[0.22em] text-white/45">
+                  Built and tested around real production workflow pain points
+                </p>
 
-              <div className="mt-10 flex flex-wrap gap-4">
-                <a
-                  href="#pricing"
-                  className="rounded-2xl bg-green-500 px-6 py-3 font-semibold text-black transition hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(34,197,94,0.25)]"
-                >
-                  Download Installer (v2.1.3 Stable)
-                </a>
+                <div className="mt-10 flex flex-wrap justify-center gap-4">
+                  <a
+                    href="#pricing"
+                    className="rounded-2xl bg-green-500 px-6 py-3 font-semibold text-black transition hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(34,197,94,0.25)]"
+                  >
+                    Download Installer (v2.1.3 Stable)
+                  </a>
 
-                <a
-                  href="#screenshots"
-                  className="rounded-2xl border border-white/20 px-6 py-3 font-semibold transition hover:border-green-400 hover:text-green-400"
-                >
-                  View Features
-                </a>
+                  <a
+                    href="#screenshots"
+                    className="rounded-2xl border border-white/20 px-6 py-3 font-semibold transition hover:border-green-400 hover:text-green-400"
+                  >
+                    View Features
+                  </a>
 
-                <a
-                  href="#workflow"
-                  className="rounded-2xl border border-white/20 px-6 py-3 font-semibold transition hover:border-green-400 hover:text-green-400"
-                >
-                  See How It Works
-                </a>
+                  <a
+                    href="#workflow"
+                    className="rounded-2xl border border-white/20 px-6 py-3 font-semibold transition hover:border-green-400 hover:text-green-400"
+                  >
+                    See How It Works
+                  </a>
+                </div>
               </div>
             </div>
 
@@ -735,7 +737,7 @@ export default function FileRouter() {
         </section>
 
         <section className="mx-auto max-w-7xl px-6 py-20">
-          <div className="mb-10">
+          <div className="mb-10 mx-auto max-w-4xl text-center">
             <p className="text-sm uppercase tracking-[0.3em] text-green-400">
               ― By Industry Professionals ― For Industry Professionals ―
             </p>
@@ -752,14 +754,14 @@ export default function FileRouter() {
           className="border-y border-white/10 bg-white/[0.03]"
         >
           <div className="mx-auto max-w-7xl px-6 py-20">
-            <div className="mb-10">
+            <div className="mb-10 mx-auto max-w-4xl text-center">
               <p className="text-sm uppercase tracking-[0.3em] text-green-400">
                 ― Get More Done ―
               </p>
               <h2 className="mt-3 text-3xl font-bold md:text-4xl">
                 Designed for Real-World Production
               </h2>
-              <p className="mt-4 max-w-3xl text-white/70">
+              <p className="mx-auto mt-4 max-w-3xl text-white/70">
                 These screenshots show the actual command-center layout, routing
                 controls, profile editor, and the improved staging workspace
                 design.
@@ -796,14 +798,14 @@ export default function FileRouter() {
         </section>
 
         <section className="mx-auto max-w-7xl px-6 py-20">
-          <div className="mb-10">
+          <div className="mb-10 mx-auto max-w-4xl text-center">
             <p className="text-sm uppercase tracking-[0.3em] text-green-400">
               ― Product Evolution ―
             </p>
             <h2 className="mt-3 text-3xl font-bold md:text-4xl">
               Where it started & Where we are now
             </h2>
-            <p className="mt-4 max-w-3xl text-white/70">
+            <p className="mx-auto mt-4 max-w-3xl text-white/70">
               Our File Router keeps getting sharper through real world use. The
               newer staging workspace improves visibility, interaction clarity,
               and overall flow while keeping the same command-center identity.
@@ -813,10 +815,10 @@ export default function FileRouter() {
           </div>
 
           <div className="grid gap-8 lg:grid-cols-2">
-            <div className="overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5 transition hover:border-green-400/20 hover:shadow-[0_0_20px_rgba(255,255,255,0.06)]">
+            <div className="overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5 text-center transition hover:border-green-400/20 hover:shadow-[0_0_20px_rgba(255,255,255,0.06)]">
               <div className="border-b border-white/10 px-5 py-4">
                 <div className="text-lg font-bold">Before</div>
-                <div className="mt-1 text-sm text-white/60">
+                <div className="mx-auto mt-1 max-w-2xl text-sm text-white/60">
                   Based off of a game engine UI/UX originally with the same-file
                   routing concept we had an idea and a problem to fix!
                 </div>
@@ -834,10 +836,10 @@ export default function FileRouter() {
               </div>
             </div>
 
-            <div className="overflow-hidden rounded-[1.75rem] border border-green-500/30 bg-green-500/5 transition hover:shadow-[0_0_24px_rgba(34,197,94,0.16)]">
+            <div className="overflow-hidden rounded-[1.75rem] border border-green-500/30 bg-green-500/5 text-center transition hover:shadow-[0_0_24px_rgba(34,197,94,0.16)]">
               <div className="border-b border-green-500/20 px-5 py-4">
                 <div className="text-lg font-bold text-green-400">After</div>
-                <div className="mt-1 text-sm text-white/60">
+                <div className="mx-auto mt-1 max-w-2xl text-sm text-white/60">
                   Updated staging workspace with a cleaner white work surface
                   and stronger row visibility with an added SaaS aesthetic.
                 </div>
@@ -857,7 +859,7 @@ export default function FileRouter() {
           </div>
 
           <div className="mt-8 grid gap-6 md:grid-cols-3">
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-6 transition hover:border-green-400/40 hover:bg-white/[0.07] hover:shadow-[0_0_20px_rgba(34,197,94,0.15)]">
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-6 text-center transition hover:border-green-400/40 hover:bg-white/[0.07] hover:shadow-[0_0_20px_rgba(34,197,94,0.15)]">
               <h3 className="text-xl font-bold">⚙️-Industry Focused-</h3>
               <p className="mt-2 text-sm leading-6 text-white/65">
                 RuntWerkx Systems has worked with industry leaders for the last
@@ -865,7 +867,7 @@ export default function FileRouter() {
               </p>
             </div>
 
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-6 transition hover:border-green-400/40 hover:bg-white/[0.07] hover:shadow-[0_0_20px_rgba(34,197,94,0.15)]">
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-6 text-center transition hover:border-green-400/40 hover:bg-white/[0.07] hover:shadow-[0_0_20px_rgba(34,197,94,0.15)]">
               <h3 className="text-xl font-bold">🔬-Research & Development-</h3>
               <p className="mt-2 text-sm leading-6 text-white/65">
                 At RuntWerkx, we prioritize real-world use and continuous
@@ -874,7 +876,7 @@ export default function FileRouter() {
               </p>
             </div>
 
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-6 transition hover:border-green-400/40 hover:bg-white/[0.07] hover:shadow-[0_0_20px_rgba(34,197,94,0.15)]">
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-6 text-center transition hover:border-green-400/40 hover:bg-white/[0.07] hover:shadow-[0_0_20px_rgba(34,197,94,0.15)]">
               <h3 className="text-xl font-bold">🧠-Real Logic Built In-</h3>
               <p className="mt-2 text-sm leading-6 text-white/65">
                 RuntWerkx uses a routing logic layer that thinks for itself to
@@ -889,14 +891,14 @@ export default function FileRouter() {
         <FileRouterUseCasesInteractive />
 
         <section id="pricing" className="mx-auto max-w-7xl px-6 py-20">
-          <div className="mb-10">
+          <div className="mb-10 mx-auto max-w-4xl text-center">
             <p className="text-sm uppercase tracking-[0.3em] text-green-400">
               RuntWerkx File Router ― If Windows File Explorer had a brain
             </p>
             <h2 className="mt-3 text-3xl font-bold md:text-4xl">
               Born From Bad Workflows and Inefficiency
             </h2>
-            <p className="mt-4 max-w-3xl text-white/70">
+            <p className="mx-auto mt-4 max-w-3xl text-white/70">
               Built for people doing real work with real files in real
               environments. RuntWerkx File Router reduces wasted motion,
               repeated clicks, and folder chaos.
@@ -904,7 +906,7 @@ export default function FileRouter() {
           </div>
 
           <div className="grid gap-6 md:grid-cols-4">
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-6 transition hover:border-green-400/40 hover:shadow-[0_0_20px_rgba(34,197,94,0.15)]">
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-6 text-center transition hover:border-green-400/40 hover:shadow-[0_0_20px_rgba(34,197,94,0.15)]">
               <h3 className="text-xl font-bold text-green-400">~Monthly~</h3>
               <p className="mt-3 text-3xl font-black text-white">$9.99</p>
               <p className="mt-1 text-sm text-white/60">per month</p>
@@ -921,7 +923,7 @@ export default function FileRouter() {
               </a>
             </div>
 
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-6 transition hover:border-green-400/40 hover:shadow-[0_0_20px_rgba(34,197,94,0.15)]">
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-6 text-center transition hover:border-green-400/40 hover:shadow-[0_0_20px_rgba(34,197,94,0.15)]">
               <h3 className="text-xl font-bold text-green-400">~6 Months~</h3>
               <p className="mt-3 text-3xl font-black text-white">$49.99</p>
               <p className="mt-1 text-sm text-white/60">every 6 months</p>
@@ -938,8 +940,8 @@ export default function FileRouter() {
               </a>
             </div>
 
-            <div className="rounded-3xl border border-green-500/30 bg-green-500/5 p-6 transition hover:shadow-[0_0_24px_rgba(34,197,94,0.16)]">
-              <div className="flex items-center justify-between gap-3">
+            <div className="rounded-3xl border border-green-500/30 bg-green-500/5 p-6 text-center transition hover:shadow-[0_0_24px_rgba(34,197,94,0.16)]">
+              <div className="flex items-center justify-center gap-3">
                 <h3 className="text-xl font-bold text-green-400">~Yearly~</h3>
                 <span className="rounded-full border border-green-400/30 px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-green-300">
                   Best Value
@@ -961,7 +963,7 @@ export default function FileRouter() {
               </a>
             </div>
 
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-6 transition hover:border-green-400/40 hover:shadow-[0_0_20px_rgba(34,197,94,0.15)]">
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-6 text-center transition hover:border-green-400/40 hover:shadow-[0_0_20px_rgba(34,197,94,0.15)]">
               <h3 className="text-xl font-bold text-green-400">~In The Know~</h3>
               <p className="mt-4 text-sm leading-7 text-white/70">
                 All payments are recurring and can be canceled at any time.
@@ -988,28 +990,30 @@ export default function FileRouter() {
 
         <section className="border-y border-white/10 bg-white/[0.03]">
           <div className="mx-auto grid max-w-7xl gap-10 px-6 py-20 md:grid-cols-2">
-            <div>
-              <h2 className="text-3xl font-bold md:text-4xl">
-                Industry Forged Innovation ―
-              </h2>
-              <p className="mt-4 text-white/70">
-                At RuntWerkx Systems, the mission is to design and implement the
-                next generation of industrial applications, tools, and software
-                built for real-world use. Backed by 12 years of experience in
-                structural steel, heavy equipment operations, and production
-                environments, RuntWerkx combines hands-on field knowledge with a
-                deep understanding of industrial digital systems. That
-                background includes experience with CAD, Raptor, Cortex by AGT /
-                AGT Robotics, StruMIS integration, HRIS, SMS, EHS workflows, NC
-                files, DSTV data, and the operational realities that surround
-                them. The result is a software approach grounded in practical
-                industry experience and focused on delivering smarter workflows,
-                cleaner systems, stronger visibility, and future-ready tools for
-                the people doing the work.
-              </p>
+            <div className="text-center md:text-left">
+              <div className="mx-auto max-w-3xl md:mx-0">
+                <h2 className="text-3xl font-bold md:text-4xl">
+                  Industry Forged Innovation ―
+                </h2>
+                <p className="mt-4 text-white/70">
+                  At RuntWerkx Systems, the mission is to design and implement the
+                  next generation of industrial applications, tools, and software
+                  built for real-world use. Backed by 12 years of experience in
+                  structural steel, heavy equipment operations, and production
+                  environments, RuntWerkx combines hands-on field knowledge with a
+                  deep understanding of industrial digital systems. That
+                  background includes experience with CAD, Raptor, Cortex by AGT /
+                  AGT Robotics, StruMIS integration, HRIS, SMS, EHS workflows, NC
+                  files, DSTV data, and the operational realities that surround
+                  them. The result is a software approach grounded in practical
+                  industry experience and focused on delivering smarter workflows,
+                  cleaner systems, stronger visibility, and future-ready tools for
+                  the people doing the work.
+                </p>
+              </div>
             </div>
 
-            <div className="rounded-3xl border border-green-500/30 bg-white/5 p-6 transition hover:shadow-[0_0_20px_rgba(34,197,94,0.15)]">
+            <div className="rounded-3xl border border-green-500/30 bg-white/5 p-6 text-center transition hover:shadow-[0_0_20px_rgba(34,197,94,0.15)]">
               <div className="text-sm uppercase tracking-[0.2em] text-green-400">
                 ― Contact Us ―
               </div>
@@ -1022,7 +1026,7 @@ export default function FileRouter() {
                 Email: runtwerkx.dev@gmail.com
               </p>
 
-              <div className="mt-6 flex flex-wrap gap-3">
+              <div className="mt-6 flex flex-wrap justify-center gap-3">
                 <a
                   href={mailtoLink(
                     'File Router Demo Request',
@@ -1047,21 +1051,21 @@ export default function FileRouter() {
 
         <section className="border-t border-white/10 bg-black">
           <div className="mx-auto max-w-7xl px-6 py-20">
-            <div className="mb-12">
+            <div className="mb-12 mx-auto max-w-4xl text-center">
               <p className="text-sm uppercase tracking-[0.3em] text-green-400">
                 ― Testimonials ―
               </p>
               <h2 className="mt-3 text-3xl font-bold md:text-4xl">
                 What our customers think
               </h2>
-              <p className="mt-4 max-w-3xl text-white/70">
+              <p className="mx-auto mt-4 max-w-3xl text-white/70">
                 It matters what our users say, here at RuntWerk our intention is
                 to offer real world solutions to those who get things done.
               </p>
             </div>
 
             <div className="grid gap-6 lg:grid-cols-3">
-              <div className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur">
+              <div className="rounded-3xl border border-white/10 bg-white/5 p-6 text-center backdrop-blur">
                 <p className="text-sm uppercase tracking-[0.22em] text-green-400">
                   ― What People Actually Want ―
                 </p>
@@ -1074,7 +1078,7 @@ export default function FileRouter() {
                 </p>
               </div>
 
-              <div className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur">
+              <div className="rounded-3xl border border-white/10 bg-white/5 p-6 text-center backdrop-blur">
                 <p className="text-sm uppercase tracking-[0.22em] text-green-400">
                   ― Built For Real Pain Points ―
                 </p>
@@ -1088,7 +1092,7 @@ export default function FileRouter() {
                 </p>
               </div>
 
-              <div className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur">
+              <div className="rounded-3xl border border-white/10 bg-white/5 p-6 text-center backdrop-blur">
                 <p className="text-sm uppercase tracking-[0.22em] text-green-400">
                   ― Support That Understands ―
                 </p>
@@ -1104,7 +1108,7 @@ export default function FileRouter() {
             </div>
 
             <div className="mt-14">
-              <div className="mb-8">
+              <div className="mb-8 text-center">
                 <p className="text-sm uppercase tracking-[0.3em] text-green-400">
                   ― FAQ ―
                 </p>
@@ -1117,14 +1121,14 @@ export default function FileRouter() {
             </div>
 
             <div className="mt-16 grid gap-10 border-t border-white/10 pt-12 md:grid-cols-2 lg:grid-cols-4">
-              <div>
+              <div className="text-center md:text-left">
                 <h3 className="text-lg font-bold text-white">File Router</h3>
                 <p className="mt-4 text-sm leading-7 text-white/65">
                   A focused utility for staging, routing, and handling files in
                   a faster, cleaner, more repeatable way.
                 </p>
 
-                <div className="mt-5 flex flex-wrap gap-3">
+                <div className="mt-5 flex flex-wrap justify-center gap-3 md:justify-start">
                   <a
                     href="#pricing"
                     className="inline-flex rounded-2xl bg-green-500 px-5 py-3 text-sm font-semibold text-black transition hover:scale-[1.02]"
@@ -1142,7 +1146,7 @@ export default function FileRouter() {
                 </div>
               </div>
 
-              <div>
+              <div className="text-center md:text-left">
                 <h4 className="text-sm uppercase tracking-[0.2em] text-green-400">
                   Product
                 </h4>
@@ -1186,7 +1190,7 @@ export default function FileRouter() {
                 </div>
               </div>
 
-              <div>
+              <div className="text-center md:text-left">
                 <h4 className="text-sm uppercase tracking-[0.2em] text-green-400">
                   Customer Tools
                 </h4>
@@ -1227,7 +1231,7 @@ export default function FileRouter() {
                 </div>
               </div>
 
-              <div>
+              <div className="text-center md:text-left">
                 <h4 className="text-sm uppercase tracking-[0.2em] text-green-400">
                   Resources
                 </h4>
@@ -1279,12 +1283,12 @@ export default function FileRouter() {
             </div>
 
             <div className="mt-12 border-t border-white/10 pt-6">
-              <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+              <div className="flex flex-col gap-3 text-center md:flex-row md:items-center md:justify-between md:text-left">
                 <p className="text-xs uppercase tracking-[0.18em] text-white/35">
                   RuntWerkx Systems ― File Router ― Built for Industry
                 </p>
 
-                <div className="flex flex-wrap gap-4 text-xs uppercase tracking-[0.18em] text-white/35">
+                <div className="flex flex-wrap justify-center gap-4 text-xs uppercase tracking-[0.18em] text-white/35 md:justify-end">
                   <a
                     href={FILE_ROUTER_BILLING_LINKS.portal}
                     target="_blank"

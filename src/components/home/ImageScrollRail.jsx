@@ -6,12 +6,14 @@ export default function ImageScrollRail() {
   return (
     <>
       <section className="mx-auto max-w-7xl px-6 pb-24">
-        <div className="mb-6">
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-green-400">
-            ― Industry Driven ―
-          </p>
-          <h2 className="mt-3 text-3xl font-bold md:text-4xl">Knowledge & Tools</h2>
-          <div className="mt-4 h-px w-32 bg-gradient-to-r from-green-500 via-green-300/60 to-transparent" />
+        <div className="mb-6 text-center">
+          <div className="mx-auto max-w-3xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-green-400">
+              ― Industry Driven ―
+            </p>
+            <h2 className="mt-3 text-3xl font-bold md:text-4xl">Knowledge & Tools</h2>
+            <div className="mx-auto mt-4 h-px w-32 bg-gradient-to-r from-green-500 via-green-300/60 to-transparent" />
+          </div>
         </div>
 
         <div className="relative overflow-hidden rounded-full border border-white/15 bg-white px-6 py-6 shadow-[0_0_30px_rgba(255,255,255,0.08)] md:px-8">
