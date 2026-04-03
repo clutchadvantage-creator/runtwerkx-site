@@ -5,6 +5,7 @@ import FileRouter from './pages/FileRouter'
 import MediaCenter from './pages/MediaCenter'
 import CalculatorsChartsConversionsPage from './pages/library/CalculatorsChartsConversionsPage'
 import ScrollToTop from './components/ScrollToTop'
+import ShopMathCalculator from "./pages/library/CCCPageContent/ShopMathCalculator";
 
 export default function App() {
   return (
@@ -18,6 +19,10 @@ export default function App() {
         <Route
           path="/knowledge-library/calculators-charts-conversions"
           element={<CalculatorsChartsConversionsPage />}
+        />
+        <Route
+          path="/knowledge-library/calculators-charts-conversions/shop-math-calculator"
+          element={<ShopMathCalculator />}
         />
 
         <Route path="*" element={<Home />} />

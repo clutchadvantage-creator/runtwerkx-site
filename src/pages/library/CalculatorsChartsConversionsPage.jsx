@@ -1,4 +1,7 @@
 import Navbar from '../../components/Navbar'
+import { useNavigate } from 'react-router-dom'
+
+const HERO_VIDEO_SRC = '/videos/calcs-conversions-hero.mp4'
 
 function SectionHeader({ eyebrow, title, description, id }) {
   return (
@@ -20,18 +23,13 @@ function SectionHeader({ eyebrow, title, description, id }) {
   )
 }
 
-function QuickNavCard({ href, title, text }) {
+function QuickNavCard({ href, title }) {
   return (
     <a
       href={href}
-      className="group rounded-[1.5rem] border border-white/10 bg-white/[0.03] p-5 text-center transition duration-300 hover:-translate-y-1 hover:border-green-400/40 hover:bg-white/[0.05] hover:shadow-[0_0_24px_rgba(34,197,94,0.12)]"
+      className="group inline-flex items-center justify-center rounded-full border border-green-400/20 bg-green-500/[0.06] px-5 py-3 text-xs font-semibold uppercase tracking-[0.20em] text-green-300 transition duration-300 hover:-translate-y-0.5 hover:border-green-400/40 hover:bg-green-500/[0.10] hover:text-white hover:shadow-[0_0_18px_rgba(34,197,94,0.12)]"
     >
-      <div className="text-sm font-semibold uppercase tracking-[0.22em] text-green-400">
-        {title}
-      </div>
-      <p className="mt-3 text-sm leading-7 text-white/65">
-        {text}
-      </p>
+      {title}
     </a>
   )
 }
@@ -72,6 +70,50 @@ function LibraryToolCard({ title, subtitle, description, status = 'Planned' }) {
         <div className="mt-6 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-xs uppercase tracking-[0.2em] text-white/40">
           {live ? 'Interactive utility available' : 'Expandable utility slot'}
         </div>
+      </div>
+    </div>
+  )
+}
+
+function LiveMathToolCard({ onClick, title, subtitle, description }) {
+  return (
+    <div
+      onClick={onClick}
+      className="group relative cursor-pointer overflow-hidden rounded-[1.5rem]"
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault()
+          onClick()
+        }
+      }}
+    >
+      <div className="pointer-events-none absolute inset-0 z-0">
+        <span className="absolute left-6 top-5 text-xl text-green-400/10 animate-[floatSymbol1_6s_ease-in-out_infinite]">
+          +
+        </span>
+        <span className="absolute right-10 top-9 text-2xl text-green-400/10 animate-[floatSymbol2_7s_ease-in-out_infinite]">
+          ×
+        </span>
+        <span className="absolute bottom-7 left-10 text-xl text-green-400/10 animate-[floatSymbol3_8s_ease-in-out_infinite]">
+          ÷
+        </span>
+        <span className="absolute bottom-10 right-8 text-xl text-green-400/10 animate-[floatSymbol2_7s_ease-in-out_infinite]">
+          −
+        </span>
+        <span className="absolute left-1/2 top-1/2 text-3xl text-green-400/5 animate-[floatSymbol1_6s_ease-in-out_infinite]">
+          =
+        </span>
+      </div>
+
+      <div className="relative z-10">
+        <LibraryToolCard
+          title={title}
+          subtitle={subtitle}
+          description={description}
+          status="Live"
+        />
       </div>
     </div>
   )
@@ -195,84 +237,79 @@ function CommunityPanel() {
 }
 
 export default function CalculatorsChartsConversionsPage() {
+  const navigate = useNavigate()
+
   return (
     <div className="min-h-screen bg-black text-white">
+      <style>{`
+        @keyframes floatSymbol1 {
+          0% { transform: translateY(0px); opacity: 0.08; }
+          50% { transform: translateY(-6px); opacity: 0.15; }
+          100% { transform: translateY(0px); opacity: 0.08; }
+        }
+
+        @keyframes floatSymbol2 {
+          0% { transform: translateY(0px); opacity: 0.06; }
+          50% { transform: translateY(6px); opacity: 0.12; }
+          100% { transform: translateY(0px); opacity: 0.06; }
+        }
+
+        @keyframes floatSymbol3 {
+          0% { transform: translateX(0px); opacity: 0.07; }
+          50% { transform: translateX(6px); opacity: 0.14; }
+          100% { transform: translateX(0px); opacity: 0.07; }
+        }
+      `}</style>
+
       <Navbar />
 
       <main className="relative overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(34,197,94,0.14),transparent_22%),radial-gradient(circle_at_top_left,rgba(255,255,255,0.04),transparent_18%)]" />
-          <div className="absolute inset-0 opacity-[0.06] bg-[linear-gradient(rgba(34,197,94,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,0.12)_1px,transparent_1px)] bg-[size:32px_32px]" />
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <video
+            className="absolute inset-0 h-full w-full object-cover"
+            autoPlay
+            muted
+            loop
+            playsInline
+          >
+            <source src={HERO_VIDEO_SRC} type="video/mp4" />
+          </video>
+
+          <div className="absolute inset-0 bg-black/72" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(34,197,94,0.18),transparent_32%),linear-gradient(to_bottom,rgba(0,0,0,0.2),rgba(0,0,0,0.88))]" />
+        </div>
+
+        <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(34,197,94,0.12),transparent_22%),radial-gradient(circle_at_top_left,rgba(255,255,255,0.03),transparent_18%)]" />
+          <div className="absolute inset-0 opacity-[0.05] bg-[linear-gradient(rgba(34,197,94,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,0.12)_1px,transparent_1px)] bg-[size:32px_32px]" />
           <div className="absolute -left-20 top-[-3rem] h-72 w-72 rounded-full bg-green-500/12 blur-[110px]" />
           <div className="absolute right-[-5rem] top-[2rem] h-80 w-80 rounded-full bg-green-400/10 blur-[130px]" />
         </div>
 
         <section className="relative z-10 border-b border-white/10">
-          <div className="mx-auto max-w-7xl px-6 py-20">
-            <div className="relative overflow-hidden rounded-[2rem] border border-green-500/20 bg-black/65 px-6 py-14 shadow-[0_0_40px_rgba(34,197,94,0.08)] md:px-10 md:py-18">
-              <div className="absolute inset-0 opacity-[0.08] bg-[linear-gradient(rgba(34,197,94,0.14)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,0.14)_1px,transparent_1px)] bg-[size:30px_30px]" />
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(34,197,94,0.12),transparent_22%),radial-gradient(circle_at_85%_25%,rgba(255,255,255,0.04),transparent_20%)]" />
-              <div className="absolute -left-10 top-0 h-28 w-28 rounded-full bg-green-500/14 blur-3xl" />
-              <div className="absolute bottom-0 right-0 h-32 w-32 rounded-full bg-green-400/10 blur-[90px]" />
+          <div className="mx-auto max-w-7xl px-6 pb-16 pt-20">
+            <div className="mx-auto max-w-5xl rounded-[2rem] bg-black/55 px-6 py-10 text-center backdrop-blur-[2px] md:px-10 md:py-12">
+              <p className="text-sm font-semibold uppercase tracking-[0.30em] text-green-400">
+                ― Current Location ―
+              </p>
 
-              <div className="relative mx-auto max-w-5xl text-center">
-                <p className="text-sm font-semibold uppercase tracking-[0.30em] text-green-400">
-                  ― Knowledge Library ―
-                </p>
+              <h1 className="mt-5 text-4xl font-black leading-tight text-white md:text-6xl">
+                Calculators, Charts & Conversions
+              </h1>
 
-                <h1 className="mt-5 text-4xl font-black leading-tight text-white md:text-6xl">
-                  Calculators, Charts & Conversions
-                </h1>
+              <p className="mx-auto mt-6 max-w-3xl text-base leading-8 text-white/72 md:text-lg">
+                A structured reference hub for everyday-use math, quick utilities,
+                common charts, and practical conversions. Designed to grow into a larger
+                connected industrial knowledge system over time.
+              </p>
 
-                <p className="mx-auto mt-6 max-w-3xl text-base leading-8 text-white/72 md:text-lg">
-                  A structured reference hub for everyday-use shop math, quick utilities,
-                  common charts, and practical conversions. Designed to grow into a larger
-                  connected industrial knowledge system over time.
-                </p>
-
-                <div className="mt-8 flex flex-wrap justify-center gap-3">
-                  <div className="rounded-full border border-green-400/20 bg-green-500/[0.06] px-4 py-2 text-xs font-semibold uppercase tracking-[0.20em] text-green-300">
-                    Calculators
-                  </div>
-                  <div className="rounded-full border border-green-400/20 bg-green-500/[0.06] px-4 py-2 text-xs font-semibold uppercase tracking-[0.20em] text-green-300">
-                    Charts
-                  </div>
-                  <div className="rounded-full border border-green-400/20 bg-green-500/[0.06] px-4 py-2 text-xs font-semibold uppercase tracking-[0.20em] text-green-300">
-                    Conversions
-                  </div>
-                  <div className="rounded-full border border-green-400/20 bg-green-500/[0.06] px-4 py-2 text-xs font-semibold uppercase tracking-[0.20em] text-green-300">
-                    Linked References
-                  </div>
-                </div>
+              <div className="mt-10 flex flex-wrap justify-center gap-3">
+                <QuickNavCard href="#calculators" title="Calculators" />
+                <QuickNavCard href="#charts" title="Charts" />
+                <QuickNavCard href="#conversions" title="Conversions" />
+                <QuickNavCard href="#related-topics" title="Related Topics" />
+                <QuickNavCard href="#community" title="Discussion" />
               </div>
-            </div>
-
-            <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-5">
-              <QuickNavCard
-                href="#calculators"
-                title="Calculators"
-                text="Utility tools for fast job-site and office math."
-              />
-              <QuickNavCard
-                href="#charts"
-                title="Charts"
-                text="Curated common-use reference charts and lookup tools."
-              />
-              <QuickNavCard
-                href="#conversions"
-                title="Conversions"
-                text="Everyday measurement and unit conversions."
-              />
-              <QuickNavCard
-                href="#related-topics"
-                title="Related Topics"
-                text="Connected pages and future library expansion paths."
-              />
-              <QuickNavCard
-                href="#community"
-                title="Discussion"
-                text="Future community notes, examples, and field contributions."
-              />
             </div>
           </div>
         </section>
@@ -281,16 +318,20 @@ export default function CalculatorsChartsConversionsPage() {
           <SectionHeader
             id="calculators"
             eyebrow="― Calculators ―"
-            title="Tool slots for practical everyday use"
-            description="This section is meant to hold the most common everyday-use calculators that professionals reach for again and again. Start with the highest value utilities first, then keep expanding with targeted tools over time."
+            title="Tools for practical everyday use"
+            description="This section is for holding the most common everyday-use calculators that professionals reach for agian and again."
           />
 
           <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            <LibraryToolCard
+            <LiveMathToolCard
+              onClick={() =>
+                navigate('/knowledge-library/calculators-charts-conversions/shop-math-calculator')
+              }
               title="Shop Math Calculator"
               subtitle="Core Utility"
               description="A future slot for quick arithmetic, percentage, ratio, and common work math used throughout fabrication, production, and operations."
             />
+
             <LibraryToolCard
               title="Material Weight Calculator"
               subtitle="Reference Utility"
