@@ -10,9 +10,9 @@ export default defineConfig({
     Sitemap({
       hostname: 'https://runtwerkx.com',
       dynamicRoutes: [
-        '/',
         '/file-router',
         '/aegisone',
+        '/knowledge-library',
       ],
     }),
   ],
