@@ -347,14 +347,14 @@ export default function CalculatorsChartsConversionsPage() {
               </h1>
 
               <p className="mx-auto mt-6 max-w-3xl text-base leading-8 text-white/72 md:text-lg">
-                A structured reference hub for everyday-use math, quick utilities,
+                A structured reference hub for math, quick utilities,
                 common charts, and practical conversions. Designed to grow into a larger
                 connected industrial knowledge system over time.
               </p>
 
               <p className="mx-auto mt-6 max-w-4xl text-base leading-8 text-white/60">
                 Explore industrial calculators, charts, and conversion tools built
-                for practical day-to-day use. This section connects shop math,
+                for day-to-day use. This section connects shop math,
                 material weight calculations, common reference charts, and
                 future conversion tools into one growing RuntWerkx knowledge system.
               </p>
@@ -375,7 +375,7 @@ export default function CalculatorsChartsConversionsPage() {
             id="calculators"
             eyebrow="― Calculators ―"
             title="Tools for practical everyday use"
-            description="This section holds the most common everyday-use calculators that professionals reach for agian and again."
+            description="This section holds the most common calculators that professionals reach for agian and again."
           />
 
           <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
@@ -550,7 +550,7 @@ export default function CalculatorsChartsConversionsPage() {
               </h2>
               <p className="mt-5 text-base leading-8 text-white/68">
                 This calculators, charts, and conversions section is built to
-                support practical everyday work. It already includes a shop math
+                support everyday work. It already includes a shop math
                 calculator and a material weight calculator, and it is designed
                 to expand into a broader system of industrial reference tools,
                 conversion utilities, fabrication support pages, and connected

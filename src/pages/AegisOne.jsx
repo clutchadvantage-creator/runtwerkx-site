@@ -1,5 +1,23 @@
 import { useEffect, useMemo, useState } from 'react'
+import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
+
+const AEGISONE_PREORDER_LINKS = {
+  bronze: 'https://buy.stripe.com/00wfZhcLsgoc5kj0pu4ZG05',
+  silver: 'https://buy.stripe.com/28E7sL4eW5JydQPegk4ZG04',
+  gold: 'https://buy.stripe.com/cNi8wPh1I8VK3cba044ZG03',
+}
+
+const AEGISONE_BILLING = {
+  portal: 'https://billing.stripe.com/YOUR_PORTAL_LINK',
+}
+
+function mailtoLink(subject, body = '') {
+  const params = new URLSearchParams()
+  params.set('subject', subject)
+  if (body) params.set('body', body)
+  return `mailto:runtwerkx.dev@gmail.com?${params.toString()}`
+}
 
 function ModuleSection({ module, reverse = false, featured = false }) {
   return (
@@ -58,9 +76,15 @@ function MicroCTA() {
           Get a walkthrough of the platform and how it fits into your workflow.
         </p>
 
-        <button className="mt-6 rounded-xl bg-green-500 px-6 py-3 font-semibold text-black transition hover:scale-[1.03]">
+        <a
+          href={mailtoLink(
+            'AegisOne Demo Request',
+            'Hello RuntWerkx,%0D%0A%0D%0AI would like to request an AegisOne demo.'
+          )}
+          className="mt-6 inline-flex rounded-xl bg-green-500 px-6 py-3 font-semibold text-black transition hover:scale-[1.03]"
+        >
           Request Demo →
-        </button>
+        </a>
       </div>
     </div>
   )
@@ -259,6 +283,355 @@ function SafetyCommitmentSection() {
   )
 }
 
+function AegisOnePreorderSection() {
+  return (
+    <section className="border-t border-white/10 bg-black">
+      <div className="mx-auto max-w-7xl px-6 py-24">
+        <div className="mx-auto max-w-4xl text-center">
+          <p className="text-sm uppercase tracking-[0.3em] text-green-400">
+            ― Founder Pre-Orders ―
+          </p>
+
+          <h2 className="mt-4 text-4xl font-bold md:text-5xl">
+            Reserve early access to AegisOne
+          </h2>
+
+          <p className="mt-6 text-white/70 max-w-3xl mx-auto leading-8">
+            AegisOne is currently in development. Founder pre-orders help support development
+            and secure priority access to install packages when the platform is ready.
+          </p>
+
+          <p className="mt-4 text-sm text-white/50 max-w-3xl mx-auto leading-7">
+            Founder supporters will be the first to receive AegisOne install packages and
+            their version of the platform will include a permanent Founder watermark badge.
+          </p>
+        </div>
+
+        <div className="mt-14 grid gap-8 md:grid-cols-4">
+          <div className="rounded-3xl border border-[#cd7f32]/30 bg-black/60 p-8 text-center transition hover:shadow-[0_0_24px_rgba(205,127,50,0.14)]">
+            <div className="text-[#cd7f32] text-sm uppercase tracking-[0.2em]">
+              Bronze Founder
+            </div>
+
+            <div className="mt-4 text-4xl font-bold text-white">$250</div>
+
+            <p className="mt-4 text-sm leading-7 text-white/65">
+              Early project support for AegisOne development with priority access
+              to install packages at launch.
+            </p>
+
+            <ul className="mt-6 space-y-2 text-sm text-white/70">
+              <li>✔ Bronze Founder Watermark</li>
+              <li>✔ Early Access Queue</li>
+              <li>✔ Priority Install Delivery</li>
+            </ul>
+
+            <a
+              href={AEGISONE_PREORDER_LINKS.bronze}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-8 inline-flex w-full items-center justify-center rounded-2xl bg-[#cd7f32] px-6 py-3 font-semibold text-black transition hover:scale-[1.02]"
+            >
+              Pre-Order Bronze
+            </a>
+          </div>
+
+          <div className="rounded-3xl border border-[#c0c0c0]/30 bg-black/60 p-8 text-center transition hover:shadow-[0_0_24px_rgba(192,192,192,0.12)]">
+            <div className="text-[#c0c0c0] text-sm uppercase tracking-[0.2em]">
+              Silver Founder
+            </div>
+
+            <div className="mt-4 text-4xl font-bold text-white">$500</div>
+
+            <p className="mt-4 text-sm leading-7 text-white/65">
+              Stronger early support tier with higher priority access when AegisOne
+              is ready for rollout.
+            </p>
+
+            <ul className="mt-6 space-y-2 text-sm text-white/70">
+              <li>✔ Silver Founder Watermark</li>
+              <li>✔ Higher Priority Access</li>
+              <li>✔ Early Install Delivery</li>
+            </ul>
+
+            <a
+              href={AEGISONE_PREORDER_LINKS.silver}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-8 inline-flex w-full items-center justify-center rounded-2xl bg-[#c0c0c0] px-6 py-3 font-semibold text-black transition hover:scale-[1.02]"
+            >
+              Pre-Order Silver
+            </a>
+          </div>
+
+          <div className="rounded-3xl border border-[#d4af37]/30 bg-black/70 p-8 text-center transition hover:shadow-[0_0_24px_rgba(212,175,55,0.16)]">
+            <div className="flex items-center justify-center gap-2">
+              <div className="text-[#d4af37] text-sm uppercase tracking-[0.2em]">
+                Gold Founder
+              </div>
+              <span className="rounded-full border border-[#d4af37]/30 px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#d4af37]">
+                Top Tier
+              </span>
+            </div>
+
+            <div className="mt-4 text-4xl font-bold text-white">$1000</div>
+
+            <p className="mt-4 text-sm leading-7 text-white/65">
+              Highest early support tier with first priority for install packages
+              and the most premium founder designation.
+            </p>
+
+            <ul className="mt-6 space-y-2 text-sm text-white/70">
+              <li>✔ Gold Founder Watermark</li>
+              <li>✔ Highest Priority Access</li>
+              <li>✔ First Install Releases</li>
+            </ul>
+
+            <a
+              href={AEGISONE_PREORDER_LINKS.gold}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-8 inline-flex w-full items-center justify-center rounded-2xl bg-[#d4af37] px-6 py-3 font-semibold text-black transition hover:scale-[1.02]"
+            >
+              Pre-Order Gold
+            </a>
+          </div>
+
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-8 text-center transition hover:border-green-400/35 hover:shadow-[0_0_20px_rgba(34,197,94,0.12)]">
+            <h3 className="text-xl font-bold text-green-400">~In The Know~</h3>
+
+            <p className="mt-4 text-sm leading-7 text-white/70">
+              AegisOne is currently in active development and Founder pre-orders
+              help support the build as it moves toward launch.
+            </p>
+
+            <p className="mt-4 text-sm leading-7 text-white/70">
+              Founder supporters will be first in line for install packages and
+              will receive a Founder badge watermark inside their app version.
+            </p>
+
+            <p className="mt-4 text-sm leading-7 text-white/70">
+              Billing, support, cancellations, and founder questions can be handled
+              through the billing portal and support links below.
+            </p>
+
+            <a
+              href={AEGISONE_BILLING.portal}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex items-center justify-center rounded-2xl border border-green-400/30 px-4 py-2 text-sm font-semibold text-green-300 transition hover:border-green-300 hover:text-green-200"
+            >
+              Manage Billing
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function AegisOneFooter() {
+  return (
+    <section className="border-t border-white/10 bg-black">
+      <div className="mx-auto max-w-7xl px-6 py-20">
+        <div className="mb-12 mx-auto max-w-4xl text-center">
+          <p className="text-sm uppercase tracking-[0.3em] text-green-400">
+            ― AegisOne ―
+          </p>
+          <h2 className="mt-3 text-3xl font-bold md:text-4xl">
+            Enterprise safety management built for real operations
+          </h2>
+          <p className="mx-auto mt-4 max-w-3xl text-white/70">
+            AegisOne is designed to bring incidents, inspections, corrective actions,
+            training visibility, and operational safety intelligence into one connected system.
+          </p>
+        </div>
+
+        <div className="grid gap-10 border-t border-white/10 pt-12 md:grid-cols-2 lg:grid-cols-4">
+          <div className="text-center md:text-left">
+            <h3 className="text-lg font-bold text-white">AegisOne</h3>
+            <p className="mt-4 text-sm leading-7 text-white/65">
+              A connected industrial safety management platform designed for visibility,
+              accountability, follow-up, and stronger operational control.
+            </p>
+
+            <div className="mt-5 flex flex-wrap justify-center gap-3 md:justify-start">
+              <a
+                href={mailtoLink(
+                  'AegisOne Demo Request',
+                  'Hello RuntWerkx,%0D%0A%0D%0AI would like to request a demo of AegisOne.'
+                )}
+                className="inline-flex rounded-2xl bg-green-500 px-5 py-3 text-sm font-semibold text-black transition hover:scale-[1.02]"
+              >
+                Request Demo
+              </a>
+
+              <a
+                href={mailtoLink(
+                  'AegisOne Information Request',
+                  'Hello RuntWerkx,%0D%0A%0D%0AI would like more information about AegisOne.'
+                )}
+                className="inline-flex rounded-2xl border border-white/15 px-5 py-3 text-sm font-semibold text-white/85 transition hover:border-green-400 hover:text-green-400"
+              >
+                Request Info
+              </a>
+            </div>
+          </div>
+
+          <div className="text-center md:text-left">
+            <h4 className="text-sm uppercase tracking-[0.2em] text-green-400">
+              Founder Access
+            </h4>
+            <div className="mt-4 flex flex-col gap-3 text-sm text-white/70">
+              <a
+                href={AEGISONE_PREORDER_LINKS.bronze}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition hover:text-green-400"
+              >
+                Bronze Founder Pre-Order
+              </a>
+              <a
+                href={AEGISONE_PREORDER_LINKS.silver}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition hover:text-green-400"
+              >
+                Silver Founder Pre-Order
+              </a>
+              <a
+                href={AEGISONE_PREORDER_LINKS.gold}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition hover:text-green-400"
+              >
+                Gold Founder Pre-Order
+              </a>
+              <a href="#top" className="transition hover:text-green-400">
+                Platform Overview
+              </a>
+            </div>
+          </div>
+
+          <div className="text-center md:text-left">
+            <h4 className="text-sm uppercase tracking-[0.2em] text-green-400">
+              Customer Tools
+            </h4>
+            <div className="mt-4 flex flex-col gap-3 text-sm text-white/70">
+              <a
+                href={AEGISONE_BILLING.portal}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition hover:text-green-400"
+              >
+                Manage Billing
+              </a>
+              <a
+                href={AEGISONE_BILLING.portal}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition hover:text-green-400"
+              >
+                Billing Portal
+              </a>
+              <a
+                href={AEGISONE_BILLING.portal}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition hover:text-green-400"
+              >
+                Cancel / Billing Access
+              </a>
+              <a
+                href={mailtoLink(
+                  'AegisOne Founder Support Request',
+                  'Hello RuntWerkx,%0D%0A%0D%0AI need support related to my AegisOne founder pre-order.'
+                )}
+                className="transition hover:text-green-400"
+              >
+                Founder Support
+              </a>
+            </div>
+          </div>
+
+          <div className="text-center md:text-left">
+            <h4 className="text-sm uppercase tracking-[0.2em] text-green-400">
+              Resources
+            </h4>
+            <div className="mt-4 flex flex-col gap-3 text-sm text-white/70">
+              <a
+                href={mailtoLink(
+                  'AegisOne Documentation Request',
+                  'Hello RuntWerkx,%0D%0A%0D%0AI would like documentation or rollout updates for AegisOne.'
+                )}
+                className="transition hover:text-green-400"
+              >
+                Documentation / Rollout Updates
+              </a>
+              <a
+                href={mailtoLink(
+                  'AegisOne General Inquiry',
+                  'Hello RuntWerkx,%0D%0A%0D%0AI have a general question about AegisOne.'
+                )}
+                className="transition hover:text-green-400"
+              >
+                General Inquiry
+              </a>
+              <Link to="/knowledge-library" className="transition hover:text-green-400">
+                Knowledge Library
+              </Link>
+              <Link to="/file-router" className="transition hover:text-green-400">
+                File Router
+              </Link>
+              <Link to="/" className="transition hover:text-green-400">
+                Back to Home
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-12 border-t border-white/10 pt-6">
+          <div className="flex flex-col gap-3 text-center md:flex-row md:items-center md:justify-between md:text-left">
+            <p className="text-xs uppercase tracking-[0.18em] text-white/35">
+              RuntWerkx Systems ― AegisOne ― Built for Industry
+            </p>
+
+            <div className="flex flex-wrap justify-center gap-4 text-xs uppercase tracking-[0.18em] text-white/35 md:justify-end">
+              <a
+                href={mailtoLink('AegisOne Privacy Question')}
+                className="transition hover:text-green-400"
+              >
+                Privacy
+              </a>
+              <a
+                href={mailtoLink('AegisOne Terms Question')}
+                className="transition hover:text-green-400"
+              >
+                Terms
+              </a>
+              <a
+                href={mailtoLink('AegisOne Cancellation Question')}
+                className="transition hover:text-green-400"
+              >
+                Cancellation
+              </a>
+              <a
+                href={mailtoLink('AegisOne Support Request')}
+                className="transition hover:text-green-400"
+              >
+                Support
+              </a>
+              <a href="tel:4179887395" className="transition hover:text-green-400">
+                Call
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 export default function AegisOne() {
   const [parallaxY, setParallaxY] = useState(0)
 
@@ -336,7 +709,7 @@ export default function AegisOne() {
     <div className="min-h-screen bg-black text-white">
       <Navbar />
 
-      <main className="relative overflow-hidden">
+      <main className="relative overflow-hidden" id="top">
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(34,197,94,0.18),transparent_22%),radial-gradient(circle_at_top_left,rgba(255,255,255,0.05),transparent_18%)]" />
           <div className="absolute inset-0 opacity-[0.08] bg-[linear-gradient(rgba(34,197,94,0.18)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,0.18)_1px,transparent_1px)] bg-[size:42px_42px]" />
@@ -398,7 +771,10 @@ export default function AegisOne() {
         </section>
 
         <SafetyCommitmentSection />
+        <AegisOnePreorderSection />
       </main>
+
+      <AegisOneFooter />
 
       <style>{`
         @keyframes fadeUp {
