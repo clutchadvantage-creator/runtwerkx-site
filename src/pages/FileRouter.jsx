@@ -255,7 +255,6 @@ function FaqFerrisWheel() {
   return (
     <div className="relative mx-auto h-[720px] max-w-6xl overflow-hidden md:h-[760px]">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,197,94,0.08),transparent_48%)]" />
-
       <div className="absolute left-1/2 top-[52%] h-[620px] w-[620px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.03),transparent_62%)]" />
 
       <div
@@ -489,7 +488,8 @@ function FileRouterUseCasesInteractive() {
 
             <circle cx="400" cy="400" r="34" fill="url(#coreGlow)" />
 
-            {items.map((item, index) => {
+            {items.map((item) => {
+              const index = items.findIndex((x) => x.id === item.id)
               const angle = (index / items.length) * Math.PI * 2 - Math.PI / 2
               const x1 = 400 + Math.cos(angle) * innerRadius
               const y1 = 400 + Math.sin(angle) * innerRadius
@@ -504,11 +504,7 @@ function FileRouterUseCasesInteractive() {
                     y1={y1}
                     x2={x2}
                     y2={y2}
-                    stroke={
-                      isActive
-                        ? 'rgba(74, 222, 128, 0.7)'
-                        : 'rgba(255,255,255,0.08)'
-                    }
+                    stroke={isActive ? 'rgba(74, 222, 128, 0.7)' : 'rgba(255,255,255,0.08)'}
                     strokeWidth={isActive ? '2.5' : '1.2'}
                     strokeLinecap="round"
                   />
@@ -568,9 +564,7 @@ function FileRouterUseCasesInteractive() {
                     <div
                       className={[
                         'h-2.5 w-2.5 rounded-full transition',
-                        isActive
-                          ? 'bg-green-400 shadow-[0_0_14px_rgba(34,197,94,0.95)]'
-                          : 'bg-white/25',
+                        isActive ? 'bg-green-400 shadow-[0_0_14px_rgba(34,197,94,0.95)]' : 'bg-white/25',
                       ].join(' ')}
                     />
                   </div>
@@ -584,9 +578,7 @@ function FileRouterUseCasesInteractive() {
                     {item.title}
                   </h3>
 
-                  <p className="mt-2 text-xs leading-5 text-white/60">
-                    {item.short}
-                  </p>
+                  <p className="mt-2 text-xs leading-5 text-white/60">{item.short}</p>
                 </div>
               </button>
             )
@@ -612,9 +604,7 @@ function FileRouterUseCasesInteractive() {
             ― Selected Workflow ―
           </p>
 
-          <h3 className="mt-4 text-3xl font-bold text-white">
-            {activeItem.title}
-          </h3>
+          <h3 className="mt-4 text-3xl font-bold text-white">{activeItem.title}</h3>
 
           <p className="mx-auto mt-4 max-w-xl text-base leading-8 text-white/70">
             {activeItem.description}
@@ -1157,10 +1147,7 @@ export default function FileRouter() {
                   <a href="#workflow" className="transition hover:text-green-400">
                     How It Works
                   </a>
-                  <a
-                    href="#screenshots"
-                    className="transition hover:text-green-400"
-                  >
+                  <a href="#screenshots" className="transition hover:text-green-400">
                     Screenshots
                   </a>
                   <a
@@ -1272,10 +1259,7 @@ export default function FileRouter() {
                   >
                     General Inquiry
                   </a>
-                  <Link
-                    to="/"
-                    className="transition hover:text-green-400"
-                  >
+                  <Link to="/" className="transition hover:text-green-400">
                     Back to Home
                   </Link>
                 </div>
@@ -1297,18 +1281,12 @@ export default function FileRouter() {
                   >
                     Manage Subscription
                   </a>
-                  <a
-                    href={mailtoLink('Privacy Question')}
-                    className="transition hover:text-green-400"
-                  >
+                  <Link to="/privacy" className="transition hover:text-green-400">
                     Privacy
-                  </a>
-                  <a
-                    href={mailtoLink('Terms Question')}
-                    className="transition hover:text-green-400"
-                  >
+                  </Link>
+                  <Link to="/terms" className="transition hover:text-green-400">
                     Terms
-                  </a>
+                  </Link>
                   <a
                     href={mailtoLink('Cancellation Question')}
                     className="transition hover:text-green-400"

@@ -698,18 +698,12 @@ function AegisOneFooter() {
             </p>
 
             <div className="flex flex-wrap justify-center gap-4 text-xs uppercase tracking-[0.18em] text-white/35 md:justify-end">
-              <a
-                href={mailtoLink('AegisOne Privacy Question')}
-                className="transition hover:text-green-400"
-              >
+              <Link to="/privacy" className="transition hover:text-green-400">
                 Privacy
-              </a>
-              <a
-                href={mailtoLink('AegisOne Terms Question')}
-                className="transition hover:text-green-400"
-              >
+              </Link>
+              <Link to="/terms" className="transition hover:text-green-400">
                 Terms
-              </a>
+              </Link>
               <a
                 href={mailtoLink('AegisOne Cancellation Question')}
                 className="transition hover:text-green-400"
