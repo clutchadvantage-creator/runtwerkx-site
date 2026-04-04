@@ -2,7 +2,7 @@ import Navbar from '../../components/Navbar'
 import { useNavigate, Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 
-const HERO_VIDEO_SRC = '/videos/calcs-conversions-hero.mp4'
+const HERO_VIDEO_SRC = '/videos/calcs-conversions-hero2.mp4'
 const PAGE_URL =
   'https://runtwerkx.com/knowledge-library/calculators-charts-conversions'
 
@@ -385,7 +385,7 @@ export default function CalculatorsChartsConversionsPage() {
               }
               title="Shop Math Calculator"
               subtitle="Core Utility"
-              description="A future slot for quick arithmetic, percentage, ratio, and common work math used throughout fabrication, production, and operations."
+              description="A slot for quick arithmetic, percentage, ratio, and common work math used throughout fabrication, production, and operations."
             />
 
             <LiveMathToolCard
