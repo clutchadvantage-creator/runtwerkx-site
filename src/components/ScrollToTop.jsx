@@ -5,15 +5,17 @@ export default function ScrollToTop() {
   const { pathname, hash } = useLocation()
 
   useEffect(() => {
-    if (hash) return
+    requestAnimationFrame(() => {
+      if (hash) {
+        const el = document.querySelector(hash)
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' })
+          return
+        }
+      }
 
-    window.scrollTo(0, 0)
-
-    const id = setTimeout(() => {
-      window.scrollTo(0, 0)
-    }, 0)
-
-    return () => clearTimeout(id)
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+    })
   }, [pathname, hash])
 
   return null
