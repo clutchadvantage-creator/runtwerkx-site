@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { capabilityCards, preorderLinks } from '../../data/homeContent'
-import { openExternalOrLog } from '../../utils/homeUtils'
+import { capabilityCards } from '../../data/homeContent'
 
 function OperationalImpactField() {
   const impactPoints = [
@@ -564,7 +563,7 @@ export default function ModernSystemsSection() {
 
                   <button
                     type="button"
-                    onClick={() => openExternalOrLog(preorderLinks.aegisone)}
+                    onClick={() => navigate('/aegisone#founders')}
                     className="absolute left-1/2 top-48 -translate-x-1/2 rounded-full border border-green-400/30 bg-black/55 px-4 py-2 text-center text-[10px] font-semibold uppercase tracking-[0.24em] text-green-300 backdrop-blur transition hover:scale-[1.05] hover:border-green-300 hover:text-green-200"
                   >
                     SIGN UP FOR PRE-ORDERS HERE

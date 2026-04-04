@@ -283,146 +283,157 @@ function SafetyCommitmentSection() {
   )
 }
 
-function AegisOnePreorderSection() {
+function AegisOnePreorderSection({ isHighlighted = false }) {
   return (
-    <section className="border-t border-white/10 bg-black">
+    <section
+      id="founders"
+      className="border-t border-white/10 bg-black scroll-mt-28"
+    >
       <div className="mx-auto max-w-7xl px-6 py-24">
-        <div className="mx-auto max-w-4xl text-center">
-          <p className="text-sm uppercase tracking-[0.3em] text-green-400">
-            ― Founder Pre-Orders ―
-          </p>
-
-          <h2 className="mt-4 text-4xl font-bold md:text-5xl">
-            Reserve early access to AegisOne
-          </h2>
-
-          <p className="mt-6 text-white/70 max-w-3xl mx-auto leading-8">
-            AegisOne is currently in development. Founder pre-orders help support development
-            and secure priority access to install packages when the platform is ready.
-          </p>
-
-          <p className="mt-4 text-sm text-white/50 max-w-3xl mx-auto leading-7">
-            Founder supporters will be the first to receive AegisOne install packages and
-            their version of the platform will include a permanent Founder watermark badge.
-          </p>
-        </div>
-
-        <div className="mt-14 grid gap-8 md:grid-cols-4">
-          <div className="rounded-3xl border border-[#cd7f32]/30 bg-black/60 p-8 text-center transition hover:shadow-[0_0_24px_rgba(205,127,50,0.14)]">
-            <div className="text-[#cd7f32] text-sm uppercase tracking-[0.2em]">
-              Bronze Founder
-            </div>
-
-            <div className="mt-4 text-4xl font-bold text-white">$250</div>
-
-            <p className="mt-4 text-sm leading-7 text-white/65">
-              Early project support for AegisOne development with priority access
-              to install packages at launch.
+        <div
+          className={`mx-auto rounded-[2rem] border px-6 py-10 transition-all duration-700 md:px-10 ${
+            isHighlighted
+              ? 'border-green-400/45 bg-green-500/[0.04] shadow-[0_0_40px_rgba(34,197,94,0.16)]'
+              : 'border-transparent bg-transparent shadow-none'
+          }`}
+        >
+          <div className="mx-auto max-w-4xl text-center">
+            <p className="text-sm uppercase tracking-[0.3em] text-green-400">
+              ― Founder Pre-Orders ―
             </p>
 
-            <ul className="mt-6 space-y-2 text-sm text-white/70">
-              <li>✔ Bronze Founder Watermark</li>
-              <li>✔ Early Access Queue</li>
-              <li>✔ Priority Install Delivery</li>
-            </ul>
+            <h2 className="mt-4 text-4xl font-bold md:text-5xl">
+              Reserve early access to AegisOne
+            </h2>
 
-            <a
-              href={AEGISONE_PREORDER_LINKS.bronze}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-8 inline-flex w-full items-center justify-center rounded-2xl bg-[#cd7f32] px-6 py-3 font-semibold text-black transition hover:scale-[1.02]"
-            >
-              Pre-Order Bronze
-            </a>
-          </div>
-
-          <div className="rounded-3xl border border-[#c0c0c0]/30 bg-black/60 p-8 text-center transition hover:shadow-[0_0_24px_rgba(192,192,192,0.12)]">
-            <div className="text-[#c0c0c0] text-sm uppercase tracking-[0.2em]">
-              Silver Founder
-            </div>
-
-            <div className="mt-4 text-4xl font-bold text-white">$500</div>
-
-            <p className="mt-4 text-sm leading-7 text-white/65">
-              Stronger early support tier with higher priority access when AegisOne
-              is ready for rollout.
+            <p className="mt-6 text-white/70 max-w-3xl mx-auto leading-8">
+              AegisOne is currently in development. Founder pre-orders help support development
+              and secure priority access to install packages when the platform is ready.
             </p>
 
-            <ul className="mt-6 space-y-2 text-sm text-white/70">
-              <li>✔ Silver Founder Watermark</li>
-              <li>✔ Higher Priority Access</li>
-              <li>✔ Early Install Delivery</li>
-            </ul>
-
-            <a
-              href={AEGISONE_PREORDER_LINKS.silver}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-8 inline-flex w-full items-center justify-center rounded-2xl bg-[#c0c0c0] px-6 py-3 font-semibold text-black transition hover:scale-[1.02]"
-            >
-              Pre-Order Silver
-            </a>
+            <p className="mt-4 text-sm text-white/50 max-w-3xl mx-auto leading-7">
+              Founder supporters will be the first to receive AegisOne install packages and
+              their version of the platform will include a permanent Founder watermark badge.
+            </p>
           </div>
 
-          <div className="rounded-3xl border border-[#d4af37]/30 bg-black/70 p-8 text-center transition hover:shadow-[0_0_24px_rgba(212,175,55,0.16)]">
-            <div className="flex items-center justify-center gap-2">
-              <div className="text-[#d4af37] text-sm uppercase tracking-[0.2em]">
-                Gold Founder
+          <div className="mt-14 grid gap-8 md:grid-cols-4">
+            <div className="rounded-3xl border border-[#cd7f32]/30 bg-black/60 p-8 text-center transition hover:shadow-[0_0_24px_rgba(205,127,50,0.14)]">
+              <div className="text-[#cd7f32] text-sm uppercase tracking-[0.2em]">
+                Bronze Founder
               </div>
-              <span className="rounded-full border border-[#d4af37]/30 px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#d4af37]">
-                Top Tier
-              </span>
+
+              <div className="mt-4 text-4xl font-bold text-white">$250</div>
+
+              <p className="mt-4 text-sm leading-7 text-white/65">
+                Early project support for AegisOne development with priority access
+                to install packages at launch.
+              </p>
+
+              <ul className="mt-6 space-y-2 text-sm text-white/70">
+                <li>✔ Bronze Founder Watermark</li>
+                <li>✔ Early Access Queue</li>
+                <li>✔ Priority Install Delivery</li>
+              </ul>
+
+              <a
+                href={AEGISONE_PREORDER_LINKS.bronze}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-8 inline-flex w-full items-center justify-center rounded-2xl bg-[#cd7f32] px-6 py-3 font-semibold text-black transition hover:scale-[1.02]"
+              >
+                Pre-Order Bronze
+              </a>
             </div>
 
-            <div className="mt-4 text-4xl font-bold text-white">$1000</div>
+            <div className="rounded-3xl border border-[#c0c0c0]/30 bg-black/60 p-8 text-center transition hover:shadow-[0_0_24px_rgba(192,192,192,0.12)]">
+              <div className="text-[#c0c0c0] text-sm uppercase tracking-[0.2em]">
+                Silver Founder
+              </div>
 
-            <p className="mt-4 text-sm leading-7 text-white/65">
-              Highest early support tier with first priority for install packages
-              and the most premium founder designation.
-            </p>
+              <div className="mt-4 text-4xl font-bold text-white">$500</div>
 
-            <ul className="mt-6 space-y-2 text-sm text-white/70">
-              <li>✔ Gold Founder Watermark</li>
-              <li>✔ Highest Priority Access</li>
-              <li>✔ First Install Releases</li>
-            </ul>
+              <p className="mt-4 text-sm leading-7 text-white/65">
+                Stronger early support tier with higher priority access when AegisOne
+                is ready for rollout.
+              </p>
 
-            <a
-              href={AEGISONE_PREORDER_LINKS.gold}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-8 inline-flex w-full items-center justify-center rounded-2xl bg-[#d4af37] px-6 py-3 font-semibold text-black transition hover:scale-[1.02]"
-            >
-              Pre-Order Gold
-            </a>
-          </div>
+              <ul className="mt-6 space-y-2 text-sm text-white/70">
+                <li>✔ Silver Founder Watermark</li>
+                <li>✔ Higher Priority Access</li>
+                <li>✔ Early Install Delivery</li>
+              </ul>
 
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-8 text-center transition hover:border-green-400/35 hover:shadow-[0_0_20px_rgba(34,197,94,0.12)]">
-            <h3 className="text-xl font-bold text-green-400">~In The Know~</h3>
+              <a
+                href={AEGISONE_PREORDER_LINKS.silver}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-8 inline-flex w-full items-center justify-center rounded-2xl bg-[#c0c0c0] px-6 py-3 font-semibold text-black transition hover:scale-[1.02]"
+              >
+                Pre-Order Silver
+              </a>
+            </div>
 
-            <p className="mt-4 text-sm leading-7 text-white/70">
-              AegisOne is currently in active development and Founder pre-orders
-              help support the build as it moves toward launch.
-            </p>
+            <div className="rounded-3xl border border-[#d4af37]/30 bg-black/70 p-8 text-center transition hover:shadow-[0_0_24px_rgba(212,175,55,0.16)]">
+              <div className="flex items-center justify-center gap-2">
+                <div className="text-[#d4af37] text-sm uppercase tracking-[0.2em]">
+                  Gold Founder
+                </div>
+                <span className="rounded-full border border-[#d4af37]/30 px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#d4af37]">
+                  Top Tier
+                </span>
+              </div>
 
-            <p className="mt-4 text-sm leading-7 text-white/70">
-              Founder supporters will be first in line for install packages and
-              will receive a Founder badge watermark inside their app version.
-            </p>
+              <div className="mt-4 text-4xl font-bold text-white">$1000</div>
 
-            <p className="mt-4 text-sm leading-7 text-white/70">
-              Billing, support, cancellations, and founder questions can be handled
-              through the billing portal and support links below.
-            </p>
+              <p className="mt-4 text-sm leading-7 text-white/65">
+                Highest early support tier with first priority for install packages
+                and the most premium founder designation.
+              </p>
 
-            <a
-              href={AEGISONE_BILLING.portal}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-6 inline-flex items-center justify-center rounded-2xl border border-green-400/30 px-4 py-2 text-sm font-semibold text-green-300 transition hover:border-green-300 hover:text-green-200"
-            >
-              Manage Billing
-            </a>
+              <ul className="mt-6 space-y-2 text-sm text-white/70">
+                <li>✔ Gold Founder Watermark</li>
+                <li>✔ Highest Priority Access</li>
+                <li>✔ First Install Releases</li>
+              </ul>
+
+              <a
+                href={AEGISONE_PREORDER_LINKS.gold}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-8 inline-flex w-full items-center justify-center rounded-2xl bg-[#d4af37] px-6 py-3 font-semibold text-black transition hover:scale-[1.02]"
+              >
+                Pre-Order Gold
+              </a>
+            </div>
+
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-8 text-center transition hover:border-green-400/35 hover:shadow-[0_0_20px_rgba(34,197,94,0.12)]">
+              <h3 className="text-xl font-bold text-green-400">~In The Know~</h3>
+
+              <p className="mt-4 text-sm leading-7 text-white/70">
+                AegisOne is currently in active development and Founder pre-orders
+                help support the build as it moves toward launch.
+              </p>
+
+              <p className="mt-4 text-sm leading-7 text-white/70">
+                Founder supporters will be first in line for install packages and
+                will receive a Founder badge watermark inside their app version.
+              </p>
+
+              <p className="mt-4 text-sm leading-7 text-white/70">
+                Billing, support, cancellations, and founder questions can be handled
+                through the billing portal and support links below.
+              </p>
+
+              <a
+                href={AEGISONE_BILLING.portal}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 inline-flex items-center justify-center rounded-2xl border border-green-400/30 px-4 py-2 text-sm font-semibold text-green-300 transition hover:border-green-300 hover:text-green-200"
+              >
+                Manage Billing
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -634,6 +645,7 @@ function AegisOneFooter() {
 
 export default function AegisOne() {
   const [parallaxY, setParallaxY] = useState(0)
+  const [highlightFounders, setHighlightFounders] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -646,6 +658,34 @@ export default function AegisOne() {
 
     return () => {
       window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
+  useEffect(() => {
+    const scrollToHashSection = () => {
+      const hash = window.location.hash.replace('#', '')
+      if (!hash) return
+
+      const target = document.getElementById(hash)
+      if (!target) return
+
+      window.setTimeout(() => {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+
+        if (hash === 'founders') {
+          setHighlightFounders(true)
+          window.setTimeout(() => {
+            setHighlightFounders(false)
+          }, 2600)
+        }
+      }, 120)
+    }
+
+    scrollToHashSection()
+    window.addEventListener('hashchange', scrollToHashSection)
+
+    return () => {
+      window.removeEventListener('hashchange', scrollToHashSection)
     }
   }, [])
 
@@ -771,12 +811,16 @@ export default function AegisOne() {
         </section>
 
         <SafetyCommitmentSection />
-        <AegisOnePreorderSection />
+        <AegisOnePreorderSection isHighlighted={highlightFounders} />
       </main>
 
       <AegisOneFooter />
 
       <style>{`
+        html {
+          scroll-behavior: smooth;
+        }
+
         @keyframes fadeUp {
           to {
             opacity: 1;
