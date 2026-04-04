@@ -6,6 +6,7 @@ import MediaCenter from './pages/MediaCenter'
 import CalculatorsChartsConversionsPage from './pages/library/CalculatorsChartsConversionsPage'
 import ScrollToTop from './components/ScrollToTop'
 import ShopMathCalculator from "./pages/library/CCCPageContent/ShopMathCalculator";
+import MaterialWeightCalculator from "./pages/library/CCCPageContent/MaterialWeightCalculator";
 
 export default function App() {
   return (
@@ -23,6 +24,10 @@ export default function App() {
         <Route
           path="/knowledge-library/calculators-charts-conversions/shop-math-calculator"
           element={<ShopMathCalculator />}
+        />
+        <Route
+          path="/knowledge-library/calculators-charts-conversions/material-weight-calculator"
+          element={<MaterialWeightCalculator />}
         />
 
         <Route path="*" element={<Home />} />

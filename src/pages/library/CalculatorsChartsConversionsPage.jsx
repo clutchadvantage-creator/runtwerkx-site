@@ -319,7 +319,7 @@ export default function CalculatorsChartsConversionsPage() {
             id="calculators"
             eyebrow="― Calculators ―"
             title="Tools for practical everyday use"
-            description="This section is for holding the most common everyday-use calculators that professionals reach for agian and again."
+            description="This section holds the most common everyday-use calculators that professionals reach for agian and again."
           />
 
           <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
@@ -332,11 +332,15 @@ export default function CalculatorsChartsConversionsPage() {
               description="A future slot for quick arithmetic, percentage, ratio, and common work math used throughout fabrication, production, and operations."
             />
 
-            <LibraryToolCard
+            <LiveMathToolCard
+              onClick={() =>
+                navigate('/knowledge-library/calculators-charts-conversions/material-weight-calculator')
+              }
               title="Material Weight Calculator"
               subtitle="Reference Utility"
-              description="A place for estimating weight from dimensions, material type, and thickness so users can work faster without leaving the library."
+              description="Estimate material weight from dimensions, type, and thickness with full calculation visibility and step-by-step breakdown."
             />
+
             <LibraryToolCard
               title="Area & Volume Calculator"
               subtitle="Geometry Utility"
