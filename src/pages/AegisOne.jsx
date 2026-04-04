@@ -12,6 +12,10 @@ const AEGISONE_BILLING = {
   portal: 'https://billing.stripe.com/YOUR_PORTAL_LINK',
 }
 
+const FOUNDER_SLOTS_REMAINING = 20
+const AEGISONE_LICENSE_PRICE = '$8,499.99'
+const AEGISONE_ANNUAL_SUPPORT_PRICE = '$1,300 / year'
+
 function mailtoLink(subject, body = '') {
   const params = new URLSearchParams()
   params.set('subject', subject)
@@ -283,6 +287,90 @@ function SafetyCommitmentSection() {
   )
 }
 
+function FounderAccessNotice() {
+  return (
+    <div className="mt-10 rounded-[2rem] border border-green-400/20 bg-white/[0.03] p-6 md:p-8">
+      <div className="grid gap-6 md:grid-cols-[0.9fr_1.1fr] md:items-start">
+        <div className="rounded-[1.5rem] border border-white/10 bg-black/40 p-5 text-center md:text-left">
+          <div className="text-[11px] font-semibold uppercase tracking-[0.28em] text-green-400">
+            Founder Access Availability
+          </div>
+
+          <div className="mt-3 text-5xl font-black text-white md:text-6xl">
+            {FOUNDER_SLOTS_REMAINING}
+          </div>
+
+          <div className="mt-2 text-sm font-semibold uppercase tracking-[0.18em] text-green-300">
+            Founder Slots Remaining
+          </div>
+
+          <p className="mt-4 text-sm leading-7 text-white/65">
+            Founder access is limited during development. Supporters receive founder
+            watermark status and first-access priority once AegisOne officially launches.
+          </p>
+        </div>
+
+        <div className="rounded-[1.5rem] border border-white/10 bg-black/30 p-5 md:p-6">
+          <div className="text-[11px] font-semibold uppercase tracking-[0.28em] text-green-400">
+            Important Founder Pre-Order Notice
+          </div>
+
+          <p className="mt-4 text-sm leading-7 text-white/75 md:text-base">
+            Founder pre-orders help support AegisOne development and reserve founder
+            priority status, but they do <span className="font-semibold text-white">not</span> purchase the
+            AegisOne software license.
+          </p>
+
+          <p className="mt-3 text-sm leading-7 text-white/68">
+            Founder pre-orders are development support contributions tied to founder access
+            perks. They are not a software license purchase.
+          </p>
+
+          <div className="mt-5 rounded-[1.25rem] border border-green-400/15 bg-green-500/[0.04] p-4">
+            <div className="text-sm font-semibold uppercase tracking-[0.18em] text-green-300">
+              AegisOne Licensing
+            </div>
+
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <div className="rounded-[1rem] border border-white/10 bg-black/35 p-4">
+                <div className="text-[11px] uppercase tracking-[0.18em] text-white/45">
+                  One-Time License
+                </div>
+                <div className="mt-2 text-2xl font-bold text-white">{AEGISONE_LICENSE_PRICE}</div>
+                <p className="mt-2 text-sm leading-6 text-white/60">
+                  Required software purchase to activate AegisOne and receive founder benefits.
+                </p>
+              </div>
+
+              <div className="rounded-[1rem] border border-white/10 bg-black/35 p-4">
+                <div className="text-[11px] uppercase tracking-[0.18em] text-white/45">
+                  Optional Annual Support
+                </div>
+                <div className="mt-2 text-2xl font-bold text-white">
+                  {AEGISONE_ANNUAL_SUPPORT_PRICE}
+                </div>
+                <p className="mt-2 text-sm leading-6 text-white/60">
+                  Covers support, updates, and maintenance, but is not required to continue using the software.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <p className="mt-5 text-sm leading-7 text-white/68">
+            A valid AegisOne software purchase is required before founder watermark
+            status and priority install access can be applied.
+          </p>
+
+          <p className="mt-3 text-sm leading-7 text-white/55">
+            Annual support is optional. If it is not active, the software remains usable,
+            but support, maintenance, and update services are not included.
+          </p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 function AegisOnePreorderSection({ isHighlighted = false }) {
   return (
     <section
@@ -435,6 +523,8 @@ function AegisOnePreorderSection({ isHighlighted = false }) {
               </a>
             </div>
           </div>
+
+          <FounderAccessNotice />
         </div>
       </div>
     </section>
