@@ -12,10 +12,24 @@ import {
 
 export default function KnowledgeLibrary() {
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="relative min-h-screen overflow-hidden bg-black text-white">
       <Navbar />
 
-      <main className="relative">
+      {/* FULL PAGE BACKGROUND VIDEO */}
+      <video
+        src="/videos/library3.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="auto"
+        className="fixed inset-0 h-full w-full object-cover z-0"
+      />
+
+      {/* GLOBAL DARK OVERLAY */}
+      <div className="fixed inset-0 bg-black/75 z-0" />
+
+      <main className="relative z-10">
         <div className="absolute inset-0 opacity-[0.05] bg-[linear-gradient(rgba(34,197,94,0.10)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,0.10)_1px,transparent_1px)] bg-[size:28px_28px]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(34,197,94,0.10),transparent_24%),radial-gradient(circle_at_85%_30%,rgba(34,197,94,0.06),transparent_22%),radial-gradient(circle_at_50%_90%,rgba(255,255,255,0.04),transparent_18%)]" />
 
