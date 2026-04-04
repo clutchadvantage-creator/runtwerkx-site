@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const RANDOM_TECH_TEXT = [
   "RWX",
@@ -22,6 +23,9 @@ const AISC_SHAPES_DATABASE_URL =
   "https://www.aisc.org/aisc/publications/steel-construction-manual/aisc-shapes-database-v160/";
 const AISC_DIMENSION_TOOL_URL =
   "https://www.aisc.org/aisc/explore-aisc/structural-steel-dimensioning-tool/";
+
+const PAGE_URL =
+  "https://runtwerkx.com/knowledge-library/calculators-charts-conversions/material-weight-calculator";
 
 const MATERIALS = {
   steel: {
@@ -1053,6 +1057,57 @@ export default function MaterialWeightCalculator() {
 
   return (
     <div className="min-h-screen bg-black text-white">
+      <Helmet>
+        <title>
+          Material Weight Calculator (Steel, Aluminum, Lumber, Beams) | RuntWerkx
+        </title>
+        <meta
+          name="description"
+          content="Calculate material weight for steel, stainless, aluminum, lumber, beams, channel, angle, pipe, and tube. Includes formulas, density references, worked steps, and AISC verification links."
+        />
+        <link rel="canonical" href={PAGE_URL} />
+        <meta
+          property="og:title"
+          content="Material Weight Calculator (Steel, Aluminum, Lumber, Beams) | RuntWerkx"
+        />
+        <meta
+          property="og:description"
+          content="Calculate steel, aluminum, lumber, beam, pipe, and tube weight with formulas, worked steps, and AISC reference links."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={PAGE_URL} />
+        <meta property="og:site_name" content="RuntWerkx" />
+        <meta
+          name="twitter:card"
+          content="summary_large_image"
+        />
+        <meta
+          name="twitter:title"
+          content="Material Weight Calculator (Steel, Aluminum, Lumber, Beams) | RuntWerkx"
+        />
+        <meta
+          name="twitter:description"
+          content="Calculate steel, aluminum, lumber, beam, pipe, and tube weight with formulas, worked steps, and AISC reference links."
+        />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            name: "RuntWerkx Material Weight Calculator",
+            applicationCategory: "BusinessApplication",
+            operatingSystem: "Any",
+            url: PAGE_URL,
+            description:
+              "Calculate material weight for steel, stainless, aluminum, lumber, beams, channel, angle, pipe, and tube with formulas, worked steps, and AISC reference links.",
+            provider: {
+              "@type": "Organization",
+              name: "RuntWerkx",
+              url: "https://runtwerkx.com",
+            },
+          })}
+        </script>
+      </Helmet>
+
       <section className="relative overflow-hidden px-6 pb-20 pt-12 md:px-10 lg:px-14">
         <CircuitBackdrop />
 
@@ -1078,6 +1133,13 @@ export default function MaterialWeightCalculator() {
               formula, density used, per-piece result, and total weight. Built
               to make weight math easy to follow, easy to trust, and easy to
               recreate.
+            </p>
+
+            <p className="mx-auto mt-6 max-w-4xl text-base leading-8 text-zinc-400">
+              Use this page as a steel weight calculator, beam weight calculator,
+              metal weight calculator, pipe weight calculator, or lumber weight
+              calculator for real-world fabrication, construction, manufacturing,
+              shipping, and planning work.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
@@ -1457,6 +1519,11 @@ export default function MaterialWeightCalculator() {
                                 placeholder="Enter pounds per foot"
                                 className="mt-3 w-full rounded-[1.2rem] border border-zinc-800 bg-black/50 px-5 py-4 text-lg text-white outline-none"
                               />
+                              <p className="mt-2 text-xs leading-6 text-zinc-500">
+                                Enter lb/ft from official AISC or manufacturer data.
+                                Structural shape weight is not automatically looked
+                                up on this page.
+                              </p>
                             </div>
                           )}
 
@@ -1641,6 +1708,55 @@ export default function MaterialWeightCalculator() {
               </div>
             </div>
           </div>
+
+          <section className="mt-24 rounded-[2rem] border border-emerald-500/15 bg-zinc-950/45 p-8 backdrop-blur-sm">
+            <div className="mx-auto max-w-4xl text-center">
+              <p className="text-xs uppercase tracking-[0.38em] text-emerald-400">
+                ― What This Calculator Covers ―
+              </p>
+              <h3 className="mt-3 text-3xl font-semibold text-white">
+                Built for real material weight calculations
+              </h3>
+              <p className="mt-5 text-base leading-8 text-zinc-300">
+                This material weight calculator is built for real-world
+                fabrication, manufacturing, construction, and planning work. Use
+                it as a steel weight calculator, beam weight calculator, metal
+                weight calculator, pipe weight calculator, or lumber weight
+                calculator. The page shows formulas, density values, worked
+                steps, and final totals so results are easier to verify and
+                trust before ordering, quoting, rigging, or moving material.
+              </p>
+            </div>
+          </section>
+
+          <section className="mt-10">
+            <div className="mx-auto max-w-5xl rounded-[2rem] border border-emerald-500/15 bg-black/40 p-8">
+              <div className="text-center">
+                <p className="text-xs uppercase tracking-[0.32em] text-emerald-400">
+                  ― Related Tools ―
+                </p>
+                <h3 className="mt-3 text-2xl font-semibold text-white">
+                  Continue through the RuntWerkx calculator system
+                </h3>
+              </div>
+
+              <div className="mt-8 flex flex-wrap justify-center gap-4">
+                <Link
+                  to="/knowledge-library/calculators-charts-conversions"
+                  className="rounded-full border border-zinc-700 bg-black/40 px-5 py-3 text-sm text-zinc-300 transition hover:border-emerald-400 hover:text-white"
+                >
+                  Calculators, Charts & Conversions
+                </Link>
+
+                <Link
+                  to="/knowledge-library/calculators-charts-conversions/shop-math-calculator"
+                  className="rounded-full border border-zinc-700 bg-black/40 px-5 py-3 text-sm text-zinc-300 transition hover:border-emerald-400 hover:text-white"
+                >
+                  Shop Math Calculator
+                </Link>
+              </div>
+            </div>
+          </section>
 
           <FooterStatusPanel
             material={material}

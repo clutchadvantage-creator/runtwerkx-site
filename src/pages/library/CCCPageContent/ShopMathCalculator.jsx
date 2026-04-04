@@ -1,5 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+
+const PAGE_URL =
+  "https://runtwerkx.com/knowledge-library/calculators-charts-conversions/shop-math-calculator";
 
 const RANDOM_TECH_TEXT = [
   "RWX",
@@ -852,6 +856,54 @@ export default function ShopMathCalculator() {
 
   return (
     <div className="min-h-screen bg-black text-white">
+      <Helmet>
+        <title>
+          Basic Math Calculator With Steps, Percentages, and Ratios | RuntWerkx
+        </title>
+        <meta
+          name="description"
+          content="Use the RuntWerkx basic math calculator to solve everyday calculations with visible steps. Includes long-form math, percentages, ratios, and worked solution output."
+        />
+        <link rel="canonical" href={PAGE_URL} />
+        <meta
+          property="og:title"
+          content="Basic Math Calculator With Steps, Percentages, and Ratios | RuntWerkx"
+        />
+        <meta
+          property="og:description"
+          content="Solve everyday calculations with visible steps, long-form math playback, percentages, and ratios."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={PAGE_URL} />
+        <meta property="og:site_name" content="RuntWerkx" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Basic Math Calculator With Steps, Percentages, and Ratios | RuntWerkx"
+        />
+        <meta
+          name="twitter:description"
+          content="Solve everyday calculations with visible steps, long-form math playback, percentages, and ratios."
+        />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            name: "RuntWerkx Basic Math Calculator",
+            applicationCategory: "BusinessApplication",
+            operatingSystem: "Any",
+            url: PAGE_URL,
+            description:
+              "Basic math calculator with step-by-step worked output, percentages, and ratio tools for real-world use.",
+            provider: {
+              "@type": "Organization",
+              name: "RuntWerkx",
+              url: "https://runtwerkx.com",
+            },
+          })}
+        </script>
+      </Helmet>
+
       <section className="relative overflow-hidden px-6 pb-20 pt-12 md:px-10 lg:px-14">
         <CircuitBackdrop />
 
@@ -876,6 +928,13 @@ export default function ShopMathCalculator() {
               Perform everyday math with full visibility into the formula, the
               work, and the final result. Built to make the math easy to
               follow, easy to trust, and easy to recreate.
+            </p>
+
+            <p className="mx-auto mt-6 max-w-4xl text-base leading-8 text-zinc-400">
+              Use this page as a basic math calculator with steps, a percentage
+              calculator, and a ratio calculator. It is built for everyday shop
+              math, quick checks, and straightforward worked solutions that are
+              easier to verify than a standard black-box calculator.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
@@ -1260,6 +1319,54 @@ export default function ShopMathCalculator() {
               </div>
             </div>
           </div>
+
+          <section className="mt-24 rounded-[2rem] border border-emerald-500/15 bg-zinc-950/45 p-8 backdrop-blur-sm">
+            <div className="mx-auto max-w-4xl text-center">
+              <p className="text-xs uppercase tracking-[0.38em] text-emerald-400">
+                ― What This Calculator Covers ―
+              </p>
+              <h3 className="mt-3 text-3xl font-semibold text-white">
+                Built for everyday math with visible steps
+              </h3>
+              <p className="mt-5 text-base leading-8 text-zinc-300">
+                This basic math calculator is designed for everyday calculations
+                that need to be easy to follow and easy to verify. Use it for
+                long-form expressions, a percentage calculator workflow, or a
+                ratio calculator workflow. The page shows formulas, step
+                breakdowns, and worked output so the result is easier to trust
+                than a standard calculator that only gives an answer.
+              </p>
+            </div>
+          </section>
+
+          <section className="mt-10">
+            <div className="mx-auto max-w-5xl rounded-[2rem] border border-emerald-500/15 bg-black/40 p-8">
+              <div className="text-center">
+                <p className="text-xs uppercase tracking-[0.32em] text-emerald-400">
+                  ― Related Tools ―
+                </p>
+                <h3 className="mt-3 text-2xl font-semibold text-white">
+                  Continue through the RuntWerkx calculator system
+                </h3>
+              </div>
+
+              <div className="mt-8 flex flex-wrap justify-center gap-4">
+                <Link
+                  to="/knowledge-library/calculators-charts-conversions"
+                  className="rounded-full border border-zinc-700 bg-black/40 px-5 py-3 text-sm text-zinc-300 transition hover:border-emerald-400 hover:text-white"
+                >
+                  Calculators, Charts & Conversions
+                </Link>
+
+                <Link
+                  to="/knowledge-library/calculators-charts-conversions/material-weight-calculator"
+                  className="rounded-full border border-zinc-700 bg-black/40 px-5 py-3 text-sm text-zinc-300 transition hover:border-emerald-400 hover:text-white"
+                >
+                  Material Weight Calculator
+                </Link>
+              </div>
+            </div>
+          </section>
 
           <FooterStatusPanel
             mode={mode}

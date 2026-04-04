@@ -1,7 +1,10 @@
 import Navbar from '../../components/Navbar'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 
 const HERO_VIDEO_SRC = '/videos/calcs-conversions-hero.mp4'
+const PAGE_URL =
+  'https://runtwerkx.com/knowledge-library/calculators-charts-conversions'
 
 function SectionHeader({ eyebrow, title, description, id }) {
   return (
@@ -241,6 +244,52 @@ export default function CalculatorsChartsConversionsPage() {
 
   return (
     <div className="min-h-screen bg-black text-white">
+      <Helmet>
+        <title>
+          Calculators, Charts & Conversions | Industrial Reference Tools | RuntWerkx
+        </title>
+        <meta
+          name="description"
+          content="Explore RuntWerkx calculators, charts, and conversions for everyday shop math, material weight, reference charts, and practical industrial tools."
+        />
+        <link rel="canonical" href={PAGE_URL} />
+        <meta
+          property="og:title"
+          content="Calculators, Charts & Conversions | Industrial Reference Tools | RuntWerkx"
+        />
+        <meta
+          property="og:description"
+          content="Industrial calculators, reference charts, and conversion tools built for practical day-to-day use."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={PAGE_URL} />
+        <meta property="og:site_name" content="RuntWerkx" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Calculators, Charts & Conversions | Industrial Reference Tools | RuntWerkx"
+        />
+        <meta
+          name="twitter:description"
+          content="Industrial calculators, reference charts, and conversion tools built for practical day-to-day use."
+        />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            name: "RuntWerkx Calculators, Charts & Conversions",
+            url: PAGE_URL,
+            description:
+              "A structured reference hub for industrial calculators, charts, and conversions including shop math and material weight tools.",
+            isPartOf: {
+              "@type": "WebSite",
+              name: "RuntWerkx",
+              url: "https://runtwerkx.com",
+            },
+          })}
+        </script>
+      </Helmet>
+
       <style>{`
         @keyframes floatSymbol1 {
           0% { transform: translateY(0px); opacity: 0.08; }
@@ -301,6 +350,13 @@ export default function CalculatorsChartsConversionsPage() {
                 A structured reference hub for everyday-use math, quick utilities,
                 common charts, and practical conversions. Designed to grow into a larger
                 connected industrial knowledge system over time.
+              </p>
+
+              <p className="mx-auto mt-6 max-w-4xl text-base leading-8 text-white/60">
+                Explore industrial calculators, charts, and conversion tools built
+                for practical day-to-day use. This section connects shop math,
+                material weight calculations, common reference charts, and
+                future conversion tools into one growing RuntWerkx knowledge system.
               </p>
 
               <div className="mt-10 flex flex-wrap justify-center gap-3">
@@ -479,6 +535,54 @@ export default function CalculatorsChartsConversionsPage() {
                 description="A larger long-term connected system of linked pages, common-use references, and practical professional knowledge."
                 status="Growing"
               />
+            </div>
+          </div>
+        </section>
+
+        <section className="relative z-10 mx-auto max-w-7xl px-6 py-20">
+          <div className="rounded-[2rem] border border-green-500/15 bg-zinc-950/45 p-8 backdrop-blur-sm">
+            <div className="mx-auto max-w-4xl text-center">
+              <p className="text-xs uppercase tracking-[0.38em] text-green-400">
+                ― What This Section Covers ―
+              </p>
+              <h2 className="mt-3 text-3xl font-bold text-white md:text-4xl">
+                A growing library of industrial calculators and references
+              </h2>
+              <p className="mt-5 text-base leading-8 text-white/68">
+                This calculators, charts, and conversions section is built to
+                support practical everyday work. It already includes a shop math
+                calculator and a material weight calculator, and it is designed
+                to expand into a broader system of industrial reference tools,
+                conversion utilities, fabrication support pages, and connected
+                knowledge resources over time.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-10 rounded-[2rem] border border-green-500/15 bg-black/40 p-8">
+            <div className="text-center">
+              <p className="text-xs uppercase tracking-[0.32em] text-green-400">
+                ― Related Live Tools ―
+              </p>
+              <h3 className="mt-3 text-2xl font-semibold text-white">
+                Continue into the current calculator system
+              </h3>
+            </div>
+
+            <div className="mt-8 flex flex-wrap justify-center gap-4">
+              <Link
+                to="/knowledge-library/calculators-charts-conversions/shop-math-calculator"
+                className="rounded-full border border-zinc-700 bg-black/40 px-5 py-3 text-sm text-zinc-300 transition hover:border-green-400 hover:text-white"
+              >
+                Shop Math Calculator
+              </Link>
+
+              <Link
+                to="/knowledge-library/calculators-charts-conversions/material-weight-calculator"
+                className="rounded-full border border-zinc-700 bg-black/40 px-5 py-3 text-sm text-zinc-300 transition hover:border-green-400 hover:text-white"
+              >
+                Material Weight Calculator
+              </Link>
             </div>
           </div>
         </section>
