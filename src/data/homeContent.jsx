@@ -166,11 +166,46 @@ export const mediaCenterCategories = [
 
 export const mediaCenterFeatured = [
   {
-    id: 'library-intro',
-    title: 'Knowledge Library System',
+    id: 'steel-process',
+    title: 'Structural Steel Fabrication Process',
+    category: 'Fabrication',
+    sourceLabel: 'YouTube',
+    videoUrl: 'https://www.youtube.com/watch?v=gg4eC-d6tGc',
+    href: 'https://www.youtube.com/watch?v=gg4eC-d6tGc',
+    homeUrl: 'https://www.youtube.com',
+    thumbnail: '/images/apps.png',
     description:
-      'A structured industrial knowledge hub for calculators, charts, conversions, and real-world references built to grow over time.',
-    image: '/images/apps.png',
+      'A real-world look at how structural steel moves through fabrication, handling, and production.',
+    notes:
+      'AGT Robotics builds some of the most advanced and capable robotic welding systems in the industry, helping shops push the limits of automation and productivity. Their team is highly responsive and committed to continuous improvement, making them a strong partner for real-world fabrication environments. ',
+  },
+  {
+    id: 'industrial-safety',
+    title: 'Industrial Safety & Awareness',
+    category: 'Safety',
+    sourceLabel: 'YouTube',
+    videoUrl: 'https://www.youtube.com/watch?v=PqskpvPejeU',
+    href: 'https://www.youtube.com/watch?v=PqskpvPejeU',
+    homeUrl: 'https://www.youtube.com',
+    thumbnail: '/images/apps.png',
+    description:
+      'A broader look into industrial safety, awareness, and operational risk in real-world environments.',
+    notes:
+      'Hidden Hazards around the workplace are a common threat. Be aware of your surroundings at work!',
+  },
+  {
+    id: 'manufacturing-flow',
+    title: 'Manufacturing Systems & Process Flow',
+    category: 'Manufacturing',
+    sourceLabel: 'YouTube',
+    videoUrl: 'https://www.youtube.com/watch?v=9VMZRCqFANQ',
+    href: 'https://www.youtube.com/watch?v=9VMZRCqFANQ',
+    homeUrl: 'https://www.youtube.com',
+    thumbnail: '/images/apps.png',
+    description:
+      'A systems-focused look at how MES works.',
+    notes:
+      'Manufacturing is always expanding and changing along with all industries.',
   },
 ]
 

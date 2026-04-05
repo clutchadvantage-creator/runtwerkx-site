@@ -6,15 +6,19 @@ export default function MediaCenterStatusBanner() {
         {/* TEXT BLOCK */}
         <div className="mx-auto max-w-3xl">
           <div className="text-sm font-semibold uppercase tracking-[0.26em] text-green-400">
-            ― Update Notes ―
+            ― Announcements ―
           </div>
 
           <h2 className="mt-2 text-2xl font-bold text-white">
-            Work Has Began!
+            Update 1.0.1 Release
           </h2>
 
           <p className="mt-3 text-sm leading-7 text-white/65">
-            We are happy to announce that the first two calculators have been added to the library and we have more coming! We appreciate your paitence as we continue to develop the site.
+            Update-1.0.1 Notes-
+            All currently planned calculators have now been implemented as of this update. We also wired in the Featured Content Section, so keep an eye out for new things showing up there.
+             The Charts Section has been started as well with a few charts added as part of this update.
+            When the Chart Conversions & Calculators page is finished the next planned phase is for the Fabrication page. Look for updates and changes HERE.
+            We appreciate your paitence as we continue to develop the site.
           </p>
         </div>
 
