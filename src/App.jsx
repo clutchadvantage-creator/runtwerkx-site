@@ -9,6 +9,10 @@ import Terms from './pages/Terms'
 import CalculatorsChartsConversionsPage from './pages/library/CalculatorsChartsConversionsPage'
 import ShopMathCalculator from './pages/library/CCCPageContent/ShopMathCalculator'
 import MaterialWeightCalculator from './pages/library/CCCPageContent/MaterialWeightCalculator'
+import AreaVolumeCalculator from './pages/library/CCCPageContent/AreaVolumeCalculator'
+import ProductionRateCalculator from './pages/library/CCCPageContent/ProductionRateCalculator'
+import PipeTankFillCalculator from './pages/library/CCCPageContent/PipeTankFillCalculator'
+import CustomTradeCalculator from './pages/library/CCCPageContent/CustomTradeCalculator'
 
 function ScrollManager() {
   const { pathname, hash } = useLocation()
@@ -57,6 +61,22 @@ export default function App() {
         <Route
           path="/knowledge-library/calculators-charts-conversions/material-weight-calculator"
           element={<MaterialWeightCalculator />}
+        />
+        <Route
+          path="/knowledge-library/calculators-charts-conversions/area-volume-calculator"
+          element={<AreaVolumeCalculator />}
+        />
+        <Route
+          path="/knowledge-library/calculators-charts-conversions/production-rate-calculator"
+          element={<ProductionRateCalculator />}
+        />
+        <Route
+          path="/knowledge-library/calculators-charts-conversions/pipe-tank-fill-calculator"
+          element={<PipeTankFillCalculator />}
+        />
+        <Route
+          path="/knowledge-library/calculators-charts-conversions/custom-trade-calculator"
+          element={<CustomTradeCalculator />}
         />
 
         <Route path="*" element={<Home />} />

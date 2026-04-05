@@ -250,7 +250,7 @@ export default function CalculatorsChartsConversionsPage() {
         </title>
         <meta
           name="description"
-          content="Explore RuntWerkx calculators, charts, and conversions for everyday shop math, material weight, reference charts, and practical industrial tools."
+          content="Explore RuntWerkx calculators, charts, and conversions for everyday shop math, material weight, production rate, pipe and tank fill, custom trade tools, reference charts, and practical industrial utilities."
         />
         <link rel="canonical" href={PAGE_URL} />
         <meta
@@ -275,16 +275,16 @@ export default function CalculatorsChartsConversionsPage() {
         />
         <script type="application/ld+json">
           {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "CollectionPage",
-            name: "RuntWerkx Calculators, Charts & Conversions",
+            '@context': 'https://schema.org',
+            '@type': 'CollectionPage',
+            name: 'RuntWerkx Calculators, Charts & Conversions',
             url: PAGE_URL,
             description:
-              "A structured reference hub for industrial calculators, charts, and conversions including shop math and material weight tools.",
+              'A structured reference hub for industrial calculators, charts, and conversions including shop math, material weight, production rate, pipe/tank fill, and custom trade tools.',
             isPartOf: {
-              "@type": "WebSite",
-              name: "RuntWerkx",
-              url: "https://runtwerkx.com",
+              '@type': 'WebSite',
+              name: 'RuntWerkx',
+              url: 'https://runtwerkx.com',
             },
           })}
         </script>
@@ -355,7 +355,7 @@ export default function CalculatorsChartsConversionsPage() {
               <p className="mx-auto mt-6 max-w-4xl text-base leading-8 text-white/60">
                 Explore industrial calculators, charts, and conversion tools built
                 for day-to-day use. This section connects shop math,
-                material weight calculations, common reference charts, and
+                material weight calculations, production rate tools, pipe and tank fill tools, custom trade tools, common reference charts, and
                 future conversion tools into one growing RuntWerkx knowledge system.
               </p>
 
@@ -397,25 +397,40 @@ export default function CalculatorsChartsConversionsPage() {
               description="Estimate material weight from dimensions, type, and thickness with full calculation visibility and step-by-step breakdown."
             />
 
-            <LibraryToolCard
+            <LiveMathToolCard
+              onClick={() =>
+                navigate('/knowledge-library/calculators-charts-conversions/area-volume-calculator')
+              }
               title="Area & Volume Calculator"
               subtitle="Geometry Utility"
-              description="A clean slot for rectangle, circle, triangle, and volume calculations that commonly support layout, estimating, and material planning."
+              description="Calculate area, perimeter, circumference, and volume with visible formulas and worked solution output for layout, estimating, and material planning."
             />
-            <LibraryToolCard
+
+            <LiveMathToolCard
+              onClick={() =>
+                navigate('/knowledge-library/calculators-charts-conversions/production-rate-calculator')
+              }
               title="Production Rate Calculator"
               subtitle="Workflow Utility"
-              description="A future utility for quick cycle-rate estimates, output pacing, and time-based production calculations."
+              description="Calculate parts per hour, cycle time, shift output, required run time, downtime impact, and real versus target production performance."
             />
-            <LibraryToolCard
+
+            <LiveMathToolCard
+              onClick={() =>
+                navigate('/knowledge-library/calculators-charts-conversions/pipe-tank-fill-calculator')
+              }
               title="Pipe / Tank Fill Calculator"
               subtitle="Fluid Utility"
-              description="A slot for practical fill, volume, and flow-related calculations that can support maintenance, process, and industrial use cases."
+              description="Calculate pipe volume, tank volume, fill time, and partial fill levels with full worked output, conversions, and visible formulas."
             />
-            <LibraryToolCard
+
+            <LiveMathToolCard
+              onClick={() =>
+                navigate('/knowledge-library/calculators-charts-conversions/custom-trade-calculator')
+              }
               title="Custom Trade Calculator"
-              subtitle="Expandable Utility"
-              description="Reserved for trade-specific tools later, such as weld math, layout helpers, fabrication formulas, or other focused references."
+              subtitle="Trade Utility"
+              description="Solve trade-focused utility math like weld volume, paint coverage, bolt spacing, plate layout yield, and other fabrication support calculations."
             />
           </div>
         </section>
@@ -551,8 +566,10 @@ export default function CalculatorsChartsConversionsPage() {
               <p className="mt-5 text-base leading-8 text-white/68">
                 This calculators, charts, and conversions section is built to
                 support everyday work. It already includes a shop math
-                calculator and a material weight calculator, and it is designed
-                to expand into a broader system of industrial reference tools,
+                calculator, a material weight calculator, an area & volume
+                calculator, a production rate calculator, a pipe / tank fill
+                calculator, and a custom trade calculator, and it is designed to
+                expand into a broader system of industrial reference tools,
                 conversion utilities, fabrication support pages, and connected
                 knowledge resources over time.
               </p>
@@ -582,6 +599,34 @@ export default function CalculatorsChartsConversionsPage() {
                 className="rounded-full border border-zinc-700 bg-black/40 px-5 py-3 text-sm text-zinc-300 transition hover:border-green-400 hover:text-white"
               >
                 Material Weight Calculator
+              </Link>
+
+              <Link
+                to="/knowledge-library/calculators-charts-conversions/area-volume-calculator"
+                className="rounded-full border border-zinc-700 bg-black/40 px-5 py-3 text-sm text-zinc-300 transition hover:border-green-400 hover:text-white"
+              >
+                Area & Volume Calculator
+              </Link>
+
+              <Link
+                to="/knowledge-library/calculators-charts-conversions/production-rate-calculator"
+                className="rounded-full border border-zinc-700 bg-black/40 px-5 py-3 text-sm text-zinc-300 transition hover:border-green-400 hover:text-white"
+              >
+                Production Rate Calculator
+              </Link>
+
+              <Link
+                to="/knowledge-library/calculators-charts-conversions/pipe-tank-fill-calculator"
+                className="rounded-full border border-zinc-700 bg-black/40 px-5 py-3 text-sm text-zinc-300 transition hover:border-green-400 hover:text-white"
+              >
+                Pipe / Tank Fill Calculator
+              </Link>
+
+              <Link
+                to="/knowledge-library/calculators-charts-conversions/custom-trade-calculator"
+                className="rounded-full border border-zinc-700 bg-black/40 px-5 py-3 text-sm text-zinc-300 transition hover:border-green-400 hover:text-white"
+              >
+                Custom Trade Calculator
               </Link>
             </div>
           </div>
