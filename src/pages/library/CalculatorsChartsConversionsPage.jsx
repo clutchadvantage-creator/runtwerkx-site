@@ -62,13 +62,9 @@ function LibraryToolCard({ title, subtitle, description, status = 'Planned' }) {
           </div>
         </div>
 
-        <h3 className="mt-4 text-2xl font-bold text-white">
-          {title}
-        </h3>
+        <h3 className="mt-4 text-2xl font-bold text-white">{title}</h3>
 
-        <p className="mt-4 text-sm leading-7 text-white/68">
-          {description}
-        </p>
+        <p className="mt-4 text-sm leading-7 text-white/68">{description}</p>
 
         <div className="mt-6 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-xs uppercase tracking-[0.2em] text-white/40">
           {live ? 'Interactive utility available' : 'Expandable utility slot'}
@@ -129,13 +125,9 @@ function ReferenceCard({ title, category, description, action = 'Reference Slot'
         {category}
       </div>
 
-      <h3 className="mt-3 text-xl font-bold text-white">
-        {title}
-      </h3>
+      <h3 className="mt-3 text-xl font-bold text-white">{title}</h3>
 
-      <p className="mt-3 text-sm leading-7 text-white/65">
-        {description}
-      </p>
+      <p className="mt-3 text-sm leading-7 text-white/65">{description}</p>
 
       <div className="mt-5 inline-flex rounded-full border border-white/10 bg-black/40 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/45">
         {action}
@@ -148,18 +140,14 @@ function RelatedTopicCard({ title, description, status = 'Planned' }) {
   return (
     <div className="rounded-[1.5rem] border border-white/10 bg-black/45 p-5 transition duration-300 hover:border-green-400/35 hover:shadow-[0_0_20px_rgba(34,197,94,0.10)]">
       <div className="flex items-center justify-between gap-4">
-        <h3 className="text-xl font-bold text-white">
-          {title}
-        </h3>
+        <h3 className="text-xl font-bold text-white">{title}</h3>
 
         <div className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/45">
           {status}
         </div>
       </div>
 
-      <p className="mt-3 text-sm leading-7 text-white/65">
-        {description}
-      </p>
+      <p className="mt-3 text-sm leading-7 text-white/65">{description}</p>
     </div>
   )
 }
@@ -185,10 +173,10 @@ function CommunityPanel() {
           </h2>
 
           <p className="mx-auto mt-5 max-w-3xl text-base leading-8 text-white/68">
-            This section is planned as the future collaboration layer for the library.
-            The goal is to give professionals a place to share practical notes,
-            examples, photos, field observations, corrections, and discussion around
-            real-world topics.
+            This section is planned as the future collaboration layer for the
+            library. The goal is to give professionals a place to share
+            practical notes, examples, photos, field observations, corrections,
+            and discussion around real-world topics.
           </p>
         </div>
 
@@ -198,8 +186,8 @@ function CommunityPanel() {
               Comments
             </div>
             <p className="mt-3 text-sm leading-7 text-white/65">
-              Topic-based discussion threads for practical questions, shop-floor insight,
-              and everyday reference use.
+              Topic-based discussion threads for practical questions, shop-floor
+              insight, and everyday reference use.
             </p>
           </div>
 
@@ -208,8 +196,8 @@ function CommunityPanel() {
               Images & Examples
             </div>
             <p className="mt-3 text-sm leading-7 text-white/65">
-              Space for field photos, example setups, diagram references, and visual
-              knowledge sharing over time.
+              Space for field photos, example setups, diagram references, and
+              visual knowledge sharing over time.
             </p>
           </div>
 
@@ -218,8 +206,8 @@ function CommunityPanel() {
               Curated Growth
             </div>
             <p className="mt-3 text-sm leading-7 text-white/65">
-              A scalable structure that can evolve from clean notes and submissions into
-              a fuller professional discussion system later.
+              A scalable structure that can evolve from clean notes and
+              submissions into a fuller professional discussion system later.
             </p>
           </div>
         </div>
@@ -229,9 +217,10 @@ function CommunityPanel() {
             Planned System Direction
           </div>
           <p className="mx-auto mt-3 max-w-3xl text-sm leading-7 text-white/72">
-            Start with a clean, curated reference system first. Then add a controlled
-            contribution layer for comments, image uploads, field notes, and linked
-            knowledge so the library can grow without turning into clutter.
+            Start with a clean, curated reference system first. Then add a
+            controlled contribution layer for comments, image uploads, field
+            notes, and linked knowledge so the library can grow without turning
+            into clutter.
           </p>
         </div>
       </div>
@@ -246,11 +235,12 @@ export default function CalculatorsChartsConversionsPage() {
     <div className="min-h-screen bg-black text-white">
       <Helmet>
         <title>
-          Calculators, Charts & Conversions | Industrial Reference Tools | RuntWerkx
+          Calculators, Charts & Conversions | Industrial Reference Tools |
+          RuntWerkx
         </title>
         <meta
           name="description"
-          content="Explore RuntWerkx calculators, charts, and conversions for everyday shop math, material weight, production rate, pipe and tank fill, custom trade tools, reference charts, and practical industrial utilities."
+          content="Explore RuntWerkx calculators, charts, and conversions for everyday shop math, material weight, production rate, pipe and tank fill, custom trade tools, decimal and fraction references, tap drill charts, and practical industrial utilities."
         />
         <link rel="canonical" href={PAGE_URL} />
         <meta
@@ -280,7 +270,7 @@ export default function CalculatorsChartsConversionsPage() {
             name: 'RuntWerkx Calculators, Charts & Conversions',
             url: PAGE_URL,
             description:
-              'A structured reference hub for industrial calculators, charts, and conversions including shop math, material weight, production rate, pipe/tank fill, and custom trade tools.',
+              'A structured reference hub for industrial calculators, charts, and conversions including shop math, material weight, production rate, pipe/tank fill, custom trade tools, decimal/fraction references, and tap drill charts.',
             isPartOf: {
               '@type': 'WebSite',
               name: 'RuntWerkx',
@@ -347,16 +337,18 @@ export default function CalculatorsChartsConversionsPage() {
               </h1>
 
               <p className="mx-auto mt-6 max-w-3xl text-base leading-8 text-white/72 md:text-lg">
-                A structured reference hub for math, quick utilities,
-                common charts, and practical conversions. Designed to grow into a larger
-                connected industrial knowledge system over time.
+                A structured reference hub for math, quick utilities, common
+                charts, and practical conversions. Designed to grow into a
+                larger connected industrial knowledge system over time.
               </p>
 
               <p className="mx-auto mt-6 max-w-4xl text-base leading-8 text-white/60">
-                Explore industrial calculators, charts, and conversion tools built
-                for day-to-day use. This section connects shop math,
-                material weight calculations, production rate tools, pipe and tank fill tools, custom trade tools, common reference charts, and
-                future conversion tools into one growing RuntWerkx knowledge system.
+                Explore industrial calculators, charts, and conversion tools
+                built for day-to-day use. This section connects shop math,
+                material weight calculations, production rate tools, pipe and
+                tank fill tools, custom trade tools, common reference charts,
+                and future conversion tools into one growing RuntWerkx knowledge
+                system.
               </p>
 
               <div className="mt-10 flex flex-wrap justify-center gap-3">
@@ -445,15 +437,21 @@ export default function CalculatorsChartsConversionsPage() {
             />
 
             <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-              <ReferenceCard
+              <LiveMathToolCard
+                onClick={() =>
+                  navigate('/knowledge-library/calculators-charts-conversions/decimal-fraction-chart')
+                }
                 title="Decimal / Fraction Chart"
-                category="Measurement"
-                description="A foundational shop reference for quick conversion between fractions, decimals, and common sizes."
+                subtitle="Measurement Reference"
+                description="A foundational shop reference for quick conversion between fractions, decimals, and millimeter equivalents with fast reverse lookup."
               />
-              <ReferenceCard
-                title="Tap & Drill Charts"
-                category="Machining / Shop Use"
-                description="A future slot for thread, tap, and drill reference charts used in daily fabrication and manufacturing work."
+              <LiveMathToolCard
+                onClick={() =>
+                  navigate('/knowledge-library/calculators-charts-conversions/tap-drill-chart')
+                }
+                title="Tap & Drill Chart"
+                subtitle="Machining / Shop Use"
+                description="Quick UNC and UNF tap drill lookup with thread size, TPI, major diameter, drill size, and decimal drill equivalents."
               />
               <ReferenceCard
                 title="Steel Gauge / Thickness Charts"
@@ -568,10 +566,11 @@ export default function CalculatorsChartsConversionsPage() {
                 support everyday work. It already includes a shop math
                 calculator, a material weight calculator, an area & volume
                 calculator, a production rate calculator, a pipe / tank fill
-                calculator, and a custom trade calculator, and it is designed to
-                expand into a broader system of industrial reference tools,
-                conversion utilities, fabrication support pages, and connected
-                knowledge resources over time.
+                calculator, a custom trade calculator, a decimal / fraction
+                chart, and a tap & drill chart, and it is designed to expand
+                into a broader system of industrial reference tools, conversion
+                utilities, fabrication support pages, and connected knowledge
+                resources over time.
               </p>
             </div>
           </div>
@@ -627,6 +626,20 @@ export default function CalculatorsChartsConversionsPage() {
                 className="rounded-full border border-zinc-700 bg-black/40 px-5 py-3 text-sm text-zinc-300 transition hover:border-green-400 hover:text-white"
               >
                 Custom Trade Calculator
+              </Link>
+
+              <Link
+                to="/knowledge-library/calculators-charts-conversions/decimal-fraction-chart"
+                className="rounded-full border border-zinc-700 bg-black/40 px-5 py-3 text-sm text-zinc-300 transition hover:border-green-400 hover:text-white"
+              >
+                Decimal / Fraction Chart
+              </Link>
+
+              <Link
+                to="/knowledge-library/calculators-charts-conversions/tap-drill-chart"
+                className="rounded-full border border-zinc-700 bg-black/40 px-5 py-3 text-sm text-zinc-300 transition hover:border-green-400 hover:text-white"
+              >
+                Tap & Drill Chart
               </Link>
             </div>
           </div>

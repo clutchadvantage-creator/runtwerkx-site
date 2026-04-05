@@ -13,6 +13,8 @@ import AreaVolumeCalculator from './pages/library/CCCPageContent/AreaVolumeCalcu
 import ProductionRateCalculator from './pages/library/CCCPageContent/ProductionRateCalculator'
 import PipeTankFillCalculator from './pages/library/CCCPageContent/PipeTankFillCalculator'
 import CustomTradeCalculator from './pages/library/CCCPageContent/CustomTradeCalculator'
+import DecimalFractionChart from './pages/library/CCCPageContent/DecimalFractionChart'
+import TapDrillChart from './pages/library/CCCPageContent/TapDrillChart'
 
 function ScrollManager() {
   const { pathname, hash } = useLocation()
@@ -77,6 +79,14 @@ export default function App() {
         <Route
           path="/knowledge-library/calculators-charts-conversions/custom-trade-calculator"
           element={<CustomTradeCalculator />}
+        />
+        <Route
+          path="/knowledge-library/calculators-charts-conversions/decimal-fraction-chart"
+          element={<DecimalFractionChart />}
+        />
+        <Route
+          path="/knowledge-library/calculators-charts-conversions/tap-drill-chart"
+          element={<TapDrillChart />}
         />
 
         <Route path="*" element={<Home />} />
