@@ -319,13 +319,11 @@ export default function MediaCenterFeatured({ items = [] }) {
           </div>
 
           <h2 className="mt-3 text-2xl font-bold text-white">
-            Highlighted Media
+            Media Center
           </h2>
 
           <p className="mx-auto mt-3 max-w-3xl text-sm leading-7 text-white/65">
-            Featured content can spotlight training videos, documentaries,
-            industry explainers, support media, launch videos, and other
-            curated material inside the RuntWerkx Knowledge Library.
+            RuntWerkx posts regular featured content based on current events around work places.
           </p>
         </div>
 
