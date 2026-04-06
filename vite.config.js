@@ -9,8 +9,12 @@ export default defineConfig({
     tailwindcss(),
     Sitemap({
       hostname: 'https://runtwerkx.com',
-      generateRobotsTxt: false,
+
+      // 🔥 THIS IS THE FIX
+      generateRobotsTxt: true,
+
       dynamicRoutes: [
+        '/',
         '/file-router',
         '/aegisone',
         '/knowledge-library',
