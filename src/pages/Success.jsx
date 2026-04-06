@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { CheckCircle2, Download, ArrowUpRight, ShieldCheck } from 'lucide-react'
 import Navbar from '../components/Navbar'
@@ -6,6 +6,9 @@ import Navbar from '../components/Navbar'
 const FILE_ROUTER_BILLING_LINKS = {
   portal: 'https://billing.stripe.com/p/login/4gMbJ19zg6NC3cb1ty4ZG00',
 }
+
+// 🔥 CHANGE THIS to your actual Render API URL
+const API_BASE = 'https://file-router-api.onrender.com'
 
 function useQuery() {
   const { search } = useLocation()
@@ -15,6 +18,35 @@ function useQuery() {
 export default function Success() {
   const query = useQuery()
   const sessionId = query.get('session_id')
+
+  const [loading, setLoading] = useState(false)
+
+  async function handleDownloadClick() {
+    try {
+      const email = window.prompt('Enter your purchase email to download:')
+
+      if (!email) return
+
+      setLoading(true)
+
+      const res = await fetch(`${API_BASE}/download-token/${email}`)
+
+      if (!res.ok) {
+        alert('Download not available. Make sure your subscription is active.')
+        return
+      }
+
+      const data = await res.json()
+
+      // 🔥 THIS triggers the actual download
+      window.location.href = data.download_url
+    } catch (err) {
+      console.error(err)
+      alert('Something went wrong. Please try again.')
+    } finally {
+      setLoading(false)
+    }
+  }
 
   return (
     <div className="min-h-screen bg-black text-white">
@@ -62,15 +94,12 @@ export default function Success() {
             <div className="mt-10 grid gap-4 md:grid-cols-2">
               <button
                 type="button"
-                onClick={() =>
-                  window.alert(
-                    'Next step: wire this button to your backend download-token endpoint after webhook + success flow are finished.'
-                  )
-                }
-                className="flex items-center justify-center gap-2 rounded-2xl bg-green-500 px-6 py-4 font-semibold text-black transition hover:scale-[1.01] hover:shadow-[0_0_24px_rgba(34,197,94,0.22)]"
+                onClick={handleDownloadClick}
+                disabled={loading}
+                className="flex items-center justify-center gap-2 rounded-2xl bg-green-500 px-6 py-4 font-semibold text-black transition hover:scale-[1.01] hover:shadow-[0_0_24px_rgba(34,197,94,0.22)] disabled:opacity-60"
               >
                 <Download size={18} />
-                Download File Router
+                {loading ? 'Preparing Download...' : 'Download File Router'}
               </button>
 
               <a
@@ -82,35 +111,6 @@ export default function Success() {
                 Manage Subscription
                 <ArrowUpRight size={16} />
               </a>
-            </div>
-
-            <div className="mt-10 grid gap-4 text-left md:grid-cols-3">
-              <div className="rounded-3xl border border-white/10 bg-black/30 p-5 text-center">
-                <p className="text-xs uppercase tracking-[0.22em] text-green-400">
-                  Step 1
-                </p>
-                <p className="mt-3 text-sm leading-7 text-white/70">
-                  Subscription payment completed through Stripe Checkout.
-                </p>
-              </div>
-
-              <div className="rounded-3xl border border-white/10 bg-black/30 p-5 text-center">
-                <p className="text-xs uppercase tracking-[0.22em] text-green-400">
-                  Step 2
-                </p>
-                <p className="mt-3 text-sm leading-7 text-white/70">
-                  Download your installer and keep it available for future setup.
-                </p>
-              </div>
-
-              <div className="rounded-3xl border border-white/10 bg-black/30 p-5 text-center">
-                <p className="text-xs uppercase tracking-[0.22em] text-green-400">
-                  Step 3
-                </p>
-                <p className="mt-3 text-sm leading-7 text-white/70">
-                  Use the billing portal any time to manage or cancel your plan.
-                </p>
-              </div>
             </div>
 
             <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
