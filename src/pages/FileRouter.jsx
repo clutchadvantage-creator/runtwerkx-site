@@ -643,6 +643,43 @@ function FileRouterUseCasesInteractive() {
 }
 
 export default function FileRouter() {
+  const [checkoutLoading, setCheckoutLoading] = useState(false)
+
+  const handleCheckout = async (email = 'test@example.com') => {
+    try {
+      setCheckoutLoading(true)
+
+      const res = await fetch(
+        'https://file-router-api.onrender.com/stripe/create-checkout-session',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email }),
+        }
+      )
+
+      const data = await res.json()
+
+      if (!res.ok) {
+        throw new Error(data?.detail || 'Unable to create checkout session.')
+      }
+
+      if (data.checkout_url) {
+        window.location.href = data.checkout_url
+        return
+      }
+
+      throw new Error('No checkout URL returned.')
+    } catch (err) {
+      console.error('Checkout error:', err)
+      window.alert('Unable to start checkout right now. Please try again in a moment.')
+    } finally {
+      setCheckoutLoading(false)
+    }
+  }
+
   return (
     <div className="min-h-screen bg-black text-white">
       <style>{`
@@ -903,14 +940,14 @@ export default function FileRouter() {
               <p className="mt-4 text-sm leading-6 text-white/65">
                 Full access to File Router with the same complete feature set.
               </p>
-              <a
-                href={FILE_ROUTER_PAYMENT_LINKS.monthly}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-6 flex w-full items-center justify-center rounded-2xl bg-green-500 px-4 py-3 font-semibold text-black transition hover:scale-[1.01]"
+              <button
+                type="button"
+                onClick={() => handleCheckout()}
+                disabled={checkoutLoading}
+                className="mt-6 flex w-full items-center justify-center rounded-2xl bg-green-500 px-4 py-3 font-semibold text-black transition hover:scale-[1.01] disabled:cursor-not-allowed disabled:opacity-70"
               >
-                Buy & Download
-              </a>
+                {checkoutLoading ? 'Starting Checkout...' : 'Buy & Download'}
+              </button>
             </div>
 
             <div className="rounded-3xl border border-white/10 bg-white/5 p-6 text-center transition hover:border-green-400/40 hover:shadow-[0_0_20px_rgba(34,197,94,0.15)]">
@@ -1150,14 +1187,14 @@ export default function FileRouter() {
                   <a href="#screenshots" className="transition hover:text-green-400">
                     Screenshots
                   </a>
-                  <a
-                    href={FILE_ROUTER_PAYMENT_LINKS.monthly}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="transition hover:text-green-400"
+                  <button
+                    type="button"
+                    onClick={() => handleCheckout()}
+                    disabled={checkoutLoading}
+                    className="text-left transition hover:text-green-400 disabled:cursor-not-allowed disabled:opacity-70"
                   >
-                    Monthly Checkout
-                  </a>
+                    {checkoutLoading ? 'Starting Monthly Checkout...' : 'Monthly Checkout'}
+                  </button>
                   <a
                     href={FILE_ROUTER_PAYMENT_LINKS.sixMonth}
                     target="_blank"
