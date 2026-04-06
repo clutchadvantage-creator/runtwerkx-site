@@ -4,6 +4,8 @@ import Home from './pages/Home'
 import AegisOne from './pages/AegisOne'
 import FileRouter from './pages/FileRouter'
 import MediaCenter from './pages/MediaCenter'
+import Fabrication from './pages/library/Fabrication'
+import Success from './pages/Success'
 import Privacy from './pages/Privacy'
 import Terms from './pages/Terms'
 import CalculatorsChartsConversionsPage from './pages/library/CalculatorsChartsConversionsPage'
@@ -49,9 +51,12 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/aegisone" element={<AegisOne />} />
         <Route path="/file-router" element={<FileRouter />} />
+        <Route path="/success" element={<Success />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/knowledge-library" element={<MediaCenter />} />
+        <Route path="/fabrication" element={<Fabrication />} />
+
         <Route
           path="/knowledge-library/calculators-charts-conversions"
           element={<CalculatorsChartsConversionsPage />}
