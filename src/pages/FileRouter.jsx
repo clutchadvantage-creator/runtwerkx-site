@@ -644,8 +644,16 @@ function FileRouterUseCasesInteractive() {
 
 export default function FileRouter() {
   const [checkoutLoading, setCheckoutLoading] = useState(false)
+  const [email, setEmail] = useState('')
 
-  const handleCheckout = async (email = 'test@example.com') => {
+  const handleCheckout = async () => {
+    const trimmedEmail = email.trim()
+
+    if (!trimmedEmail) {
+      window.alert('Please enter your email address before starting checkout.')
+      return
+    }
+
     try {
       setCheckoutLoading(true)
 
@@ -656,7 +664,7 @@ export default function FileRouter() {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ email }),
+          body: JSON.stringify({ email: trimmedEmail }),
         }
       )
 
@@ -932,6 +940,26 @@ export default function FileRouter() {
             </p>
           </div>
 
+          <div className="mx-auto mb-8 max-w-2xl">
+            <label
+              htmlFor="checkout-email"
+              className="mb-3 block text-center text-sm uppercase tracking-[0.22em] text-green-400"
+            >
+              Enter your email for monthly checkout
+            </label>
+            <input
+              id="checkout-email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="your@email.com"
+              className="w-full rounded-2xl border border-white/15 bg-white/5 px-5 py-4 text-center text-white outline-none transition placeholder:text-white/35 focus:border-green-400/40 focus:bg-white/[0.07] focus:shadow-[0_0_18px_rgba(34,197,94,0.12)]"
+            />
+            <p className="mt-3 text-center text-xs text-white/45">
+              This email is used to create your Stripe checkout session and customer record.
+            </p>
+          </div>
+
           <div className="grid gap-6 md:grid-cols-4">
             <div className="rounded-3xl border border-white/10 bg-white/5 p-6 text-center transition hover:border-green-400/40 hover:shadow-[0_0_20px_rgba(34,197,94,0.15)]">
               <h3 className="text-xl font-bold text-green-400">~Monthly~</h3>
@@ -942,7 +970,7 @@ export default function FileRouter() {
               </p>
               <button
                 type="button"
-                onClick={() => handleCheckout()}
+                onClick={handleCheckout}
                 disabled={checkoutLoading}
                 className="mt-6 flex w-full items-center justify-center rounded-2xl bg-green-500 px-4 py-3 font-semibold text-black transition hover:scale-[1.01] disabled:cursor-not-allowed disabled:opacity-70"
               >
@@ -1189,7 +1217,7 @@ export default function FileRouter() {
                   </a>
                   <button
                     type="button"
-                    onClick={() => handleCheckout()}
+                    onClick={handleCheckout}
                     disabled={checkoutLoading}
                     className="text-left transition hover:text-green-400 disabled:cursor-not-allowed disabled:opacity-70"
                   >

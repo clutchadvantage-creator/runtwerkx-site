@@ -153,14 +153,8 @@ export const mediaCenterCategories = [
   {
     id: 'fabrication',
     title: 'Fabrication',
-    status: 'Planned',
-    to: '/knowledge-library/fabrication',
-  },
-  {
-    id: 'manufacturing',
-    title: 'Manufacturing',
-    status: 'Planned',
-    to: '/knowledge-library/manufacturing',
+    status: 'Live',
+    to: '/fabrication',
   },
 ]
 
@@ -177,7 +171,7 @@ export const mediaCenterFeatured = [
     description:
       'A real-world look at how structural steel moves through fabrication, handling, and production.',
     notes:
-      'AGT Robotics builds some of the most advanced and capable robotic welding systems in the industry, helping shops push the limits of automation and productivity. Their team is highly responsive and committed to continuous improvement, making them a strong partner for real-world fabrication environments. ',
+      'AGT Robotics builds some of the most advanced and capable robotic welding systems in the industry, helping shops push the limits of automation and productivity. Their team is highly responsive and committed to continuous improvement, making them a strong partner for real-world fabrication environments.',
   },
   {
     id: 'industrial-safety',
