@@ -6,6 +6,7 @@ export default function Navbar() {
   const location = useLocation()
   const navigate = useNavigate()
   const [activeSection, setActiveSection] = useState('home')
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     if (location.pathname !== '/') return
@@ -77,6 +78,10 @@ export default function Navbar() {
     isActive
       ? 'scale-x-100 opacity-100'
       : 'scale-x-0 opacity-0 group-hover:scale-x-100 group-hover:opacity-100'
+
+  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen)
+
+  const closeMobileMenu = () => setIsMobileMenuOpen(false)
 
   const isHomePage = location.pathname === '/'
   const isAegisOnePage = location.pathname === '/aegisone'
@@ -192,6 +197,84 @@ export default function Navbar() {
             />
           </Link>
         </nav>
+
+        {/* Mobile Menu Button */}
+        <button
+          type="button"
+          onClick={toggleMobileMenu}
+          className="md:hidden p-2 text-white hover:text-green-400 transition"
+          aria-label="Toggle mobile menu"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={isMobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
+          </svg>
+        </button>
+
+        {/* Mobile Menu Overlay */}
+        {isMobileMenuOpen && (
+          <div className="fixed inset-0 z-50 md:hidden">
+            <div className="absolute inset-0 bg-black/80 backdrop-blur" onClick={closeMobileMenu} />
+            <div className="relative ml-auto h-full w-80 bg-black border-l border-white/10 p-6">
+              <div className="flex flex-col space-y-6">
+                <button
+                  type="button"
+                  onClick={() => { goHomeTop(); closeMobileMenu(); }}
+                  className={`text-left text-lg ${navButtonClass(isHomePage && activeSection === 'home')}`}
+                >
+                  Home
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => { goToSection('work'); closeMobileMenu(); }}
+                  className={`text-left text-lg ${navButtonClass(isHomePage && activeSection === 'work')}`}
+                >
+                  Products
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => { goToSection('about'); closeMobileMenu(); }}
+                  className={`text-left text-lg ${navButtonClass(isHomePage && activeSection === 'about')}`}
+                >
+                  About
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => { goToSection('contact'); closeMobileMenu(); }}
+                  className={`text-left text-lg ${navButtonClass(isHomePage && activeSection === 'contact')}`}
+                >
+                  Contact
+                </button>
+
+                <Link
+                  to="/aegisone"
+                  onClick={closeMobileMenu}
+                  className={`text-left text-lg ${isAegisOnePage ? 'text-green-300' : 'text-white hover:text-green-400'}`}
+                >
+                  AegisOne
+                </Link>
+
+                <Link
+                  to="/file-router"
+                  onClick={closeMobileMenu}
+                  className={`text-left text-lg ${isFileRouterPage ? 'text-green-300' : 'text-white hover:text-green-400'}`}
+                >
+                  File Router
+                </Link>
+
+                <Link
+                  to="/knowledge-library"
+                  onClick={closeMobileMenu}
+                  className={`text-left text-lg ${isKnowledgePage ? 'text-green-300' : 'text-white hover:text-green-400'}`}
+                >
+                  Knowledge Library
+                </Link>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </header>
   )

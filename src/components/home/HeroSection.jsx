@@ -27,7 +27,7 @@ export default function HeroSection() {
             ― RUNTWERKX ―
           </p>
 
-          <h1 className="mb-6 text-5xl font-black leading-tight md:text-7xl">
+          <h1 className="mb-6 text-4xl font-black leading-tight md:text-6xl lg:text-7xl">
             Software & Applications For Industry Professionals
           </h1>
 
