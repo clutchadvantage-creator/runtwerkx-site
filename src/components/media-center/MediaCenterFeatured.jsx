@@ -111,23 +111,6 @@ function FeaturedMediaCard({ item, onOpen }) {
 
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
 
-            <div className="absolute left-4 top-4 flex flex-wrap gap-2">
-              {item.category && (
-                <span className="rounded-full border border-green-400/25 bg-black/55 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-green-300">
-                  {item.category}
-                </span>
-              )}
-              {item.sourceLabel && (
-                <span className="rounded-full border border-white/10 bg-black/55 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/70">
-                  {item.sourceLabel}
-                </span>
-              )}
-            </div>
-
-            <div className="absolute bottom-4 right-4 flex items-center gap-2 rounded-full border border-white/10 bg-black/65 px-3 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-white/80">
-              <Expand className="h-3.5 w-3.5" />
-              Expand
-            </div>
           </div>
 
           <div className="p-5">

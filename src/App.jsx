@@ -1,22 +1,55 @@
+import { Suspense, lazy, useEffect } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
-import { useEffect } from 'react'
 import Home from './pages/Home'
 import AegisOne from './pages/AegisOne'
 import FileRouter from './pages/FileRouter'
 import MediaCenter from './pages/MediaCenter'
-import Fabrication from './pages/library/Fabrication.jsx'
 import Success from './pages/Success'
 import Privacy from './pages/Privacy'
 import Terms from './pages/Terms'
-import CalculatorsChartsConversionsPage from './pages/library/CalculatorsChartsConversionsPage'
-import ShopMathCalculator from './pages/library/CCCPageContent/ShopMathCalculator'
-import MaterialWeightCalculator from './pages/library/CCCPageContent/MaterialWeightCalculator'
-import AreaVolumeCalculator from './pages/library/CCCPageContent/AreaVolumeCalculator'
-import ProductionRateCalculator from './pages/library/CCCPageContent/ProductionRateCalculator'
-import PipeTankFillCalculator from './pages/library/CCCPageContent/PipeTankFillCalculator'
-import CustomTradeCalculator from './pages/library/CCCPageContent/CustomTradeCalculator'
-import DecimalFractionChart from './pages/library/CCCPageContent/DecimalFractionChart'
-import TapDrillChart from './pages/library/CCCPageContent/TapDrillChart'
+
+const DailySafety = lazy(() => import('./pages/DailySafety'))
+const Fabrication = lazy(() => import('./pages/library/Fabrication.jsx'))
+const IndustryStandards = lazy(() => import('./pages/library/IndustryStandards'))
+const EmergencyProtocols = lazy(() => import('./pages/library/EmergencyProtocols'))
+const MaintenanceSchedules = lazy(() => import('./pages/library/MaintenanceSchedules'))
+const RegulatoryUpdates = lazy(() => import('./pages/library/RegulatoryUpdates'))
+const ProfessionalTips = lazy(() => import('./pages/library/ProfessionalTips'))
+const CalculatorsChartsConversionsPage = lazy(() =>
+  import('./pages/library/CalculatorsChartsConversionsPage')
+)
+const ShopMathCalculator = lazy(() =>
+  import('./pages/library/CCCPageContent/ShopMathCalculator')
+)
+const MaterialWeightCalculator = lazy(() =>
+  import('./pages/library/CCCPageContent/MaterialWeightCalculator')
+)
+const AreaVolumeCalculator = lazy(() =>
+  import('./pages/library/CCCPageContent/AreaVolumeCalculator')
+)
+const ProductionRateCalculator = lazy(() =>
+  import('./pages/library/CCCPageContent/ProductionRateCalculator')
+)
+const PipeTankFillCalculator = lazy(() =>
+  import('./pages/library/CCCPageContent/PipeTankFillCalculator')
+)
+const CustomTradeCalculator = lazy(() =>
+  import('./pages/library/CCCPageContent/CustomTradeCalculator')
+)
+const DecimalFractionChart = lazy(() => import('./pages/library/CCCPageContent/DecimalFractionChart'))
+const CommonMaterialReferenceCharts = lazy(() =>
+  import('./pages/library/CCCPageContent/CommonMaterialReferenceCharts')
+)
+const FieldReferenceCharts = lazy(() =>
+  import('./pages/library/CCCPageContent/FieldReferenceCharts')
+)
+const FastenerHardwareReference = lazy(() =>
+  import('./pages/library/CCCPageContent/FastenerHardwareReference')
+)
+const SteelGaugeThicknessChart = lazy(() =>
+  import('./pages/library/CCCPageContent/SteelGaugeThicknessChart')
+)
+const TapDrillChart = lazy(() => import('./pages/library/CCCPageContent/TapDrillChart'))
 
 function ScrollManager() {
   const { pathname, hash } = useLocation()
@@ -42,60 +75,97 @@ function ScrollManager() {
   return null
 }
 
+function RouteFallback() {
+  return (
+    <div className="min-h-screen bg-[#050816] px-6 py-24 text-center text-white">
+      <p className="text-xs font-semibold uppercase tracking-[0.24em] text-green-400">
+        Loading resource
+      </p>
+      <p className="mt-4 text-base text-white/70">
+        Pulling in the selected library page and tools.
+      </p>
+    </div>
+  )
+}
+
 export default function App() {
   return (
     <>
       <ScrollManager />
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/aegisone" element={<AegisOne />} />
-        <Route path="/file-router" element={<FileRouter />} />
-        <Route path="/success" element={<Success />} />
-        <Route path="/privacy" element={<Privacy />} />
-        <Route path="/terms" element={<Terms />} />
-        <Route path="/knowledge-library" element={<MediaCenter />} />
-        <Route path="/fabrication" element={<Fabrication />} />
+      <Suspense fallback={<RouteFallback />}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/aegisone" element={<AegisOne />} />
+          <Route path="/file-router" element={<FileRouter />} />
+          <Route path="/success" element={<Success />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/knowledge-library" element={<MediaCenter />} />
+          <Route path="/daily-safety" element={<DailySafety />} />
+          <Route path="/knowledge-library/industry-standards" element={<IndustryStandards />} />
+          <Route path="/knowledge-library/emergency-protocols" element={<EmergencyProtocols />} />
+          <Route path="/knowledge-library/maintenance-schedules" element={<MaintenanceSchedules />} />
+          <Route path="/knowledge-library/regulatory-updates" element={<RegulatoryUpdates />} />
+          <Route path="/knowledge-library/professional-tips" element={<ProfessionalTips />} />
+          <Route path="/fabrication" element={<Fabrication />} />
 
-        <Route
-          path="/knowledge-library/calculators-charts-conversions"
-          element={<CalculatorsChartsConversionsPage />}
-        />
-        <Route
-          path="/knowledge-library/calculators-charts-conversions/shop-math-calculator"
-          element={<ShopMathCalculator />}
-        />
-        <Route
-          path="/knowledge-library/calculators-charts-conversions/material-weight-calculator"
-          element={<MaterialWeightCalculator />}
-        />
-        <Route
-          path="/knowledge-library/calculators-charts-conversions/area-volume-calculator"
-          element={<AreaVolumeCalculator />}
-        />
-        <Route
-          path="/knowledge-library/calculators-charts-conversions/production-rate-calculator"
-          element={<ProductionRateCalculator />}
-        />
-        <Route
-          path="/knowledge-library/calculators-charts-conversions/pipe-tank-fill-calculator"
-          element={<PipeTankFillCalculator />}
-        />
-        <Route
-          path="/knowledge-library/calculators-charts-conversions/custom-trade-calculator"
-          element={<CustomTradeCalculator />}
-        />
-        <Route
-          path="/knowledge-library/calculators-charts-conversions/decimal-fraction-chart"
-          element={<DecimalFractionChart />}
-        />
-        <Route
-          path="/knowledge-library/calculators-charts-conversions/tap-drill-chart"
-          element={<TapDrillChart />}
-        />
+          <Route
+            path="/knowledge-library/calculators-charts-conversions"
+            element={<CalculatorsChartsConversionsPage />}
+          />
+          <Route
+            path="/knowledge-library/calculators-charts-conversions/shop-math-calculator"
+            element={<ShopMathCalculator />}
+          />
+          <Route
+            path="/knowledge-library/calculators-charts-conversions/material-weight-calculator"
+            element={<MaterialWeightCalculator />}
+          />
+          <Route
+            path="/knowledge-library/calculators-charts-conversions/area-volume-calculator"
+            element={<AreaVolumeCalculator />}
+          />
+          <Route
+            path="/knowledge-library/calculators-charts-conversions/production-rate-calculator"
+            element={<ProductionRateCalculator />}
+          />
+          <Route
+            path="/knowledge-library/calculators-charts-conversions/pipe-tank-fill-calculator"
+            element={<PipeTankFillCalculator />}
+          />
+          <Route
+            path="/knowledge-library/calculators-charts-conversions/custom-trade-calculator"
+            element={<CustomTradeCalculator />}
+          />
+          <Route
+            path="/knowledge-library/calculators-charts-conversions/decimal-fraction-chart"
+            element={<DecimalFractionChart />}
+          />
+          <Route
+            path="/knowledge-library/calculators-charts-conversions/common-material-reference-charts"
+            element={<CommonMaterialReferenceCharts />}
+          />
+          <Route
+            path="/knowledge-library/calculators-charts-conversions/field-reference-charts"
+            element={<FieldReferenceCharts />}
+          />
+          <Route
+            path="/knowledge-library/calculators-charts-conversions/fastener-hardware-reference"
+            element={<FastenerHardwareReference />}
+          />
+          <Route
+            path="/knowledge-library/calculators-charts-conversions/steel-gauge-thickness-chart"
+            element={<SteelGaugeThicknessChart />}
+          />
+          <Route
+            path="/knowledge-library/calculators-charts-conversions/tap-drill-chart"
+            element={<TapDrillChart />}
+          />
 
-        <Route path="*" element={<Home />} />
-      </Routes>
+          <Route path="*" element={<Home />} />
+        </Routes>
+      </Suspense>
     </>
   )
 }

@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 
 const HERO_VIDEO_SRC = '/videos/calcs-conversions-hero2.mp4'
+const HERO_PANEL_IMAGE_SRC = '/images/calculators-charts-panel.png'
 const PAGE_URL =
   'https://runtwerkx.com/knowledge-library/calculators-charts-conversions'
 
@@ -327,37 +328,40 @@ export default function CalculatorsChartsConversionsPage() {
 
         <section className="relative z-10 border-b border-white/10">
           <div className="mx-auto max-w-7xl px-6 pb-16 pt-20">
-            <div className="mx-auto max-w-5xl rounded-[2rem] bg-black/55 px-6 py-10 text-center backdrop-blur-[2px] md:px-10 md:py-12">
-              <p className="text-sm font-semibold uppercase tracking-[0.30em] text-green-400">
-                ― Current Location ―
-              </p>
+            <div className="mx-auto max-w-6xl overflow-hidden rounded-[2rem] border border-white/10 bg-black/55 backdrop-blur-[2px]">
+              <div className="grid items-stretch gap-0 lg:grid-cols-[1.1fr_0.9fr]">
+                <div className="px-6 py-10 text-center lg:px-10 lg:py-12 lg:text-left">
+                  <p className="text-sm font-semibold uppercase tracking-[0.30em] text-green-400">
+                    ― Current Location ―
+                  </p>
 
-              <h1 className="mt-5 text-4xl font-black leading-tight text-white md:text-6xl">
-                Calculators, Charts & Conversions
-              </h1>
+                  <h1 className="mt-5 text-4xl font-black leading-tight text-white md:text-6xl">
+                    Calculators, Charts & Conversions
+                  </h1>
 
-              <p className="mx-auto mt-6 max-w-3xl text-base leading-8 text-white/72 md:text-lg">
-                A structured reference hub for math, quick utilities, common
-                charts, and practical conversions. Designed to grow into a
-                larger connected industrial knowledge system over time.
-              </p>
+                  <p className="mt-6 max-w-2xl text-base leading-8 text-white/72 md:text-lg">
+                    Practical calculators, fast charts, and everyday conversions built for shop, field, and industrial work.
+                  </p>
+                </div>
 
-              <p className="mx-auto mt-6 max-w-4xl text-base leading-8 text-white/60">
-                Explore industrial calculators, charts, and conversion tools
-                built for day-to-day use. This section connects shop math,
-                material weight calculations, production rate tools, pipe and
-                tank fill tools, custom trade tools, common reference charts,
-                and future conversion tools into one growing RuntWerkx knowledge
-                system.
-              </p>
-
-              <div className="mt-10 flex flex-wrap justify-center gap-3">
-                <QuickNavCard href="#calculators" title="Calculators" />
-                <QuickNavCard href="#charts" title="Charts" />
-                <QuickNavCard href="#conversions" title="Conversions" />
-                <QuickNavCard href="#related-topics" title="Related Topics" />
-                <QuickNavCard href="#community" title="Discussion" />
+                <div className="relative min-h-[240px] border-t border-white/10 lg:min-h-full lg:border-l lg:border-t-0">
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,197,94,0.14),transparent_58%)]" />
+                  <div className="absolute inset-0 opacity-[0.08] bg-[linear-gradient(rgba(34,197,94,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,0.12)_1px,transparent_1px)] bg-[size:28px_28px]" />
+                  <div
+                    className="absolute inset-0 bg-center bg-cover bg-no-repeat"
+                    style={{ backgroundImage: HERO_PANEL_IMAGE_SRC ? `url(${HERO_PANEL_IMAGE_SRC})` : 'none' }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-br from-black/15 via-black/25 to-black/55" />
+                </div>
               </div>
+            </div>
+
+            <div className="mx-auto mt-6 flex max-w-6xl flex-wrap justify-center gap-3 lg:justify-start">
+              <QuickNavCard href="#calculators" title="Calculators" />
+              <QuickNavCard href="#charts" title="Charts" />
+              <QuickNavCard href="#conversions" title="Conversions" />
+              <QuickNavCard href="#related-topics" title="Related Topics" />
+              <QuickNavCard href="#community" title="Discussion" />
             </div>
           </div>
         </section>
@@ -453,24 +457,36 @@ export default function CalculatorsChartsConversionsPage() {
                 subtitle="Machining / Shop Use"
                 description="Quick UNC and UNF tap drill lookup with thread size, TPI, major diameter, drill size, and decimal drill equivalents."
               />
-              <ReferenceCard
+              <LiveMathToolCard
+                onClick={() =>
+                  navigate('/knowledge-library/calculators-charts-conversions/steel-gauge-thickness-chart')
+                }
                 title="Steel Gauge / Thickness Charts"
-                category="Material Reference"
+                subtitle="Material Reference"
                 description="Practical thickness and gauge references that can support estimating, layout, and quick material checks."
               />
-              <ReferenceCard
+              <LiveMathToolCard
+                onClick={() =>
+                  navigate('/knowledge-library/calculators-charts-conversions/common-material-reference-charts')
+                }
                 title="Common Material Reference Charts"
-                category="Reference"
+                subtitle="Reference"
                 description="A section for frequently used shop-floor reference tables, dimensions, and material-related charts."
               />
-              <ReferenceCard
+              <LiveMathToolCard
+                onClick={() =>
+                  navigate('/knowledge-library/calculators-charts-conversions/fastener-hardware-reference')
+                }
                 title="Fastener / Hardware Reference"
-                category="Assembly"
+                subtitle="Assembly"
                 description="A place for curated charts related to standard hardware, sizes, and quick-use dimensional lookup."
               />
-              <ReferenceCard
+              <LiveMathToolCard
+                onClick={() =>
+                  navigate('/knowledge-library/calculators-charts-conversions/field-reference-charts')
+                }
                 title="Field Reference Charts"
-                category="Expandable"
+                subtitle="Daily Field Use"
                 description="Reserved for high-use industry reference charts that deserve a permanent place in the library over time."
               />
             </div>
@@ -633,6 +649,34 @@ export default function CalculatorsChartsConversionsPage() {
                 className="rounded-full border border-zinc-700 bg-black/40 px-5 py-3 text-sm text-zinc-300 transition hover:border-green-400 hover:text-white"
               >
                 Decimal / Fraction Chart
+              </Link>
+
+              <Link
+                to="/knowledge-library/calculators-charts-conversions/steel-gauge-thickness-chart"
+                className="rounded-full border border-zinc-700 bg-black/40 px-5 py-3 text-sm text-zinc-300 transition hover:border-green-400 hover:text-white"
+              >
+                Steel Gauge / Thickness Chart
+              </Link>
+
+              <Link
+                to="/knowledge-library/calculators-charts-conversions/common-material-reference-charts"
+                className="rounded-full border border-zinc-700 bg-black/40 px-5 py-3 text-sm text-zinc-300 transition hover:border-green-400 hover:text-white"
+              >
+                Common Material Reference Charts
+              </Link>
+
+              <Link
+                to="/knowledge-library/calculators-charts-conversions/fastener-hardware-reference"
+                className="rounded-full border border-zinc-700 bg-black/40 px-5 py-3 text-sm text-zinc-300 transition hover:border-green-400 hover:text-white"
+              >
+                Fastener / Hardware Reference
+              </Link>
+
+              <Link
+                to="/knowledge-library/calculators-charts-conversions/field-reference-charts"
+                className="rounded-full border border-zinc-700 bg-black/40 px-5 py-3 text-sm text-zinc-300 transition hover:border-green-400 hover:text-white"
+              >
+                Field Reference Charts
               </Link>
 
               <Link

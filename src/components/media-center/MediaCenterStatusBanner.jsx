@@ -10,15 +10,11 @@ export default function MediaCenterStatusBanner() {
           </div>
 
           <h2 className="mt-2 text-2xl font-bold text-white">
-            Update 1.0.1 Release
+            Update 1.0.2 Release
           </h2>
 
           <p className="mt-3 text-sm leading-7 text-white/65">
-            Update-1.0.1 Notes-
-            All currently planned calculators have now been implemented as of this update. We also wired in the Featured Content Section, so keep an eye out for new things showing up there.
-             The Charts Section has been started as well with a few charts added as part of this update.
-            When the Chart Conversions & Calculators page is finished the next planned phase is for the Fabrication page. Look for updates and changes HERE.
-            We appreciate your paitence as we continue to develop the site.
+            The Knowledge Library has expanded into a much more complete industrial resource system with live calculator tools, charts and conversions, a rebuilt fabrication hub, and dedicated pages for daily safety, industry standards, emergency response, maintenance planning, regulatory monitoring, and professional tips. This release continues the shift from placeholder content to practical, connected resources that are meant to be used on the job.
           </p>
         </div>
 
