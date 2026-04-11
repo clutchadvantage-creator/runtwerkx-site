@@ -2,6 +2,8 @@ import Navbar from '../../components/Navbar'
 import { Link } from 'react-router-dom'
 import { ExternalLink } from 'lucide-react'
 
+const PAGE_BACKGROUND_IMAGE_SRC = '/images/library2.png'
+
 export default function LibraryPageLayout({
   eyebrow,
   title,
@@ -15,14 +17,13 @@ export default function LibraryPageLayout({
     <div className="relative min-h-screen overflow-hidden bg-black text-white">
       <Navbar />
 
-      <video
-        src="/videos/library3.mp4"
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="auto"
-        className="fixed inset-0 h-full w-full object-cover z-0"
+      <div
+        className="fixed inset-0 h-full w-full object-cover z-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: PAGE_BACKGROUND_IMAGE_SRC
+            ? `url(${PAGE_BACKGROUND_IMAGE_SRC})`
+            : 'none',
+        }}
       />
 
       <div className="fixed inset-0 bg-black/75 z-0" />

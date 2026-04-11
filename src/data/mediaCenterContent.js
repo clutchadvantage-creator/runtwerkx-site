@@ -1,123 +1,78 @@
 export const mediaCenterCategories = [
-  { id: 'featured', title: 'Featured Media', status: 'coming soon' },
-  { id: 'training', title: 'Training Library', status: 'coming soon' },
-  { id: 'walkthroughs', title: 'Product Walkthroughs', status: 'coming soon' },
-  { id: 'support', title: 'Support Content', status: 'coming soon' },
-  { id: 'promo', title: 'Promotional Media', status: 'coming soon' },
-]
-
-export const mediaCenterFeatured = [
   {
-    id: 'featured-file-router',
-    title: 'File Router Quick Start',
-    description:
-      'A future featured training clip for staging, routing, and repeatable workflow control.',
-    category: 'featured',
-    status: 'coming soon',
+    id: 'calculators-charts-conversions',
+    title: 'Calculators, Charts & Conversions',
+    status: 'Active',
+    to: '/knowledge-library/calculators-charts-conversions',
   },
   {
-    id: 'featured-aegis',
-    title: 'AegisOne Platform Overview',
-    description:
-      'A future overview video introducing the core ideas behind the AegisOne platform.',
-    category: 'featured',
-    status: 'coming soon',
-  },
-  {
-    id: 'featured-runtwerkx',
-    title: 'RuntWerkx Systems Introduction',
-    description:
-      'A future brand or promotional media slot for explaining the wider RuntWerkx ecosystem.',
-    category: 'featured',
-    status: 'coming soon',
+    id: 'fabrication',
+    title: 'Fabrication',
+    status: 'Live',
+    to: '/fabrication',
   },
 ]
 
 export const mediaCenterSections = [
   {
-    id: 'training-library',
-    title: 'Training Library',
+    id: 'daily-resources',
+    title: 'Daily Professional Resources',
     description:
-      'Short training content, guided lessons, and practical how-to material for real users.',
+      'Essential daily-use resources, quick references, and professional tools for industry workers.',
     items: [
       {
-        id: 'training-1',
-        title: 'Getting Started',
-        description: 'Starter training content for future app onboarding.',
-        category: 'training',
-        status: 'coming soon',
+        id: 'safety-checklist',
+        title: 'Daily Safety Checklist',
+        description:
+          'Quick safety verification checklist for equipment inspection and workplace hazard assessment.',
+        category: 'Safety',
+        status: 'Essential',
+        href: '/daily-safety',
       },
       {
-        id: 'training-2',
-        title: 'Workflow Basics',
-        description: 'Foundational training on how the systems are intended to be used.',
-        category: 'training',
-        status: 'coming soon',
+        id: 'industry-standards',
+        title: 'Industry Standards Quick Reference',
+        description:
+          'Key industry standards, codes, and regulations at your fingertips for compliance verification.',
+        category: 'Reference',
+        status: 'Updated',
+        href: '/knowledge-library/industry-standards',
       },
       {
-        id: 'training-3',
-        title: 'Operator Tips',
-        description: 'Quick operational tips and short practical clips.',
-        category: 'training',
-        status: 'coming soon',
-      },
-    ],
-  },
-  {
-    id: 'product-walkthroughs',
-    title: 'Product Walkthroughs',
-    description:
-      'Walkthrough media for platforms, features, and major workflows.',
-    items: [
-      {
-        id: 'walkthrough-1',
-        title: 'File Router Walkthrough',
-        description: 'Future walkthrough for the File Router interface and flow.',
-        category: 'walkthrough',
-        status: 'coming soon',
+        id: 'emergency-protocols',
+        title: 'Emergency Response Protocols',
+        description:
+          'Critical emergency procedures, contact numbers, and response guidelines for various scenarios.',
+        category: 'Safety',
+        status: 'Critical',
+        href: '/knowledge-library/emergency-protocols',
       },
       {
-        id: 'walkthrough-2',
-        title: 'AegisOne Overview',
-        description: 'Future walkthrough for the AegisOne dashboard and modules.',
-        category: 'walkthrough',
-        status: 'coming soon',
+        id: 'maintenance-schedules',
+        title: 'Equipment Maintenance Schedules',
+        description:
+          'Preventive maintenance checklists and schedules for common industrial equipment and machinery.',
+        category: 'Operations',
+        status: 'Active',
+        href: '/knowledge-library/maintenance-schedules',
       },
       {
-        id: 'walkthrough-3',
-        title: 'Platform Concepts',
-        description: 'A future place for explaining larger platform ideas and systems.',
-        category: 'walkthrough',
-        status: 'coming soon',
-      },
-    ],
-  },
-  {
-    id: 'support-media',
-    title: 'Support Media',
-    description:
-      'Quick reference content, support videos, and guided troubleshooting resources.',
-    items: [
-      {
-        id: 'support-1',
-        title: 'Quick Support Clips',
-        description: 'Short support-focused clips for common issues and setup needs.',
-        category: 'support',
-        status: 'coming soon',
+        id: 'regulatory-updates',
+        title: 'Regulatory Updates & Alerts',
+        description:
+          'Latest regulatory changes, compliance deadlines, and industry-specific legal updates.',
+        category: 'Compliance',
+        status: 'Current',
+        href: '/knowledge-library/regulatory-updates',
       },
       {
-        id: 'support-2',
-        title: 'Setup Help',
-        description: 'Future help content for installs, setup, and initial configuration.',
-        category: 'support',
-        status: 'coming soon',
-      },
-      {
-        id: 'support-3',
-        title: 'Reference Content',
-        description: 'A slot for future support media and short internal-use guidance.',
-        category: 'support',
-        status: 'coming soon',
+        id: 'professional-tips',
+        title: 'Daily Professional Tips',
+        description:
+          'Quick tips, best practices, and efficiency hacks from experienced industry professionals.',
+        category: 'Development',
+        status: 'Daily',
+        href: '/knowledge-library/professional-tips',
       },
     ],
   },

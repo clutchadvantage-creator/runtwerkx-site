@@ -8,6 +8,7 @@ import {
   Cable,
   Cog,
   Cpu,
+  ChevronDown,
   ExternalLink,
   Factory,
   FileText,
@@ -23,7 +24,7 @@ import {
   Wrench,
 } from 'lucide-react'
 
-const HERO_VIDEO_SRC = '/videos/fabrication-bg.mp4'
+const PAGE_BACKGROUND_IMAGE_SRC = '/images/fabrication.png'
 
 const fabricationDisciplines = [
   {
@@ -302,7 +303,7 @@ const bestPractices = [
   },
 ]
 
-const resourceFinderCategories = ['All', 'Official Docs', 'OEMs', 'Robotics', 'Suppliers', 'Tools']
+const resourceFinderCategories = ['Official Docs', 'OEMs', 'Tools', 'Robotics', 'Suppliers']
 
 const sectionLinks = [
   { id: 'overview', label: 'Overview' },
@@ -490,20 +491,40 @@ function BestPracticeCard({ item }) {
 
 function ResourceFinder({ resources }) {
   const [query, setQuery] = useState('')
-  const [category, setCategory] = useState('All')
+  const [openCategories, setOpenCategories] = useState(() =>
+    Object.fromEntries(resourceFinderCategories.map((category) => [category, false]))
+  )
 
-  const filteredResources = useMemo(() => {
+  const groupedResources = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase()
 
-    return resources.filter((resource) => {
-      const categoryMatch = category === 'All' || resource.category === category
-      const haystack = [resource.title, resource.description, resource.note ?? '', resource.eyebrow ?? '']
-        .join(' ')
-        .toLowerCase()
-      const queryMatch = !normalizedQuery || haystack.includes(normalizedQuery)
-      return categoryMatch && queryMatch
-    })
-  }, [category, query, resources])
+    return resourceFinderCategories
+      .map((category) => {
+        const items = resources.filter((resource) => {
+          const haystack = [
+            resource.title,
+            resource.description,
+            resource.note ?? '',
+            resource.eyebrow ?? '',
+          ]
+            .join(' ')
+            .toLowerCase()
+
+          const queryMatch = !normalizedQuery || haystack.includes(normalizedQuery)
+          return resource.category === category && queryMatch
+        })
+
+        return { category, items }
+      })
+      .filter((group) => group.items.length > 0)
+  }, [query, resources])
+
+  function toggleCategory(category) {
+    setOpenCategories((current) => ({
+      ...current,
+      [category]: !current[category],
+    }))
+  }
 
   return (
     <section className="rounded-[2rem] border border-white/10 bg-black/45 p-8 backdrop-blur-sm">
@@ -525,59 +546,93 @@ function ResourceFinder({ resources }) {
             className="w-full rounded-2xl border border-green-400/20 bg-black/50 py-3 pl-11 pr-4 text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-green-400"
           />
         </div>
-        <div className="flex flex-wrap gap-3">
-          {resourceFinderCategories.map((value) => (
-            <button
-              key={value}
-              type="button"
-              onClick={() => setCategory(value)}
-              className={`rounded-full border px-4 py-2 text-sm transition ${
-                category === value
-                  ? 'border-green-400/35 bg-green-500/15 text-green-300'
-                  : 'border-white/10 bg-black/35 text-white/70 hover:border-green-400/25 hover:text-white'
-              }`}
-            >
-              {value}
-            </button>
-          ))}
+        <div className="rounded-2xl border border-white/10 bg-black/35 px-4 py-3 text-sm text-white/65">
+          {groupedResources.length} active categories
         </div>
       </div>
 
-      <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-        {filteredResources.map((resource) => (
-          resource.to ? (
-            <Link
-              key={resource.title}
-              to={resource.to}
-              className="rounded-[1.5rem] border border-white/10 bg-black/40 p-5 transition duration-300 hover:-translate-y-1 hover:border-green-400/35 hover:shadow-[0_0_20px_rgba(34,197,94,0.10)]"
+      <div className="mt-8 grid gap-4 xl:grid-cols-2">
+        {groupedResources.map((group) => {
+          const isOpen = !!openCategories[group.category]
+
+          return (
+            <div
+              key={group.category}
+              className="overflow-hidden rounded-[1.5rem] border border-white/10 bg-black/40"
             >
-              <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-green-400">{resource.category}</div>
-              <h3 className="mt-3 text-xl font-bold text-white">{resource.title}</h3>
-              <p className="mt-3 text-sm leading-7 text-white/68">{resource.description}</p>
-              <div className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-green-300">
-                Open Resource
-                <ArrowRight className="h-4 w-4" />
-              </div>
-            </Link>
-          ) : (
-            <a
-              key={resource.title}
-              href={resource.href}
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-[1.5rem] border border-white/10 bg-black/40 p-5 transition duration-300 hover:-translate-y-1 hover:border-green-400/35 hover:shadow-[0_0_20px_rgba(34,197,94,0.10)]"
-            >
-              <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-green-400">{resource.category}</div>
-              <h3 className="mt-3 text-xl font-bold text-white">{resource.title}</h3>
-              <p className="mt-3 text-sm leading-7 text-white/68">{resource.description}</p>
-              {resource.note ? <p className="mt-3 text-sm leading-6 text-white/55">{resource.note}</p> : null}
-              <div className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-green-300">
-                Open Link
-                <ExternalLink className="h-4 w-4" />
-              </div>
-            </a>
+              <button
+                type="button"
+                onClick={() => toggleCategory(group.category)}
+                className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition hover:bg-white/[0.03]"
+              >
+                <div>
+                  <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-green-400">
+                    Resource Category
+                  </div>
+                  <h3 className="mt-2 text-xl font-bold text-white">{group.category}</h3>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <span className="rounded-full border border-green-400/20 bg-green-500/[0.08] px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-green-300">
+                    {group.items.length} Links
+                  </span>
+                  <ChevronDown
+                    className={`h-5 w-5 text-green-300 transition ${isOpen ? 'rotate-180' : ''}`}
+                  />
+                </div>
+              </button>
+
+              {isOpen ? (
+                <div className="border-t border-white/10 px-5 py-4">
+                  <div className="space-y-3">
+                    {group.items.map((resource) =>
+                      resource.to ? (
+                        <Link
+                          key={`${group.category}-${resource.title}`}
+                          to={resource.to}
+                          className="flex items-start justify-between gap-4 rounded-xl border border-white/10 bg-black/35 px-4 py-4 transition hover:border-green-400/25 hover:bg-black/50"
+                        >
+                          <div>
+                            <div className="text-base font-semibold text-white">{resource.title}</div>
+                            <p className="mt-2 text-sm leading-6 text-white/68">{resource.description}</p>
+                          </div>
+                          <ArrowRight className="mt-1 h-4 w-4 shrink-0 text-green-300" />
+                        </Link>
+                      ) : (
+                        <a
+                          key={`${group.category}-${resource.title}`}
+                          href={resource.href}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="flex items-start justify-between gap-4 rounded-xl border border-white/10 bg-black/35 px-4 py-4 transition hover:border-green-400/25 hover:bg-black/50"
+                        >
+                          <div>
+                            <div className="flex flex-wrap items-center gap-2">
+                              <div className="text-base font-semibold text-white">{resource.title}</div>
+                              {resource.note ? (
+                                <span className="rounded-full border border-white/10 bg-white/[0.04] px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/50">
+                                  {resource.note}
+                                </span>
+                              ) : null}
+                            </div>
+                            <p className="mt-2 text-sm leading-6 text-white/68">{resource.description}</p>
+                          </div>
+                          <ExternalLink className="mt-1 h-4 w-4 shrink-0 text-green-300" />
+                        </a>
+                      )
+                    )}
+                  </div>
+                </div>
+              ) : null}
+            </div>
           )
-        ))}
+        })}
+
+        {groupedResources.length === 0 ? (
+          <div className="xl:col-span-2 rounded-[1.5rem] border border-white/10 bg-black/35 px-5 py-8 text-center text-sm text-white/60">
+            No fabrication resources matched that search.
+          </div>
+        ) : null}
       </div>
     </section>
   )
@@ -662,18 +717,17 @@ export default function Fabrication() {
     <div className="relative min-h-screen overflow-hidden bg-black text-white">
       <Navbar />
 
-      <video
-        src={HERO_VIDEO_SRC}
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="auto"
-        className="fixed inset-0 z-0 h-full w-full object-cover"
+      <div
+        className="fixed inset-0 z-0 h-full w-full bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: PAGE_BACKGROUND_IMAGE_SRC
+            ? `url(${PAGE_BACKGROUND_IMAGE_SRC})`
+            : 'none',
+        }}
       />
 
-      <div className="fixed inset-0 z-0 bg-black/72" />
-      <div className="fixed inset-0 z-0 bg-[radial-gradient(circle_at_top,rgba(34,197,94,0.18),transparent_32%),linear-gradient(to_bottom,rgba(0,0,0,0.2),rgba(0,0,0,0.88))]" />
+      <div className="fixed inset-0 z-0 bg-black/48" />
+      <div className="fixed inset-0 z-0 bg-[radial-gradient(circle_at_top,rgba(34,197,94,0.10),transparent_34%),linear-gradient(to_bottom,rgba(0,0,0,0.08),rgba(0,0,0,0.52))]" />
       <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(34,197,94,0.12),transparent_22%),radial-gradient(circle_at_top_left,rgba(255,255,255,0.03),transparent_18%)]" />
         <div className="absolute inset-0 opacity-[0.05] bg-[linear-gradient(rgba(34,197,94,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,0.12)_1px,transparent_1px)] bg-[size:32px_32px]" />
@@ -685,6 +739,15 @@ export default function Fabrication() {
 
         <section className="relative z-10 border-b border-white/10">
           <div className="mx-auto max-w-7xl px-6 pb-16 pt-20">
+            <div className="mb-8">
+              <Link
+                to="/knowledge-library"
+                className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/40 px-4 py-2 text-sm text-white/70 transition hover:border-green-400/50 hover:text-white"
+              >
+                ← Back to Knowledge Library
+              </Link>
+            </div>
+
             <div className="mx-auto max-w-5xl rounded-[2rem] bg-black/55 px-6 py-12 text-center backdrop-blur-[2px] md:px-10 md:py-12">
               <p className="text-sm font-semibold uppercase tracking-[0.30em] text-green-400">
                 ― Current Location ―
@@ -714,7 +777,7 @@ export default function Fabrication() {
           <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-6 py-12 md:px-10 lg:grid-cols-[280px_minmax(0,1fr)] lg:px-12 lg:py-14">
             <aside className="h-fit rounded-[1.75rem] border border-green-500/15 bg-zinc-950/70 p-5 shadow-[0_0_35px_rgba(34,197,94,0.08)] backdrop-blur-sm">
               <div className="text-center text-xs font-semibold uppercase tracking-[0.24em] text-green-400">
-                ― Fabrication Navigation ―
+                ― Page Navigation ―
               </div>
 
               <nav className="mt-6 space-y-3">

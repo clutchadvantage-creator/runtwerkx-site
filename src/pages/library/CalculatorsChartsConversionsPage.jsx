@@ -2,8 +2,7 @@ import Navbar from '../../components/Navbar'
 import { useNavigate, Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 
-const HERO_VIDEO_SRC = '/videos/calcs-conversions-hero2.mp4'
-const HERO_PANEL_IMAGE_SRC = '/images/calculators-charts-panel.png'
+const PAGE_BACKGROUND_IMAGE_SRC = '/images/math3.png'
 const PAGE_URL =
   'https://runtwerkx.com/knowledge-library/calculators-charts-conversions'
 
@@ -153,82 +152,6 @@ function RelatedTopicCard({ title, description, status = 'Planned' }) {
   )
 }
 
-function CommunityPanel() {
-  return (
-    <section
-      id="community"
-      className="relative overflow-hidden rounded-[2rem] border border-green-500/20 bg-black/55 p-6 shadow-[0_0_35px_rgba(34,197,94,0.08)] md:p-8"
-    >
-      <div className="absolute inset-0 opacity-[0.07] bg-[linear-gradient(rgba(34,197,94,0.14)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,0.14)_1px,transparent_1px)] bg-[size:26px_26px]" />
-      <div className="absolute -left-8 top-0 h-28 w-28 rounded-full bg-green-500/14 blur-3xl" />
-      <div className="absolute bottom-0 right-0 h-32 w-32 rounded-full bg-green-400/10 blur-[90px]" />
-
-      <div className="relative">
-        <div className="mx-auto max-w-4xl text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-green-400">
-            ― Community Notes & Discussion ―
-          </p>
-
-          <h2 className="mt-3 text-3xl font-bold text-white md:text-4xl">
-            Built to grow into a living professional knowledge exchange
-          </h2>
-
-          <p className="mx-auto mt-5 max-w-3xl text-base leading-8 text-white/68">
-            This section is planned as the future collaboration layer for the
-            library. The goal is to give professionals a place to share
-            practical notes, examples, photos, field observations, corrections,
-            and discussion around real-world topics.
-          </p>
-        </div>
-
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
-          <div className="rounded-[1.4rem] border border-white/10 bg-white/[0.03] p-5 text-center">
-            <div className="text-sm font-semibold uppercase tracking-[0.22em] text-green-400">
-              Comments
-            </div>
-            <p className="mt-3 text-sm leading-7 text-white/65">
-              Topic-based discussion threads for practical questions, shop-floor
-              insight, and everyday reference use.
-            </p>
-          </div>
-
-          <div className="rounded-[1.4rem] border border-white/10 bg-white/[0.03] p-5 text-center">
-            <div className="text-sm font-semibold uppercase tracking-[0.22em] text-green-400">
-              Images & Examples
-            </div>
-            <p className="mt-3 text-sm leading-7 text-white/65">
-              Space for field photos, example setups, diagram references, and
-              visual knowledge sharing over time.
-            </p>
-          </div>
-
-          <div className="rounded-[1.4rem] border border-white/10 bg-white/[0.03] p-5 text-center">
-            <div className="text-sm font-semibold uppercase tracking-[0.22em] text-green-400">
-              Curated Growth
-            </div>
-            <p className="mt-3 text-sm leading-7 text-white/65">
-              A scalable structure that can evolve from clean notes and
-              submissions into a fuller professional discussion system later.
-            </p>
-          </div>
-        </div>
-
-        <div className="mt-8 rounded-[1.5rem] border border-green-400/20 bg-green-500/[0.05] p-5 text-center">
-          <div className="text-xs font-semibold uppercase tracking-[0.24em] text-green-300">
-            Planned System Direction
-          </div>
-          <p className="mx-auto mt-3 max-w-3xl text-sm leading-7 text-white/72">
-            Start with a clean, curated reference system first. Then add a
-            controlled contribution layer for comments, image uploads, field
-            notes, and linked knowledge so the library can grow without turning
-            into clutter.
-          </p>
-        </div>
-      </div>
-    </section>
-  )
-}
-
 export default function CalculatorsChartsConversionsPage() {
   const navigate = useNavigate()
 
@@ -305,63 +228,44 @@ export default function CalculatorsChartsConversionsPage() {
 
       <main className="relative overflow-hidden">
         <div className="absolute inset-0 z-0 overflow-hidden">
-          <video
-            className="absolute inset-0 h-full w-full object-cover"
-            autoPlay
-            muted
-            loop
-            playsInline
-          >
-            <source src={HERO_VIDEO_SRC} type="video/mp4" />
-          </video>
+          <div
+            className="absolute inset-0 bg-center bg-cover bg-no-repeat"
+            style={{ backgroundImage: PAGE_BACKGROUND_IMAGE_SRC ? `url(${PAGE_BACKGROUND_IMAGE_SRC})` : 'none' }}
+          />
 
-          <div className="absolute inset-0 bg-black/72" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(34,197,94,0.18),transparent_32%),linear-gradient(to_bottom,rgba(0,0,0,0.2),rgba(0,0,0,0.88))]" />
-        </div>
-
-        <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(34,197,94,0.12),transparent_22%),radial-gradient(circle_at_top_left,rgba(255,255,255,0.03),transparent_18%)]" />
-          <div className="absolute inset-0 opacity-[0.05] bg-[linear-gradient(rgba(34,197,94,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,0.12)_1px,transparent_1px)] bg-[size:32px_32px]" />
-          <div className="absolute -left-20 top-[-3rem] h-72 w-72 rounded-full bg-green-500/12 blur-[110px]" />
-          <div className="absolute right-[-5rem] top-[2rem] h-80 w-80 rounded-full bg-green-400/10 blur-[130px]" />
+          <div className="absolute inset-0 bg-black/28" />
         </div>
 
         <section className="relative z-10 border-b border-white/10">
           <div className="mx-auto max-w-7xl px-6 pb-16 pt-20">
-            <div className="mx-auto max-w-6xl overflow-hidden rounded-[2rem] border border-white/10 bg-black/55 backdrop-blur-[2px]">
-              <div className="grid items-stretch gap-0 lg:grid-cols-[1.1fr_0.9fr]">
-                <div className="px-6 py-10 text-center lg:px-10 lg:py-12 lg:text-left">
-                  <p className="text-sm font-semibold uppercase tracking-[0.30em] text-green-400">
-                    ― Current Location ―
-                  </p>
-
-                  <h1 className="mt-5 text-4xl font-black leading-tight text-white md:text-6xl">
-                    Calculators, Charts & Conversions
-                  </h1>
-
-                  <p className="mt-6 max-w-2xl text-base leading-8 text-white/72 md:text-lg">
-                    Practical calculators, fast charts, and everyday conversions built for shop, field, and industrial work.
-                  </p>
-                </div>
-
-                <div className="relative min-h-[240px] border-t border-white/10 lg:min-h-full lg:border-l lg:border-t-0">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,197,94,0.14),transparent_58%)]" />
-                  <div className="absolute inset-0 opacity-[0.08] bg-[linear-gradient(rgba(34,197,94,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,0.12)_1px,transparent_1px)] bg-[size:28px_28px]" />
-                  <div
-                    className="absolute inset-0 bg-center bg-cover bg-no-repeat"
-                    style={{ backgroundImage: HERO_PANEL_IMAGE_SRC ? `url(${HERO_PANEL_IMAGE_SRC})` : 'none' }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-br from-black/15 via-black/25 to-black/55" />
-                </div>
-              </div>
+            <div className="mb-8">
+              <Link
+                to="/knowledge-library"
+                className="inline-flex items-center gap-2 rounded-full border border-zinc-700 bg-black/40 px-4 py-2 text-sm text-zinc-300 transition hover:border-green-400 hover:text-white"
+              >
+                ← Back to Knowledge Library
+              </Link>
             </div>
 
-            <div className="mx-auto mt-6 flex max-w-6xl flex-wrap justify-center gap-3 lg:justify-start">
+            <div className="mx-auto max-w-6xl overflow-hidden rounded-[2rem] border border-white/10 bg-black/55 px-6 py-10 text-center backdrop-blur-[2px] md:px-10 md:py-12">
+              <p className="text-sm font-semibold uppercase tracking-[0.30em] text-green-400">
+                ― Current Location ―
+              </p>
+
+              <h1 className="mt-5 text-4xl font-black leading-tight text-white md:text-6xl">
+                Calculators, Charts & Conversions
+              </h1>
+
+              <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-white/72 md:text-lg">
+                Practical calculators, fast charts, and everyday conversions built for shop, field, and industrial work.
+              </p>
+            </div>
+
+            <div className="mx-auto mt-6 flex max-w-6xl flex-wrap justify-center gap-3">
               <QuickNavCard href="#calculators" title="Calculators" />
               <QuickNavCard href="#charts" title="Charts" />
               <QuickNavCard href="#conversions" title="Conversions" />
               <QuickNavCard href="#related-topics" title="Related Topics" />
-              <QuickNavCard href="#community" title="Discussion" />
             </div>
           </div>
         </section>
@@ -373,7 +277,6 @@ export default function CalculatorsChartsConversionsPage() {
             title="Tools for practical everyday use"
             description="This section holds the most common calculators that professionals reach for agian and again."
           />
-
           <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             <LiveMathToolCard
               onClick={() =>
@@ -689,9 +592,6 @@ export default function CalculatorsChartsConversionsPage() {
           </div>
         </section>
 
-        <div className="relative z-10 mx-auto max-w-7xl px-6 py-20">
-          <CommunityPanel />
-        </div>
       </main>
     </div>
   )

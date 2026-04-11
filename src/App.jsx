@@ -1,4 +1,4 @@
-import { Suspense, lazy, useEffect } from 'react'
+import { Suspense, lazy, useEffect, useLayoutEffect } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import Home from './pages/Home'
 import AegisOne from './pages/AegisOne'
@@ -55,21 +55,39 @@ function ScrollManager() {
   const { pathname, hash } = useLocation()
 
   useEffect(() => {
-    requestAnimationFrame(() => {
-      if (hash) {
+    if ('scrollRestoration' in window.history) {
+      const previousSetting = window.history.scrollRestoration
+      window.history.scrollRestoration = 'manual'
+
+      return () => {
+        window.history.scrollRestoration = previousSetting
+      }
+    }
+  }, [pathname, hash])
+
+  useLayoutEffect(() => {
+    const scrollToPageTop = () => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+      document.documentElement.scrollTop = 0
+      document.body.scrollTop = 0
+    }
+
+    if (hash) {
+      requestAnimationFrame(() => {
         const el = document.querySelector(hash)
         if (el) {
           el.scrollIntoView({ behavior: 'smooth', block: 'start' })
           return
         }
-      }
 
-      window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: 'auto',
+        scrollToPageTop()
       })
-    })
+
+      return
+    }
+
+    scrollToPageTop()
+    requestAnimationFrame(scrollToPageTop)
   }, [pathname, hash])
 
   return null

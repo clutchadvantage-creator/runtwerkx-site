@@ -7,7 +7,7 @@ export default function MediaCenterHero() {
 
         {/* 🎥 PANEL VIDEO */}
         <video
-          src="/videos/rwlibrarygreenglow2.mp4"
+          src="/videos/newlibraryvid2-compressed.mp4"
           autoPlay
           loop
           muted

@@ -4,26 +4,24 @@ import MediaCenterStatusBanner from '../components/media-center/MediaCenterStatu
 import MediaCenterSidebar from '../components/media-center/MediaCenterSidebar'
 import MediaCenterFeatured from '../components/media-center/MediaCenterFeatured'
 import MediaCenterLibrarySection from '../components/media-center/MediaCenterLibrarySection'
-import {
-  mediaCenterCategories,
-  mediaCenterFeatured,
-  mediaCenterSections,
-} from '../data/homeContent'
+import { mediaCenterCategories, mediaCenterSections } from '../data/mediaCenterContent'
+import mediaCenterFeatured from '../data/mediaCenterFeatured'
+
+const PAGE_BACKGROUND_IMAGE_SRC = '/images/library2.png'
 
 export default function KnowledgeLibrary() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-black text-white">
       <Navbar />
 
-      {/* FULL PAGE BACKGROUND VIDEO */}
-      <video
-        src="/videos/library3.mp4"
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="auto"
-        className="fixed inset-0 h-full w-full object-cover z-0"
+      {/* FULL PAGE BACKGROUND IMAGE */}
+      <div
+        className="fixed inset-0 z-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: PAGE_BACKGROUND_IMAGE_SRC
+            ? `url(${PAGE_BACKGROUND_IMAGE_SRC})`
+            : 'none',
+        }}
       />
 
       {/* GLOBAL DARK OVERLAY */}
@@ -42,6 +40,10 @@ export default function KnowledgeLibrary() {
 
             <div className="space-y-8">
               <MediaCenterFeatured items={mediaCenterFeatured} />
+
+              <p className="text-center text-sm font-medium text-white/78 md:text-base">
+                Get your content featured here. Contact us for details!
+              </p>
 
               {mediaCenterSections.map((section) => (
                 <MediaCenterLibrarySection

@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { ExternalLink, Expand, Play, X } from 'lucide-react'
+import { ExternalLink, Play, X } from 'lucide-react'
 
 function getEmbedUrl(url) {
   if (!url) return null
@@ -114,19 +114,15 @@ function FeaturedMediaCard({ item, onOpen }) {
           </div>
 
           <div className="p-5">
-            <div className="text-xs font-semibold uppercase tracking-[0.22em] text-green-400">
-              Featured Media
+            <div className="text-center">
+              <div className="text-xs font-semibold uppercase tracking-[0.22em] text-green-400">
+                Runt's Picks
+              </div>
+
+              <h3 className="mt-3 text-xl font-bold text-white">
+                {item.title}
+              </h3>
             </div>
-
-            <h3 className="mt-3 text-xl font-bold text-white">
-              {item.title}
-            </h3>
-
-            {item.description && (
-              <p className="mt-3 text-sm leading-7 text-white/68">
-                {item.description}
-              </p>
-            )}
 
             {(item.notes || item.commentary) && (
               <div className="mt-4 rounded-[1rem] border border-white/10 bg-white/[0.03] p-4">
@@ -177,8 +173,8 @@ function FeaturedMediaModal({ item, onClose }) {
   if (!item) return null
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm">
-      <div className="relative w-full max-w-6xl overflow-hidden rounded-[1.75rem] border border-green-500/20 bg-zinc-950 shadow-[0_0_60px_rgba(34,197,94,0.12)]">
+    <div className="fixed inset-0 z-[100] overflow-y-auto bg-black/80 p-4 backdrop-blur-sm md:p-6">
+      <div className="mx-auto my-6 w-full max-w-6xl overflow-hidden rounded-[1.75rem] border border-green-500/20 bg-zinc-950 shadow-[0_0_60px_rgba(34,197,94,0.12)]">
         <button
           type="button"
           onClick={onClose}

@@ -11,6 +11,8 @@ import {
 } from 'lucide-react'
 import Navbar from '../components/Navbar'
 
+const PAGE_BACKGROUND_IMAGE_SRC = '/images/hero-background2.png'
+
 const FILE_ROUTER_PAYMENT_LINKS = {
   monthly: 'https://buy.stripe.com/4gMbJ19zg6NC3cb1ty4ZG00',
   sixMonth: 'https://buy.stripe.com/dRm7sL6n40peeUT3BG4ZG01',
@@ -689,7 +691,18 @@ export default function FileRouter() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="relative min-h-screen overflow-hidden bg-black text-white">
+      <div
+        className="fixed inset-0 z-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: PAGE_BACKGROUND_IMAGE_SRC
+            ? `url(${PAGE_BACKGROUND_IMAGE_SRC})`
+            : 'none',
+        }}
+      />
+
+      <div className="fixed inset-0 z-0 bg-black/78" />
+
       <style>{`
         @keyframes rwx-marquee-in {
           0% { transform: translateX(100%); opacity: 1; }
@@ -700,17 +713,23 @@ export default function FileRouter() {
           0% { transform: translateX(-108%); opacity: 1; }
           100% { transform: translateX(-132%); opacity: 0; }
         }
+
+        @keyframes rwx-input-pulse {
+          0%, 100% {
+            box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.10), 0 0 0 1px rgba(34, 197, 94, 0.22);
+            border-color: rgba(34, 197, 94, 0.28);
+          }
+          50% {
+            box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.08), 0 0 18px rgba(34, 197, 94, 0.18);
+            border-color: rgba(74, 222, 128, 0.55);
+          }
+        }
       `}</style>
 
       <Navbar />
 
-      <main>
+      <main className="relative z-10">
         <section className="relative overflow-hidden border-b border-white/10">
-          <img
-            src="/images/hero-background4.png"
-            alt="Hero background"
-            className="absolute inset-0 h-full w-full object-cover"
-          />
           <div className="absolute inset-0 bg-black/68" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(34,197,94,0.18),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.05),transparent_25%)]" />
           <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:72px_72px] opacity-10" />
@@ -945,7 +964,7 @@ export default function FileRouter() {
               htmlFor="checkout-email"
               className="mb-3 block text-center text-sm uppercase tracking-[0.22em] text-green-400"
             >
-              Enter your email for monthly checkout
+              Enter your email to begin checkout
             </label>
             <input
               id="checkout-email"
@@ -953,7 +972,7 @@ export default function FileRouter() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="your@email.com"
-              className="w-full rounded-2xl border border-white/15 bg-white/5 px-5 py-4 text-center text-white outline-none transition placeholder:text-white/35 focus:border-green-400/40 focus:bg-white/[0.07] focus:shadow-[0_0_18px_rgba(34,197,94,0.12)]"
+              className="w-full rounded-2xl border border-green-400/25 bg-white/5 px-5 py-4 text-center text-white outline-none transition [animation:rwx-input-pulse_3.8s_ease-in-out_infinite] placeholder:text-white/35 focus:border-green-400/40 focus:bg-white/[0.07] focus:shadow-[0_0_18px_rgba(34,197,94,0.12)]"
             />
             <p className="mt-3 text-center text-xs text-white/45">
               This email is used to create your Stripe checkout session and customer record.
@@ -1346,10 +1365,18 @@ export default function FileRouter() {
                   >
                     Manage Subscription
                   </a>
-                  <Link to="/privacy" className="transition hover:text-green-400">
+                  <Link
+                    to="/privacy"
+                    onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' })}
+                    className="transition hover:text-green-400"
+                  >
                     Privacy
                   </Link>
-                  <Link to="/terms" className="transition hover:text-green-400">
+                  <Link
+                    to="/terms"
+                    onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' })}
+                    className="transition hover:text-green-400"
+                  >
                     Terms
                   </Link>
                   <a

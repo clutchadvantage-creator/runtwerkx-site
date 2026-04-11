@@ -2,6 +2,8 @@ import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 
+const PAGE_BACKGROUND_IMAGE_SRC = '/images/hero-background2.png'
+
 const AEGISONE_PREORDER_LINKS = {
   bronze: 'https://buy.stripe.com/00wfZhcLsgoc5kj0pu4ZG05',
   silver: 'https://buy.stripe.com/28E7sL4eW5JydQPegk4ZG04',
@@ -533,22 +535,9 @@ function AegisOnePreorderSection({ isHighlighted = false }) {
 
 function AegisOneFooter() {
   return (
-    <section className="border-t border-white/10 bg-black">
+    <section className="relative z-10 border-t border-white/10 bg-black">
       <div className="mx-auto max-w-7xl px-6 py-20">
-        <div className="mb-12 mx-auto max-w-4xl text-center">
-          <p className="text-sm uppercase tracking-[0.3em] text-green-400">
-            ― AegisOne ―
-          </p>
-          <h2 className="mt-3 text-3xl font-bold md:text-4xl">
-            Enterprise safety management built for real operations
-          </h2>
-          <p className="mx-auto mt-4 max-w-3xl text-white/70">
-            AegisOne is designed to bring incidents, inspections, corrective actions,
-            training visibility, and operational safety intelligence into one connected system.
-          </p>
-        </div>
-
-        <div className="grid gap-10 border-t border-white/10 pt-12 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div className="text-center md:text-left">
             <h3 className="text-lg font-bold text-white">AegisOne</h3>
             <p className="mt-4 text-sm leading-7 text-white/65">
@@ -558,32 +547,34 @@ function AegisOneFooter() {
 
             <div className="mt-5 flex flex-wrap justify-center gap-3 md:justify-start">
               <a
-                href={mailtoLink(
-                  'AegisOne Demo Request',
-                  'Hello RuntWerkx,%0D%0A%0D%0AI would like to request a demo of AegisOne.'
-                )}
+                href="#founders"
                 className="inline-flex rounded-2xl bg-green-500 px-5 py-3 text-sm font-semibold text-black transition hover:scale-[1.02]"
               >
-                Request Demo
+                Founder Access
               </a>
 
               <a
-                href={mailtoLink(
-                  'AegisOne Information Request',
-                  'Hello RuntWerkx,%0D%0A%0D%0AI would like more information about AegisOne.'
-                )}
+                href={AEGISONE_BILLING.portal}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex rounded-2xl border border-white/15 px-5 py-3 text-sm font-semibold text-white/85 transition hover:border-green-400 hover:text-green-400"
               >
-                Request Info
+                Billing Portal
               </a>
             </div>
           </div>
 
           <div className="text-center md:text-left">
             <h4 className="text-sm uppercase tracking-[0.2em] text-green-400">
-              Founder Access
+              Product
             </h4>
             <div className="mt-4 flex flex-col gap-3 text-sm text-white/70">
+              <a href="#founders" className="transition hover:text-green-400">
+                Founder Pre-Orders
+              </a>
+              <a href="#top" className="transition hover:text-green-400">
+                Platform Overview
+              </a>
               <a
                 href={AEGISONE_PREORDER_LINKS.bronze}
                 target="_blank"
@@ -608,9 +599,12 @@ function AegisOneFooter() {
               >
                 Gold Founder Pre-Order
               </a>
-              <a href="#top" className="transition hover:text-green-400">
-                Platform Overview
-              </a>
+              <Link to="/knowledge-library" className="transition hover:text-green-400">
+                Knowledge Library
+              </Link>
+              <Link to="/file-router" className="transition hover:text-green-400">
+                File Router
+              </Link>
             </div>
           </div>
 
@@ -625,7 +619,7 @@ function AegisOneFooter() {
                 rel="noopener noreferrer"
                 className="transition hover:text-green-400"
               >
-                Manage Billing
+                Manage Subscription
               </a>
               <a
                 href={AEGISONE_BILLING.portal}
@@ -641,16 +635,16 @@ function AegisOneFooter() {
                 rel="noopener noreferrer"
                 className="transition hover:text-green-400"
               >
-                Cancel / Billing Access
+                Cancel Subscription
               </a>
               <a
                 href={mailtoLink(
-                  'AegisOne Founder Support Request',
-                  'Hello RuntWerkx,%0D%0A%0D%0AI need support related to my AegisOne founder pre-order.'
+                  'AegisOne Support Request',
+                  'Hello RuntWerkx,%0D%0A%0D%0AI need help with AegisOne.'
                 )}
                 className="transition hover:text-green-400"
               >
-                Founder Support
+                Support
               </a>
             </div>
           </div>
@@ -667,7 +661,25 @@ function AegisOneFooter() {
                 )}
                 className="transition hover:text-green-400"
               >
-                Documentation / Rollout Updates
+                Documentation Request
+              </a>
+              <a
+                href={mailtoLink(
+                  'AegisOne Setup Help',
+                  'Hello RuntWerkx,%0D%0A%0D%0AI need help getting AegisOne set up.'
+                )}
+                className="transition hover:text-green-400"
+              >
+                Setup Help
+              </a>
+              <a
+                href={mailtoLink(
+                  'AegisOne Billing Question',
+                  'Hello RuntWerkx,%0D%0A%0D%0AI have a billing question about AegisOne.'
+                )}
+                className="transition hover:text-green-400"
+              >
+                Billing Questions
               </a>
               <a
                 href={mailtoLink(
@@ -678,12 +690,6 @@ function AegisOneFooter() {
               >
                 General Inquiry
               </a>
-              <Link to="/knowledge-library" className="transition hover:text-green-400">
-                Knowledge Library
-              </Link>
-              <Link to="/file-router" className="transition hover:text-green-400">
-                File Router
-              </Link>
               <Link to="/" className="transition hover:text-green-400">
                 Back to Home
               </Link>
@@ -698,14 +704,30 @@ function AegisOneFooter() {
             </p>
 
             <div className="flex flex-wrap justify-center gap-4 text-xs uppercase tracking-[0.18em] text-white/35 md:justify-end">
-              <Link to="/privacy" className="transition hover:text-green-400">
+              <a
+                href={AEGISONE_BILLING.portal}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition hover:text-green-400"
+              >
+                Manage Subscription
+              </a>
+              <Link
+                to="/privacy"
+                onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' })}
+                className="transition hover:text-green-400"
+              >
                 Privacy
               </Link>
-              <Link to="/terms" className="transition hover:text-green-400">
+              <Link
+                to="/terms"
+                onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' })}
+                className="transition hover:text-green-400"
+              >
                 Terms
               </Link>
               <a
-                href={mailtoLink('AegisOne Cancellation Question')}
+                href={mailtoLink('Cancellation Question')}
                 className="transition hover:text-green-400"
               >
                 Cancellation
@@ -715,9 +737,6 @@ function AegisOneFooter() {
                 className="transition hover:text-green-400"
               >
                 Support
-              </a>
-              <a href="tel:4179887395" className="transition hover:text-green-400">
-                Call
               </a>
             </div>
           </div>
@@ -830,10 +849,21 @@ export default function AegisOne() {
   )
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="relative min-h-screen overflow-hidden bg-black text-white">
+      <div
+        className="fixed inset-0 z-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: PAGE_BACKGROUND_IMAGE_SRC
+            ? `url(${PAGE_BACKGROUND_IMAGE_SRC})`
+            : 'none',
+        }}
+      />
+
+      <div className="fixed inset-0 z-0 bg-black/78" />
+
       <Navbar />
 
-      <main className="relative overflow-hidden" id="top">
+      <main className="relative z-10 overflow-hidden" id="top">
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(34,197,94,0.18),transparent_22%),radial-gradient(circle_at_top_left,rgba(255,255,255,0.05),transparent_18%)]" />
           <div className="absolute inset-0 opacity-[0.08] bg-[linear-gradient(rgba(34,197,94,0.18)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,0.18)_1px,transparent_1px)] bg-[size:42px_42px]" />

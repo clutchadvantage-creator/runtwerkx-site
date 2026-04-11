@@ -1,9 +1,14 @@
+import { useLayoutEffect } from 'react'
 import Navbar from '../components/Navbar'
 import { Link, useNavigate } from 'react-router-dom'
 
 export default function Terms() {
   const lastUpdated = 'April 4, 2026'
   const navigate = useNavigate()
+
+  useLayoutEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+  }, [])
 
   return (
     <div className="min-h-screen bg-black text-white">

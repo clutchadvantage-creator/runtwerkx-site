@@ -610,7 +610,7 @@ export default function ModernSystemsSection() {
 
                 <div className="relative h-[260px] overflow-hidden rounded-[1.5rem] bg-black">
                   <video
-                    src="/images/rwlibrarygreenglow2.mp4"
+                    src="/videos/newlibraryvid2-compressed.mp4"
                     autoPlay
                     loop
                     muted
