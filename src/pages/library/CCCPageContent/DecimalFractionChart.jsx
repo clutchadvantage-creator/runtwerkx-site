@@ -399,8 +399,8 @@ export default function DecimalFractionChart() {
             </div>
           </div>
 
-          <div className="mt-14 grid gap-10 xl:grid-cols-[1fr_360px]">
-            <div>
+          <div className="mt-14">
+            <div className="mx-auto max-w-5xl">
               <div className="mb-6 text-center">
                 <p className="text-xs uppercase tracking-[0.4em] text-emerald-400">
                   ― Reference Sheet ―
@@ -544,7 +544,7 @@ export default function DecimalFractionChart() {
               </div>
             </div>
 
-            <div>
+            <div className="mx-auto mt-14 max-w-6xl">
               <div className="mb-6 text-center">
                 <p className="text-xs uppercase tracking-[0.4em] text-emerald-400">
                   ― Quick Notes ―
@@ -557,7 +557,7 @@ export default function DecimalFractionChart() {
                 </p>
               </div>
 
-              <div className="space-y-5">
+              <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
                 <div className="rounded-[1.8rem] border border-zinc-800 bg-zinc-950/65 p-6">
                   <p className="text-xs uppercase tracking-[0.28em] text-emerald-400">
                     Most Used Conversions

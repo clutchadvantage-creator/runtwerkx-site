@@ -348,9 +348,9 @@ export default function FastenerHardwareReference() {
             </div>
           </div>
 
-          <div className="mt-14 grid gap-10 xl:grid-cols-[1fr_360px]">
-            <div>
-              <div className="mb-6 text-center">
+          <div className="mt-14">
+            <div className="mx-auto max-w-5xl">
+              <div className="mb-14 text-center">
                 <p className="text-xs uppercase tracking-[0.4em] text-emerald-400">― Reference Sheet ―</p>
                 <h2 className="mt-3 text-3xl font-semibold md:text-4xl">{tabTitle}</h2>
                 <p className="mx-auto mt-3 max-w-3xl text-zinc-400">{tabDescription}</p>
@@ -590,14 +590,14 @@ export default function FastenerHardwareReference() {
               </div>
             </div>
 
-            <div>
+            <div className="mx-auto mt-14 max-w-6xl">
               <div className="mb-6 text-center">
                 <p className="text-xs uppercase tracking-[0.4em] text-emerald-400">― Quick Notes ―</p>
                 <h2 className="mt-3 text-3xl font-semibold md:text-4xl">Reference Companion</h2>
                 <p className="mx-auto mt-3 max-w-3xl text-zinc-400">Fast grab notes for shop assembly, staging, and field install.</p>
               </div>
 
-              <div className="space-y-5">
+              <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
                 <div className="rounded-[1.8rem] border border-zinc-800 bg-zinc-950/65 p-6">
                   <p className="text-xs uppercase tracking-[0.28em] text-emerald-400">Most Used Checks</p>
                   <div className="mt-4 space-y-3 text-sm leading-7 text-zinc-300">
