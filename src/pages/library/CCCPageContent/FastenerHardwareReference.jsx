@@ -157,6 +157,14 @@ function NotebookPanel({ activeTab, children }) {
   return <div key={activeTab} className="animate-[pageFlip_340ms_ease] will-change-transform">{children}</div>
 }
 
+function MobileScrollHint() {
+  return (
+    <p className="mb-3 text-center text-xs font-medium uppercase tracking-[0.2em] text-black/45 md:hidden">
+      ← Swipe to view full chart →
+    </p>
+  )
+}
+
 function FooterStatusPanel({ activeTab, searchTerm }) {
   const tabLabel =
     activeTab === 'hex'
@@ -357,15 +365,18 @@ export default function FastenerHardwareReference() {
               </div>
 
               <div className="relative overflow-visible rounded-[2.2rem] border border-zinc-700/60 bg-[#f6f3e8] text-black shadow-[0_20px_60px_rgba(0,0,0,0.45)]">
-                <div className="absolute -top-10 left-10 z-20 flex flex-wrap gap-2">
-                  {NOTEBOOK_TABS.map((tab) => <NotebookTab key={tab.key} tab={tab} activeTab={activeTab} onClick={setActiveTab} />)}
+                {/* Mobile fix: keep notebook tabs on one line and scroll horizontally instead of wrapping. */}
+                <div className="absolute -top-10 left-4 right-4 z-20 overflow-x-auto whitespace-nowrap md:left-10 md:right-10 lg:right-auto">
+                  <div className="flex w-max gap-2 pr-4">
+                    {NOTEBOOK_TABS.map((tab) => <NotebookTab key={tab.key} tab={tab} activeTab={activeTab} onClick={setActiveTab} />)}
+                  </div>
                 </div>
 
                 <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(59,130,246,0.10)_1px,transparent_1px)] bg-[size:100%_38px] opacity-80" />
                 <div className="absolute bottom-0 left-[68px] top-0 w-px bg-red-400/60" />
                 <div className="absolute inset-0 animate-[notebookDrift_8s_ease-in-out_infinite] bg-[radial-gradient(circle_at_top,rgba(16,185,129,0.06),transparent_42%)]" />
 
-                <div className="relative z-10 px-6 pb-8 pt-8 md:px-10">
+                <div className="relative z-10 px-4 pb-8 pt-8 md:px-10">
                   <div className="ml-[22px] md:ml-[30px]">
                     <div className="mb-8 flex flex-col gap-4 border-b border-black/10 pb-6 xl:flex-row xl:items-end xl:justify-between">
                       <div>
@@ -398,30 +409,36 @@ export default function FastenerHardwareReference() {
                     <NotebookPanel activeTab={activeTab}>
                       {activeTab === 'hex' && (
                         <>
-                          <div className="overflow-hidden rounded-[1.6rem] border border-black/10 bg-white/45">
-                            <div className="grid grid-cols-7 border-b border-black/10 bg-emerald-900/[0.06] px-5 py-4 text-sm font-bold uppercase tracking-[0.22em] text-black/70">
-                              <div>Size</div>
-                              <div>UNC</div>
-                              <div>UNF</div>
-                              <div>Hex Head</div>
-                              <div>Nut</div>
-                              <div>Clr. Holes</div>
-                              <div>Washer</div>
-                            </div>
-
-                            <div className="max-h-[900px] overflow-auto">
-                              {filteredHexRows.map((row, index) => (
-                                <div key={`hex-${row.size}`} className={`grid grid-cols-7 px-5 py-3 text-base ${index % 2 === 0 ? 'bg-black/[0.02]' : 'bg-transparent'}`}>
-                                  <div className="font-semibold">{row.size}</div>
-                                  <div>{row.coarse}</div>
-                                  <div>{row.fine}</div>
-                                  <div>{row.hexHead}</div>
-                                  <div>{row.nut}</div>
-                                  <div>{row.clearance}</div>
-                                  <div>{row.washer}</div>
+                          <MobileScrollHint />
+                          {/* Mobile fix: keep the 7-column hardware chart readable by scrolling instead of compressing. */}
+                          <div className="rounded-[1.6rem] border border-black/10 bg-white/45">
+                            <div className="overflow-x-auto">
+                              <div className="min-w-[900px]">
+                                <div className="grid grid-cols-7 border-b border-black/10 bg-emerald-900/[0.06] px-4 py-4 text-sm font-bold uppercase tracking-[0.22em] text-black/70 md:px-5">
+                                  <div>Size</div>
+                                  <div>UNC</div>
+                                  <div>UNF</div>
+                                  <div>Hex Head</div>
+                                  <div>Nut</div>
+                                  <div>Clr. Holes</div>
+                                  <div>Washer</div>
                                 </div>
-                              ))}
-                              {filteredHexRows.length === 0 && <div className="px-5 py-8 text-center text-black/60">No chart rows matched that search.</div>}
+
+                                <div className="max-h-[900px] overflow-y-auto">
+                                  {filteredHexRows.map((row, index) => (
+                                    <div key={`hex-${row.size}`} className={`grid grid-cols-7 px-4 py-3 text-base ${index % 2 === 0 ? 'bg-black/[0.02]' : 'bg-transparent'} md:px-5`}>
+                                      <div className="font-semibold">{row.size}</div>
+                                      <div>{row.coarse}</div>
+                                      <div>{row.fine}</div>
+                                      <div>{row.hexHead}</div>
+                                      <div>{row.nut}</div>
+                                      <div>{row.clearance}</div>
+                                      <div>{row.washer}</div>
+                                    </div>
+                                  ))}
+                                  {filteredHexRows.length === 0 && <div className="px-4 py-8 text-center text-black/60 md:px-5">No chart rows matched that search.</div>}
+                                </div>
+                              </div>
                             </div>
                           </div>
 
@@ -446,28 +463,34 @@ export default function FastenerHardwareReference() {
 
                       {activeTab === 'socket' && (
                         <>
-                          <div className="overflow-hidden rounded-[1.6rem] border border-black/10 bg-white/45">
-                            <div className="grid grid-cols-6 border-b border-black/10 bg-blue-900/[0.06] px-5 py-4 text-sm font-bold uppercase tracking-[0.22em] text-black/70">
-                              <div>Size</div>
-                              <div>Thread</div>
-                              <div>Hex Key</div>
-                              <div>Head Dia</div>
-                              <div>Head Ht</div>
-                              <div>Note</div>
-                            </div>
-
-                            <div className="max-h-[900px] overflow-auto">
-                              {filteredSocketRows.map((row, index) => (
-                                <div key={`socket-${row.size}`} className={`grid grid-cols-6 px-5 py-3 text-base ${index % 2 === 0 ? 'bg-black/[0.02]' : 'bg-transparent'}`}>
-                                  <div className="font-semibold">{row.size}</div>
-                                  <div>{row.thread}</div>
-                                  <div>{row.hexKey}</div>
-                                  <div>{row.headDia}</div>
-                                  <div>{row.headHeight}</div>
-                                  <div>{row.note}</div>
+                          <MobileScrollHint />
+                          {/* Mobile fix: preserve readability for the 6-column socket-cap chart. */}
+                          <div className="rounded-[1.6rem] border border-black/10 bg-white/45">
+                            <div className="overflow-x-auto">
+                              <div className="min-w-[820px]">
+                                <div className="grid grid-cols-6 border-b border-black/10 bg-blue-900/[0.06] px-4 py-4 text-sm font-bold uppercase tracking-[0.22em] text-black/70 md:px-5">
+                                  <div>Size</div>
+                                  <div>Thread</div>
+                                  <div>Hex Key</div>
+                                  <div>Head Dia</div>
+                                  <div>Head Ht</div>
+                                  <div>Note</div>
                                 </div>
-                              ))}
-                              {filteredSocketRows.length === 0 && <div className="px-5 py-8 text-center text-black/60">No chart rows matched that search.</div>}
+
+                                <div className="max-h-[900px] overflow-y-auto">
+                                  {filteredSocketRows.map((row, index) => (
+                                    <div key={`socket-${row.size}`} className={`grid grid-cols-6 px-4 py-3 text-base ${index % 2 === 0 ? 'bg-black/[0.02]' : 'bg-transparent'} md:px-5`}>
+                                      <div className="font-semibold">{row.size}</div>
+                                      <div>{row.thread}</div>
+                                      <div>{row.hexKey}</div>
+                                      <div>{row.headDia}</div>
+                                      <div>{row.headHeight}</div>
+                                      <div>{row.note}</div>
+                                    </div>
+                                  ))}
+                                  {filteredSocketRows.length === 0 && <div className="px-4 py-8 text-center text-black/60 md:px-5">No chart rows matched that search.</div>}
+                                </div>
+                              </div>
                             </div>
                           </div>
 
@@ -492,28 +515,34 @@ export default function FastenerHardwareReference() {
 
                       {activeTab === 'washers' && (
                         <>
-                          <div className="overflow-hidden rounded-[1.6rem] border border-black/10 bg-white/45">
-                            <div className="grid grid-cols-6 border-b border-black/10 bg-amber-900/[0.06] px-5 py-4 text-sm font-bold uppercase tracking-[0.22em] text-black/70">
-                              <div>Nominal</div>
-                              <div>SAE OD</div>
-                              <div>USS OD</div>
-                              <div>Fender OD</div>
-                              <div>Lock Washer</div>
-                              <div>Note</div>
-                            </div>
-
-                            <div className="max-h-[900px] overflow-auto">
-                              {filteredWasherRows.map((row, index) => (
-                                <div key={`washer-${row.nominal}`} className={`grid grid-cols-6 px-5 py-3 text-base ${index % 2 === 0 ? 'bg-black/[0.02]' : 'bg-transparent'}`}>
-                                  <div className="font-semibold">{row.nominal}</div>
-                                  <div>{row.saeOd}</div>
-                                  <div>{row.ussOd}</div>
-                                  <div>{row.fenderOd}</div>
-                                  <div>{row.lockWasher}</div>
-                                  <div>{row.note}</div>
+                          <MobileScrollHint />
+                          {/* Mobile fix: keep the 6-column washer chart scrollable and readable. */}
+                          <div className="rounded-[1.6rem] border border-black/10 bg-white/45">
+                            <div className="overflow-x-auto">
+                              <div className="min-w-[820px]">
+                                <div className="grid grid-cols-6 border-b border-black/10 bg-amber-900/[0.06] px-4 py-4 text-sm font-bold uppercase tracking-[0.22em] text-black/70 md:px-5">
+                                  <div>Nominal</div>
+                                  <div>SAE OD</div>
+                                  <div>USS OD</div>
+                                  <div>Fender OD</div>
+                                  <div>Lock Washer</div>
+                                  <div>Note</div>
                                 </div>
-                              ))}
-                              {filteredWasherRows.length === 0 && <div className="px-5 py-8 text-center text-black/60">No chart rows matched that search.</div>}
+
+                                <div className="max-h-[900px] overflow-y-auto">
+                                  {filteredWasherRows.map((row, index) => (
+                                    <div key={`washer-${row.nominal}`} className={`grid grid-cols-6 px-4 py-3 text-base ${index % 2 === 0 ? 'bg-black/[0.02]' : 'bg-transparent'} md:px-5`}>
+                                      <div className="font-semibold">{row.nominal}</div>
+                                      <div>{row.saeOd}</div>
+                                      <div>{row.ussOd}</div>
+                                      <div>{row.fenderOd}</div>
+                                      <div>{row.lockWasher}</div>
+                                      <div>{row.note}</div>
+                                    </div>
+                                  ))}
+                                  {filteredWasherRows.length === 0 && <div className="px-4 py-8 text-center text-black/60 md:px-5">No chart rows matched that search.</div>}
+                                </div>
+                              </div>
                             </div>
                           </div>
 
@@ -538,22 +567,28 @@ export default function FastenerHardwareReference() {
 
                       {activeTab === 'notes' && (
                         <>
-                          <div className="overflow-hidden rounded-[1.6rem] border border-black/10 bg-white/45">
-                            <div className="grid grid-cols-3 border-b border-black/10 bg-zinc-900/[0.08] px-5 py-4 text-sm font-bold uppercase tracking-[0.22em] text-black/70">
-                              <div>Topic</div>
-                              <div>Summary</div>
-                              <div>Shop Note</div>
-                            </div>
-
-                            <div className="max-h-[900px] overflow-auto">
-                              {filteredNoteRows.map((row, index) => (
-                                <div key={`note-${row.topic}`} className={`grid grid-cols-3 px-5 py-3 text-base ${index % 2 === 0 ? 'bg-black/[0.02]' : 'bg-transparent'}`}>
-                                  <div className="font-semibold">{row.topic}</div>
-                                  <div>{row.summary}</div>
-                                  <div>{row.note}</div>
+                          <MobileScrollHint />
+                          {/* Mobile fix: prevent the 3-column notes table from collapsing on phones. */}
+                          <div className="rounded-[1.6rem] border border-black/10 bg-white/45">
+                            <div className="overflow-x-auto">
+                              <div className="min-w-[560px]">
+                                <div className="grid grid-cols-3 border-b border-black/10 bg-zinc-900/[0.08] px-4 py-4 text-sm font-bold uppercase tracking-[0.22em] text-black/70 md:px-5">
+                                  <div>Topic</div>
+                                  <div>Summary</div>
+                                  <div>Shop Note</div>
                                 </div>
-                              ))}
-                              {filteredNoteRows.length === 0 && <div className="px-5 py-8 text-center text-black/60">No chart rows matched that search.</div>}
+
+                                <div className="max-h-[900px] overflow-y-auto">
+                                  {filteredNoteRows.map((row, index) => (
+                                    <div key={`note-${row.topic}`} className={`grid grid-cols-3 px-4 py-3 text-base ${index % 2 === 0 ? 'bg-black/[0.02]' : 'bg-transparent'} md:px-5`}>
+                                      <div className="font-semibold">{row.topic}</div>
+                                      <div>{row.summary}</div>
+                                      <div>{row.note}</div>
+                                    </div>
+                                  ))}
+                                  {filteredNoteRows.length === 0 && <div className="px-4 py-8 text-center text-black/60 md:px-5">No chart rows matched that search.</div>}
+                                </div>
+                              </div>
                             </div>
                           </div>
 

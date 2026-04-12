@@ -222,6 +222,14 @@ function QuickRefPill({ fraction, decimal }) {
   )
 }
 
+function MobileScrollHint() {
+  return (
+    <p className="mb-3 text-center text-xs font-medium uppercase tracking-[0.2em] text-black/45 md:hidden">
+      ← Swipe to view full chart →
+    </p>
+  )
+}
+
 function FooterStatusPanel({ searchTerm }) {
   return (
     <section className="mt-24">
@@ -419,7 +427,7 @@ export default function DecimalFractionChart() {
                 <div className="absolute bottom-0 left-[68px] top-0 w-px bg-red-400/60" />
                 <div className="absolute inset-0 animate-[notebookDrift_8s_ease-in-out_infinite] bg-[radial-gradient(circle_at_top,rgba(16,185,129,0.06),transparent_42%)]" />
 
-                <div className="relative z-10 px-6 pb-8 pt-8 md:px-10">
+                <div className="relative z-10 px-4 pb-8 pt-8 md:px-10">
                   <div className="ml-[22px] md:ml-[30px]">
                     <div className="mb-8 flex flex-col gap-4 border-b border-black/10 pb-6 md:flex-row md:items-end md:justify-between">
                       <div>
@@ -449,32 +457,39 @@ export default function DecimalFractionChart() {
                       </div>
                     </div>
 
-                    <div className="overflow-hidden rounded-[1.6rem] border border-black/10 bg-white/45">
-                      <div className="grid grid-cols-3 border-b border-black/10 bg-emerald-900/[0.06] px-5 py-4 text-sm font-bold uppercase tracking-[0.24em] text-black/70">
-                        <div>Fraction</div>
-                        <div>Decimal</div>
-                        <div>Millimeters</div>
-                      </div>
+                    <MobileScrollHint />
 
-                      <div className="max-h-[900px] overflow-auto">
-                        {filteredRows.map((row, index) => (
-                          <div
-                            key={`${row.fraction}-${row.decimal}`}
-                            className={`grid grid-cols-3 px-5 py-3 text-base ${
-                              index % 2 === 0 ? "bg-black/[0.02]" : "bg-transparent"
-                            }`}
-                          >
-                            <div className="font-semibold">{row.fraction}</div>
-                            <div>{row.decimal}</div>
-                            <div>{row.mm}</div>
+                    {/* Mobile fix: keep the 3-column chart readable by scrolling instead of compressing. */}
+                    <div className="rounded-[1.6rem] border border-black/10 bg-white/45">
+                      <div className="overflow-x-auto">
+                        <div className="min-w-[520px]">
+                          <div className="grid grid-cols-3 border-b border-black/10 bg-emerald-900/[0.06] px-3 py-4 text-sm font-bold uppercase tracking-[0.24em] text-black/70 md:px-5">
+                            <div>Fraction</div>
+                            <div>Decimal</div>
+                            <div>Millimeters</div>
                           </div>
-                        ))}
 
-                        {filteredRows.length === 0 && (
-                          <div className="px-5 py-8 text-center text-black/60">
-                            No chart rows matched that search.
+                          <div className="max-h-[900px] overflow-y-auto">
+                            {filteredRows.map((row, index) => (
+                              <div
+                                key={`${row.fraction}-${row.decimal}`}
+                                className={`grid grid-cols-3 px-3 py-3 text-base ${
+                                  index % 2 === 0 ? "bg-black/[0.02]" : "bg-transparent"
+                                } md:px-5`}
+                              >
+                                <div className="font-semibold">{row.fraction}</div>
+                                <div>{row.decimal}</div>
+                                <div>{row.mm}</div>
+                              </div>
+                            ))}
+
+                            {filteredRows.length === 0 && (
+                              <div className="px-3 py-8 text-center text-black/60 md:px-5">
+                                No chart rows matched that search.
+                              </div>
+                            )}
                           </div>
-                        )}
+                        </div>
                       </div>
                     </div>
 

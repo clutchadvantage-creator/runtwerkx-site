@@ -295,6 +295,14 @@ function NotebookPanel({ activeTab, children }) {
   );
 }
 
+function MobileScrollHint() {
+  return (
+    <p className="mb-3 text-center text-xs font-medium uppercase tracking-[0.2em] text-black/45 md:hidden">
+      ← Swipe to view full chart →
+    </p>
+  );
+}
+
 function FooterStatusPanel({ activeTab, family, searchTerm }) {
   const tabLabel =
     activeTab === "tap"
@@ -566,22 +574,25 @@ export default function TapDrillChart() {
               </div>
 
               <div className="relative overflow-visible rounded-[2.2rem] border border-zinc-700/60 bg-[#f6f3e8] text-black shadow-[0_20px_60px_rgba(0,0,0,0.45)]">
-                <div className="absolute -top-10 left-10 z-20 flex flex-wrap gap-2">
-                  {NOTEBOOK_TABS.map((tab) => (
-                    <NotebookTab
-                      key={tab.key}
-                      tab={tab}
-                      activeTab={activeTab}
-                      onClick={setActiveTab}
-                    />
-                  ))}
+                {/* Mobile fix: keep notebook tabs on one line and scroll horizontally instead of wrapping. */}
+                <div className="absolute -top-10 left-4 right-4 z-20 overflow-x-auto whitespace-nowrap md:left-10 md:right-10 lg:right-auto">
+                  <div className="flex w-max gap-2 pr-4">
+                    {NOTEBOOK_TABS.map((tab) => (
+                      <NotebookTab
+                        key={tab.key}
+                        tab={tab}
+                        activeTab={activeTab}
+                        onClick={setActiveTab}
+                      />
+                    ))}
+                  </div>
                 </div>
 
                 <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(59,130,246,0.10)_1px,transparent_1px)] bg-[size:100%_38px] opacity-80" />
                 <div className="absolute bottom-0 left-[68px] top-0 w-px bg-red-400/60" />
                 <div className="absolute inset-0 animate-[notebookDrift_8s_ease-in-out_infinite] bg-[radial-gradient(circle_at_top,rgba(16,185,129,0.06),transparent_42%)]" />
 
-                <div className="relative z-10 px-6 pb-8 pt-8 md:px-10">
+                <div className="relative z-10 px-4 pb-8 pt-8 md:px-10">
                   <div className="ml-[22px] md:ml-[30px]">
                     <div className="mb-8 flex flex-col gap-4 border-b border-black/10 pb-6 xl:flex-row xl:items-end xl:justify-between">
                       <div>
@@ -644,36 +655,42 @@ export default function TapDrillChart() {
                     <NotebookPanel activeTab={activeTab}>
                       {activeTab === "tap" && (
                         <>
-                          <div className="overflow-hidden rounded-[1.6rem] border border-black/10 bg-white/45">
-                            <div className="grid grid-cols-5 border-b border-black/10 bg-emerald-900/[0.06] px-5 py-4 text-sm font-bold uppercase tracking-[0.22em] text-black/70">
-                              <div>Thread</div>
-                              <div>Major</div>
-                              <div>TPI</div>
-                              <div>Tap Drill</div>
-                              <div>Decimal</div>
-                            </div>
-
-                            <div className="max-h-[900px] overflow-auto">
-                              {filteredTapRows.map((row, index) => (
-                                <div
-                                  key={`${family}-${row.thread}`}
-                                  className={`grid grid-cols-5 px-5 py-3 text-base ${
-                                    index % 2 === 0 ? "bg-black/[0.02]" : "bg-transparent"
-                                  }`}
-                                >
-                                  <div className="font-semibold">{row.thread}</div>
-                                  <div>{row.major}</div>
-                                  <div>{row.tpi}</div>
-                                  <div>{row.tapDrill}</div>
-                                  <div>{row.decimal}</div>
+                          <MobileScrollHint />
+                          {/* Mobile fix: allow horizontal scrolling and keep 5-column tables readable. */}
+                          <div className="rounded-[1.6rem] border border-black/10 bg-white/45">
+                            <div className="overflow-x-auto">
+                              <div className="min-w-[600px]">
+                                <div className="grid grid-cols-5 border-b border-black/10 bg-emerald-900/[0.06] px-4 py-4 text-sm font-bold uppercase tracking-[0.22em] text-black/70 md:px-5">
+                                  <div>Thread</div>
+                                  <div>Major</div>
+                                  <div>TPI</div>
+                                  <div>Tap Drill</div>
+                                  <div>Decimal</div>
                                 </div>
-                              ))}
 
-                              {filteredTapRows.length === 0 && (
-                                <div className="px-5 py-8 text-center text-black/60">
-                                  No chart rows matched that search.
+                                <div className="max-h-[900px] overflow-y-auto">
+                                  {filteredTapRows.map((row, index) => (
+                                    <div
+                                      key={`${family}-${row.thread}`}
+                                      className={`grid grid-cols-5 px-4 py-3 text-base ${
+                                        index % 2 === 0 ? "bg-black/[0.02]" : "bg-transparent"
+                                      } md:px-5`}
+                                    >
+                                      <div className="font-semibold">{row.thread}</div>
+                                      <div>{row.major}</div>
+                                      <div>{row.tpi}</div>
+                                      <div>{row.tapDrill}</div>
+                                      <div>{row.decimal}</div>
+                                    </div>
+                                  ))}
+
+                                  {filteredTapRows.length === 0 && (
+                                    <div className="px-4 py-8 text-center text-black/60 md:px-5">
+                                      No chart rows matched that search.
+                                    </div>
+                                  )}
                                 </div>
-                              )}
+                              </div>
                             </div>
                           </div>
 
@@ -717,34 +734,40 @@ export default function TapDrillChart() {
 
                       {activeTab === "clearance" && (
                         <>
-                          <div className="overflow-hidden rounded-[1.6rem] border border-black/10 bg-white/45">
-                            <div className="grid grid-cols-4 border-b border-black/10 bg-blue-900/[0.06] px-5 py-4 text-sm font-bold uppercase tracking-[0.22em] text-black/70">
-                              <div>Size</div>
-                              <div>Close Fit</div>
-                              <div>Normal Fit</div>
-                              <div>Loose Fit</div>
-                            </div>
-
-                            <div className="max-h-[900px] overflow-auto">
-                              {filteredClearanceRows.map((row, index) => (
-                                <div
-                                  key={`clearance-${row.size}`}
-                                  className={`grid grid-cols-4 px-5 py-3 text-base ${
-                                    index % 2 === 0 ? "bg-black/[0.02]" : "bg-transparent"
-                                  }`}
-                                >
-                                  <div className="font-semibold">{row.size}</div>
-                                  <div>{row.close}</div>
-                                  <div>{row.normal}</div>
-                                  <div>{row.loose}</div>
+                          <MobileScrollHint />
+                          {/* Mobile fix: keep 4-column clearance table from compressing. */}
+                          <div className="rounded-[1.6rem] border border-black/10 bg-white/45">
+                            <div className="overflow-x-auto">
+                              <div className="min-w-[520px]">
+                                <div className="grid grid-cols-4 border-b border-black/10 bg-blue-900/[0.06] px-4 py-4 text-sm font-bold uppercase tracking-[0.22em] text-black/70 md:px-5">
+                                  <div>Size</div>
+                                  <div>Close Fit</div>
+                                  <div>Normal Fit</div>
+                                  <div>Loose Fit</div>
                                 </div>
-                              ))}
 
-                              {filteredClearanceRows.length === 0 && (
-                                <div className="px-5 py-8 text-center text-black/60">
-                                  No chart rows matched that search.
+                                <div className="max-h-[900px] overflow-y-auto">
+                                  {filteredClearanceRows.map((row, index) => (
+                                    <div
+                                      key={`clearance-${row.size}`}
+                                      className={`grid grid-cols-4 px-4 py-3 text-base ${
+                                        index % 2 === 0 ? "bg-black/[0.02]" : "bg-transparent"
+                                      } md:px-5`}
+                                    >
+                                      <div className="font-semibold">{row.size}</div>
+                                      <div>{row.close}</div>
+                                      <div>{row.normal}</div>
+                                      <div>{row.loose}</div>
+                                    </div>
+                                  ))}
+
+                                  {filteredClearanceRows.length === 0 && (
+                                    <div className="px-4 py-8 text-center text-black/60 md:px-5">
+                                      No chart rows matched that search.
+                                    </div>
+                                  )}
                                 </div>
-                              )}
+                              </div>
                             </div>
                           </div>
 
@@ -775,32 +798,38 @@ export default function TapDrillChart() {
 
                       {activeTab === "drill" && (
                         <>
-                          <div className="overflow-hidden rounded-[1.6rem] border border-black/10 bg-white/45">
-                            <div className="grid grid-cols-3 border-b border-black/10 bg-amber-900/[0.06] px-5 py-4 text-sm font-bold uppercase tracking-[0.22em] text-black/70">
-                              <div>Type</div>
-                              <div>Size</div>
-                              <div>Decimal</div>
-                            </div>
-
-                            <div className="max-h-[900px] overflow-auto">
-                              {filteredDrillRows.map((row, index) => (
-                                <div
-                                  key={`drill-${row.type}-${row.size}`}
-                                  className={`grid grid-cols-3 px-5 py-3 text-base ${
-                                    index % 2 === 0 ? "bg-black/[0.02]" : "bg-transparent"
-                                  }`}
-                                >
-                                  <div className="font-semibold">{row.type}</div>
-                                  <div>{row.size}</div>
-                                  <div>{row.decimal}</div>
+                          <MobileScrollHint />
+                          {/* Mobile fix: keep 3-column drill table readable with horizontal scroll. */}
+                          <div className="rounded-[1.6rem] border border-black/10 bg-white/45">
+                            <div className="overflow-x-auto">
+                              <div className="min-w-[420px]">
+                                <div className="grid grid-cols-3 border-b border-black/10 bg-amber-900/[0.06] px-4 py-4 text-sm font-bold uppercase tracking-[0.22em] text-black/70 md:px-5">
+                                  <div>Type</div>
+                                  <div>Size</div>
+                                  <div>Decimal</div>
                                 </div>
-                              ))}
 
-                              {filteredDrillRows.length === 0 && (
-                                <div className="px-5 py-8 text-center text-black/60">
-                                  No chart rows matched that search.
+                                <div className="max-h-[900px] overflow-y-auto">
+                                  {filteredDrillRows.map((row, index) => (
+                                    <div
+                                      key={`drill-${row.type}-${row.size}`}
+                                      className={`grid grid-cols-3 px-4 py-3 text-base ${
+                                        index % 2 === 0 ? "bg-black/[0.02]" : "bg-transparent"
+                                      } md:px-5`}
+                                    >
+                                      <div className="font-semibold">{row.type}</div>
+                                      <div>{row.size}</div>
+                                      <div>{row.decimal}</div>
+                                    </div>
+                                  ))}
+
+                                  {filteredDrillRows.length === 0 && (
+                                    <div className="px-4 py-8 text-center text-black/60 md:px-5">
+                                      No chart rows matched that search.
+                                    </div>
+                                  )}
                                 </div>
-                              )}
+                              </div>
                             </div>
                           </div>
 
@@ -835,34 +864,40 @@ export default function TapDrillChart() {
 
                       {activeTab === "fastener" && (
                         <>
-                          <div className="overflow-hidden rounded-[1.6rem] border border-black/10 bg-white/45">
-                            <div className="grid grid-cols-4 border-b border-black/10 bg-zinc-900/[0.08] px-5 py-4 text-sm font-bold uppercase tracking-[0.22em] text-black/70">
-                              <div>Size</div>
-                              <div>Hex Head</div>
-                              <div>Nut Size</div>
-                              <div>Washer</div>
-                            </div>
-
-                            <div className="max-h-[900px] overflow-auto">
-                              {filteredFastenerRows.map((row, index) => (
-                                <div
-                                  key={`fastener-${row.size}`}
-                                  className={`grid grid-cols-4 px-5 py-3 text-base ${
-                                    index % 2 === 0 ? "bg-black/[0.02]" : "bg-transparent"
-                                  }`}
-                                >
-                                  <div className="font-semibold">{row.size}</div>
-                                  <div>{row.hexHead}</div>
-                                  <div>{row.nut}</div>
-                                  <div>{row.washer}</div>
+                          <MobileScrollHint />
+                          {/* Mobile fix: keep 4-column fastener table scrollable instead of squished. */}
+                          <div className="rounded-[1.6rem] border border-black/10 bg-white/45">
+                            <div className="overflow-x-auto">
+                              <div className="min-w-[520px]">
+                                <div className="grid grid-cols-4 border-b border-black/10 bg-zinc-900/[0.08] px-4 py-4 text-sm font-bold uppercase tracking-[0.22em] text-black/70 md:px-5">
+                                  <div>Size</div>
+                                  <div>Hex Head</div>
+                                  <div>Nut Size</div>
+                                  <div>Washer</div>
                                 </div>
-                              ))}
 
-                              {filteredFastenerRows.length === 0 && (
-                                <div className="px-5 py-8 text-center text-black/60">
-                                  No chart rows matched that search.
+                                <div className="max-h-[900px] overflow-y-auto">
+                                  {filteredFastenerRows.map((row, index) => (
+                                    <div
+                                      key={`fastener-${row.size}`}
+                                      className={`grid grid-cols-4 px-4 py-3 text-base ${
+                                        index % 2 === 0 ? "bg-black/[0.02]" : "bg-transparent"
+                                      } md:px-5`}
+                                    >
+                                      <div className="font-semibold">{row.size}</div>
+                                      <div>{row.hexHead}</div>
+                                      <div>{row.nut}</div>
+                                      <div>{row.washer}</div>
+                                    </div>
+                                  ))}
+
+                                  {filteredFastenerRows.length === 0 && (
+                                    <div className="px-4 py-8 text-center text-black/60 md:px-5">
+                                      No chart rows matched that search.
+                                    </div>
+                                  )}
                                 </div>
-                              )}
+                              </div>
                             </div>
                           </div>
 

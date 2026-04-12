@@ -202,6 +202,14 @@ function NotebookPanel({ activeTab, children }) {
   return <div key={activeTab} className="animate-[pageFlip_340ms_ease] will-change-transform">{children}</div>
 }
 
+function MobileScrollHint() {
+  return (
+    <p className="mb-3 text-center text-xs font-medium uppercase tracking-[0.2em] text-black/45 md:hidden">
+      ← Swipe to view full chart →
+    </p>
+  )
+}
+
 function FooterStatusPanel({ activeTab, searchTerm }) {
   const tabLabel =
     activeTab === 'slope'
@@ -428,15 +436,18 @@ export default function FieldReferenceCharts() {
               </div>
 
               <div className="relative overflow-visible rounded-[2.2rem] border border-zinc-700/60 bg-[#f6f3e8] text-black shadow-[0_20px_60px_rgba(0,0,0,0.45)]">
-                <div className="absolute -top-10 left-10 z-20 flex flex-wrap gap-2">
-                  {NOTEBOOK_TABS.map((tab) => <NotebookTab key={tab.key} tab={tab} activeTab={activeTab} onClick={setActiveTab} />)}
+                {/* Mobile fix: keep notebook tabs on one line and scroll horizontally instead of wrapping. */}
+                <div className="absolute -top-10 left-4 right-4 z-20 overflow-x-auto whitespace-nowrap md:left-10 md:right-10 lg:right-auto">
+                  <div className="flex w-max gap-2 pr-4">
+                    {NOTEBOOK_TABS.map((tab) => <NotebookTab key={tab.key} tab={tab} activeTab={activeTab} onClick={setActiveTab} />)}
+                  </div>
                 </div>
 
                 <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(59,130,246,0.10)_1px,transparent_1px)] bg-[size:100%_38px] opacity-80" />
                 <div className="absolute bottom-0 left-[68px] top-0 w-px bg-red-400/60" />
                 <div className="absolute inset-0 animate-[notebookDrift_8s_ease-in-out_infinite] bg-[radial-gradient(circle_at_top,rgba(16,185,129,0.06),transparent_42%)]" />
 
-                <div className="relative z-10 px-6 pb-8 pt-8 md:px-10">
+                <div className="relative z-10 px-4 pb-8 pt-8 md:px-10">
                   <div className="ml-[22px] md:ml-[30px]">
                     <div className="mb-8 flex flex-col gap-4 border-b border-black/10 pb-6 xl:flex-row xl:items-end xl:justify-between">
                       <div>
@@ -473,26 +484,32 @@ export default function FieldReferenceCharts() {
                     <NotebookPanel activeTab={activeTab}>
                       {activeTab === 'slope' && (
                         <>
-                          <div className="overflow-hidden rounded-[1.6rem] border border-black/10 bg-white/45">
-                            <div className="grid grid-cols-5 border-b border-black/10 bg-emerald-900/[0.06] px-5 py-4 text-sm font-bold uppercase tracking-[0.22em] text-black/70">
-                              <div>Degrees</div>
-                              <div>Grade</div>
-                              <div>In / Ft</div>
-                              <div>Ratio</div>
-                              <div>Use Case</div>
-                            </div>
-
-                            <div className="max-h-[900px] overflow-auto">
-                              {filteredSlopeRows.map((row, index) => (
-                                <div key={`slope-${row.degrees}`} className={`grid grid-cols-5 px-5 py-3 text-base ${index % 2 === 0 ? 'bg-black/[0.02]' : 'bg-transparent'}`}>
-                                  <div className="font-semibold">{row.degrees}</div>
-                                  <div>{row.percent}</div>
-                                  <div>{row.inchesPerFoot}</div>
-                                  <div>{row.ratio}</div>
-                                  <div>{row.useCase}</div>
+                          <MobileScrollHint />
+                          {/* Mobile fix: keep the 5-column slope chart readable by scrolling instead of compressing. */}
+                          <div className="rounded-[1.6rem] border border-black/10 bg-white/45">
+                            <div className="overflow-x-auto">
+                              <div className="min-w-[760px]">
+                                <div className="grid grid-cols-5 border-b border-black/10 bg-emerald-900/[0.06] px-4 py-4 text-sm font-bold uppercase tracking-[0.22em] text-black/70 md:px-5">
+                                  <div>Degrees</div>
+                                  <div>Grade</div>
+                                  <div>In / Ft</div>
+                                  <div>Ratio</div>
+                                  <div>Use Case</div>
                                 </div>
-                              ))}
-                              {filteredSlopeRows.length === 0 && <div className="px-5 py-8 text-center text-black/60">No chart rows matched that search.</div>}
+
+                                <div className="max-h-[900px] overflow-y-auto">
+                                  {filteredSlopeRows.map((row, index) => (
+                                    <div key={`slope-${row.degrees}`} className={`grid grid-cols-5 px-4 py-3 text-base ${index % 2 === 0 ? 'bg-black/[0.02]' : 'bg-transparent'} md:px-5`}>
+                                      <div className="font-semibold">{row.degrees}</div>
+                                      <div>{row.percent}</div>
+                                      <div>{row.inchesPerFoot}</div>
+                                      <div>{row.ratio}</div>
+                                      <div>{row.useCase}</div>
+                                    </div>
+                                  ))}
+                                  {filteredSlopeRows.length === 0 && <div className="px-4 py-8 text-center text-black/60 md:px-5">No chart rows matched that search.</div>}
+                                </div>
+                              </div>
                             </div>
                           </div>
 
@@ -517,24 +534,30 @@ export default function FieldReferenceCharts() {
 
                       {activeTab === 'rigging' && (
                         <>
-                          <div className="overflow-hidden rounded-[1.6rem] border border-black/10 bg-white/45">
-                            <div className="grid grid-cols-4 border-b border-black/10 bg-blue-900/[0.06] px-5 py-4 text-sm font-bold uppercase tracking-[0.22em] text-black/70">
-                              <div>Angle</div>
-                              <div>Factor</div>
-                              <div>2-Leg Example</div>
-                              <div>Note</div>
-                            </div>
-
-                            <div className="max-h-[900px] overflow-auto">
-                              {filteredRiggingRows.map((row, index) => (
-                                <div key={`rig-${row.angle}`} className={`grid grid-cols-4 px-5 py-3 text-base ${index % 2 === 0 ? 'bg-black/[0.02]' : 'bg-transparent'}`}>
-                                  <div className="font-semibold">{row.angle}</div>
-                                  <div>{row.factor}</div>
-                                  <div>{row.example}</div>
-                                  <div>{row.note}</div>
+                          <MobileScrollHint />
+                          {/* Mobile fix: keep the 4-column rigging chart readable on phones. */}
+                          <div className="rounded-[1.6rem] border border-black/10 bg-white/45">
+                            <div className="overflow-x-auto">
+                              <div className="min-w-[660px]">
+                                <div className="grid grid-cols-4 border-b border-black/10 bg-blue-900/[0.06] px-4 py-4 text-sm font-bold uppercase tracking-[0.22em] text-black/70 md:px-5">
+                                  <div>Angle</div>
+                                  <div>Factor</div>
+                                  <div>2-Leg Example</div>
+                                  <div>Note</div>
                                 </div>
-                              ))}
-                              {filteredRiggingRows.length === 0 && <div className="px-5 py-8 text-center text-black/60">No chart rows matched that search.</div>}
+
+                                <div className="max-h-[900px] overflow-y-auto">
+                                  {filteredRiggingRows.map((row, index) => (
+                                    <div key={`rig-${row.angle}`} className={`grid grid-cols-4 px-4 py-3 text-base ${index % 2 === 0 ? 'bg-black/[0.02]' : 'bg-transparent'} md:px-5`}>
+                                      <div className="font-semibold">{row.angle}</div>
+                                      <div>{row.factor}</div>
+                                      <div>{row.example}</div>
+                                      <div>{row.note}</div>
+                                    </div>
+                                  ))}
+                                  {filteredRiggingRows.length === 0 && <div className="px-4 py-8 text-center text-black/60 md:px-5">No chart rows matched that search.</div>}
+                                </div>
+                              </div>
                             </div>
                           </div>
 
@@ -559,24 +582,30 @@ export default function FieldReferenceCharts() {
 
                       {activeTab === 'access' && (
                         <>
-                          <div className="overflow-hidden rounded-[1.6rem] border border-black/10 bg-white/45">
-                            <div className="grid grid-cols-4 border-b border-black/10 bg-amber-900/[0.06] px-5 py-4 text-sm font-bold uppercase tracking-[0.22em] text-black/70">
-                              <div>Ladder</div>
-                              <div>Base Setback</div>
-                              <div>Top Extension</div>
-                              <div>Note</div>
-                            </div>
-
-                            <div className="max-h-[900px] overflow-auto">
-                              {filteredAccessRows.map((row, index) => (
-                                <div key={`acc-${row.ladderLength}`} className={`grid grid-cols-4 px-5 py-3 text-base ${index % 2 === 0 ? 'bg-black/[0.02]' : 'bg-transparent'}`}>
-                                  <div className="font-semibold">{row.ladderLength}</div>
-                                  <div>{row.baseSetback}</div>
-                                  <div>{row.topReach}</div>
-                                  <div>{row.note}</div>
+                          <MobileScrollHint />
+                          {/* Mobile fix: keep the 4-column ladder chart readable on small screens. */}
+                          <div className="rounded-[1.6rem] border border-black/10 bg-white/45">
+                            <div className="overflow-x-auto">
+                              <div className="min-w-[660px]">
+                                <div className="grid grid-cols-4 border-b border-black/10 bg-amber-900/[0.06] px-4 py-4 text-sm font-bold uppercase tracking-[0.22em] text-black/70 md:px-5">
+                                  <div>Ladder</div>
+                                  <div>Base Setback</div>
+                                  <div>Top Extension</div>
+                                  <div>Note</div>
                                 </div>
-                              ))}
-                              {filteredAccessRows.length === 0 && <div className="px-5 py-8 text-center text-black/60">No chart rows matched that search.</div>}
+
+                                <div className="max-h-[900px] overflow-y-auto">
+                                  {filteredAccessRows.map((row, index) => (
+                                    <div key={`acc-${row.ladderLength}`} className={`grid grid-cols-4 px-4 py-3 text-base ${index % 2 === 0 ? 'bg-black/[0.02]' : 'bg-transparent'} md:px-5`}>
+                                      <div className="font-semibold">{row.ladderLength}</div>
+                                      <div>{row.baseSetback}</div>
+                                      <div>{row.topReach}</div>
+                                      <div>{row.note}</div>
+                                    </div>
+                                  ))}
+                                  {filteredAccessRows.length === 0 && <div className="px-4 py-8 text-center text-black/60 md:px-5">No chart rows matched that search.</div>}
+                                </div>
+                              </div>
                             </div>
                           </div>
 
@@ -601,24 +630,30 @@ export default function FieldReferenceCharts() {
 
                       {activeTab === 'layout' && (
                         <>
-                          <div className="overflow-hidden rounded-[1.6rem] border border-black/10 bg-white/45">
-                            <div className="grid grid-cols-4 border-b border-black/10 bg-zinc-900/[0.08] px-5 py-4 text-sm font-bold uppercase tracking-[0.22em] text-black/70">
-                              <div>Angle</div>
-                              <div>Travel Multiplier</div>
-                              <div>Rise / 12</div>
-                              <div>Note</div>
-                            </div>
-
-                            <div className="max-h-[900px] overflow-auto">
-                              {filteredLayoutRows.map((row, index) => (
-                                <div key={`lay-${row.angle}`} className={`grid grid-cols-4 px-5 py-3 text-base ${index % 2 === 0 ? 'bg-black/[0.02]' : 'bg-transparent'}`}>
-                                  <div className="font-semibold">{row.angle}</div>
-                                  <div>{row.travelMultiplier}</div>
-                                  <div>{row.risePer12}</div>
-                                  <div>{row.note}</div>
+                          <MobileScrollHint />
+                          {/* Mobile fix: keep the 4-column layout chart readable with horizontal scrolling. */}
+                          <div className="rounded-[1.6rem] border border-black/10 bg-white/45">
+                            <div className="overflow-x-auto">
+                              <div className="min-w-[660px]">
+                                <div className="grid grid-cols-4 border-b border-black/10 bg-zinc-900/[0.08] px-4 py-4 text-sm font-bold uppercase tracking-[0.22em] text-black/70 md:px-5">
+                                  <div>Angle</div>
+                                  <div>Travel Multiplier</div>
+                                  <div>Rise / 12</div>
+                                  <div>Note</div>
                                 </div>
-                              ))}
-                              {filteredLayoutRows.length === 0 && <div className="px-5 py-8 text-center text-black/60">No chart rows matched that search.</div>}
+
+                                <div className="max-h-[900px] overflow-y-auto">
+                                  {filteredLayoutRows.map((row, index) => (
+                                    <div key={`lay-${row.angle}`} className={`grid grid-cols-4 px-4 py-3 text-base ${index % 2 === 0 ? 'bg-black/[0.02]' : 'bg-transparent'} md:px-5`}>
+                                      <div className="font-semibold">{row.angle}</div>
+                                      <div>{row.travelMultiplier}</div>
+                                      <div>{row.risePer12}</div>
+                                      <div>{row.note}</div>
+                                    </div>
+                                  ))}
+                                  {filteredLayoutRows.length === 0 && <div className="px-4 py-8 text-center text-black/60 md:px-5">No chart rows matched that search.</div>}
+                                </div>
+                              </div>
                             </div>
                           </div>
 
@@ -643,24 +678,30 @@ export default function FieldReferenceCharts() {
 
                       {activeTab === 'metric' && (
                         <>
-                          <div className="overflow-hidden rounded-[1.6rem] border border-black/10 bg-white/45">
-                            <div className="grid grid-cols-4 border-b border-black/10 bg-cyan-900/[0.08] px-5 py-4 text-sm font-bold uppercase tracking-[0.22em] text-black/70">
-                              <div>Metric</div>
-                              <div>Imperial</div>
-                              <div>Field Use</div>
-                              <div>Grade / m</div>
-                            </div>
-
-                            <div className="max-h-[900px] overflow-auto">
-                              {filteredMetricRows.map((row, index) => (
-                                <div key={`metric-${row.metric}`} className={`grid grid-cols-4 px-5 py-3 text-base ${index % 2 === 0 ? 'bg-black/[0.02]' : 'bg-transparent'}`}>
-                                  <div className="font-semibold">{row.metric}</div>
-                                  <div>{row.imperial}</div>
-                                  <div>{row.fieldUse}</div>
-                                  <div>{row.slopePerMeter}</div>
+                          <MobileScrollHint />
+                          {/* Mobile fix: keep the 4-column metric chart readable on phones. */}
+                          <div className="rounded-[1.6rem] border border-black/10 bg-white/45">
+                            <div className="overflow-x-auto">
+                              <div className="min-w-[660px]">
+                                <div className="grid grid-cols-4 border-b border-black/10 bg-cyan-900/[0.08] px-4 py-4 text-sm font-bold uppercase tracking-[0.22em] text-black/70 md:px-5">
+                                  <div>Metric</div>
+                                  <div>Imperial</div>
+                                  <div>Field Use</div>
+                                  <div>Grade / m</div>
                                 </div>
-                              ))}
-                              {filteredMetricRows.length === 0 && <div className="px-5 py-8 text-center text-black/60">No chart rows matched that search.</div>}
+
+                                <div className="max-h-[900px] overflow-y-auto">
+                                  {filteredMetricRows.map((row, index) => (
+                                    <div key={`metric-${row.metric}`} className={`grid grid-cols-4 px-4 py-3 text-base ${index % 2 === 0 ? 'bg-black/[0.02]' : 'bg-transparent'} md:px-5`}>
+                                      <div className="font-semibold">{row.metric}</div>
+                                      <div>{row.imperial}</div>
+                                      <div>{row.fieldUse}</div>
+                                      <div>{row.slopePerMeter}</div>
+                                    </div>
+                                  ))}
+                                  {filteredMetricRows.length === 0 && <div className="px-4 py-8 text-center text-black/60 md:px-5">No chart rows matched that search.</div>}
+                                </div>
+                              </div>
                             </div>
                           </div>
 
@@ -685,24 +726,30 @@ export default function FieldReferenceCharts() {
 
                       {activeTab === 'loadspan' && (
                         <>
-                          <div className="overflow-hidden rounded-[1.6rem] border border-black/10 bg-white/45">
-                            <div className="grid grid-cols-4 border-b border-black/10 bg-rose-900/[0.08] px-5 py-4 text-sm font-bold uppercase tracking-[0.22em] text-black/70">
-                              <div>Check</div>
-                              <div>Formula / Rule</div>
-                              <div>Quick Use</div>
-                              <div>Caution</div>
-                            </div>
-
-                            <div className="max-h-[900px] overflow-auto">
-                              {filteredLoadSpanRows.map((row, index) => (
-                                <div key={`load-${row.check}`} className={`grid grid-cols-4 px-5 py-3 text-base ${index % 2 === 0 ? 'bg-black/[0.02]' : 'bg-transparent'}`}>
-                                  <div className="font-semibold">{row.check}</div>
-                                  <div>{row.formula}</div>
-                                  <div>{row.quickUse}</div>
-                                  <div>{row.caution}</div>
+                          <MobileScrollHint />
+                          {/* Mobile fix: keep the 4-column load/span chart readable in field use on phones. */}
+                          <div className="rounded-[1.6rem] border border-black/10 bg-white/45">
+                            <div className="overflow-x-auto">
+                              <div className="min-w-[660px]">
+                                <div className="grid grid-cols-4 border-b border-black/10 bg-rose-900/[0.08] px-4 py-4 text-sm font-bold uppercase tracking-[0.22em] text-black/70 md:px-5">
+                                  <div>Check</div>
+                                  <div>Formula / Rule</div>
+                                  <div>Quick Use</div>
+                                  <div>Caution</div>
                                 </div>
-                              ))}
-                              {filteredLoadSpanRows.length === 0 && <div className="px-5 py-8 text-center text-black/60">No chart rows matched that search.</div>}
+
+                                <div className="max-h-[900px] overflow-y-auto">
+                                  {filteredLoadSpanRows.map((row, index) => (
+                                    <div key={`load-${row.check}`} className={`grid grid-cols-4 px-4 py-3 text-base ${index % 2 === 0 ? 'bg-black/[0.02]' : 'bg-transparent'} md:px-5`}>
+                                      <div className="font-semibold">{row.check}</div>
+                                      <div>{row.formula}</div>
+                                      <div>{row.quickUse}</div>
+                                      <div>{row.caution}</div>
+                                    </div>
+                                  ))}
+                                  {filteredLoadSpanRows.length === 0 && <div className="px-4 py-8 text-center text-black/60 md:px-5">No chart rows matched that search.</div>}
+                                </div>
+                              </div>
                             </div>
                           </div>
 

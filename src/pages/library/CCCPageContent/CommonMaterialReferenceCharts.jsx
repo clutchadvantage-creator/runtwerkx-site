@@ -195,6 +195,14 @@ function NotebookPanel({ activeTab, children }) {
   )
 }
 
+function MobileScrollHint() {
+  return (
+    <p className="mb-3 text-center text-xs font-medium uppercase tracking-[0.2em] text-black/45 md:hidden">
+      ← Swipe to view full chart →
+    </p>
+  )
+}
+
 function FooterStatusPanel({ activeTab, searchTerm }) {
   const tabLabel =
     activeTab === 'density'
@@ -448,17 +456,20 @@ export default function CommonMaterialReferenceCharts() {
               </div>
 
               <div className="relative overflow-visible rounded-[2.2rem] border border-zinc-700/60 bg-[#f6f3e8] text-black shadow-[0_20px_60px_rgba(0,0,0,0.45)]">
-                <div className="absolute -top-10 left-10 z-20 flex flex-wrap gap-2">
-                  {NOTEBOOK_TABS.map((tab) => (
-                    <NotebookTab key={tab.key} tab={tab} activeTab={activeTab} onClick={setActiveTab} />
-                  ))}
+                {/* Mobile fix: keep notebook tabs on one line and scroll horizontally instead of wrapping. */}
+                <div className="absolute -top-10 left-4 right-4 z-20 overflow-x-auto whitespace-nowrap md:left-10 md:right-10 lg:right-auto">
+                  <div className="flex w-max gap-2 pr-4">
+                    {NOTEBOOK_TABS.map((tab) => (
+                      <NotebookTab key={tab.key} tab={tab} activeTab={activeTab} onClick={setActiveTab} />
+                    ))}
+                  </div>
                 </div>
 
                 <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(59,130,246,0.10)_1px,transparent_1px)] bg-[size:100%_38px] opacity-80" />
                 <div className="absolute bottom-0 left-[68px] top-0 w-px bg-red-400/60" />
                 <div className="absolute inset-0 animate-[notebookDrift_8s_ease-in-out_infinite] bg-[radial-gradient(circle_at_top,rgba(16,185,129,0.06),transparent_42%)]" />
 
-                <div className="relative z-10 px-6 pb-8 pt-8 md:px-10">
+                <div className="relative z-10 px-4 pb-8 pt-8 md:px-10">
                   <div className="ml-[22px] md:ml-[30px]">
                     <div className="mb-8 flex flex-col gap-4 border-b border-black/10 pb-6 xl:flex-row xl:items-end xl:justify-between">
                       <div>
@@ -497,36 +508,42 @@ export default function CommonMaterialReferenceCharts() {
                     <NotebookPanel activeTab={activeTab}>
                       {activeTab === 'density' && (
                         <>
-                          <div className="overflow-hidden rounded-[1.6rem] border border-black/10 bg-white/45">
-                            <div className="grid grid-cols-5 border-b border-black/10 bg-emerald-900/[0.06] px-5 py-4 text-sm font-bold uppercase tracking-[0.22em] text-black/70">
-                              <div>Material</div>
-                              <div>Lb / In³</div>
-                              <div>Lb / Ft³</div>
-                              <div>Kg / M³</div>
-                              <div>Quick Compare</div>
-                            </div>
-
-                            <div className="max-h-[900px] overflow-auto">
-                              {filteredDensityRows.map((row, index) => (
-                                <div
-                                  key={`density-${row.material}`}
-                                  className={`grid grid-cols-5 px-5 py-3 text-base ${
-                                    index % 2 === 0 ? 'bg-black/[0.02]' : 'bg-transparent'
-                                  }`}
-                                >
-                                  <div className="font-semibold">{row.material}</div>
-                                  <div>{row.lbPerIn3}</div>
-                                  <div>{row.lbPerFt3}</div>
-                                  <div>{row.kgPerM3}</div>
-                                  <div>{row.compare}</div>
+                          <MobileScrollHint />
+                          {/* Mobile fix: keep the 5-column density chart readable by scrolling instead of compressing. */}
+                          <div className="rounded-[1.6rem] border border-black/10 bg-white/45">
+                            <div className="overflow-x-auto">
+                              <div className="min-w-[760px]">
+                                <div className="grid grid-cols-5 border-b border-black/10 bg-emerald-900/[0.06] px-4 py-4 text-sm font-bold uppercase tracking-[0.22em] text-black/70 md:px-5">
+                                  <div>Material</div>
+                                  <div>Lb / In³</div>
+                                  <div>Lb / Ft³</div>
+                                  <div>Kg / M³</div>
+                                  <div>Quick Compare</div>
                                 </div>
-                              ))}
 
-                              {filteredDensityRows.length === 0 && (
-                                <div className="px-5 py-8 text-center text-black/60">
-                                  No chart rows matched that search.
+                                <div className="max-h-[900px] overflow-y-auto">
+                                  {filteredDensityRows.map((row, index) => (
+                                    <div
+                                      key={`density-${row.material}`}
+                                      className={`grid grid-cols-5 px-4 py-3 text-base ${
+                                        index % 2 === 0 ? 'bg-black/[0.02]' : 'bg-transparent'
+                                      } md:px-5`}
+                                    >
+                                      <div className="font-semibold">{row.material}</div>
+                                      <div>{row.lbPerIn3}</div>
+                                      <div>{row.lbPerFt3}</div>
+                                      <div>{row.kgPerM3}</div>
+                                      <div>{row.compare}</div>
+                                    </div>
+                                  ))}
+
+                                  {filteredDensityRows.length === 0 && (
+                                    <div className="px-4 py-8 text-center text-black/60 md:px-5">
+                                      No chart rows matched that search.
+                                    </div>
+                                  )}
                                 </div>
-                              )}
+                              </div>
                             </div>
                           </div>
 
@@ -558,36 +575,42 @@ export default function CommonMaterialReferenceCharts() {
 
                       {activeTab === 'metals' && (
                         <>
-                          <div className="overflow-hidden rounded-[1.6rem] border border-black/10 bg-white/45">
-                            <div className="grid grid-cols-5 border-b border-black/10 bg-blue-900/[0.06] px-5 py-4 text-sm font-bold uppercase tracking-[0.22em] text-black/70">
-                              <div>Material</div>
-                              <div>Weldability</div>
-                              <div>Machinability</div>
-                              <div>Corrosion</div>
-                              <div>Common Use</div>
-                            </div>
-
-                            <div className="max-h-[900px] overflow-auto">
-                              {filteredMetalRows.map((row, index) => (
-                                <div
-                                  key={`metal-${row.material}`}
-                                  className={`grid grid-cols-5 px-5 py-3 text-base ${
-                                    index % 2 === 0 ? 'bg-black/[0.02]' : 'bg-transparent'
-                                  }`}
-                                >
-                                  <div className="font-semibold">{row.material}</div>
-                                  <div>{row.weldability}</div>
-                                  <div>{row.machinability}</div>
-                                  <div>{row.corrosion}</div>
-                                  <div>{row.commonUse}</div>
+                          <MobileScrollHint />
+                          {/* Mobile fix: keep the 5-column metals chart readable on small screens. */}
+                          <div className="rounded-[1.6rem] border border-black/10 bg-white/45">
+                            <div className="overflow-x-auto">
+                              <div className="min-w-[760px]">
+                                <div className="grid grid-cols-5 border-b border-black/10 bg-blue-900/[0.06] px-4 py-4 text-sm font-bold uppercase tracking-[0.22em] text-black/70 md:px-5">
+                                  <div>Material</div>
+                                  <div>Weldability</div>
+                                  <div>Machinability</div>
+                                  <div>Corrosion</div>
+                                  <div>Common Use</div>
                                 </div>
-                              ))}
 
-                              {filteredMetalRows.length === 0 && (
-                                <div className="px-5 py-8 text-center text-black/60">
-                                  No chart rows matched that search.
+                                <div className="max-h-[900px] overflow-y-auto">
+                                  {filteredMetalRows.map((row, index) => (
+                                    <div
+                                      key={`metal-${row.material}`}
+                                      className={`grid grid-cols-5 px-4 py-3 text-base ${
+                                        index % 2 === 0 ? 'bg-black/[0.02]' : 'bg-transparent'
+                                      } md:px-5`}
+                                    >
+                                      <div className="font-semibold">{row.material}</div>
+                                      <div>{row.weldability}</div>
+                                      <div>{row.machinability}</div>
+                                      <div>{row.corrosion}</div>
+                                      <div>{row.commonUse}</div>
+                                    </div>
+                                  ))}
+
+                                  {filteredMetalRows.length === 0 && (
+                                    <div className="px-4 py-8 text-center text-black/60 md:px-5">
+                                      No chart rows matched that search.
+                                    </div>
+                                  )}
                                 </div>
-                              )}
+                              </div>
                             </div>
                           </div>
 
@@ -617,36 +640,42 @@ export default function CommonMaterialReferenceCharts() {
 
                       {activeTab === 'woods' && (
                         <>
-                          <div className="overflow-hidden rounded-[1.6rem] border border-black/10 bg-white/45">
-                            <div className="grid grid-cols-5 border-b border-black/10 bg-amber-900/[0.06] px-5 py-4 text-sm font-bold uppercase tracking-[0.22em] text-black/70">
-                              <div>Material</div>
-                              <div>Density</div>
-                              <div>Stability</div>
-                              <div>Common Use</div>
-                              <div>Note</div>
-                            </div>
-
-                            <div className="max-h-[900px] overflow-auto">
-                              {filteredWoodRows.map((row, index) => (
-                                <div
-                                  key={`wood-${row.material}`}
-                                  className={`grid grid-cols-5 px-5 py-3 text-base ${
-                                    index % 2 === 0 ? 'bg-black/[0.02]' : 'bg-transparent'
-                                  }`}
-                                >
-                                  <div className="font-semibold">{row.material}</div>
-                                  <div>{row.density}</div>
-                                  <div>{row.stability}</div>
-                                  <div>{row.commonUse}</div>
-                                  <div>{row.note}</div>
+                          <MobileScrollHint />
+                          {/* Mobile fix: keep the 5-column wood chart readable with horizontal scrolling. */}
+                          <div className="rounded-[1.6rem] border border-black/10 bg-white/45">
+                            <div className="overflow-x-auto">
+                              <div className="min-w-[760px]">
+                                <div className="grid grid-cols-5 border-b border-black/10 bg-amber-900/[0.06] px-4 py-4 text-sm font-bold uppercase tracking-[0.22em] text-black/70 md:px-5">
+                                  <div>Material</div>
+                                  <div>Density</div>
+                                  <div>Stability</div>
+                                  <div>Common Use</div>
+                                  <div>Note</div>
                                 </div>
-                              ))}
 
-                              {filteredWoodRows.length === 0 && (
-                                <div className="px-5 py-8 text-center text-black/60">
-                                  No chart rows matched that search.
+                                <div className="max-h-[900px] overflow-y-auto">
+                                  {filteredWoodRows.map((row, index) => (
+                                    <div
+                                      key={`wood-${row.material}`}
+                                      className={`grid grid-cols-5 px-4 py-3 text-base ${
+                                        index % 2 === 0 ? 'bg-black/[0.02]' : 'bg-transparent'
+                                      } md:px-5`}
+                                    >
+                                      <div className="font-semibold">{row.material}</div>
+                                      <div>{row.density}</div>
+                                      <div>{row.stability}</div>
+                                      <div>{row.commonUse}</div>
+                                      <div>{row.note}</div>
+                                    </div>
+                                  ))}
+
+                                  {filteredWoodRows.length === 0 && (
+                                    <div className="px-4 py-8 text-center text-black/60 md:px-5">
+                                      No chart rows matched that search.
+                                    </div>
+                                  )}
                                 </div>
-                              )}
+                              </div>
                             </div>
                           </div>
 
@@ -676,32 +705,38 @@ export default function CommonMaterialReferenceCharts() {
 
                       {activeTab === 'compare' && (
                         <>
-                          <div className="overflow-hidden rounded-[1.6rem] border border-black/10 bg-white/45">
-                            <div className="grid grid-cols-3 border-b border-black/10 bg-zinc-900/[0.08] px-5 py-4 text-sm font-bold uppercase tracking-[0.22em] text-black/70">
-                              <div>Comparison</div>
-                              <div>Summary</div>
-                              <div>Shop Note</div>
-                            </div>
-
-                            <div className="max-h-[900px] overflow-auto">
-                              {filteredCompareRows.map((row, index) => (
-                                <div
-                                  key={`compare-${row.callout}`}
-                                  className={`grid grid-cols-3 px-5 py-3 text-base ${
-                                    index % 2 === 0 ? 'bg-black/[0.02]' : 'bg-transparent'
-                                  }`}
-                                >
-                                  <div className="font-semibold">{row.callout}</div>
-                                  <div>{row.summary}</div>
-                                  <div>{row.note}</div>
+                          <MobileScrollHint />
+                          {/* Mobile fix: prevent the 3-column comparison chart from collapsing on phones. */}
+                          <div className="rounded-[1.6rem] border border-black/10 bg-white/45">
+                            <div className="overflow-x-auto">
+                              <div className="min-w-[560px]">
+                                <div className="grid grid-cols-3 border-b border-black/10 bg-zinc-900/[0.08] px-4 py-4 text-sm font-bold uppercase tracking-[0.22em] text-black/70 md:px-5">
+                                  <div>Comparison</div>
+                                  <div>Summary</div>
+                                  <div>Shop Note</div>
                                 </div>
-                              ))}
 
-                              {filteredCompareRows.length === 0 && (
-                                <div className="px-5 py-8 text-center text-black/60">
-                                  No chart rows matched that search.
+                                <div className="max-h-[900px] overflow-y-auto">
+                                  {filteredCompareRows.map((row, index) => (
+                                    <div
+                                      key={`compare-${row.callout}`}
+                                      className={`grid grid-cols-3 px-4 py-3 text-base ${
+                                        index % 2 === 0 ? 'bg-black/[0.02]' : 'bg-transparent'
+                                      } md:px-5`}
+                                    >
+                                      <div className="font-semibold">{row.callout}</div>
+                                      <div>{row.summary}</div>
+                                      <div>{row.note}</div>
+                                    </div>
+                                  ))}
+
+                                  {filteredCompareRows.length === 0 && (
+                                    <div className="px-4 py-8 text-center text-black/60 md:px-5">
+                                      No chart rows matched that search.
+                                    </div>
+                                  )}
                                 </div>
-                              )}
+                              </div>
                             </div>
                           </div>
 
