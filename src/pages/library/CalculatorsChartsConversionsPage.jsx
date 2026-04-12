@@ -54,11 +54,11 @@ function LibraryToolCard({ title, subtitle, description, status = 'Planned' }) {
           <div
             className={`rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] ${
               live
-                ? 'border border-green-400/30 bg-green-500/10 text-green-300'
+                ? 'border border-green-400/40 bg-green-500/10 text-green-300 shadow-[0_0_14px_rgba(34,197,94,0.18)]'
                 : 'border border-white/10 bg-white/[0.04] text-white/45'
             }`}
           >
-            {status}
+            <span className={live ? 'text-green-300 drop-shadow-[0_0_8px_rgba(74,222,128,0.85)]' : ''}>{status}</span>
           </div>
         </div>
 
@@ -136,20 +136,43 @@ function ReferenceCard({ title, category, description, action = 'Reference Slot'
   )
 }
 
-function RelatedTopicCard({ title, description, status = 'Planned' }) {
-  return (
-    <div className="rounded-[1.5rem] border border-white/10 bg-black/45 p-5 transition duration-300 hover:border-green-400/35 hover:shadow-[0_0_20px_rgba(34,197,94,0.10)]">
+function RelatedTopicCard({ title, description, status = 'Planned', to }) {
+  const live = status === 'Live'
+  const cardClassName = `rounded-[1.5rem] border border-white/10 bg-black/45 p-5 transition duration-300 ${
+    to
+      ? 'cursor-pointer hover:border-green-400/35 hover:shadow-[0_0_20px_rgba(34,197,94,0.10)]'
+      : 'hover:border-green-400/35 hover:shadow-[0_0_20px_rgba(34,197,94,0.10)]'
+  }`
+
+  const content = (
+    <>
       <div className="flex items-center justify-between gap-4">
         <h3 className="text-xl font-bold text-white">{title}</h3>
 
-        <div className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/45">
-          {status}
+        <div
+          className={`rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] ${
+            live
+              ? 'border border-green-400/40 bg-green-500/10 text-green-300 shadow-[0_0_14px_rgba(34,197,94,0.18)]'
+              : 'border border-white/10 bg-white/[0.03] text-white/45'
+          }`}
+        >
+          <span className={live ? 'text-green-300 drop-shadow-[0_0_8px_rgba(74,222,128,0.85)]' : ''}>{status}</span>
         </div>
       </div>
 
       <p className="mt-3 text-sm leading-7 text-white/65">{description}</p>
-    </div>
+    </>
   )
+
+  if (to) {
+    return (
+      <Link to={to} className={cardClassName}>
+        {content}
+      </Link>
+    )
+  }
+
+  return <div className={cardClassName}>{content}</div>
 }
 
 export default function CalculatorsChartsConversionsPage() {
@@ -405,41 +428,53 @@ export default function CalculatorsChartsConversionsPage() {
           />
 
           <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            <ReferenceCard
+            <LiveMathToolCard
+              onClick={() =>
+                navigate('/knowledge-library/calculators-charts-conversions/length-conversions')
+              }
               title="Length Conversions"
-              category="Inches / MM / Feet / Meters"
-              description="A clean place for practical everyday dimensional conversion references and future quick tools."
-              action="Conversion Slot"
+              subtitle="Inches / MM / Feet / Meters"
+              description="Notebook-style reference for practical dimensional conversion work across inches, millimeters, feet, meters, and familiar field benchmarks."
             />
-            <ReferenceCard
+            <LiveMathToolCard
+              onClick={() =>
+                navigate('/knowledge-library/calculators-charts-conversions/weight-conversions')
+              }
               title="Weight Conversions"
-              category="Pounds / KG"
-              description="A utility section for fast mass and weight conversions used in estimating, planning, and material handling."
-              action="Conversion Slot"
+              subtitle="Pounds / KG"
+              description="Practical conversion reference for pounds, kilograms, ounces, grams, and common handling-scale tonnage checks."
             />
-            <ReferenceCard
+            <LiveMathToolCard
+              onClick={() =>
+                navigate('/knowledge-library/calculators-charts-conversions/area-conversions')
+              }
               title="Area Conversions"
-              category="Square Units"
-              description="Useful for layout, estimating, and documentation where different area units need to be compared quickly."
-              action="Conversion Slot"
+              subtitle="Square Units"
+              description="Square-unit reference for layout, estimating, sheet coverage, and quick comparison between imperial and metric area values."
             />
-            <ReferenceCard
+            <LiveMathToolCard
+              onClick={() =>
+                navigate('/knowledge-library/calculators-charts-conversions/volume-conversions')
+              }
               title="Volume Conversions"
-              category="Cubic Units"
-              description="A future conversion area for volume-related utilities and liquid / container estimation use cases."
-              action="Conversion Slot"
+              subtitle="Cubic Units"
+              description="Live conversion notebook for gallons, liters, cubic units, and common container benchmarks used in fill and planning work."
             />
-            <ReferenceCard
+            <LiveMathToolCard
+              onClick={() =>
+                navigate('/knowledge-library/calculators-charts-conversions/temperature-conversions')
+              }
               title="Temperature Conversions"
-              category="F / C"
-              description="A common-use reference slot for practical temperature conversions and process-related lookup."
-              action="Conversion Slot"
+              subtitle="F / C"
+              description="Quick Fahrenheit and Celsius reference with practical weather, process, and benchmark temperature checks."
             />
-            <ReferenceCard
+            <LiveMathToolCard
+              onClick={() =>
+                navigate('/knowledge-library/calculators-charts-conversions/pressure-specialty-conversions')
+              }
               title="Pressure / Specialty Conversions"
-              category="Expandable"
-              description="Reserved for additional conversion tools later as the library expands into more industrial categories."
-              action="Future Utility"
+              subtitle="PSI / Bar / kPa / MPa"
+              description="Pressure-unit reference with specialty anchors for process, equipment, and industrial unit-bridge work."
             />
           </div>
         </section>
@@ -457,6 +492,8 @@ export default function CalculatorsChartsConversionsPage() {
               <RelatedTopicCard
                 title="Fabrication"
                 description="Future page for practical fabrication references, shop math, field notes, weld-related references, and connected utility tools."
+                status="Live"
+                to="/fabrication"
               />
               <RelatedTopicCard
                 title="Manufacturing"

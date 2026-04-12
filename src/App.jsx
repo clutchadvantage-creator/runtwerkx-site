@@ -50,6 +50,14 @@ const SteelGaugeThicknessChart = lazy(() =>
   import('./pages/library/CCCPageContent/SteelGaugeThicknessChart')
 )
 const TapDrillChart = lazy(() => import('./pages/library/CCCPageContent/TapDrillChart'))
+const LengthConversions = lazy(() => import('./pages/library/CCCPageContent/LengthConversions'))
+const WeightConversions = lazy(() => import('./pages/library/CCCPageContent/WeightConversions'))
+const AreaConversions = lazy(() => import('./pages/library/CCCPageContent/AreaConversions'))
+const VolumeConversions = lazy(() => import('./pages/library/CCCPageContent/VolumeConversions'))
+const TemperatureConversions = lazy(() => import('./pages/library/CCCPageContent/TemperatureConversions'))
+const PressureSpecialtyConversions = lazy(() =>
+  import('./pages/library/CCCPageContent/PressureSpecialtyConversions')
+)
 
 function ScrollManager() {
   const { pathname, hash } = useLocation()
@@ -179,6 +187,30 @@ export default function App() {
           <Route
             path="/knowledge-library/calculators-charts-conversions/tap-drill-chart"
             element={<TapDrillChart />}
+          />
+          <Route
+            path="/knowledge-library/calculators-charts-conversions/length-conversions"
+            element={<LengthConversions />}
+          />
+          <Route
+            path="/knowledge-library/calculators-charts-conversions/weight-conversions"
+            element={<WeightConversions />}
+          />
+          <Route
+            path="/knowledge-library/calculators-charts-conversions/area-conversions"
+            element={<AreaConversions />}
+          />
+          <Route
+            path="/knowledge-library/calculators-charts-conversions/volume-conversions"
+            element={<VolumeConversions />}
+          />
+          <Route
+            path="/knowledge-library/calculators-charts-conversions/temperature-conversions"
+            element={<TemperatureConversions />}
+          />
+          <Route
+            path="/knowledge-library/calculators-charts-conversions/pressure-specialty-conversions"
+            element={<PressureSpecialtyConversions />}
           />
 
           <Route path="*" element={<Home />} />
