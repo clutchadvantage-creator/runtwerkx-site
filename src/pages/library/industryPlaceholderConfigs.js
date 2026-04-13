@@ -71,7 +71,7 @@ export const MANUFACTURING_PAGE_CONFIG = createBaseConfig({
     eyebrow: '― Manufacturing Overview ―',
     title: 'A dedicated manufacturing industry resource center',
     description:
-      'Manufacturing work touches production flow, quality, throughput, automation, equipment reliability, and handoff discipline every day. This placeholder page is set up to hold that ecosystem in one structured destination.',
+      'Manufacturing work touches production flow, quality, throughput, automation, equipment reliability, and handoff discipline every day. This page is organized to bring that ecosystem together in one structured destination for real production use.',
   },
   summaryCards: [
     { icon: BookOpen, title: 'Process and Quality References', description: 'A place for quality checks, documentation systems, inspection logic, and process-support guidance.' },
@@ -100,7 +100,7 @@ export const MANUFACTURING_PAGE_CONFIG = createBaseConfig({
   chartsSection: {
     eyebrow: '― Charts & Settings ―',
     title: 'Process checks and operational starting points',
-    description: 'These are practical manufacturing starting references and discipline reminders, not abstract placeholder copy. Use them to tighten shift readiness, quality visibility, and flow control.',
+    description: 'These are practical manufacturing starting references and discipline reminders meant to tighten shift readiness, quality visibility, and production flow.',
   },
   processStartingPoints: [
     { title: 'Shift Handoff Control', description: 'Production drift often starts during weak handoff between shifts.', details: ['Confirm priorities and constraints before turnover.', 'Capture downtime causes instead of relying on memory.', 'Verify current job status, setup condition, and pending quality checks.', 'Treat shift handoff as process control, not a courtesy.'] },
@@ -129,7 +129,7 @@ export const MANUFACTURING_PAGE_CONFIG = createBaseConfig({
   docsSection: {
     eyebrow: '― Official Docs ―',
     title: 'Trusted documentation and official manufacturing references',
-    description: 'These links establish a credible placeholder layer for standards, quality systems, and manufacturing-support material.',
+    description: 'These links provide a solid manufacturing reference layer for standards, quality systems, compliance work, and production-support material.',
   },
   officialResources: [
     { title: 'OSHA General Industry', description: 'General industry safety references used across manufacturing operations.', href: 'https://www.osha.gov', type: 'Agency' },
@@ -144,7 +144,7 @@ export const MANUFACTURING_PAGE_CONFIG = createBaseConfig({
   oemsSection: {
     eyebrow: '― OEMs & Equipment Makers ―',
     title: 'Major manufacturing equipment and systems providers',
-    description: 'This placeholder area can expand later into machine categories, controls, support systems, and equipment research paths.',
+    description: 'Use this section to reach major machine categories, controls platforms, support systems, and equipment research paths relevant to manufacturing operations.',
   },
   oemGroups: [
     { title: 'Automation and Controls', icon: Cpu, items: [
@@ -171,7 +171,7 @@ export const MANUFACTURING_PAGE_CONFIG = createBaseConfig({
   roboticsSection: {
     eyebrow: '― Robotics & Automation ―',
     title: 'Automation companies relevant to broader manufacturing workflows',
-    description: 'These are useful placeholder anchors for the robotics and automation side of manufacturing expansion.',
+    description: 'These are strong starting points for robotics, controls, and automation research tied to modern manufacturing workflows.',
   },
   roboticsCompanies: [
     { name: 'FANUC America', href: 'https://www.fanucamerica.com', note: 'Industrial robotics and automation across manufacturing cells.' },
@@ -184,7 +184,7 @@ export const MANUFACTURING_PAGE_CONFIG = createBaseConfig({
   suppliesSection: {
     eyebrow: '― Supplies & Support ―',
     title: 'Operational support sources used across manufacturing environments',
-    description: 'This placeholder section can grow into sourcing paths for MRO, tooling, PPE, controls, and daily production support items.',
+    description: 'This section covers sourcing paths for MRO, tooling, PPE, controls, and daily production support items used across manufacturing environments.',
   },
   supplyGroups: [
     { title: 'MRO and Plant Support', icon: Wrench, items: [
@@ -207,7 +207,7 @@ export const MANUFACTURING_PAGE_CONFIG = createBaseConfig({
   practicesSection: {
     eyebrow: '― Best Practices ―',
     title: 'Operational habits that usually separate stable manufacturing flow from repeat disruption',
-    description: 'These placeholder practice notes mark the kinds of guidance this page can grow into later.',
+    description: 'These practice notes highlight the operating habits that usually separate stable manufacturing flow from repeat disruption.',
   },
   bestPractices: [
     { title: 'Revision control', points: ['The floor should never be guessing which version is current.', 'Clear instruction control prevents avoidable scrap and rework.', 'If multiple versions are visible at once, the system is already weak.'] },
