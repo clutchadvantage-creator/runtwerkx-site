@@ -10,6 +10,13 @@ import Terms from './pages/Terms'
 
 const DailySafety = lazy(() => import('./pages/DailySafety'))
 const Fabrication = lazy(() => import('./pages/library/Fabrication.jsx'))
+const Manufacturing = lazy(() => import('./pages/library/Manufacturing.jsx'))
+const Shipping = lazy(() => import('./pages/library/Shipping.jsx'))
+const Construction = lazy(() => import('./pages/library/Construction.jsx'))
+const ConstructionWorksheets = lazy(() => import('./pages/library/ConstructionWorksheets.jsx'))
+const ManufacturingWorksheets = lazy(() => import('./pages/library/ManufacturingWorksheets.jsx'))
+const ShippingWorksheets = lazy(() => import('./pages/library/ShippingWorksheets.jsx'))
+const FabricationWorksheets = lazy(() => import('./pages/library/FabricationWorksheets.jsx'))
 const IndustryStandards = lazy(() => import('./pages/library/IndustryStandards'))
 const EmergencyProtocols = lazy(() => import('./pages/library/EmergencyProtocols'))
 const MaintenanceSchedules = lazy(() => import('./pages/library/MaintenanceSchedules'))
@@ -135,6 +142,13 @@ export default function App() {
           <Route path="/knowledge-library/regulatory-updates" element={<RegulatoryUpdates />} />
           <Route path="/knowledge-library/professional-tips" element={<ProfessionalTips />} />
           <Route path="/fabrication" element={<Fabrication />} />
+          <Route path="/fabrication/worksheets" element={<FabricationWorksheets />} />
+          <Route path="/knowledge-library/manufacturing" element={<Manufacturing />} />
+          <Route path="/knowledge-library/manufacturing/worksheets" element={<ManufacturingWorksheets />} />
+          <Route path="/knowledge-library/shipping" element={<Shipping />} />
+          <Route path="/knowledge-library/shipping/worksheets" element={<ShippingWorksheets />} />
+          <Route path="/knowledge-library/construction" element={<Construction />} />
+          <Route path="/knowledge-library/construction/worksheets" element={<ConstructionWorksheets />} />
 
           <Route
             path="/knowledge-library/calculators-charts-conversions"

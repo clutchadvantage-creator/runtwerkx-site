@@ -67,6 +67,13 @@ const fabricationDisciplines = [
 
 const calculatorsAndTools = [
   {
+    title: 'Fabrication Worksheets',
+    description:
+      'Fillable fit-up, weld log, heat-trace, receiving, and equipment-readiness worksheets built for real fabrication work.',
+    status: 'Live',
+    to: '/fabrication/worksheets',
+  },
+  {
     title: 'Tap & Drill Workbook',
     description:
       'Quick access to tap drill sizing and reference data for fabrication and shop-floor use.',
@@ -311,6 +318,7 @@ const sectionLinks = [
   { id: 'disciplines', label: 'Disciplines' },
   { id: 'charts', label: 'Charts & Settings' },
   { id: 'tools', label: 'Tools' },
+  { id: 'worksheets', label: 'Worksheets', to: '/fabrication/worksheets' },
   { id: 'docs', label: 'Official Docs' },
   { id: 'oems', label: 'OEMs' },
   { id: 'robotics', label: 'Robotics' },
@@ -686,6 +694,7 @@ export default function Fabrication() {
 
   useEffect(() => {
     const elements = sectionLinks
+      .filter((section) => !section.to)
       .map((section) => document.getElementById(section.id))
       .filter(Boolean)
 
@@ -784,16 +793,14 @@ export default function Fabrication() {
                 {sectionLinks.map((section) => {
                   const isActive = activeSection === section.id
 
-                  return (
-                    <a
-                      key={section.id}
-                      href={`#${section.id}`}
-                      className={`group flex items-center justify-center gap-3 rounded-full border px-4 py-3 text-center text-xs font-semibold uppercase tracking-[0.18em] backdrop-blur-md transition duration-300 ${
-                        isActive
-                          ? 'border-green-400/35 bg-white/[0.08] text-white shadow-[0_0_18px_rgba(34,197,94,0.14)]'
-                          : 'border-white/10 bg-white/[0.04] text-green-300 hover:-translate-y-0.5 hover:border-green-400/30 hover:bg-white/[0.08] hover:text-white'
-                      }`}
-                    >
+                  const className = `group flex items-center justify-center gap-3 rounded-full border px-4 py-3 text-center text-xs font-semibold uppercase tracking-[0.18em] backdrop-blur-md transition duration-300 ${
+                    isActive
+                      ? 'border-green-400/35 bg-white/[0.08] text-white shadow-[0_0_18px_rgba(34,197,94,0.14)]'
+                      : 'border-white/10 bg-white/[0.04] text-green-300 hover:-translate-y-0.5 hover:border-green-400/30 hover:bg-white/[0.08] hover:text-white'
+                  }`
+
+                  const content = (
+                    <>
                       <span
                         className={`h-2.5 w-2.5 rounded-full transition duration-300 ${
                           isActive
@@ -807,6 +814,20 @@ export default function Fabrication() {
                           isActive ? 'text-green-200' : 'text-green-400'
                         }`}
                       />
+                    </>
+                  )
+
+                  if (section.to) {
+                    return (
+                      <Link key={section.id} to={section.to} className={className}>
+                        {content}
+                      </Link>
+                    )
+                  }
+
+                  return (
+                    <a key={section.id} href={`#${section.id}`} className={className}>
+                      {content}
                     </a>
                   )
                 })}

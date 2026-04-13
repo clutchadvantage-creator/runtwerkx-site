@@ -11,6 +11,24 @@ export const mediaCenterCategories = [
     status: 'Live',
     to: '/fabrication',
   },
+  {
+    id: 'manufacturing',
+    title: 'Manufacturing',
+    status: 'Live',
+    to: '/knowledge-library/manufacturing',
+  },
+  {
+    id: 'shipping',
+    title: 'Shipping',
+    status: 'Live',
+    to: '/knowledge-library/shipping',
+  },
+  {
+    id: 'construction',
+    title: 'Construction',
+    status: 'Live',
+    to: '/knowledge-library/construction',
+  },
 ]
 
 export const mediaCenterSections = [
@@ -73,6 +91,50 @@ export const mediaCenterSections = [
         category: 'Development',
         status: 'Daily',
         href: '/knowledge-library/professional-tips',
+      },
+    ],
+  },
+  {
+    id: 'industry-worksheets',
+    title: 'Industry Worksheet Library',
+    description:
+      'Jump straight into the fillable worksheet systems for each live industry page, including saved drafts, signatures, branded PDFs, and share-ready forms.',
+    items: [
+      {
+        id: 'fabrication-worksheets',
+        title: 'Fabrication Worksheets',
+        description:
+          'Fit-up inspections, weld logs, heat-trace tracking, receiving checks, and fabrication equipment-readiness forms.',
+        category: 'Fabrication',
+        status: 'Live',
+        href: '/fabrication/worksheets',
+      },
+      {
+        id: 'manufacturing-worksheets',
+        title: 'Manufacturing Worksheets',
+        description:
+          'Line startup, changeover, quality hold, receiving, and machine-readiness forms for plant-floor use.',
+        category: 'Manufacturing',
+        status: 'Live',
+        href: '/knowledge-library/manufacturing/worksheets',
+      },
+      {
+        id: 'shipping-worksheets',
+        title: 'Shipping Worksheets',
+        description:
+          'Outbound readiness, dock handoff, packaging inspection, receiving, and forklift-equipment forms for shipping flow.',
+        category: 'Shipping',
+        status: 'Live',
+        href: '/knowledge-library/shipping/worksheets',
+      },
+      {
+        id: 'construction-worksheets',
+        title: 'Construction Worksheets',
+        description:
+          'Daily site checklists, pre-task plans, lift prep, anchor logs, delivery inspections, and field equipment forms.',
+        category: 'Construction',
+        status: 'Live',
+        href: '/knowledge-library/construction/worksheets',
       },
     ],
   },

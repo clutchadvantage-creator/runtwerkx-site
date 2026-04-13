@@ -10,11 +10,11 @@ export default function MediaCenterStatusBanner() {
           </div>
 
           <h2 className="mt-2 text-2xl font-bold text-white">
-            Update 1.0.2 Release
+            Update 1.0.3 Release
           </h2>
 
           <p className="mt-3 text-sm leading-7 text-white/65">
-            The Knowledge Library has expanded into a much more complete industrial resource system with live calculator tools, charts and conversions, a rebuilt fabrication hub, and dedicated pages for daily safety, industry standards, emergency response, maintenance planning, regulatory monitoring, and professional tips. This release continues the shift from placeholder content to practical, connected resources that are meant to be used on the job.
+            The Knowledge Library has expanded again with new live industry hubs for manufacturing, shipping, and construction, plus dedicated worksheet systems for fabrication, manufacturing, shipping, and construction. Recent work added multimodal shipping coverage for trucking, rail, maritime, and air, new hazmat, export, freight-claims, and OS&D worksheets, cleaner quick-reference content, dropdown resource panels to shorten long pages, and updated custom background images for the new industry sections. This release continues the push toward practical, connected tools and working references that people can use directly on the job.
           </p>
         </div>
 
