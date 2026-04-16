@@ -739,7 +739,7 @@ function exportWorksheetPdf(worksheet, draft, options = {}) {
   doc.setTextColor(255, 255, 255)
   doc.setFont('helvetica', 'bold')
   doc.setFontSize(18)
-  doc.text('RuntWerkx Construction Worksheet', 18, 16)
+  doc.text('RuntWerkx-Tools For Industry', 18, 16)
   doc.setFontSize(10)
   doc.setFont('helvetica', 'normal')
   doc.text(`${worksheet.title} | ${worksheet.eyebrow}`, 18, 23)

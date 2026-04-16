@@ -730,7 +730,7 @@ function exportWorksheetPdf(worksheet, draft, options = {}) {
   const {
     shouldSave = true,
     qualityMode = 'high',
-    pdfHeaderTitle = 'RuntWerkx Construction Worksheet',
+    pdfHeaderTitle = 'RuntWerkx-Tools For Industry',
   } = options
   const doc = new jsPDF({ unit: 'mm', format: 'letter', compress: qualityMode === 'low', putOnlyUsedFonts: true })
   const pageWidth = doc.internal.pageSize.getWidth()
