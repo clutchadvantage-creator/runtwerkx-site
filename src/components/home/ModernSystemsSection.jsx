@@ -602,7 +602,7 @@ export default function ModernSystemsSection() {
                   <button
                     type="button"
                     onClick={() => navigate('/knowledge-library')}
-                    className="rounded-full border border-white/10 bg-black/50 px-3 py-1 text-center text-[15px] font-semibold uppercase tracking-[0.22em] text-white/60 transition hover:border-green-400/30 hover:text-green-300"
+                    className="rounded-full border border-green-300/60 bg-green-400 px-3 py-1 text-center text-[15px] font-semibold uppercase tracking-[0.22em] text-black shadow-[0_0_22px_rgba(74,222,128,0.38)] transition hover:scale-[1.03] hover:bg-green-300 hover:shadow-[0_0_32px_rgba(74,222,128,0.56)]"
                   >
                     GO TO LIBRARY (Click Here)
                   </button>

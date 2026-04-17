@@ -1,6 +1,7 @@
 import MediaCenterCard from './MediaCenterCard'
 
 export default function MediaCenterLibrarySection({
+  eyebrow = 'Professionals Kits',
   title,
   description,
   items,
@@ -9,7 +10,7 @@ export default function MediaCenterLibrarySection({
     <section className="rounded-[1.75rem] border border-white/10 bg-black/45 p-6">
       <div className="mx-auto max-w-3xl text-center">
         <div className="text-xs font-semibold uppercase tracking-[0.24em] text-green-400">
-          ― Professionals Portal ―
+          ― {eyebrow} ―
         </div>
 
         <h2 className="mt-3 text-2xl font-bold text-white">

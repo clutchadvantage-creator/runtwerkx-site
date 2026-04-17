@@ -102,8 +102,8 @@ export const showcaseItems = [
     description:
       'Card-Werkx is aimed at live operational planning, workflow movement, KPI visibility, and decision support through a flexible card-driven system that can adapt to how teams actually work.',
     image: '/images/apps.png',
-    actionLabel: 'Coming Soon',
-    href: null,
+    actionLabel: 'Go To Library (Click Here)',
+    href: '/knowledge-library',
     stats: ['Scheduling', 'KPI Cards', 'Operations Flow'],
   },
   {

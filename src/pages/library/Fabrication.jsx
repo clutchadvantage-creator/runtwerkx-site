@@ -318,12 +318,12 @@ const sectionLinks = [
   { id: 'disciplines', label: 'Disciplines' },
   { id: 'charts', label: 'Charts & Settings' },
   { id: 'tools', label: 'Tools' },
-  { id: 'worksheets', label: 'Worksheets', to: '/fabrication/worksheets' },
   { id: 'docs', label: 'Official Docs' },
   { id: 'oems', label: 'OEMs' },
   { id: 'robotics', label: 'Robotics' },
   { id: 'supplies', label: 'Supplies' },
   { id: 'practices', label: 'Practices' },
+  { id: 'worksheets', label: 'Worksheets', to: '/fabrication/worksheets' },
 ]
 
 function SectionHeader({ eyebrow, title, description, id }) {

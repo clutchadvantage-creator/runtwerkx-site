@@ -7,6 +7,18 @@ export default function ProductShowcaseSection() {
   const [activeItem, setActiveItem] = useState(-1)
   const navigate = useNavigate()
 
+  function getActionButtonClassName(item) {
+    if (!item.href) {
+      return 'cursor-default border border-white/10 bg-white/[0.04] text-white/45'
+    }
+
+    if (item.href === '/knowledge-library') {
+      return 'border border-green-300/60 bg-green-400 text-black shadow-[0_0_24px_rgba(74,222,128,0.45)] hover:scale-[1.02] hover:bg-green-300 hover:shadow-[0_0_32px_rgba(74,222,128,0.6)]'
+    }
+
+    return 'bg-green-500 text-black hover:scale-[1.02]'
+  }
+
   useEffect(() => {
     let lastY = window.scrollY
     let accumulatedScroll = 0
@@ -158,11 +170,7 @@ export default function ProductShowcaseSection() {
                             type="button"
                             onClick={() => handleHref(item.href, navigate)}
                             disabled={!item.href}
-                            className={`rounded-2xl px-5 py-3 text-sm font-semibold transition ${
-                              item.href
-                                ? 'bg-green-500 text-black hover:scale-[1.02]'
-                                : 'cursor-default border border-white/10 bg-white/[0.04] text-white/45'
-                            }`}
+                            className={`rounded-2xl px-5 py-3 text-sm font-semibold transition ${getActionButtonClassName(item)}`}
                           >
                             {item.actionLabel}
                           </button>

@@ -96,6 +96,7 @@ export const mediaCenterSections = [
   },
   {
     id: 'industry-worksheets',
+    eyebrow: 'Worksheets',
     title: 'Industry Worksheet Library',
     description:
       'Jump straight into the fillable worksheet systems for each live industry page, including saved drafts, signatures, branded PDFs, and share-ready forms.',
@@ -135,6 +136,25 @@ export const mediaCenterSections = [
         category: 'Construction',
         status: 'Live',
         href: '/knowledge-library/construction/worksheets',
+      },
+    ],
+  },
+  {
+    id: 'downloadable-tools',
+    eyebrow: 'Professionals Kits',
+    title: 'Downloadable Tools',
+    description:
+      'Free and premium software tools built by RuntWerkx Systems for real-world industrial workflows.',
+    items: [
+      {
+        id: 'agt-cortex-toolkit',
+        title: 'AGT Cortex ToolKIT',
+        description:
+          'Utility toolkit designed to assist with AGT Cortex file workflows, preparation, and operational efficiency.',
+        category: 'RuntWerkx Tool',
+        status: 'Free Tool',
+        href: '/downloads/runtwerkx-agt-cortex-toolkit-v1.0.0.exe',
+        download: true,
       },
     ],
   },
