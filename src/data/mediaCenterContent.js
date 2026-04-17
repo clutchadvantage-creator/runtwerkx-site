@@ -149,12 +149,22 @@ export const mediaCenterSections = [
       {
         id: 'agt-cortex-toolkit',
         title: 'AGT Cortex ToolKIT',
-        description:
-          'Utility toolkit designed to assist with AGT Cortex file workflows, preparation, and operational efficiency.',
         category: 'RuntWerkx Tool',
         status: 'Free Tool',
         href: '/downloads/runtwerkx-agt-cortex-toolkit-v1.0.0.exe',
         download: true,
+        details: [
+          'Download For Windows 10+ x64',
+          'Version: v1.0.0',
+          'File size: 33.7mb',
+          'AGT Cortex Pre-Run Check/Weld Ordering Tool',
+          'Built by: RuntWerkx Systems',
+        ],
+        warningLines: [
+          '⚠️ First-time download may trigger a Windows SmartScreen warning.',
+          'This is normal for new unsigned applications.',
+          'Click "More Info" -> "Run Anyway" to proceed.',
+        ],
       },
     ],
   },

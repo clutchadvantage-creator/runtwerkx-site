@@ -62,9 +62,25 @@ export default function MediaCenterSidebar({ categories, tools = [] }) {
                     {tool.status || 'Download'}
                   </div>
 
-                  <p className="mt-2 text-xs text-gray-400">
-                    {tool.description}
-                  </p>
+                  {tool.details?.length ? (
+                    <div className="mt-3 space-y-1 text-left text-xs leading-6 text-gray-300">
+                      {tool.details.map((detail) => (
+                        <div key={detail}>{detail}</div>
+                      ))}
+                    </div>
+                  ) : tool.description ? (
+                    <p className="mt-2 text-xs text-gray-400">
+                      {tool.description}
+                    </p>
+                  ) : null}
+
+                  {tool.warningLines?.length ? (
+                    <div className="mt-3 rounded-xl border border-yellow-400/20 bg-yellow-500/[0.06] px-3 py-3 text-left text-xs leading-6 text-yellow-100">
+                      {tool.warningLines.map((line) => (
+                        <div key={line}>{line}</div>
+                      ))}
+                    </div>
+                  ) : null}
 
                   <a
                     href={tool.href}
