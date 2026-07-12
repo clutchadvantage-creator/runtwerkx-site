@@ -12,6 +12,7 @@ import { getMinimumConsultDateValue, validateConsultRequest } from './services/c
 import { buildAssessmentProgressStorageKey } from './shared/consult/assessmentProgress'
 import { buildFrontendConsultSubmissionPayload } from './shared/consult/submissionPayload'
 import { submitConsultRequest } from './shared/consult/consultRequestClient'
+import { siteRoutes, primaryNavLinks, homeNavLinks } from './shared/siteRoutes'
 import rws5Image from './assets/rws5.png'
 
 const RuntWerkxHeroScene = lazy(() => import('./components/three/RuntWerkxHeroScene'))
@@ -1430,14 +1431,14 @@ function App() {
 
   const handleReturnHomeFromSuccess = () => {
     setIsSuccessModalOpen(false)
-    navigateTo('/')
+    navigateTo(siteRoutes.home)
   }
 
   const handleScheduleAnotherFromSuccess = () => {
     setIsSuccessModalOpen(false)
 
-    if (currentPath !== '/contact') {
-      navigateTo('/contact')
+    if (currentPath !== siteRoutes.contact) {
+      navigateTo(siteRoutes.contact)
     }
 
     setIsBuildFormOpen(true)
@@ -1730,18 +1731,10 @@ function App() {
     </AnimatePresence>
   )
 
-  const isAboutPage = currentPath === '/about'
-  const isContactPage = currentPath === '/contact'
+  const isAboutPage = currentPath === siteRoutes.about
+  const isContactPage = currentPath === siteRoutes.contact
   const recommendationPageConfig = getRecommendationPageConfig(currentPath)
-  const fullNavLinks = [
-    { label: 'Home', path: '/' },
-    { label: 'About', path: '/about' },
-    { label: 'Contact', path: '/contact' },
-  ]
-  const homeNavLinks = [
-    { label: 'About', path: '/about' },
-    { label: 'Contact', path: '/contact' },
-  ]
+  const fullNavLinks = primaryNavLinks
 
   const renderHiddenRecommendationPage = () => {
     if (!recommendationPageConfig) {
@@ -1755,8 +1748,8 @@ function App() {
 
         <RecommendationPage
           config={recommendationPageConfig}
-          onConnect={() => navigateTo('/contact')}
-          onStartOver={() => navigateTo('/')}
+          onConnect={() => navigateTo(siteRoutes.contact)}
+          onStartOver={() => navigateTo(siteRoutes.home)}
         />
       </div>
     )
