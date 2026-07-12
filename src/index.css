@@ -496,8 +496,9 @@ h1 {
 .about-page {
   position: relative;
   min-height: 100vh;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100dvh;
+  height: auto;
+  overflow-x: hidden;
   isolation: isolate;
 }
 
@@ -623,13 +624,14 @@ h1 {
 }
 
 .about-page main {
-  height: calc(100vh - var(--rwx-header-height) - env(safe-area-inset-top));
+  min-height: calc(100vh - var(--rwx-header-height) - env(safe-area-inset-top));
+  min-height: calc(100dvh - var(--rwx-header-height) - env(safe-area-inset-top));
   padding-bottom: 0;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .about-shell {
-  height: 100%;
+  min-height: 100%;
   display: grid;
   align-items: center;
   padding-top: clamp(1.4rem, 3.6vh, 2.4rem);
@@ -2799,16 +2801,24 @@ h1 {
   }
 
   .about-page {
-    height: 100vh;
+    min-height: 100vh;
+    min-height: 100dvh;
+    height: auto;
   }
 
   .about-page main {
-    height: calc(100vh - var(--rwx-header-height) - env(safe-area-inset-top));
+    min-height: calc(100vh - var(--rwx-header-height) - env(safe-area-inset-top));
+    min-height: calc(100dvh - var(--rwx-header-height) - env(safe-area-inset-top));
+    height: auto;
+    overflow-y: visible;
+    padding-bottom: calc(1.2rem + env(safe-area-inset-bottom));
   }
 
   .about-shell {
+    min-height: auto;
+    align-items: start;
     padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding-bottom: 0;
   }
 
   .nav-links {
