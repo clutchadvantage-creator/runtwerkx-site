@@ -1,7 +1,7 @@
 import { lazy, Suspense, useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import Lenis from 'lenis'
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight, Menu, X } from 'lucide-react'
 import SceneFallback from './components/three/SceneFallback'
 import OperationalAssessment from './components/assessment/OperationalAssessment'
 import { CubeInteractionProvider } from './components/three/CubeInteractionContext'
@@ -1163,6 +1163,8 @@ function App() {
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false)
   const [lastSubmissionReference, setLastSubmissionReference] = useState('')
   const [lastDeliveryMessage, setLastDeliveryMessage] = useState('Consult request delivered successfully.')
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const mobileMenuPanelRef = useRef(null)
   const minimumConsultDate = getMinimumConsultDateValue()
 
   useEffect(() => {
@@ -1244,6 +1246,44 @@ function App() {
   }, [isBuildFormOpen])
 
   useEffect(() => {
+    if (!isMobileMenuOpen) {
+      return undefined
+    }
+
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+
+    const handleEscape = (event) => {
+      if (event.key === 'Escape') {
+        setIsMobileMenuOpen(false)
+      }
+    }
+
+    const handleOutsideClick = (event) => {
+      if (!mobileMenuPanelRef.current) {
+        return
+      }
+
+      if (!mobileMenuPanelRef.current.contains(event.target)) {
+        setIsMobileMenuOpen(false)
+      }
+    }
+
+    window.addEventListener('keydown', handleEscape)
+    window.addEventListener('pointerdown', handleOutsideClick)
+
+    return () => {
+      document.body.style.overflow = previousOverflow
+      window.removeEventListener('keydown', handleEscape)
+      window.removeEventListener('pointerdown', handleOutsideClick)
+    }
+  }, [isMobileMenuOpen])
+
+  useEffect(() => {
+    setIsMobileMenuOpen(false)
+  }, [currentPath])
+
+  useEffect(() => {
     const lenis = new Lenis({
       duration: prefersReducedMotion ? 1.1 : 1.8,
       easing: (t) => 1 - Math.pow(1 - t, 4),
@@ -1275,6 +1315,100 @@ function App() {
     window.history.pushState({}, '', path)
     setCurrentPath(window.location.pathname || '/')
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+  }
+
+  const handleNavSelect = (path) => {
+    setIsMobileMenuOpen(false)
+    navigateTo(path)
+  }
+
+  const renderSiteHeader = ({ links }) => {
+    const navPanelId = 'rwx-mobile-nav-panel'
+
+    return (
+      <header className="rwx-nav-wrap">
+        <nav className="rwx-nav" aria-label="Primary navigation">
+          <button
+            className="rwx-brand-mobile"
+            type="button"
+            onClick={() => handleNavSelect('/')}
+            aria-label="Go to home"
+          >
+            <span className="brand-dot" />
+            <span className="brand-text">RuntWerkx</span>
+          </button>
+
+          <div className="nav-links" role="list">
+            {links.map((link) => (
+              <a
+                key={link.path}
+                href={link.path}
+                className={currentPath === link.path ? 'nav-link-active' : ''}
+                aria-current={currentPath === link.path ? 'page' : undefined}
+                onClick={(event) => {
+                  event.preventDefault()
+                  handleNavSelect(link.path)
+                }}
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+
+          <button
+            className="mobile-menu-toggle"
+            type="button"
+            aria-expanded={isMobileMenuOpen}
+            aria-controls={navPanelId}
+            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+            onClick={() => setIsMobileMenuOpen((open) => !open)}
+          >
+            {isMobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
+          </button>
+        </nav>
+
+        <AnimatePresence>
+          {isMobileMenuOpen ? (
+            <motion.div
+              className="mobile-nav-layer"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2, ease: 'easeOut' }}
+            >
+              <motion.div
+                id={navPanelId}
+                ref={mobileMenuPanelRef}
+                className="mobile-nav-panel"
+                role="dialog"
+                aria-modal="true"
+                initial={{ opacity: 0, y: -10, scale: 0.985 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -8, scale: 0.99 }}
+                transition={{ duration: 0.2, ease: [0.2, 1, 0.22, 1] }}
+              >
+                <div className="mobile-nav-links" role="list">
+                  {links.map((link) => (
+                    <a
+                      key={`mobile-${link.path}`}
+                      href={link.path}
+                      className={currentPath === link.path ? 'nav-link-active' : ''}
+                      aria-current={currentPath === link.path ? 'page' : undefined}
+                      onClick={(event) => {
+                        event.preventDefault()
+                        handleNavSelect(link.path)
+                      }}
+                    >
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
+              </motion.div>
+            </motion.div>
+          ) : null}
+        </AnimatePresence>
+      </header>
+    )
   }
 
   const openBuildForm = () => {
@@ -1599,6 +1733,15 @@ function App() {
   const isAboutPage = currentPath === '/about'
   const isContactPage = currentPath === '/contact'
   const recommendationPageConfig = getRecommendationPageConfig(currentPath)
+  const fullNavLinks = [
+    { label: 'Home', path: '/' },
+    { label: 'About', path: '/about' },
+    { label: 'Contact', path: '/contact' },
+  ]
+  const homeNavLinks = [
+    { label: 'About', path: '/about' },
+    { label: 'Contact', path: '/contact' },
+  ]
 
   const renderHiddenRecommendationPage = () => {
     if (!recommendationPageConfig) {
@@ -1607,15 +1750,8 @@ function App() {
 
     return (
       <div className="rwx-site recommendation-page">
-        <header className="rwx-nav-wrap">
-          <nav className="rwx-nav">
-            <div className="nav-links">
-              <a href="/">Home</a>
-              <a href="/about">About</a>
-              <a href="/contact">Contact</a>
-            </div>
-          </nav>
-        </header>
+        {renderSiteHeader({ links: fullNavLinks })}
+        <div className="rwx-nav-spacer" aria-hidden="true" />
 
         <RecommendationPage
           config={recommendationPageConfig}
@@ -1720,17 +1856,8 @@ function App() {
           </svg>
         </div>
 
-        <header className="rwx-nav-wrap">
-          <nav className="rwx-nav">
-            <div className="nav-links">
-              <a href="/">Home</a>
-              <a href="/about" className="nav-link-active" aria-current="page">
-                About
-              </a>
-              <a href="/contact">Contact</a>
-            </div>
-          </nav>
-        </header>
+        {renderSiteHeader({ links: fullNavLinks })}
+        <div className="rwx-nav-spacer" aria-hidden="true" />
 
         <main>
           <section className="section-shell about-shell">
@@ -1772,17 +1899,8 @@ function App() {
   if (isContactPage) {
     return (
       <div className="rwx-site contact-page">
-        <header className="rwx-nav-wrap">
-          <nav className="rwx-nav">
-            <div className="nav-links">
-              <a href="/">Home</a>
-              <a href="/about">About</a>
-              <a href="/contact" className="nav-link-active" aria-current="page">
-                Contact
-              </a>
-            </div>
-          </nav>
-        </header>
+        {renderSiteHeader({ links: fullNavLinks })}
+        <div className="rwx-nav-spacer" aria-hidden="true" />
 
         <main>
           <ContactSignalLock onConsultRequest={openBuildForm} />
@@ -1802,16 +1920,8 @@ function App() {
 
   return (
     <div className="rwx-site">
-      <header className="rwx-nav-wrap">
-        <nav className="rwx-nav">
-          <div className="nav-links">
-            <a href="/about">
-              About
-            </a>
-            <a href="/contact">Contact</a>
-          </div>
-        </nav>
-      </header>
+      {renderSiteHeader({ links: homeNavLinks })}
+      <div className="rwx-nav-spacer" aria-hidden="true" />
 
       <CubeInteractionProvider>
         <main>
